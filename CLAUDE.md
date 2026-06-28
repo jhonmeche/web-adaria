@@ -377,15 +377,26 @@ Para estados de monitoreo. No compiten con el azul de marca.
 - Justificación: muchas landings comparten cascarón (nav/footer/CTA/tarjetas) y habrá blog
   → componentes reutilizables + Content Collections, sin sacrificar rendimiento.
 
+### Repositorio
+- GitHub: <https://github.com/jhonmeche/web-adaria> (rama `main`).
+- Flujo: `git pull` al empezar · `git push` al terminar. Ver "Trabajar desde otro
+  equipo" en el `README.md`. El `CLAUDE.md` viaja en el repo (contexto para Claude).
+
 ### Hecho (sesión 1)
 - Proyecto montado, tokens de diseño (paleta Opción C en `src/styles/global.css`).
 - Layout: `BaseLayout`, `Header` (nav §7 con dropdowns + menú móvil), `Footer`, SEO/OG.
 - **Home completa** (`src/pages/index.astro`) con las 8 secciones de la §9.
-- Logo recreado como SVG inline + favicon. Datos en `src/data/`.
+- Logo recreado como SVG inline + favicon (fondo transparente, color adaptativo claro/oscuro).
 - Micro-interacciones al scroll como mejora progresiva (visible sin JS).
-- Hero: fondo con rejilla técnica + glow de marca. (Se probó una capa animada de "visión
-  por computador" con cajas de detección y línea de escaneo, pero se retiró por decisión de
-  diseño. **Upgrade futuro posible**: video real de operación de fondo cuando haya footage.)
+- **Hero = carrusel de soluciones** (`src/components/sections/Hero.astro`): imagen full-bleed
+  + título ENCIMA, ambos rotan sincronizados (5 slides, ~6.5 s, puntos clickeables, pausa al
+  hover). Imágenes en `public/hero/slide-N.png` (mapeo título→imagen en el arreglo `slides`).
+  Degradado de legibilidad sobre la imagen; respeta `reduce-motion`.
+- Ajustes de diseño aplicados: header glass oscuro (`bg-ink/70` + blur) con dropdowns
+  oscuros (`bg-ink/95`) y hover azul sólido; botones `rounded-md`; tipografía Apple/Inter
+  (titulares 600, sentence case, clamp); subhead y titulares en tono corporativo (sin "tu").
+- **Color oscuro aclarado**: `--color-ink` `#0C1116` → `#141B24`, `--color-ink-card` → `#202A36`
+  (las tablas §13.1 siguen citando los hex base como referencia histórica).
 - `npm run build` OK. Verificado en desktop y móvil.
 
 ### Estructura de carpetas
@@ -401,6 +412,9 @@ src/
 ### Pendiente (próximas sesiones)
 - **Backend del formulario**: hoy valida y confirma en cliente (placeholder). Conectar
   Formspree / Netlify Forms (definir hosting). Ver TODO en `components/sections/Contacto.astro`.
+- **Imágenes del hero**: faltan slides del carrusel. Hechas: `slide-1` (Visión) y `slide-2`
+  (Inspección). Pendientes: Monitoreo IoT, Mantenimiento predictivo, Trazabilidad. Subir a
+  `public/hero/` y mapear en `slides` de `Hero.astro`.
 - **Imágenes reales**: reemplazar placeholders (sectores, foto Smart PBA, OG en `/public/og/`).
 - **Métricas reales** del caso Smart PBA (hoy placeholders).
 - **Landings dedicadas**: `/soluciones/[sector]`, `/productos/*`, `/servicios`, `/nosotros`,
