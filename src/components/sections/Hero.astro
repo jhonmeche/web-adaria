@@ -29,9 +29,9 @@ const slides = [
     alt: 'Dashboard de trazabilidad y datos auditables',
   },
   {
-    titulo: 'Inspección automatizada para el control de calidad y la seguridad industrial.',
+    titulo: 'Seguridad en el trabajo y cumplimiento de EPP con visión artificial.',
     img: '/hero/slide-2.png',
-    alt: 'Cámara de inspección automatizada de calidad',
+    alt: 'Detección automática de EPP y seguridad laboral con visión artificial',
   },
 ];
 ---
@@ -56,10 +56,10 @@ const slides = [
     ))}
   </div>
 
-  <!-- Degradado de legibilidad: oscuro a la izquierda (desktop) -->
-  <div class="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink from-15% via-ink/80 to-ink/20 md:block" aria-hidden="true"></div>
-  <!-- En móvil, velo oscuro general -->
-  <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/85 to-ink/55 md:hidden" aria-hidden="true"></div>
+  <!-- Degradado de legibilidad: oscuro solo a la izquierda, derecha transparente (desktop) -->
+  <div class="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink from-5% via-ink/45 via-42% to-transparent to-75% md:block" aria-hidden="true"></div>
+  <!-- En móvil, velo más suave (la imagen va detrás del texto) -->
+  <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/65 to-ink/35 md:hidden" aria-hidden="true"></div>
 
   <!-- Contenido encima de la imagen -->
   <div class="relative mx-auto w-full max-w-6xl px-6 py-28 lg:px-8">
