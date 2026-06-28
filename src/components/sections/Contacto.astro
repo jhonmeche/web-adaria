@@ -1,0 +1,125 @@
+---
+// §9.8 — CTA final + formulario B2B (§10). Fondo oscuro.
+// El sitio es estático: el envío real necesita un backend (Formspree / Netlify
+// Forms). Por ahora el formulario valida en cliente y muestra confirmación.
+// Para activarlo: define el endpoint en `action` y quita el preventDefault.
+import Eyebrow from '../ui/Eyebrow.astro';
+import { sectores } from '../../data/sectores.ts';
+---
+
+<section id="contacto" class="relative overflow-hidden bg-ink text-on-dark">
+  <div
+    class="pointer-events-none absolute -bottom-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-brand/15 blur-[130px]"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-2 lg:px-8">
+    <div>
+      <Eyebrow on="dark">Hablemos de tu proyecto</Eyebrow>
+      <h2 data-reveal class="text-h1 font-semibold text-on-dark">
+        Agenda una demo y empecemos por tu caso de uso.
+      </h2>
+      <p data-reveal class="mt-5 max-w-md text-lg leading-relaxed text-muted-dark">
+        Cuéntanos tu operación y tu reto. Te mostramos cómo llevar tu proceso a
+        algo más seguro, eficiente y auditable —empezando con bajo costo de entrada.
+      </p>
+
+      <ul data-reveal class="mt-10 space-y-4">
+        {[
+          'Diagnóstico inicial sin costo',
+          'Piloto sobre tus cámaras o sensores actuales',
+          'Propuesta a la medida de tu industria',
+        ].map((t) => (
+          <li class="flex items-center gap-3 text-sm text-on-dark/90">
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand/20 text-brand-400">
+              <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            {t}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div data-reveal class="rounded-2xl border border-white/10 bg-ink-card p-6 shadow-2xl shadow-black/40 sm:p-8">
+      <form id="contact-form" class="space-y-4" novalidate>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="nombre" class="form-label">Nombre*</label>
+            <input id="nombre" name="nombre" type="text" required class="form-input" autocomplete="name" />
+          </div>
+          <div>
+            <label for="empresa" class="form-label">Empresa*</label>
+            <input id="empresa" name="empresa" type="text" required class="form-input" autocomplete="organization" />
+          </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="cargo" class="form-label">Cargo</label>
+            <input id="cargo" name="cargo" type="text" class="form-input" autocomplete="organization-title" />
+          </div>
+          <div>
+            <label for="sector" class="form-label">Sector</label>
+            <select id="sector" name="sector" class="form-input">
+              <option value="">Selecciona…</option>
+              {sectores.map((s) => (
+                <option value={s.slug}>{s.nombre}</option>
+              ))}
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="email" class="form-label">Correo corporativo*</label>
+          <input id="email" name="email" type="email" required class="form-input" autocomplete="email" />
+        </div>
+        <div>
+          <label for="mensaje" class="form-label">¿Qué reto quieres resolver?</label>
+          <textarea id="mensaje" name="mensaje" rows="3" class="form-input resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition-all hover:-translate-y-0.5 hover:bg-brand-600">
+          Agenda una demo
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <p id="form-status" class="hidden rounded-lg bg-ok/15 px-4 py-3 text-sm text-on-dark" role="status"></p>
+        <p class="text-center text-xs text-muted-dark">
+          Al enviar aceptas que te contactemos sobre tu solicitud.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  @reference "../../styles/global.css";
+  .form-label {
+    @apply mb-1.5 block text-sm font-medium text-on-dark/90;
+  }
+  .form-input {
+    @apply w-full rounded-lg border border-white/10 bg-ink/60 px-3.5 py-2.5 text-sm text-on-dark placeholder-muted-dark transition-colors focus:border-brand focus:bg-ink/80 focus:outline-none;
+  }
+  .form-input:user-invalid {
+    @apply border-crit;
+  }
+</style>
+
+<script>
+  // Validación + confirmación en cliente. TODO: conectar backend (Formspree /
+  // Netlify Forms) — definir `action`/`method` en el <form> y enviar fetch.
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (status) {
+      status.textContent =
+        '¡Gracias! Hemos recibido tu solicitud. Te contactaremos muy pronto.';
+      status.classList.remove('hidden');
+    }
+    form.reset();
+  });
+</script>

@@ -1,0 +1,44 @@
+---
+// <head> reutilizable: meta básicos, OpenGraph y Twitter (§10 SEO).
+interface Props {
+  title: string;
+  description: string;
+  /** Ruta de imagen OG (en /public). */
+  image?: string;
+}
+const { title, description, image = '/og/og-default.jpg' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Tipografía: Inter (fallback del stack del sistema Apple). Pesos 400/500/600. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+/>
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="theme-color" content="#141B24" />
+
+<!-- OpenGraph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="AdariA Systems" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:locale" content="es_CO" />
+<meta property="og:image" content={socialImage} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />

@@ -1,0 +1,36 @@
+---
+// Botón / CTA. El acento de marca (azul) se usa para el primario.
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  /** Sobre qué fondo se renderiza (ajusta el secundario/ghost). */
+  on?: 'dark' | 'light';
+  class?: string;
+}
+const { href, variant = 'primary', on = 'light', class: className = '' } = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2';
+
+const styles: Record<string, string> = {
+  primary:
+    'bg-brand text-white shadow-lg shadow-brand/20 hover:bg-brand-600 hover:-translate-y-0.5',
+  secondary:
+    on === 'dark'
+      ? 'border border-white/20 text-on-dark hover:bg-white/10'
+      : 'border border-ink/15 text-ink hover:bg-ink/5',
+  ghost:
+    on === 'dark'
+      ? 'text-on-dark hover:text-white'
+      : 'text-ink hover:text-brand',
+};
+---
+
+<a href={href} class={`${base} ${styles[variant]} ${className}`}>
+  <slot />
+  {variant === 'primary' && (
+    <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  )}
+</a>

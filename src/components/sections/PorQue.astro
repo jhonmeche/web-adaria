@@ -1,0 +1,55 @@
+---
+// §9.7 — Por qué AdariA: diferenciadores. Fondo oscuro.
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+
+const diferenciadores = [
+  {
+    titulo: 'A la medida',
+    texto: 'No vendemos cajas cerradas. Diseñamos la solución alrededor de tu operación y tu caso de uso.',
+    icon: 'M12 20h9M3 20h2M5 20V8a2 2 0 0 1 2-2h2M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z',
+  },
+  {
+    titulo: 'Hardware propio',
+    texto: 'Diseñamos nodos, gateways y dispositivos edge. Controlamos la cadena de punta a punta.',
+    icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 7h10v10H7V7Zm3 3h4v4h-4v-4Z',
+  },
+  {
+    titulo: 'Dato auditable',
+    texto: 'Cada decisión queda respaldada con evidencia trazable. Transparencia ante clientes y reguladores.',
+    icon: 'M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
+  },
+  {
+    titulo: 'Bajo costo de entrada',
+    texto: 'Empezamos sobre tus cámaras y sensores actuales. Pilotos rápidos que escalan a soluciones de valor.',
+    icon: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
+  },
+];
+---
+
+<Section theme="dark" id="por-que" grid={true}>
+  <div class="mx-auto max-w-3xl text-center">
+    <Eyebrow on="dark">Por qué AdariA</Eyebrow>
+    <h2 data-reveal class="text-h1 font-semibold text-on-dark">
+      Pocas empresas en Colombia hacen todo esto bajo un mismo techo.
+    </h2>
+    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
+      Del sensor a la decisión, a la medida, con dato auditable. Ese es nuestro
+      diferencial.
+    </p>
+  </div>
+
+  <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {diferenciadores.map((d) => (
+      <div data-reveal class="rounded-2xl border border-white/10 bg-ink-card p-7">
+        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d={d.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 class="mb-2 text-lg font-semibold text-on-dark">{d.titulo}</h3>
+        <p class="text-sm leading-relaxed text-muted-dark">{d.texto}</p>
+      </div>
+    ))}
+  </div>
+</Section>

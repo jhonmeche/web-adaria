@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* Tipografía: stack del sistema Apple (San Francisco) con Inter como fallback.
+   Inter se carga desde Google Fonts en el <head> (ver BaseHead.astro) con
+   preconnect. En dispositivos Apple se usa SF Pro; en el resto, Inter. */
+
+/*
+  ──────────────────────────────────────────────────────────────────────────
+  AdariA Systems · Tokens de diseño (Tailwind v4 @theme)
+  Paleta §13 — Opción C (híbrida): el azul de marca domina home y páginas
+  generales; los colores sectoriales solo se activan dentro de cada landing.
+  Acento de marca confirmado contra el logo: azul #2563D9.
+  ──────────────────────────────────────────────────────────────────────────
+*/
+@theme {
+  /* Núcleo de marca */
+  --color-ink: #141b24;        /* fondo oscuro: hero, impacto, CTA, footer (aclarado) */
+  --color-ink-card: #202a36;   /* cards sobre fondo oscuro */
+  --color-light: #f4f6f9;      /* fondo claro (alterna con el oscuro) */
+  --color-surface: #ffffff;    /* cards sobre fondo claro */
+
+  /* Texto */
+  --color-muted: #5b6470;      /* descripciones, subtítulos (sobre claro) */
+  --color-on-dark: #f5f7fa;    /* texto principal en secciones oscuras */
+  --color-on-light: #0c1116;   /* texto principal en secciones claras */
+  --color-muted-dark: #9aa6b4; /* texto secundario sobre fondo oscuro */
+
+  /* Acento de marca (azul) — CTAs, métricas, íconos, enlaces, bordes */
+  --color-brand: #2563d9;
+  --color-brand-600: #1f54bb;  /* hover */
+  --color-brand-400: #5b8af0;  /* acento sobre fondo oscuro (mayor contraste) */
+  --color-brand-ink: #0e7490;  /* enlaces como texto sobre fondo claro (AA) */
+
+  /* Cian del logo — uso muy puntual (detalle/glow), nunca como texto */
+  --color-logo-cyan: #00b4d8;
+
+  /* Colores por sector (solo se usan dentro de su landing — Opción C) */
+  --color-sector-energia: #f08c1d;     /* Hidrocarburos, Minería y Energía */
+  --color-sector-carnica: #c0552f;     /* Industria Cárnica */
+  --color-sector-manufactura: #4a7fb5; /* Manufactura */
+  --color-sector-logistica: #1ba89a;   /* Logística y Bodegas */
+  --color-sector-agro: #5c9a35;        /* Agroindustria */
+
+  /* Estados funcionales (dashboards AdariA Sense) */
+  --color-ok: #2ea36b;
+  --color-warn: #e0a21b;
+  --color-crit: #d9483b;
+
+  /* Tipografía — stack Apple / SF Pro con Inter de fallback (una sola familia
+     en todo el sitio). `--font-display` es alias de `--font-sans`. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter",
+    "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-sans);
+
+  /* Escala fluida de titulares (clamp, estilo Apple): grande en desktop,
+     escalado en móvil. Cada token lleva su line-height emparejado. */
+  --text-display: clamp(2.5rem, 1.6rem + 4.5vw, 4rem); /* hero h1 */
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+  --text-h1: clamp(2rem, 1.4rem + 3vw, 3rem); /* títulos de sección */
+  --text-h1--line-height: 1.15;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h2: clamp(1.75rem, 1.4rem + 1.8vw, 2.25rem); /* subtítulos grandes */
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.02em;
+
+  /* Radios y sombras */
+  --radius-card: 16px;
+  --radius-pill: 9999px;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6; /* cuerpo de texto */
+  background-color: var(--color-light);
+  color: var(--color-on-light);
+}
+
+/* Titulares: peso 600, tracking ajustado, interlineado compacto (1.1–1.2). */
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* Foco visible accesible */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Micro-interacciones al hacer scroll ─────────────────────────────────
+   Mejora progresiva: el contenido es visible por defecto (SEO / sin JS).
+   Solo cuando hay JS (<html class="js">) ocultamos para animar la entrada.
+   Se respeta prefers-reduced-motion.                                        */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Utilidad: rejilla técnica sutil de fondo (hero / secciones oscuras) */
+.tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}

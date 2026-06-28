@@ -1,0 +1,59 @@
+---
+// §9.2 — El problema: el costo de operar a ciegas. Fondo claro.
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+
+const dolores = [
+  {
+    titulo: 'Fallas que paran la operación',
+    texto:
+      'El mantenimiento reactivo y las paradas no planeadas cuestan millones. Cuando reaccionas, el daño ya está hecho.',
+    icon: 'alert',
+  },
+  {
+    titulo: 'Accidentes y riesgo regulatorio',
+    texto:
+      'En industria pesada cada accidente es altísimo en costo humano y económico, con presión de SST y ambiental.',
+    icon: 'shield',
+  },
+  {
+    titulo: 'Procesos manuales y a ciegas',
+    texto:
+      'Conteos, inspecciones y registros a mano: lentos, costosos, propensos a error y sin trazabilidad.',
+    icon: 'eye',
+  },
+];
+
+const icons: Record<string, string> = {
+  alert: 'M12 9v4m0 4h.01M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z',
+  shield: 'M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6l-7-3Z',
+  eye: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Zm10 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+};
+---
+
+<Section theme="light" id="problema">
+  <div class="mx-auto max-w-3xl text-center">
+    <Eyebrow on="light">El costo de operar a ciegas</Eyebrow>
+    <h2 data-reveal class="text-h1 font-semibold text-on-light">
+      Lo que no se mide, se paga caro.
+    </h2>
+    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">
+      En la industria, la falta de datos a tiempo se traduce en paradas, riesgos
+      y sobrecostos. El problema no es la tecnología: es operar sin ver.
+    </p>
+  </div>
+
+  <div class="mt-16 grid gap-6 md:grid-cols-3">
+    {dolores.map((d) => (
+      <div data-reveal class="rounded-2xl border border-ink/5 bg-surface p-8 shadow-sm transition-shadow hover:shadow-md">
+        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d={icons[d.icon]} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 class="mb-2 text-lg font-semibold text-on-light">{d.titulo}</h3>
+        <p class="text-sm leading-relaxed text-muted">{d.texto}</p>
+      </div>
+    ))}
+  </div>
+</Section>

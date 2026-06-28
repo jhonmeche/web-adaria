@@ -1,0 +1,190 @@
+---
+// Header con navegación §7. En esta primera entrega (solo home) los ítems de
+// los menús enlazan a las secciones de la home; cuando existan las landings
+// dedicadas, basta cambiar los href a /soluciones/[slug], /productos/... etc.
+import Logo from '../ui/Logo.astro';
+import Button from '../ui/Button.astro';
+import { sectores } from '../../data/sectores.ts';
+import { productos } from '../../data/productos.ts';
+
+const servicios = [
+  'Desarrollo de software',
+  'Diseño de hardware',
+  'Visión artificial e IA',
+  'Soluciones IoT',
+  'Integración y analítica',
+];
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-ink/70 backdrop-blur-lg transition-colors duration-300"
+  data-header
+>
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8" aria-label="Principal">
+    <Logo variant="light" />
+
+    <!-- Navegación desktop -->
+    <ul class="hidden items-center gap-1 lg:flex">
+      <!-- Soluciones -->
+      <li class="group relative">
+        <a href="#sectores" class="nav-link" aria-haspopup="true">
+          Soluciones
+          <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="dropdown">
+          <p class="dropdown-title">Por sector</p>
+          {sectores.map((s) => (
+            <a href="#sectores" class="dropdown-item">{s.nombre}</a>
+          ))}
+        </div>
+      </li>
+
+      <!-- Productos -->
+      <li class="group relative">
+        <a href="#productos" class="nav-link" aria-haspopup="true">
+          Productos
+          <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="dropdown">
+          {productos.map((p) => (
+            <a href="#productos" class="dropdown-item">{p.nombre}</a>
+          ))}
+        </div>
+      </li>
+
+      <!-- Servicios -->
+      <li class="group relative">
+        <a href="#servicios" class="nav-link" aria-haspopup="true">
+          Servicios
+          <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="dropdown">
+          {servicios.map((s) => (
+            <a href="#servicios" class="dropdown-item">{s}</a>
+          ))}
+        </div>
+      </li>
+
+      <li><a href="#caso" class="nav-link">Nosotros</a></li>
+      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+    </ul>
+
+    <div class="hidden lg:block">
+      <Button href="#contacto" variant="primary">Agenda una demo</Button>
+    </div>
+
+    <!-- Botón menú móvil -->
+    <button
+      id="menu-toggle"
+      class="inline-flex items-center justify-center rounded-lg p-2 text-on-dark lg:hidden"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+
+  <!-- Menú móvil -->
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-white/10 bg-ink/95 backdrop-blur lg:hidden"
+  >
+    <div class="space-y-1 px-6 py-4">
+      <a href="#sectores" class="mobile-link">Soluciones</a>
+      <a href="#productos" class="mobile-link">Productos</a>
+      <a href="#servicios" class="mobile-link">Servicios</a>
+      <a href="#caso" class="mobile-link">Nosotros</a>
+      <a href="#contacto" class="mobile-link">Contacto</a>
+      <Button href="#contacto" variant="primary" class="mt-3 w-full">Agenda una demo</Button>
+    </div>
+  </div>
+</header>
+
+<style>
+  @reference "../../styles/global.css";
+  .nav-link {
+    @apply inline-flex items-center gap-1 rounded-full px-4 py-2 text-base font-medium text-on-dark/85 transition-colors hover:text-brand-400;
+  }
+  .dropdown {
+    @apply invisible absolute left-0 top-full min-w-60 translate-y-2 rounded-sm border border-white/10 bg-ink/95 p-2 opacity-0 shadow-2xl shadow-black/50 backdrop-blur-xl transition-all duration-200;
+  }
+  .group:hover .dropdown,
+  .group:focus-within .dropdown {
+    @apply visible translate-y-1 opacity-100;
+  }
+  .dropdown-title {
+    @apply px-3 pb-1.5 pt-2 text-xs font-semibold tracking-wide text-brand-400;
+  }
+  .dropdown-item {
+    @apply block rounded-sm px-3 py-2 text-sm text-on-dark/85 transition-colors hover:bg-brand hover:text-white;
+  }
+  .mobile-link {
+    @apply block rounded-lg px-2 py-2.5 text-base font-medium text-on-dark/90 transition-colors hover:bg-white/5 hover:text-brand-400;
+  }
+
+  /* Al desplegar el menú: los ítems entran escalonados (fade + desplazamiento),
+     sin cambio de color en el texto. */
+  @media (prefers-reduced-motion: no-preference) {
+    .group:hover .dropdown-item,
+    .group:focus-within .dropdown-item {
+      animation: dropdown-item-in 0.45s ease backwards;
+    }
+    .group:hover .dropdown-item:nth-of-type(1),
+    .group:focus-within .dropdown-item:nth-of-type(1) { animation-delay: 0.04s; }
+    .group:hover .dropdown-item:nth-of-type(2),
+    .group:focus-within .dropdown-item:nth-of-type(2) { animation-delay: 0.09s; }
+    .group:hover .dropdown-item:nth-of-type(3),
+    .group:focus-within .dropdown-item:nth-of-type(3) { animation-delay: 0.14s; }
+    .group:hover .dropdown-item:nth-of-type(4),
+    .group:focus-within .dropdown-item:nth-of-type(4) { animation-delay: 0.19s; }
+    .group:hover .dropdown-item:nth-of-type(5),
+    .group:focus-within .dropdown-item:nth-of-type(5) { animation-delay: 0.24s; }
+  }
+
+  @keyframes dropdown-item-in {
+    0% {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
+
+<script>
+  // Menú móvil
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  });
+  menu?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }),
+  );
+
+  // Fondo del header al hacer scroll
+  const header = document.querySelector('[data-header]');
+  const onScroll = () => {
+    if (window.scrollY > 24) header?.classList.add('header-scrolled');
+    else header?.classList.remove('header-scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+
+<style is:global>
+  [data-header].header-scrolled {
+    background-color: rgba(20, 27, 36, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+</style>

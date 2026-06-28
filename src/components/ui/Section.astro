@@ -1,0 +1,20 @@
+---
+// Envoltorio de sección. `theme` alterna fondo oscuro/claro para dar ritmo
+// a la home (§13). Incluye padding vertical generoso ("mucho aire").
+interface Props {
+  theme?: 'dark' | 'light';
+  id?: string;
+  class?: string;
+  /** Activa la rejilla técnica sutil (solo tiene sentido en theme oscuro). */
+  grid?: boolean;
+}
+const { theme = 'light', id, class: className = '', grid = false } = Astro.props;
+const bg = theme === 'dark' ? 'bg-ink text-on-dark' : 'bg-light text-on-light';
+---
+
+<section id={id} class={`relative ${bg} ${className}`}>
+  {grid && <div class="tech-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>}
+  <div class="relative mx-auto w-full max-w-6xl px-6 py-20 sm:py-28 lg:px-8">
+    <slot />
+  </div>
+</section>
