@@ -14,8 +14,8 @@
 */
 @theme {
   /* Núcleo de marca */
-  --color-ink: #141b24;        /* fondo oscuro: hero, impacto, CTA, footer (aclarado) */
-  --color-ink-card: #202a36;   /* cards sobre fondo oscuro */
+  --color-ink: #1a1a1a;        /* fondo oscuro: gris carbón neutro (estilo Elementary) */
+  --color-ink-card: #242424;   /* cards sobre fondo oscuro */
   --color-light: #f4f6f9;      /* fondo claro (alterna con el oscuro) */
   --color-surface: #ffffff;    /* cards sobre fondo claro */
 
