@@ -41,8 +41,10 @@ import { sectores } from '../../data/sectores.ts';
               muted
               loop
               playsinline
+              webkit-playsinline
               preload="metadata"
               aria-hidden="true"
+              data-sector-video
             ></video>
           ) : s.imagen ? (
             <img
@@ -81,3 +83,49 @@ import { sectores } from '../../data/sectores.ts';
     ))}
   </div>
 </Section>
+
+<script>
+  // Reproducción de los videos de fondo de las tarjetas. En móvil, el autoplay
+  // del HTML suele estar bloqueado (ahorro de datos / bajo consumo), así que lo
+  // forzamos por JS cuando la tarjeta entra en pantalla, y lo pausamos al salir
+  // (carga diferida → mejor rendimiento). Respeta prefers-reduced-motion.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const videos = Array.from(
+    document.querySelectorAll<HTMLVideoElement>('video[data-sector-video]'),
+  );
+
+  if (videos.length && !reduce) {
+    const tryPlay = (v: HTMLVideoElement) => {
+      v.muted = true;
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            const v = e.target as HTMLVideoElement;
+            if (e.isIntersecting) tryPlay(v);
+            else v.pause();
+          });
+        },
+        { threshold: 0.25 },
+      );
+      videos.forEach((v) => io.observe(v));
+    } else {
+      videos.forEach(tryPlay);
+    }
+
+    // Fallback: algunos navegadores solo permiten reproducir tras la 1ª
+    // interacción del usuario. Al primer toque/scroll, reintenta los visibles.
+    const kick = () => {
+      videos.forEach((v) => {
+        const r = v.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) tryPlay(v);
+      });
+    };
+    window.addEventListener('touchstart', kick, { once: true, passive: true });
+    window.addEventListener('scroll', kick, { once: true, passive: true });
+  }
+</script>
