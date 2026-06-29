@@ -47,7 +47,7 @@ const servicios = [
         </a>
         <div class="dropdown">
           {productos.map((p) => (
-            <a href="#productos" class="dropdown-item">{p.nombre}</a>
+            <a href={`/productos/${p.slug}`} class="dropdown-item">{p.nombre}</a>
           ))}
         </div>
       </li>

@@ -52,7 +52,7 @@ import { productos } from '../../data/productos.ts';
         </ul>
 
         <a
-          href="#contacto"
+          href={`/productos/${p.slug}`}
           aria-label={`Conocer más sobre ${p.nombre}`}
           class="mt-auto inline-flex items-center gap-1.5 pt-8 text-sm font-semibold text-brand transition-all group-hover:gap-2.5"
         >

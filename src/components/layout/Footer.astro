@@ -38,7 +38,7 @@ const servicios = [
         <h3 class="footer-title">Productos</h3>
         <ul class="space-y-2">
           {productos.map((p) => (
-            <li><a href="#productos" class="footer-link">{p.nombre}</a></li>
+            <li><a href={`/productos/${p.slug}`} class="footer-link">{p.nombre}</a></li>
           ))}
         </ul>
       </div>
