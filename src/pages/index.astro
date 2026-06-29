@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import Problema from '../components/sections/Problema.astro';
+import Industria40 from '../components/sections/Industria40.astro';
 import Solucion from '../components/sections/Solucion.astro';
 import Stack from '../components/sections/Stack.astro';
 import Sectores from '../components/sections/Sectores.astro';
@@ -11,12 +12,13 @@ import Contacto from '../components/sections/Contacto.astro';
 
 const title = 'AdariA Systems — Soluciones tecnológicas a la medida de tu industria';
 const description =
-  'Visión artificial, IoT/LoRa y hardware propio bajo un mismo techo. Del sensor a la decisión, a la medida, con dato auditable. Agenda una demo.';
+  'Habilitamos los pilares de la Industria 4.0: visión artificial, IoT/LoRa y hardware propio bajo un mismo techo. Del sensor a la decisión, a la medida, con dato auditable. Agenda una demo.';
 ---
 
 <BaseLayout title={title} description={description}>
   <Hero />
   <Problema />
+  <Industria40 />
   <Solucion />
   <Stack />
   <Sectores />

@@ -9,9 +9,10 @@
 ## 0. El encargo
 
 Construir el sitio web corporativo de **AdariA Systems**, una startup de tecnología
-colombiana. El sitio es la principal herramienta de venta consultiva B2B y la primera
-prueba de credibilidad ante clientes industriales (especialmente hidrocarburos, minería
-y energía).
+colombiana que actúa como **habilitador de la Industria 4.0**. El sitio es la principal
+herramienta de venta consultiva B2B y la primera prueba de credibilidad ante empresas que
+quieren transformar su operación con tecnología (conectividad, datos en tiempo real,
+visión artificial, automatización).
 
 **Objetivo del sitio:** transmitir que AdariA es un aliado tecnológico integral y serio,
 y convertir visitantes en leads (solicitudes de demo / contacto comercial).
@@ -44,6 +45,31 @@ Soluciones a la medida · Orientación a resultados · Integridad.
 hardware, capturamos los datos con visión artificial e IoT, los integramos y los devolvemos
 convertidos en decisiones—. Un solo aliado, del sensor a la decisión, a la medida, con dato
 auditable. Pocas empresas en Colombia hacen todo esto bajo un mismo techo.
+
+**Concepto paraguas — Industria 4.0:** AdariA Systems se posiciona como un **habilitador de
+la Industria 4.0**: el aliado que lleva a las empresas de operaciones manuales y a ciegas
+hacia operaciones conectadas, inteligentes y basadas en datos en tiempo real. Este concepto
+es el hilo conductor de toda la comunicación. Cada producto y servicio de AdariA es uno de
+los pilares de la Industria 4.0. Importante: usar "Industria 4.0" como marco moderno y
+transversal; no usar el término "industria pesada" como mensaje general. Los sectores
+específicos viven en sus landings, no en el mensaje global.
+
+### AdariA como habilitador de la Industria 4.0
+La Industria 4.0 es la cuarta revolución industrial: convertir las operaciones en sistemas
+conectados, inteligentes y automatizados que generan datos en tiempo real para decidir
+mejor. AdariA cubre sus pilares principales con tecnología propia y a la medida:
+
+- **Visión artificial e IA:** AdariA Vision
+- **IoT y conectividad:** AdariA Sense
+- **Analítica y big data:** dashboards, KPIs y soporte a la decisión
+- **Hardware inteligente:** diseño de hardware a la medida
+- **Integración y digitalización:** Smart PBA y servicios de integración
+- **Mantenimiento predictivo:** AdariA Sense
+
+Mensaje clave: *"Habilitamos los pilares de la Industria 4.0 con tecnología propia y a la
+medida."* Beneficios a comunicar: eficiencia, mantenimiento predictivo, calidad,
+visibilidad y trazabilidad en tiempo real, reducción de costos, decisiones basadas en datos
+y más seguridad.
 
 ---
 
@@ -121,10 +147,11 @@ mantenimientos antes de que ocurran las paradas.
 4. **Logística y Bodegas** → Vision Logística + integración + analítica.
 5. **Agroindustria** → Vision (conteo de cultivos, grading) + drones + IoT.
 
-**Dolor por sector (industria pesada):** el costo de cada falla y cada accidente es
-altísimo; hay presión regulatoria (SST, ambiental). AdariA entra barato (sobre cámaras y
-sensores existentes) y escala a soluciones de mayor valor. Mensaje: operaciones más
-**seguras, eficientes y auditables**.
+**Dolor por sector (sectores industriales como energía, minería, manufactura):** el costo
+de cada falla y cada accidente es altísimo; hay presión regulatoria (SG-SST, ambiental).
+AdariA entra barato (sobre cámaras y sensores existentes) y escala a soluciones de mayor
+valor. Mensaje: operaciones más **seguras, eficientes y auditables**, encuadradas como el
+paso hacia la Industria 4.0.
 
 ---
 
@@ -134,8 +161,8 @@ Cinco motores de ingreso: proyectos/servicios · licencias · **SaaS/suscripció
 hardware · soporte/mantenimiento. Estrategia "land & expand": entrar con bajo costo de
 adopción (piloto, 1 caso de uso, CCTV existente) y crecer hacia recurrencia (más sitios,
 más módulos, servicio gestionado). Prioridad comercial: Vision·Seguridad + Smart PBA +
-servicios para caja rápida; sembrar AdariA Sense en industria pesada como apuesta de valor
-recurrente. El CTA del sitio debe empujar a "Agenda una demo / Hablemos de tu proyecto".
+servicios para caja rápida; sembrar AdariA Sense en los sectores industriales como apuesta
+de valor recurrente. El CTA del sitio debe empujar a "Agenda una demo / Hablemos de tu proyecto".
 
 ---
 
@@ -198,15 +225,20 @@ interacciones sutiles al hacer scroll.
    "Soluciones tecnológicas a la medida de tu industria."
    Subhead: la frase de valor. CTA: "Agenda una demo" / "Hablemos de tu proyecto".
 2. **El problema** — el costo de operar a ciegas / fallas / accidentes / procesos manuales.
-3. **La solución en pasos** — Captar (visión + sensores) → Procesar (edge + IA) →
+3. **Industria 4.0** — bloque que enmarca a AdariA como habilitador de la Industria 4.0:
+   explicar brevemente el concepto (operaciones conectadas, inteligentes, basadas en datos
+   en tiempo real) y mostrar los pilares (IoT, IA/visión, analítica, hardware inteligente,
+   integración) conectados a lo que hace AdariA. Mensaje: "Llevamos tu operación a la
+   Industria 4.0."
+4. **La solución en pasos** — Captar (visión + sensores) → Procesar (edge + IA) →
    Decidir (dashboards, alertas, predicción). "Del sensor a la decisión."
-4. **El stack integral de AdariA** — los 3 productos + servicios a la medida.
-5. **Sectores** — tarjetas por industria (con imagen), cada una enlaza a su landing.
-6. **Caso destacado: Smart PBA** — prueba de credibilidad (trazabilidad, evidencia
+5. **El stack integral de AdariA** — los 3 productos + servicios a la medida.
+6. **Sectores** — tarjetas por industria (con imagen), cada una enlaza a su landing.
+7. **Caso destacado: Smart PBA** — prueba de credibilidad (trazabilidad, evidencia
    fotográfica, transparencia ante el cliente).
-7. **Por qué AdariA** — diferenciadores: a la medida, hardware propio, dato auditable,
+8. **Por qué AdariA** — diferenciadores: a la medida, hardware propio, dato auditable,
    bajo costo de entrada.
-8. **CTA final** — formulario de contacto / agendar demo.
+9. **CTA final** — formulario de contacto / agendar demo.
 
 ---
 
@@ -398,6 +430,20 @@ Para estados de monitoreo. No compiten con el azul de marca.
 - **Color oscuro aclarado**: `--color-ink` `#0C1116` → `#141B24`, `--color-ink-card` → `#202A36`
   (las tablas §13.1 siguen citando los hex base como referencia histórica).
 - `npm run build` OK. Verificado en desktop y móvil.
+
+### Hecho (sesión 2 — integración Industria 4.0)
+- **Nueva sección Industria 4.0** (`src/components/sections/Industria40.astro`): cierra la
+  brecha de la §9.3, que faltaba. Fondo oscuro con rejilla técnica; titular "Llevamos su
+  operación a la Industria 4.0", explicación del concepto y grid de los **6 pilares** (§1),
+  cada uno anclado al producto/capacidad de AdariA que lo habilita (Vision, Sense, analítica,
+  hardware, integración/Smart PBA, mantenimiento predictivo). Reutiliza `Section`/`Eyebrow`
+  y el patrón `data-reveal` → no altera el diseño visual existente.
+- **Insertada en la home** entre `Problema` y `Solucion` (orden exacto de §9). La home pasa
+  de 8 a 9 secciones.
+- **Refuerzos del concepto** (solo texto, sin tocar layout): meta description de la home y
+  subhead del Hero ahora encuadran "Habilitamos la Industria 4.0".
+- **Bug de mensaje corregido**: `Problema.astro` decía "industria pesada" (prohibido por §1
+  como mensaje general) → reemplazado por "En la industria".
 
 ### Estructura de carpetas
 ```

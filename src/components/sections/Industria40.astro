@@ -1,0 +1,111 @@
+---
+// §9.3 — Industria 4.0: marco que posiciona a AdariA como habilitador de la
+// cuarta revolución industrial. Conecta cada pilar con el producto/capacidad de
+// AdariA que lo habilita (§1 del brief). Fondo oscuro (sección de impacto).
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+
+// Pilares de la Industria 4.0 cubiertos por AdariA (§1 del brief). Cada uno se
+// ancla a la oferta concreta que lo habilita, para que el concepto no quede
+// abstracto sino conectado a lo que vendemos.
+const pilares = [
+  {
+    titulo: 'Visión artificial e IA',
+    texto: 'Modelos propios que ven, clasifican y deciden sobre las cámaras existentes.',
+    habilita: 'AdariA Vision',
+    icon: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Zm10 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+  },
+  {
+    titulo: 'IoT y conectividad',
+    texto: 'Sensorización y redes LoRa/LoRaWAN que llevan el dato hasta los sitios más remotos.',
+    habilita: 'AdariA Sense',
+    icon: 'M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 9.5a15 15 0 0 1 20 0M12 20h.01',
+  },
+  {
+    titulo: 'Analítica y big data',
+    texto: 'Dashboards, KPIs y reportes que convierten el dato en soporte a la decisión.',
+    habilita: 'Analítica',
+    icon: 'M3 3v18h18M7 14l3-3 3 3 5-6',
+  },
+  {
+    titulo: 'Hardware inteligente',
+    texto: 'Diseño electrónico propio: nodos, gateways y dispositivos edge a la medida.',
+    habilita: 'Diseño de hardware',
+    icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 7h10v10H7V7Zm3 3h4v4h-4v-4Z',
+  },
+  {
+    titulo: 'Integración y digitalización',
+    texto: 'Conectamos ERP, básculas, PLCs, cámaras y SCADA en una sola operación digital.',
+    habilita: 'Smart PBA · Integración',
+    icon: 'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71',
+  },
+  {
+    titulo: 'Mantenimiento predictivo',
+    texto: 'Predicción de fallas que programa el mantenimiento antes de la parada.',
+    habilita: 'AdariA Sense',
+    icon: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2.1-.6-.6-2.1 2.8-2.8Z',
+  },
+];
+---
+
+<Section theme="dark" id="industria-40" grid={true} aria-labelledby="industria-40-title">
+  <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
+    <Eyebrow on="dark">Industria 4.0</Eyebrow>
+    <h2 id="industria-40-title" data-reveal class="text-balance text-h1 font-semibold text-on-dark">
+      Llevamos su operación a la Industria 4.0.
+    </h2>
+    <p data-reveal class="mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-dark">
+      La cuarta revolución industrial convierte las operaciones en sistemas
+      conectados, inteligentes y automatizados que generan datos en tiempo real
+      para decidir mejor. AdariA habilita sus pilares con tecnología propia y a
+      la medida.
+    </p>
+  </div>
+
+  <ul class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {pilares.map((p, i) => (
+      <li
+        data-reveal
+        class="pilar group flex flex-col rounded-2xl border border-white/10 bg-ink-card p-7 ring-1 ring-white/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10"
+        style={`--reveal-delay:${i * 80}ms`}
+      >
+        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors group-hover:bg-brand group-hover:text-white">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d={p.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 class="mb-2 text-lg font-semibold text-on-dark">{p.titulo}</h3>
+        <p class="text-sm leading-relaxed text-muted-dark">{p.texto}</p>
+        <p class="mt-5 inline-flex items-center gap-2 border-t border-white/5 pt-4 text-xs font-medium text-brand-400">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+          Con AdariA · {p.habilita}
+        </p>
+      </li>
+    ))}
+  </ul>
+
+  <p data-reveal class="mt-12 text-center text-base leading-relaxed text-muted-dark">
+    Un solo aliado para todos los pilares —
+    <a href="#productos" class="font-semibold text-brand-400 hover:underline">conozca el stack integral de AdariA</a>.
+  </p>
+</Section>
+
+<style>
+  /* Entrada escalonada por card (mismo patrón que Problema/Stack): el reveal usa
+     `transform`; el hover usa la propiedad individual `translate`, así no se
+     pisan entre sí. */
+  .js [data-reveal].pilar {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      translate 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .js [data-reveal].pilar.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
