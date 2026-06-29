@@ -15,20 +15,20 @@ import { sectores } from '../../data/sectores.ts';
 
   <div class="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-2 lg:px-8">
     <div>
-      <Eyebrow on="dark">Hablemos de tu proyecto</Eyebrow>
+      <Eyebrow on="dark">Hablemos de su proyecto</Eyebrow>
       <h2 data-reveal class="text-h1 font-semibold text-on-dark">
-        Agenda una demo y empecemos por tu caso de uso.
+        Agende una demostración y empecemos por su caso de uso.
       </h2>
       <p data-reveal class="mt-5 max-w-md text-lg leading-relaxed text-muted-dark">
-        Cuéntanos tu operación y tu reto. Te mostramos cómo llevar tu proceso a
-        algo más seguro, eficiente y auditable —empezando con bajo costo de entrada.
+        Cuéntenos su operación y su reto. Le mostramos cómo llevar su proceso a
+        una operación más segura, eficiente y auditable —comenzando con un bajo costo de entrada.
       </p>
 
       <ul data-reveal class="mt-10 space-y-4">
         {[
           'Diagnóstico inicial sin costo',
-          'Piloto sobre tus cámaras o sensores actuales',
-          'Propuesta a la medida de tu industria',
+          'Piloto sobre sus cámaras o sensores actuales',
+          'Propuesta a la medida de su industria',
         ].map((t) => (
           <li class="flex items-center gap-3 text-sm text-on-dark/90">
             <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand/20 text-brand-400">
@@ -84,7 +84,7 @@ import { sectores } from '../../data/sectores.ts';
 
         <p id="form-status" class="hidden rounded-lg bg-ok/15 px-4 py-3 text-sm text-on-dark" role="status"></p>
         <p class="text-center text-xs text-muted-dark">
-          Al enviar aceptas que te contactemos sobre tu solicitud.
+          Al enviar acepta que le contactemos sobre su solicitud.
         </p>
       </form>
     </div>
@@ -117,7 +117,7 @@ import { sectores } from '../../data/sectores.ts';
     }
     if (status) {
       status.textContent =
-        '¡Gracias! Hemos recibido tu solicitud. Te contactaremos muy pronto.';
+        '¡Gracias! Hemos recibido su solicitud. Le contactaremos muy pronto.';
       status.classList.remove('hidden');
     }
     form.reset();

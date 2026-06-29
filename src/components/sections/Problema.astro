@@ -7,7 +7,7 @@ const dolores = [
   {
     titulo: 'Fallas que paran la operación',
     texto:
-      'El mantenimiento reactivo y las paradas no planeadas cuestan millones. Cuando reaccionas, el daño ya está hecho.',
+      'El mantenimiento reactivo y las paradas no planeadas cuestan millones. Cuando se reacciona, el daño ya está hecho.',
     icon: 'alert',
   },
   {
@@ -19,7 +19,7 @@ const dolores = [
   {
     titulo: 'Procesos manuales y a ciegas',
     texto:
-      'Conteos, inspecciones y registros a mano: lentos, costosos, propensos a error y sin trazabilidad.',
+      'Conteos, inspecciones y registros manuales: lentos, costosos y propensos a errores. Sin trazabilidad ni datos confiables, las decisiones se toman a ciegas y los problemas se detectan tarde.',
     icon: 'eye',
   },
 ];
@@ -31,22 +31,26 @@ const icons: Record<string, string> = {
 };
 ---
 
-<Section theme="light" id="problema">
-  <div class="mx-auto max-w-3xl text-center">
+<Section theme="light" id="problema" aria-labelledby="problema-title">
+  <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
     <Eyebrow on="light">El costo de operar a ciegas</Eyebrow>
-    <h2 data-reveal class="text-h1 font-semibold text-on-light">
+    <h2 id="problema-title" data-reveal class="text-balance text-h1 font-semibold text-on-light">
       Lo que no se mide, se paga caro.
     </h2>
-    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">
+    <p data-reveal class="mt-6 max-w-xl text-balance text-lg leading-relaxed text-muted">
       En la industria, la falta de datos a tiempo se traduce en paradas, riesgos
       y sobrecostos. El problema no es la tecnología: es operar sin ver.
     </p>
   </div>
 
-  <div class="mt-16 grid gap-6 md:grid-cols-3">
-    {dolores.map((d) => (
-      <div data-reveal class="rounded-2xl border border-ink/5 bg-surface p-8 shadow-sm transition-shadow hover:shadow-md">
-        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand">
+  <div class="mt-16 grid items-stretch gap-6 md:grid-cols-3">
+    {dolores.map((d, i) => (
+      <div
+        data-reveal
+        class="card group flex flex-col rounded-2xl border border-ink/10 bg-surface p-8 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-ink/25 hover:shadow-lg"
+        style={`--reveal-delay:${i * 90}ms`}
+      >
+        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d={icons[d.icon]} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
@@ -57,3 +61,23 @@ const icons: Record<string, string> = {
     ))}
   </div>
 </Section>
+
+<style>
+  /* Entrada escalonada por card: fade + slide-up con --reveal-delay; el hover usa
+     la propiedad individual `translate` para no pisar la animación de entrada.
+     (Mismo patrón que la sección Stack.) */
+  .js [data-reveal].card {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      translate 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .js [data-reveal].card.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>

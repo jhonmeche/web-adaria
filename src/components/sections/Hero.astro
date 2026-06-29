@@ -1,42 +1,47 @@
 ---
 // §9.1 — Hero: carrusel a pantalla completa. La IMAGEN de cada solución ocupa
-// todo el ancho (full-bleed) y el TÍTULO va ENCIMA, con degradado para
+// todo el ancho (full-bleed) y el TÍTULO va ENCIMA, con degradado + sombra para
 // legibilidad. Título e imagen rotan sincronizados.
 import Button from '../ui/Button.astro';
 
 // ── SOLUCIONES DEL CARRUSEL ────────────────────────────────────────────────
 // Imágenes en  public/hero/  (slide-1.png ... slide-5.png). Si una falta, se
-// oculta sola y el título igual rota.
+// oculta sola y el título igual rota. Titulares cortos y paralelos (impacto).
 const slides = [
   {
-    titulo: 'Visión artificial para la optimización de procesos productivos.',
+    titulo: 'Visión artificial que optimiza la producción.',
     img: '/hero/slide-1.png',
     alt: 'Sistema de visión artificial inspeccionando una línea de producción',
   },
   {
-    titulo: 'Monitoreo IoT en tiempo real para la continuidad operacional.',
-    img: '/hero/slide-5.png',
-    alt: 'Nodo IoT y panel de monitoreo en tiempo real',
+    titulo: 'Hardware a la medida, integrado a la solución de software.',
+    img: '/hero/slide-4.webp',
+    alt: 'Diseño de hardware electrónico a la medida integrado con la plataforma de software',
   },
   {
-    titulo: 'Monitoreo en tiempo real y mantenimiento predictivo de equipos en una plataforma centralizada.',
+    titulo: 'Mantenimiento predictivo que se anticipa a las fallas.',
     img: '/hero/slide-3.png',
     alt: 'Plataforma centralizada de monitoreo en tiempo real y mantenimiento predictivo de equipos industriales',
   },
   {
-    titulo: 'Trazabilidad y datos auditables para la toma de decisiones.',
+    titulo: 'Trazabilidad y datos auditables de extremo a extremo.',
     img: '/hero/slide-4.png',
     alt: 'Dashboard de trazabilidad y datos auditables',
   },
   {
-    titulo: 'Seguridad en el trabajo y cumplimiento de EPP con visión artificial.',
+    titulo: 'Seguridad laboral y EPP verificados con visión artificial.',
     img: '/hero/slide-2.png',
     alt: 'Detección automática de EPP y seguridad laboral con visión artificial',
   },
 ];
 ---
 
-<section data-rotator class="relative isolate flex min-h-[90vh] items-center overflow-hidden bg-ink text-on-dark">
+<section
+  data-rotator
+  class="relative isolate flex min-h-[90svh] items-center overflow-hidden bg-ink text-on-dark"
+  aria-roledescription="carrusel"
+  aria-label="Soluciones de AdariA Systems"
+>
   <!-- Imágenes full-bleed apiladas -->
   <div class="absolute inset-0 -z-20" aria-hidden="true">
     <!-- placeholder de respaldo -->
@@ -50,21 +55,31 @@ const slides = [
           alt={s.alt}
           class="h-full w-full object-cover object-center"
           loading={i === 0 ? 'eager' : 'lazy'}
+          fetchpriority={i === 0 ? 'high' : 'auto'}
+          decoding="async"
           onerror="this.style.visibility='hidden'"
         />
       </div>
     ))}
   </div>
 
-  <!-- Degradado de legibilidad: oscuro solo a la izquierda, derecha transparente (desktop) -->
-  <div class="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink from-5% via-ink/45 via-42% to-transparent to-75% md:block" aria-hidden="true"></div>
-  <!-- En móvil, velo más suave (la imagen va detrás del texto) -->
-  <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/65 to-ink/35 md:hidden" aria-hidden="true"></div>
+  <!-- Degradado de legibilidad (desktop): oscuro a la izquierda, se aclara a la derecha -->
+  <div class="absolute inset-0 -z-10 hidden bg-linear-to-r from-ink from-0% via-ink/60 via-45% to-ink/10 to-90% md:block" aria-hidden="true"></div>
+  <!-- Refuerzo inferior (desktop): asienta CTA, features e indicador de scroll -->
+  <div class="absolute inset-x-0 bottom-0 -z-10 hidden h-1/3 bg-linear-to-t from-ink/70 to-transparent md:block" aria-hidden="true"></div>
+  <!-- En móvil, velo vertical (la imagen va detrás del texto centrado) -->
+  <div class="absolute inset-0 -z-10 bg-linear-to-t from-ink via-ink/70 to-ink/40 md:hidden" aria-hidden="true"></div>
 
   <!-- Contenido encima de la imagen -->
   <div class="relative mx-auto w-full max-w-6xl px-6 py-28 lg:px-8">
     <div class="max-w-2xl">
-      <h1 class="rot-stage grid text-balance text-display font-semibold">
+      <!-- Eyebrow: ancla estable mientras el titular rota -->
+      <p class="mb-5 inline-flex items-center gap-2.5 text-sm font-semibold tracking-tight text-brand-400">
+        <span class="h-px w-8 bg-current opacity-70"></span>
+        Soluciones tecnológicas a la medida
+      </p>
+
+      <h1 class="rot-stage grid text-balance text-display font-semibold [text-shadow:0_2px_24px_rgba(0,0,0,0.4)]">
         {slides.map((s, i) => (
           <span class:list={['rot-slide', { 'is-active': i === 0 }]} aria-hidden={i !== 0}>{s.titulo}</span>
         ))}
@@ -84,7 +99,7 @@ const slides = [
         ))}
       </div>
 
-      <p data-reveal class="mt-8 max-w-xl text-balance text-lg leading-relaxed text-white sm:text-xl">
+      <p data-reveal class="mt-8 max-w-xl text-balance text-lg leading-relaxed text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.45)] sm:text-xl">
         Integramos visión artificial, IoT e infraestructura tecnológica para
         convertir los datos en decisiones: operaciones más seguras, eficientes
         y auditables.
@@ -110,6 +125,18 @@ const slides = [
       </ul>
     </div>
   </div>
+
+  <!-- Indicador de scroll -->
+  <a
+    href="#problema"
+    class="absolute inset-x-0 bottom-6 z-10 mx-auto hidden w-fit flex-col items-center gap-1 text-muted-dark transition-colors hover:text-on-dark md:flex"
+    aria-label="Desplazarse a la siguiente sección"
+  >
+    <span class="text-xs font-medium">Descubre cómo</span>
+    <svg class="scroll-cue h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </a>
 </section>
 
 <style>
@@ -140,7 +167,17 @@ const slides = [
     cursor: pointer;
   }
   .rot-dot:hover { background: rgba(255, 255, 255, 0.45); }
+  .rot-dot:focus-visible { outline: 2px solid var(--color-brand-400); outline-offset: 3px; }
   .rot-dot.is-active { width: 2.25rem; background: var(--color-brand-400); }
+
+  /* Indicador de scroll: rebote sutil */
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-cue { animation: scroll-cue 1.8s ease-in-out infinite; }
+  }
+  @keyframes scroll-cue {
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(5px); opacity: 1; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .rot-slide, .rot-img { transition: opacity 0.3s ease; transform: none; }
@@ -153,6 +190,7 @@ const slides = [
     const titles = Array.from(root.querySelectorAll('.rot-slide'));
     const imgs = Array.from(root.querySelectorAll('.rot-img'));
     const dots = Array.from(root.querySelectorAll('.rot-dot'));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let i = 0;
     let timer: number | undefined;
 
@@ -177,12 +215,15 @@ const slides = [
       dots[i]?.setAttribute('aria-selected', 'true');
     };
     const next = () => show(i + 1);
-    const play = () => { stop(); timer = window.setInterval(next, 6500); };
+    const play = () => { if (reduce) return; stop(); timer = window.setInterval(next, 6500); };
     const stop = () => { if (timer) window.clearInterval(timer); };
 
     dots.forEach((d, n) => d.addEventListener('click', () => { show(n); play(); }));
+    // Pausa con mouse y con foco de teclado (accesibilidad WCAG 2.2.2)
     root.addEventListener('mouseenter', stop);
     root.addEventListener('mouseleave', play);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', play);
     play();
   }
 </script>

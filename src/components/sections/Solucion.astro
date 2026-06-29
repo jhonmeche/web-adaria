@@ -7,7 +7,7 @@ const pasos = [
   {
     n: '01',
     titulo: 'Captar',
-    texto: 'Visión artificial sobre tus cámaras y sensores IoT/LoRa miden lo que pasa en planta, en tiempo real.',
+    texto: 'La visión artificial sobre las cámaras existentes y los sensores IoT/LoRa miden lo que pasa en planta, en tiempo real.',
     tags: ['Cámaras CCTV/IP', 'Sensores IoT', 'LoRa/LoRaWAN'],
     icon: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Zm10 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
   },
@@ -16,7 +16,7 @@ const pasos = [
     titulo: 'Procesar',
     texto: 'Modelos de IA y analítica en el borde convierten imágenes y señales en información útil y trazable.',
     tags: ['Edge computing', 'Modelos propios', 'Analítica'],
-    icon: 'M9 3H5a2 2 0 0 0-2 2v4m6-6h6m-6 0v6m6-6h4a2 2 0 0 1 2 2v4m0 0v6m0-6h-6m6 6v-4a2 2 0 0 0-2-2m-12 6H5a2 2 0 0 1-2-2v-4m6 6v-6m0 6h6',
+    icon: 'M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm4 5h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1ZM9 2v2m6-2v2M9 20v2m6-2v2M2 9h2m-2 6h2m16-6h2m-2 6h2',
   },
   {
     n: '03',
@@ -28,42 +28,79 @@ const pasos = [
 ];
 ---
 
-<Section theme="dark" id="solucion" grid={true}>
-  <div class="mx-auto max-w-3xl text-center">
+<Section theme="dark" id="solucion" grid={true} aria-labelledby="solucion-title">
+  <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
     <Eyebrow on="dark">Del sensor a la decisión</Eyebrow>
-    <h2 data-reveal class="text-h1 font-semibold text-on-dark">
+    <h2 id="solucion-title" data-reveal class="text-balance text-h1 font-semibold text-on-dark">
       Una sola cadena, de la captura a la decisión.
     </h2>
-    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
-      Cerramos el ciclo completo. Capturamos el dato, lo procesamos con IA y te
-      lo devolvemos convertido en decisiones —con todo auditable.
+    <p data-reveal class="mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-dark">
+      Integramos toda la cadena bajo un mismo techo. Capturamos el dato en campo,
+      lo procesamos con inteligencia artificial y lo convertimos en decisiones
+      accionables, trazables y auditables de principio a fin.
     </p>
   </div>
 
-  <div class="relative mt-16 grid gap-6 md:grid-cols-3">
-    {pasos.map((p, i) => (
-      <div data-reveal class="relative rounded-2xl border border-white/10 bg-ink-card p-8">
-        <div class="mb-6 flex items-center justify-between">
-          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400">
-            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d={p.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </span>
-          <span class="text-4xl font-semibold text-white/10">{p.n}</span>
-        </div>
-        <h3 class="mb-2 text-xl font-semibold text-on-dark">{p.titulo}</h3>
-        <p class="mb-5 text-sm leading-relaxed text-muted-dark">{p.texto}</p>
-        <ul class="flex flex-wrap gap-2">
-          {p.tags.map((t) => (
-            <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-on-dark/80">{t}</li>
-          ))}
-        </ul>
-        {i < pasos.length - 1 && (
-          <div class="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-brand text-white md:flex">
-            <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="relative mt-16">
+    {/* Línea-cadena que conecta los tres pasos (visible en los espacios entre cards) */}
+    <div
+      aria-hidden="true"
+      class="absolute inset-x-[14%] top-1/2 hidden h-px -translate-y-1/2 bg-linear-to-r from-transparent via-brand/45 to-transparent md:block"
+    ></div>
+
+    <ol class="grid gap-6 md:grid-cols-3">
+      {pasos.map((p, i) => (
+        <li
+          data-reveal
+          class="step group relative rounded-2xl border border-white/15 bg-ink-card p-8 shadow-xl shadow-black/30 ring-1 ring-white/5 hover:-translate-y-1 hover:border-brand/40 hover:shadow-2xl hover:shadow-brand/10"
+          style={`--reveal-delay:${i * 90}ms`}
+        >
+          <div class="mb-6 flex items-center justify-between">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d={p.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span aria-hidden="true" class="text-6xl font-bold leading-none tracking-tight text-white/25 transition-colors duration-300 group-hover:text-white/60">{p.n}</span>
           </div>
-        )}
-      </div>
-    ))}
+          <h3 class="mb-2 text-xl font-semibold text-on-dark">{p.titulo}</h3>
+          <p class="mb-5 text-sm leading-relaxed text-muted-dark">{p.texto}</p>
+          <ul class="flex flex-wrap gap-2">
+            {p.tags.map((t) => (
+              <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-on-dark/80">{t}</li>
+            ))}
+          </ul>
+          {i < pasos.length - 1 && (
+            <div class="absolute -right-4 top-1/2 z-10 hidden h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 md:flex">
+              <svg class="arrow-nudge h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          )}
+        </li>
+      ))}
+    </ol>
   </div>
 </Section>
+
+<style>
+  /* Reveal escalonado por card: el fade se retrasa con --reveal-delay, mientras
+     que la transición de hover (transform/sombra/borde) queda inmediata y ágil.
+     Mayor especificidad que la regla global [data-reveal] para tomar el control. */
+  .js [data-reveal].step {
+    transform: none;
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .arrow-nudge {
+      animation: arrow-nudge 1.6s ease-in-out infinite;
+    }
+  }
+  @keyframes arrow-nudge {
+    0%, 100% { transform: translateX(-1.5px); }
+    50% { transform: translateX(1.5px); }
+  }
+</style>
