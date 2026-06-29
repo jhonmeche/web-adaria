@@ -1,0 +1,37 @@
+---
+// Teaser "Últimas noticias" en la home: muestra los 3 artículos más recientes
+// del blog y enlaza a /blog. Fondo claro (alterna con PorQue/Contacto oscuros).
+// Si no hay artículos publicados, la sección no se renderiza.
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+import PostCard from '../blog/PostCard.astro';
+import { getPublishedPosts } from '../../lib/blog';
+
+const posts = (await getPublishedPosts()).slice(0, 3);
+---
+
+{posts.length > 0 && (
+  <Section theme="light" id="noticias" aria-labelledby="noticias-title">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div class="max-w-2xl">
+        <Eyebrow on="light">Blog y noticias</Eyebrow>
+        <h2 id="noticias-title" data-reveal class="text-balance text-h1 font-semibold text-on-light">
+          Lo último de AdariA.
+        </h2>
+        <p data-reveal class="mt-4 text-lg leading-relaxed text-muted">
+          Casos, novedades y tecnología aplicada a operaciones reales.
+        </p>
+      </div>
+      <div data-reveal class="shrink-0">
+        <Button href="/blog" variant="secondary" on="light">Ver todo el blog</Button>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      {posts.map((post) => (
+        <PostCard post={post} on="light" />
+      ))}
+    </div>
+  </Section>
+)}

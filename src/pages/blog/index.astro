@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Eyebrow from '../../components/ui/Eyebrow.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import { getPublishedPosts } from '../../lib/blog';
+
+const posts = await getPublishedPosts();
+
+const title = 'Blog — AdariA Systems';
+const description =
+  'Artículos, casos de éxito y novedades sobre visión artificial, IoT/LoRa, hardware a la medida e Industria 4.0 de AdariA Systems.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Cabecera del blog (fondo oscuro, mismo lenguaje que la home) -->
+  <section class="relative isolate overflow-hidden bg-ink text-on-dark">
+    <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-6 pb-16 pt-36 lg:px-8 lg:pt-40">
+      <Eyebrow on="dark">Blog y noticias</Eyebrow>
+      <h1 class="max-w-3xl text-display font-semibold text-on-dark">
+        Ideas, casos y novedades del sensor a la decisión.
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted-dark">
+        Visión artificial, IoT/LoRa, hardware a la medida e Industria 4.0
+        aplicados a operaciones reales. Publicamos con frecuencia.
+      </p>
+    </div>
+  </section>
+
+  <!-- Listado -->
+  <section class="bg-ink pb-24 text-on-dark">
+    <div class="mx-auto max-w-6xl px-6 lg:px-8">
+      {posts.length === 0 ? (
+        <p class="rounded-2xl border border-white/10 bg-ink-card p-10 text-center text-muted-dark">
+          Aún no hay artículos publicados. Vuelve pronto.
+        </p>
+      ) : (
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post, i) => (
+            <PostCard post={post} featured={i === 0} />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

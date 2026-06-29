@@ -1,0 +1,67 @@
+---
+// Tarjeta de artículo del blog. Reutilizable en el listado /blog (fondo oscuro)
+// y en el teaser "Últimas noticias" de la home (fondo claro), según `on`.
+import { formatDate, isoDate, type Post } from '../../lib/blog';
+
+interface Props {
+  post: Post;
+  /** Sobre qué fondo se renderiza la tarjeta. */
+  on?: 'dark' | 'light';
+  /** Destaca la primera tarjeta a lo ancho (listado). */
+  featured?: boolean;
+}
+const { post, on = 'dark', featured = false } = Astro.props;
+const { title, description, pubDate, category, cover, coverAlt } = post.data;
+const url = `/blog/${post.id}/`;
+
+const dark = on === 'dark';
+const card = dark
+  ? 'border-white/10 bg-ink-card hover:border-brand/40'
+  : 'border-ink/10 bg-surface shadow-sm hover:border-brand/40 hover:shadow-lg';
+const placeholderBg = dark ? 'from-ink-card to-ink' : 'from-light to-surface';
+const placeholderIcon = dark ? 'text-white/15' : 'text-ink/15';
+const dateColor = dark ? 'text-muted-dark' : 'text-muted';
+const titleColor = dark ? 'text-on-dark' : 'text-on-light';
+const descColor = dark ? 'text-muted-dark' : 'text-muted';
+const linkColor = dark ? 'text-brand-400' : 'text-brand';
+---
+
+<a
+  href={url}
+  data-reveal
+  class={`group relative flex flex-col overflow-hidden rounded-2xl border transition-all hover:-translate-y-1 ${card} ${featured ? 'lg:col-span-2' : ''}`}
+>
+  <div class={`relative ${featured ? 'aspect-2/1' : 'aspect-3/2'} overflow-hidden bg-linear-to-br ${placeholderBg}`}>
+    {cover ? (
+      <img
+        src={cover}
+        alt={coverAlt ?? title}
+        class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <div class="absolute inset-0">
+        {dark && <div class="tech-grid absolute inset-0 opacity-40" aria-hidden="true"></div>}
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg class={`h-10 w-10 ${placeholderIcon}`} viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+    )}
+    <span class="absolute left-4 top-4 rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white">
+      {category}
+    </span>
+  </div>
+
+  <div class="flex flex-1 flex-col p-6">
+    <time datetime={isoDate(pubDate)} class={`text-xs font-medium ${dateColor}`}>
+      {formatDate(pubDate)}
+    </time>
+    <h3 class={`mt-2 font-semibold ${titleColor} ${featured ? 'text-h2' : 'text-lg'}`}>{title}</h3>
+    <p class={`mt-2 line-clamp-3 text-sm leading-relaxed ${descColor}`}>{description}</p>
+    <span class={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-all group-hover:gap-2.5 ${linkColor}`}>
+      Leer artículo
+      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+  </div>
+</a>
