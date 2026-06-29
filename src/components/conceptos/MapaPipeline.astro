@@ -1,0 +1,81 @@
+---
+// Mapa conceptual maestro: "del sensor a la decisión". Muestra cómo casi todos
+// los términos de la página son piezas de una misma cadena de 4 etapas.
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+
+const etapas = [
+  {
+    t: 'Captar',
+    d: 'Cámaras y sensores miden lo que pasa en la operación.',
+    tags: ['Cámaras CCTV/IP', 'Sensores IoT'],
+    icon: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Zm10 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+  },
+  {
+    t: 'Conectar',
+    d: 'El dato viaja hasta la plataforma, incluso desde sitios remotos.',
+    tags: ['LoRa/LoRaWAN', 'Gateways'],
+    icon: 'M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 9.5a15 15 0 0 1 20 0M12 20h.01',
+  },
+  {
+    t: 'Procesar',
+    d: 'El borde y la IA convierten el dato en información útil.',
+    tags: ['Edge', 'Modelos de IA'],
+    icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 7h10v10H7V7Zm3 3h4v4h-4v-4Z',
+  },
+  {
+    t: 'Decidir',
+    d: 'Tableros, alertas y predicción para actuar a tiempo.',
+    tags: ['Dashboards', 'Alertas', 'Predicción'],
+    icon: 'M3 3v18h18M7 14l3-3 3 3 5-6',
+  },
+];
+---
+
+<Section theme="light" id="mapa" class="scroll-mt-24">
+  <div class="mx-auto max-w-3xl text-center">
+    <Eyebrow on="light">El mapa</Eyebrow>
+    <h2 data-reveal class="text-balance text-h1 font-semibold text-on-light">
+      Cómo encaja todo: del sensor a la decisión.
+    </h2>
+    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">
+      Casi todos los conceptos de esta página son una pieza de la misma cadena.
+      Así se conectan, de principio a fin.
+    </p>
+  </div>
+
+  <ol class="mt-16 grid gap-y-12 md:grid-cols-4 md:gap-x-4 md:gap-y-0">
+    {etapas.map((e, i) => (
+      <li class="relative flex flex-col rounded-2xl border border-ink/10 bg-surface p-6 shadow-sm ring-1 ring-ink/5">
+        <div class="flex items-center justify-between">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d={e.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="text-sm font-bold text-brand">{String(i + 1).padStart(2, '0')}</span>
+        </div>
+        <h3 class="mt-4 text-lg font-semibold text-on-light">{e.t}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">{e.d}</p>
+        <ul class="mt-4 flex flex-wrap gap-1.5">
+          {e.tags.map((t) => (
+            <li class="rounded-full border border-ink/10 bg-ink/5 px-2.5 py-0.5 text-xs text-on-light/75">{t}</li>
+          ))}
+        </ul>
+
+        {i < etapas.length - 1 && (
+          <>
+            {/* Conector horizontal (desktop) */}
+            <span class="absolute -right-4 top-9 z-10 hidden h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 md:flex">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            {/* Conector vertical (móvil) */}
+            <span class="absolute -bottom-9 left-1/2 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 md:hidden">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12m0 0-5-5m5 5 5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </>
+        )}
+      </li>
+    ))}
+  </ol>
+</Section>

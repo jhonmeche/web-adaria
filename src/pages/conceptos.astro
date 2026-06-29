@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import Button from '../components/ui/Button.astro';
+import MapaPipeline from '../components/conceptos/MapaPipeline.astro';
+import VisualIndustria from '../components/conceptos/VisualIndustria.astro';
+import VisualVision from '../components/conceptos/VisualVision.astro';
+import VisualLora from '../components/conceptos/VisualLora.astro';
+import VisualDatos from '../components/conceptos/VisualDatos.astro';
+import { grupos } from '../data/conceptos.ts';
+
+const title = 'Conceptos — La tecnología de AdariA, explicada en simple | AdariA Systems';
+const description =
+  'Glosario claro de Industria 4.0, visión artificial, IoT, LoRa, edge, analítica y más. Entiende en lenguaje sencillo los términos detrás de las soluciones de AdariA.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- HERO + índice -->
+  <section class="relative isolate overflow-hidden bg-ink text-on-dark">
+    <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-6 pb-16 pt-36 lg:px-8 lg:pt-40">
+      <Eyebrow on="dark">Conceptos</Eyebrow>
+      <h1 class="max-w-3xl text-display font-semibold text-on-dark">
+        La tecnología de AdariA, explicada en simple.
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted-dark">
+        ¿Industria 4.0? ¿Visión artificial? ¿LoRa? Aquí están todos los términos
+        que verás en el sitio, en lenguaje claro y sin tecnicismos. No necesitas
+        ser técnico para entender lo que hacemos.
+      </p>
+
+      <!-- Índice rápido -->
+      <nav class="mt-9 flex flex-wrap gap-2.5" aria-label="Índice de conceptos">
+        {grupos.map((g) => (
+          <a
+            href={`#${g.id}`}
+            class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-on-dark/90 transition-colors hover:border-brand-400/50 hover:text-brand-400"
+          >
+            <svg class="h-4 w-4 text-brand-400" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d={g.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            {g.titulo}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <!-- MAPA CONCEPTUAL MAESTRO -->
+  <MapaPipeline />
+
+  <!-- GRUPOS DE CONCEPTOS (alternan claro/oscuro) -->
+  {grupos.map((g, gi) => {
+    const dark = gi % 2 === 0;
+    return (
+      <Section theme={dark ? 'dark' : 'light'} id={g.id} class="scroll-mt-24" grid={dark}>
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+          <span class={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${dark ? 'bg-brand/15 text-brand-400' : 'bg-brand text-white shadow-lg shadow-brand/30'}`}>
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d={g.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <div>
+            <h2 class={`text-h2 font-semibold ${dark ? 'text-on-dark' : 'text-on-light'}`}>{g.titulo}</h2>
+            <p class={`mt-1 text-base leading-relaxed ${dark ? 'text-muted-dark' : 'text-muted'}`}>{g.intro}</p>
+          </div>
+        </div>
+
+        {/* Diagrama del grupo (mapa conceptual / esquema visual) */}
+        {g.id === 'industria-40' && <VisualIndustria dark={dark} />}
+        {g.id === 'vision-ia' && <VisualVision dark={dark} />}
+        {g.id === 'iot-lora' && <VisualLora dark={dark} />}
+        {g.id === 'datos-decision' && <VisualDatos dark={dark} />}
+
+        <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {g.conceptos.map((c, i) => (
+            <article
+              data-reveal
+              class={`card flex flex-col rounded-2xl border p-6 ${dark ? 'border-white/10 bg-ink-card ring-1 ring-white/5' : 'border-ink/10 bg-surface shadow-sm ring-1 ring-ink/5'}`}
+              style={`--reveal-delay:${(i % 3) * 70}ms`}
+            >
+              <h3 class={`text-base font-semibold ${dark ? 'text-on-dark' : 'text-on-light'}`}>{c.termino}</h3>
+              <p class={`mt-2 text-sm leading-relaxed ${dark ? 'text-muted-dark' : 'text-muted'}`}>{c.definicion}</p>
+              {c.enAdaria && (
+                <p class={`mt-4 inline-flex items-center gap-2 border-t pt-3 text-xs font-medium ${dark ? 'border-white/5 text-brand-400' : 'border-ink/5 text-brand'}`}>
+                  <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
+                  {c.enAdaria}
+                </p>
+              )}
+            </article>
+          ))}
+        </div>
+      </Section>
+    );
+  })}
+
+  <!-- CTA FINAL -->
+  <section class="bg-light py-20 text-on-light">
+    <div class="mx-auto max-w-3xl px-6 text-center">
+      <h2 class="text-h2 font-semibold text-on-light">¿Aún con dudas? Hablemos sin tecnicismos.</h2>
+      <p class="mx-auto mt-4 max-w-xl text-muted">
+        Te explicamos cómo cualquiera de estos conceptos se aplica —en concreto— a
+        tu operación. Sin compromiso.
+      </p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <Button href="/#contacto" variant="primary" on="light">Habla con un experto</Button>
+        <Button href="/#productos" variant="secondary" on="light">Ver los productos</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .js [data-reveal].card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+  }
+  .js [data-reveal].card.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>

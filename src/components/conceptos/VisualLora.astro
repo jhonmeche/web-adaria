@@ -1,0 +1,72 @@
+---
+// Diagrama: topología IoT/LoRa. Nodos con sensores → LoRa (largo alcance) →
+// gateway → plataforma/nube → tablero.
+interface Props {
+  dark?: boolean;
+}
+const { dark = false } = Astro.props;
+
+const box = dark ? 'border-white/10 bg-ink-card' : 'border-ink/10 bg-surface';
+const inner = dark ? 'border-white/10 bg-ink/40' : 'border-ink/10 bg-light';
+const title = dark ? 'text-on-dark' : 'text-on-light';
+const muted = dark ? 'text-muted-dark' : 'text-muted';
+const conector = dark ? 'text-brand-400' : 'text-brand';
+
+const nodos = ['Presión', 'Temperatura', 'Vibración'];
+const icons = {
+  nodo: 'M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Zm-7 9a7 7 0 0 0 14 0M12 18v3',
+  gateway: 'M6 8a6 6 0 0 1 12 0M9 11a3 3 0 0 1 6 0M4 5a9 9 0 0 1 16 0M12 14v7m-3 0h6',
+  nube: 'M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 17.5 18H7Z',
+  tablero: 'M3 3v18h18M7 14l3-3 3 3 5-6',
+};
+---
+
+<div class={`mt-10 rounded-2xl border p-6 sm:p-8 ${box}`} data-reveal>
+  <p class={`mb-6 text-sm font-semibold ${title}`}>Cómo llega el dato desde un sitio remoto</p>
+
+  <div class="flex flex-col items-stretch gap-3 lg:flex-row lg:items-center">
+    <!-- Nodos con sensores -->
+    <div class={`rounded-xl border p-4 ${inner}`}>
+      <p class={`mb-3 text-xs font-semibold ${muted}`}>Nodos con sensores</p>
+      <div class="space-y-2">
+        {nodos.map((n) => (
+          <div class="flex items-center gap-2.5">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand/15 text-brand-400">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={icons.nodo} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class={`text-sm ${title}`}>{n}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Enlace LoRa -->
+    <div class="flex flex-col items-center gap-1 px-1">
+      <span class={`text-xs font-semibold ${conector}`}>LoRa</span>
+      <svg class={`h-5 w-16 rotate-90 lg:rotate-0 ${conector}`} viewBox="0 0 64 20" fill="none" aria-hidden="true">
+        <path d="M2 10h54m0 0-6-5m6 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 5"/>
+      </svg>
+      <span class={`text-center text-[10px] leading-tight ${muted}`}>km de alcance<br/>años de batería</span>
+    </div>
+
+    <!-- Gateway -->
+    <div class={`flex flex-1 flex-col items-center gap-2 rounded-xl border p-4 text-center ${inner}`}>
+      <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={icons.gateway} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <p class={`text-sm font-semibold ${title}`}>Gateway</p>
+      <p class={`text-xs leading-snug ${muted}`}>Reúne y reenvía el dato</p>
+    </div>
+
+    <svg class={`mx-auto h-5 w-5 rotate-90 lg:rotate-0 ${conector}`} viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+    <!-- Plataforma -->
+    <div class={`flex flex-1 flex-col items-center gap-2 rounded-xl border p-4 text-center ${inner}`}>
+      <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={icons.tablero} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <p class={`text-sm font-semibold ${title}`}>Plataforma</p>
+      <p class={`text-xs leading-snug ${muted}`}>Tableros, alertas y predicción</p>
+    </div>
+  </div>
+</div>

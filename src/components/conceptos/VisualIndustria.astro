@@ -1,0 +1,46 @@
+---
+// Diagrama: las 4 capas de la Industria 4.0, del mundo físico a la decisión.
+interface Props {
+  dark?: boolean;
+}
+const { dark = false } = Astro.props;
+
+const box = dark ? 'border-white/10 bg-ink-card' : 'border-ink/10 bg-surface';
+const row = dark ? 'border-white/10 bg-ink/40' : 'border-ink/10 bg-light';
+const title = dark ? 'text-on-dark' : 'text-on-light';
+const muted = dark ? 'text-muted-dark' : 'text-muted';
+const chip = dark ? 'border-white/10 bg-white/5 text-on-dark/80' : 'border-ink/10 bg-ink/5 text-on-light/75';
+
+const capas = [
+  { n: 4, t: 'Decisión', items: ['Dashboards', 'Alertas', 'Predicción'] },
+  { n: 3, t: 'Datos', items: ['Edge', 'Analítica', 'Big data'] },
+  { n: 2, t: 'Conectividad', items: ['IoT', 'LoRa/LoRaWAN', 'Gateways'] },
+  { n: 1, t: 'Mundo físico', items: ['Máquinas', 'Sensores', 'EPP'] },
+];
+---
+
+<div class={`mt-10 rounded-2xl border p-6 sm:p-8 ${box}`} data-reveal>
+  <div class="mb-5 flex flex-wrap items-center justify-between gap-2">
+    <p class={`text-sm font-semibold ${title}`}>Las 4 capas de la Industria 4.0</p>
+    <p class={`inline-flex items-center gap-1.5 text-xs ${muted}`}>
+      <svg class="h-3.5 w-3.5 text-brand" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 16V4m0 0-5 5m5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      del mundo físico a la decisión
+    </p>
+  </div>
+
+  <div class="space-y-2.5">
+    {capas.map((c) => (
+      <div class={`flex flex-col gap-2 rounded-xl border px-4 py-3 sm:flex-row sm:items-center ${row}`}>
+        <div class="flex items-center gap-3 sm:w-44 sm:shrink-0">
+          <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-brand text-xs font-bold text-white">{c.n}</span>
+          <span class={`text-sm font-semibold ${title}`}>{c.t}</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          {c.items.map((it) => (
+            <span class={`rounded-full border px-2.5 py-0.5 text-xs ${chip}`}>{it}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
