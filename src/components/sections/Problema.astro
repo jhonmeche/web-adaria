@@ -5,28 +5,28 @@ import Eyebrow from '../ui/Eyebrow.astro';
 
 const dolores = [
   {
-    titulo: 'Fallas que paran la operación',
+    titulo: 'Fallas que detienen la operación',
     texto:
-      'El mantenimiento reactivo y las paradas no planeadas cuestan millones. Cuando se reacciona, el daño ya está hecho.',
+      'Las paradas no planeadas y el mantenimiento reactivo cuestan millones. Cuando salta la alerta, el daño ya está hecho.',
     icon: 'alert',
   },
   {
-    titulo: 'Accidentes y riesgo regulatorio',
+    titulo: 'Datos que no generan valor',
     texto:
-      'En la industria, cada accidente es altísimo en costo humano y económico, con presión de SST y ambiental.',
-    icon: 'shield',
+      'Cámaras, básculas y sensores capturan información que nadie aprovecha. El dato ya existe; las decisiones se siguen tomando sin él.',
+    icon: 'data',
   },
   {
     titulo: 'Procesos manuales y a ciegas',
     texto:
-      'Conteos, inspecciones y registros manuales: lentos, costosos y propensos a errores. Sin trazabilidad ni datos confiables, las decisiones se toman a ciegas y los problemas se detectan tarde.',
+      'Conteos, inspecciones y registros a mano: lentos, costosos y propensos a errores. Sin datos confiables, los problemas se detectan demasiado tarde.',
     icon: 'eye',
   },
 ];
 
 const icons: Record<string, string> = {
   alert: 'M12 9v4m0 4h.01M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z',
-  shield: 'M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6l-7-3Z',
+  data: 'M4 6c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3Zm0 0v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3',
   eye: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Zm10 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
 };
 ---

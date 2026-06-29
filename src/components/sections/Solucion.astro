@@ -1,5 +1,8 @@
 ---
-// §9.3 — La solución en pasos: Captar → Procesar → Decidir. Fondo oscuro.
+// §9.3 — La solución en pasos: Captar → Procesar → Decidir.
+// Fondo CLARO con una leve tinta azul (banda de "proceso"), para diferenciarla
+// de la sección Industria 4.0 (oscura, que va justo antes) y de Stack (clara
+// plana, que va justo después). Se presenta como un diagrama de proceso.
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
 
@@ -28,13 +31,18 @@ const pasos = [
 ];
 ---
 
-<Section theme="dark" id="solucion" grid={true} aria-labelledby="solucion-title">
+<Section
+  theme="light"
+  id="solucion"
+  aria-labelledby="solucion-title"
+  style="background-image: linear-gradient(180deg, #e9effb 0%, #f4f6f9 60%);"
+>
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-    <Eyebrow on="dark">Del sensor a la decisión</Eyebrow>
-    <h2 id="solucion-title" data-reveal class="text-balance text-h1 font-semibold text-on-dark">
+    <Eyebrow on="light">Del sensor a la decisión</Eyebrow>
+    <h2 id="solucion-title" data-reveal class="text-balance text-h1 font-semibold text-on-light">
       Una sola cadena, de la captura a la decisión.
     </h2>
-    <p data-reveal class="mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted-dark">
+    <p data-reveal class="mt-5 max-w-2xl text-balance text-lg leading-relaxed text-muted">
       Integramos toda la cadena bajo un mismo techo. Capturamos el dato en campo,
       lo procesamos con inteligencia artificial y lo convertimos en decisiones
       accionables, trazables y auditables de principio a fin.
@@ -45,14 +53,14 @@ const pasos = [
     {/* Línea-cadena que conecta los tres pasos (visible en los espacios entre cards) */}
     <div
       aria-hidden="true"
-      class="absolute inset-x-[14%] top-1/2 hidden h-px -translate-y-1/2 bg-linear-to-r from-transparent via-brand/45 to-transparent md:block"
+      class="absolute inset-x-[14%] top-1/2 hidden h-px -translate-y-1/2 bg-linear-to-r from-transparent via-brand/40 to-transparent md:block"
     ></div>
 
     <ol class="grid gap-6 md:grid-cols-3">
       {pasos.map((p, i) => (
         <li
           data-reveal
-          class="step group relative rounded-2xl border border-white/15 bg-ink-card p-8 shadow-xl shadow-black/30 ring-1 ring-white/5 hover:-translate-y-1 hover:border-brand/40 hover:shadow-2xl hover:shadow-brand/10"
+          class="step group relative rounded-2xl border border-ink/10 bg-surface p-8 shadow-lg shadow-ink/5 ring-1 ring-ink/5 hover:-translate-y-1 hover:border-brand/40 hover:shadow-2xl hover:shadow-brand/15"
           style={`--reveal-delay:${i * 90}ms`}
         >
           <div class="mb-6 flex items-center justify-between">
@@ -61,13 +69,13 @@ const pasos = [
                 <path d={p.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
-            <span aria-hidden="true" class="text-6xl font-bold leading-none tracking-tight text-white/25 transition-colors duration-300 group-hover:text-white/60">{p.n}</span>
+            <span aria-hidden="true" class="inline-block origin-top-right text-6xl font-bold leading-none tracking-tight text-ink/10 transition-all duration-300 group-hover:scale-110 group-hover:text-brand/80">{p.n}</span>
           </div>
-          <h3 class="mb-2 text-xl font-semibold text-on-dark">{p.titulo}</h3>
-          <p class="mb-5 text-sm leading-relaxed text-muted-dark">{p.texto}</p>
+          <h3 class="mb-2 text-xl font-semibold text-on-light">{p.titulo}</h3>
+          <p class="mb-5 text-sm leading-relaxed text-muted">{p.texto}</p>
           <ul class="flex flex-wrap gap-2">
             {p.tags.map((t) => (
-              <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-on-dark/80">{t}</li>
+              <li class="rounded-full border border-ink/10 bg-ink/5 px-3 py-1 text-xs text-on-light/75">{t}</li>
             ))}
           </ul>
           {i < pasos.length - 1 && (

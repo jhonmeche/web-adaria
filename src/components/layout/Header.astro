@@ -3,7 +3,6 @@
 // los menús enlazan a las secciones de la home; cuando existan las landings
 // dedicadas, basta cambiar los href a /soluciones/[slug], /productos/... etc.
 import Logo from '../ui/Logo.astro';
-import Button from '../ui/Button.astro';
 import { sectores } from '../../data/sectores.ts';
 import { productos } from '../../data/productos.ts';
 
@@ -66,13 +65,10 @@ const servicios = [
         </div>
       </li>
 
+      <li><a href="/blog" class="nav-link">Blog</a></li>
       <li><a href="#caso" class="nav-link">Nosotros</a></li>
       <li><a href="#contacto" class="nav-link">Contacto</a></li>
     </ul>
-
-    <div class="hidden lg:block">
-      <Button href="#contacto" variant="primary">Agenda una demo</Button>
-    </div>
 
     <!-- Botón menú móvil -->
     <button
@@ -95,9 +91,9 @@ const servicios = [
       <a href="#sectores" class="mobile-link">Soluciones</a>
       <a href="#productos" class="mobile-link">Productos</a>
       <a href="#servicios" class="mobile-link">Servicios</a>
+      <a href="/blog" class="mobile-link">Blog</a>
       <a href="#caso" class="mobile-link">Nosotros</a>
       <a href="#contacto" class="mobile-link">Contacto</a>
-      <Button href="#contacto" variant="primary" class="mt-3 w-full">Agenda una demo</Button>
     </div>
   </div>
 </header>

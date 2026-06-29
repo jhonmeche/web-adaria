@@ -15,6 +15,12 @@ export interface Sector {
   resuelveCon: string;
   /** ¿Sector prioritario de alto valor? */
   prioritario?: boolean;
+  /** Imagen de la tarjeta (ruta en /public, p. ej. /sectores/mineria.jpg).
+   *  Si hay `video`, esta imagen actúa además como poster/respaldo. */
+  imagen?: string;
+  /** Video de fondo de la tarjeta (ruta en /public, p. ej. /sectores/mineria.mp4).
+   *  Se reproduce en bucle, silenciado. Usa clips cortos y livianos (.mp4/.webm). */
+  video?: string;
 }
 
 export const sectores: Sector[] = [
@@ -26,6 +32,8 @@ export const sectores: Sector[] = [
     dolor: 'Cada falla o accidente cuesta millones y hay presión regulatoria (SST, ambiental).',
     resuelveCon: 'Vision Seguridad + AdariA Sense (IoT/LoRa) + drones + mantenimiento predictivo',
     prioritario: true,
+    imagen: '/sectores/hidrocarburos.jpg',
+    video: '/sectores/hidrocarburos.mp4',
   },
   {
     slug: 'industria-carnica',
