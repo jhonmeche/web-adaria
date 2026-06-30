@@ -192,9 +192,9 @@ export const grupos: GrupoConceptos[] = [
     ],
   },
   {
-    id: 'hardware-seguridad',
-    titulo: 'Hardware y seguridad',
-    intro: 'Los dispositivos que diseñamos y los conceptos de seguridad que cuidamos.',
+    id: 'hardware',
+    titulo: 'Hardware a la medida',
+    intro: 'Los dispositivos electrónicos que diseñamos y fabricamos, de principio a fin.',
     icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 7h10v10H7V7Zm3 3h4v4h-4v-4Z',
     conceptos: [
       {
@@ -220,14 +220,15 @@ export const grupos: GrupoConceptos[] = [
           'El "idioma" estándar con que equipos y sistemas se entienden: MQTT, Modbus, OPC-UA, RTSP. Son los que permiten integrarlo todo.',
       },
       {
-        termino: 'EPP',
+        termino: 'Microcontrolador (MCU)',
         definicion:
-          'Equipo de protección personal: casco, chaleco, gafas, guantes. La visión artificial puede verificar que se use, para prevenir accidentes.',
+          'El chip programable que actúa como "cerebro" del dispositivo: lee los sensores y ejecuta la lógica, con muy bajo consumo.',
       },
       {
-        termino: 'HSE',
+        termino: 'Firmware',
         definicion:
-          'Salud, seguridad y medio ambiente (por sus siglas en inglés). El área que cuida que la operación sea segura y cumpla la normativa.',
+          'El programa que vive dentro del dispositivo y controla cómo se comporta el hardware. AdariA lo desarrolla a la medida.',
+        enAdaria: 'Firmware propio.',
       },
     ],
   },
