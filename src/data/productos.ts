@@ -16,6 +16,15 @@ export interface Beneficio {
   titulo: string;
   texto: string;
 }
+/** Cómo aterriza el producto en un sector concreto (landing del producto). */
+export interface AplicacionSector {
+  /** Slug del sector (resuelve nombre y color desde sectores.ts). */
+  sector: string;
+  /** Resumen de cómo encaja el producto en ese sector. */
+  resumen: string;
+  /** Casos de uso concretos para ese sector. */
+  casos: string[];
+}
 /** Contenido extendido de la landing dedicada (/productos/[slug]). */
 export interface ProductoDetalle {
   /** Párrafo de apertura del hero de la landing. */
@@ -25,6 +34,8 @@ export interface ProductoDetalle {
   capacidades: Capacidad[];
   comoFunciona: PasoComo[];
   beneficios: Beneficio[];
+  /** Casos de uso por sector. Si existe, reemplaza las píldoras "Donde más aplica". */
+  aplicaciones?: AplicacionSector[];
   /** Slugs de sectores donde más aplica (enlazan a su tarjeta). */
   sectores?: string[];
 }
@@ -196,6 +207,58 @@ export const productos: Producto[] = [
         { titulo: 'Escalable', texto: 'Un caso de uso hoy; más líneas y sitios cuando lo necesites.' },
         { titulo: 'Dato auditable', texto: 'Evidencia visual que respalda cada evento y decisión.' },
       ],
+      aplicaciones: [
+        {
+          sector: 'agroindustria',
+          resumen:
+            'Visión artificial y drones que convierten grandes extensiones en datos accionables: contamos, calificamos y cuidamos el cultivo sin recorrer el campo a pie.',
+          casos: [
+            'Conteo de plantas, árboles y plántulas por hectárea',
+            'Grading de fruta y producto por tamaño, color y madurez',
+            'Detección temprana de plagas, malezas y enfermedades',
+            'Inspección aérea de cultivos y cobertura con drones',
+            'Conteo de ganado y monitoreo de hatos en campo abierto',
+            'Control de calidad en líneas de empaque y selección',
+          ],
+        },
+        {
+          sector: 'hidrocarburos-mineria-energia',
+          resumen:
+            'Vision Seguridad sobre las cámaras del sitio y drones para inspección: menos accidentes, cumplimiento SST y activos vigilados en entornos críticos.',
+          casos: [
+            'Detección de EPP (casco, arnés, chaleco, gafas)',
+            'Zonas restringidas y red-zones en tiempo real',
+            'Detección temprana de fuego y humo',
+            'Prevención de colisiones hombre-máquina',
+            'Inspección de torres, ductos y líneas con drones',
+            'Lectura de medidores analógicos remotos',
+          ],
+        },
+        {
+          sector: 'manufactura',
+          resumen:
+            'Vision Calidad inspecciona el 100 % de la producción en banda, sin fatiga humana: detecta el defecto antes de que llegue al cliente.',
+          casos: [
+            'Detección de defectos y piezas fuera de tolerancia',
+            'Clasificación y grading de producto',
+            'Inspección en banda a velocidad de línea',
+            'Verificación de etiquetado, sellado y empaque',
+            'Medición dimensional sin contacto',
+          ],
+        },
+        {
+          sector: 'logistica-bodegas',
+          resumen:
+            'Vision Logística automatiza el conteo y la trazabilidad del flujo: inventario más exacto y patios bajo control.',
+          casos: [
+            'Conteo de productos, cajas y estibas',
+            'Lectura de placas (LPR) en patios y accesos',
+            'OCR de lotes, fechas y seriales',
+            'Conteo de personas y control de aforo',
+            'Monitoreo de estanterías y ocupación',
+          ],
+        },
+      ],
       sectores: ['hidrocarburos-mineria-energia', 'manufactura', 'logistica-bodegas', 'agroindustria'],
     },
   },
@@ -224,7 +287,9 @@ export const productos: Producto[] = [
           descripcion: 'Lo que pasa en el equipo, cuando pasa.',
           items: [
             'Presión, temperatura y vibración',
-            'Gas, nivel y caudal',
+            'Gas, nivel, caudal y humedad',
+            'Corriente, consumo energético y RPM',
+            'Histórico, tendencias y KPIs',
             'Tableros centralizados',
           ],
         },
@@ -259,7 +324,7 @@ export const productos: Producto[] = [
       comoFunciona: [
         { titulo: 'Sensorizamos', texto: 'Nodos IoT miden las variables críticas del equipo.' },
         { titulo: 'Conectamos', texto: 'LoRa/LoRaWAN lleva el dato incluso sin cobertura tradicional.' },
-        { titulo: 'Procesamos', texto: 'Edge y analítica detectan patrones y anomalías.' },
+        { titulo: 'Procesamos', texto: 'Edge y analítica detectan patrones y anomalías, integrados con tu SCADA, PLC o ERP.' },
         { titulo: 'Anticipamos', texto: 'Alertas y predicción para mantener antes de la falla.' },
       ],
       beneficios: [
@@ -268,7 +333,58 @@ export const productos: Producto[] = [
         { titulo: 'Hardware propio', texto: 'Adaptado a tu operación, no una solución genérica.' },
         { titulo: 'Seguridad', texto: 'Alertas tempranas de gas y temperatura.' },
       ],
-      sectores: ['hidrocarburos-mineria-energia', 'manufactura'],
+      aplicaciones: [
+        {
+          sector: 'hidrocarburos-mineria-energia',
+          resumen:
+            'Sensores robustos y LoRa de largo alcance llevan presión, vibración y gas hasta el tablero, incluso en pozos y sitios sin cobertura celular: menos paradas y una operación más segura.',
+          casos: [
+            'Vibración y temperatura en bombas, motores y compresores',
+            'Detección de gases peligrosos (metano, H2S, CO)',
+            'Mantenimiento predictivo de equipo rotativo crítico',
+            'Niveles y presión en tanques y líneas',
+            'Telemetría de pozos y activos remotos vía LoRa',
+            'Monitoreo de integridad en ductos e infraestructura',
+          ],
+        },
+        {
+          sector: 'manufactura',
+          resumen:
+            'Sensorizamos el equipo crítico para pasar del mantenimiento reactivo al predictivo: la máquina avisa antes de fallar y la línea no se detiene por sorpresa.',
+          casos: [
+            'Vibración y temperatura en motores y rodamientos',
+            'Mantenimiento predictivo de máquinas críticas',
+            'Monitoreo de consumo energético por línea',
+            'Condiciones ambientales (temperatura y humedad) en planta',
+            'Integración con SCADA y PLC existentes',
+          ],
+        },
+        {
+          sector: 'agroindustria',
+          resumen:
+            'IoT y LoRa de largo alcance para monitorear clima, suelo, silos y agua en grandes extensiones, donde la conectividad tradicional no llega y la batería debe durar años.',
+          casos: [
+            'Estaciones meteorológicas y humedad de suelo para riego',
+            'Monitoreo de silos: temperatura, nivel y gases en granos',
+            'Niveles de tanques y caudal en sistemas de agua',
+            'Cadena de frío de producto perecedero',
+            'Cobertura LoRa para fincas y predios extensos',
+          ],
+        },
+        {
+          sector: 'logistica-bodegas',
+          resumen:
+            'Monitoreo continuo de la cadena de frío y las condiciones de bodega: trazabilidad de temperatura y alertas antes de que se pierda el producto.',
+          casos: [
+            'Temperatura y humedad en cuartos fríos y transporte',
+            'Trazabilidad de la cadena de frío punta a punta',
+            'Condiciones ambientales en bodega',
+            'Niveles de tanques y consumo de refrigeración',
+            'Alertas en tiempo real ante desviaciones',
+          ],
+        },
+      ],
+      sectores: ['hidrocarburos-mineria-energia', 'manufactura', 'agroindustria', 'logistica-bodegas'],
     },
   },
 ];
