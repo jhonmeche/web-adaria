@@ -45,6 +45,7 @@ const nodos = [
       <span class={`text-xs font-semibold ${conector}`}>LoRa</span>
       <svg class={`h-5 w-16 rotate-90 lg:rotate-0 ${conector}`} viewBox="0 0 64 20" fill="none" aria-hidden="true">
         <path d="M2 10h54m0 0-6-5m6 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 5"/>
+        <circle class="lora-pkt" cx="2" cy="10" r="2.6" fill="currentColor"/>
       </svg>
       <span class={`text-center text-[10px] leading-tight ${muted}`}>km de alcance<br/>años de batería</span>
     </div>
@@ -58,7 +59,10 @@ const nodos = [
       <p class={`text-xs leading-snug ${muted}`}>Reúne y reenvía el dato</p>
     </div>
 
-    <svg class={`mx-auto h-5 w-5 rotate-90 lg:rotate-0 ${conector}`} viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class={`mx-auto h-5 w-5 rotate-90 lg:rotate-0 ${conector}`} viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle class="flow-pkt" cx="4" cy="10" r="1.7" fill="currentColor"/>
+    </svg>
 
     <!-- Plataforma -->
     <div class={`flex flex-1 flex-col items-center gap-2 rounded-xl border p-4 text-center ${inner}`}>
@@ -70,3 +74,34 @@ const nodos = [
     </div>
   </div>
 </div>
+
+<style>
+  /* El dato "viaja": un paquete recorre el enlace LoRa y el tramo al tablero. */
+  .lora-pkt {
+    transform-box: view-box;
+    animation: travel-lora 1.9s linear infinite;
+  }
+  @keyframes travel-lora {
+    0% { transform: translateX(0); opacity: 0; }
+    12% { opacity: 1; }
+    88% { opacity: 1; }
+    100% { transform: translateX(54px); opacity: 0; }
+  }
+  .flow-pkt {
+    transform-box: view-box;
+    animation: travel-arrow 1.9s linear infinite 0.35s;
+  }
+  @keyframes travel-arrow {
+    0% { transform: translateX(0); opacity: 0; }
+    18% { opacity: 1; }
+    82% { opacity: 1; }
+    100% { transform: translateX(12px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lora-pkt,
+    .flow-pkt {
+      animation: none;
+      opacity: 0;
+    }
+  }
+</style>
