@@ -42,6 +42,11 @@ export const grupos: GrupoConceptos[] = [
           'Procesar los datos cerca de donde se generan —en el propio equipo o planta— en lugar de mandarlos todos a la nube. Es más rápido, funciona sin buena conexión y reduce costos.',
       },
       {
+        termino: 'Gemelo digital',
+        definicion:
+          'Una réplica virtual de un equipo o proceso que se actualiza con datos reales, para simular, monitorear y anticipar sin tocar el equipo físico.',
+      },
+      {
         termino: 'Trazabilidad',
         definicion:
           'Poder seguir el recorrido completo de un producto o proceso, paso a paso, con registro de cada etapa. Si algo ocurre, se sabe dónde, cuándo y cómo.',
@@ -90,6 +95,16 @@ export const grupos: GrupoConceptos[] = [
         termino: 'LPR (lectura de placas)',
         definicion:
           'Lectura automática de las placas de los vehículos a partir de la cámara. Útil para control de acceso y logística.',
+      },
+      {
+        termino: 'Detección de objetos',
+        definicion:
+          'Ubicar y marcar (con un recuadro) cada objeto o persona en la imagen, no solo saber si aparece. Es la base del conteo, la verificación de EPP o las zonas restringidas.',
+      },
+      {
+        termino: 'Inferencia en tiempo real',
+        definicion:
+          'Cuando el modelo ya entrenado analiza el video en vivo y entrega resultados al instante, sin intervención humana.',
       },
       {
         termino: 'Grading',
@@ -169,6 +184,11 @@ export const grupos: GrupoConceptos[] = [
         definicion:
           'Sistemas que controlan la maquinaria industrial. Nos integramos con ellos para leer y unificar la información de la planta.',
       },
+      {
+        termino: 'Reporte e informe',
+        definicion:
+          'El resumen de los datos en un documento descargable (PDF, Excel) para auditar, compartir o cumplir la normativa.',
+      },
     ],
   },
   {
@@ -187,6 +207,17 @@ export const grupos: GrupoConceptos[] = [
         termino: 'Dispositivo edge',
         definicion:
           'Un pequeño computador en campo que procesa los datos localmente (ver "procesamiento en el borde") antes de enviarlos.',
+      },
+      {
+        termino: 'Tarjeta electrónica (PCB)',
+        definicion:
+          'La placa donde se montan los chips y componentes de un dispositivo. AdariA las diseña a la medida de cada solución.',
+        enAdaria: 'Diseño electrónico propio.',
+      },
+      {
+        termino: 'Protocolos de comunicación',
+        definicion:
+          'El "idioma" estándar con que equipos y sistemas se entienden: MQTT, Modbus, OPC-UA, RTSP. Son los que permiten integrarlo todo.',
       },
       {
         termino: 'EPP',
