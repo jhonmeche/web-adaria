@@ -1,6 +1,8 @@
 ---
 // Diagrama: topología IoT/LoRa. Nodos con sensores → LoRa (largo alcance) →
 // gateway → plataforma/nube → tablero.
+import IconAnimado from './IconAnimado.astro';
+
 interface Props {
   dark?: boolean;
 }
@@ -13,19 +15,10 @@ const muted = dark ? 'text-muted-dark' : 'text-muted';
 const conector = dark ? 'text-brand-400' : 'text-brand';
 
 const nodos = [
-  // Manómetro (gauge): arco + aguja + cubo central.
-  { t: 'Presión', icon: 'M4 18a8 8 0 1 1 16 0 M12 18l4.5-3 M10.75 18a1.25 1.25 0 1 0 2.5 0 1.25 1.25 0 1 0-2.5 0Z' },
-  // Termómetro con bulbo.
-  { t: 'Temperatura', icon: 'M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0Z M12 9v4.5' },
-  // Vibración: barra central con líneas de movimiento simétricas.
-  { t: 'Vibración', icon: 'M9 5h6v14H9zM6 8v8M3 10v4M18 8v8M21 10v4' },
+  { t: 'Presión', tipo: 'presion' as const },
+  { t: 'Temperatura', tipo: 'temperatura' as const },
+  { t: 'Vibración', tipo: 'vibracion' as const },
 ];
-const icons = {
-  // Antena de transmisión: ondas radiando desde un punto central (simétrico).
-  gateway: 'M12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z M9 9a4 4 0 0 0 0 6 M15 9a4 4 0 0 1 0 6 M6.5 6.5a8 8 0 0 0 0 11 M17.5 6.5a8 8 0 0 1 0 11',
-  // Monitor/dashboard con barras.
-  tablero: 'M3 5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z M9 20h6 M12 17v3 M7 12v-2 M11 12V8 M15 12v-4',
-};
 ---
 
 <div class={`mt-10 rounded-2xl border p-6 sm:p-8 ${box}`} data-reveal>
@@ -39,7 +32,7 @@ const icons = {
         {nodos.map((n) => (
           <div class="flex items-center gap-2.5">
             <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand/15 text-brand-400">
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={n.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <IconAnimado name={n.tipo} class="h-4 w-4" />
             </span>
             <span class={`text-sm ${title}`}>{n.t}</span>
           </div>
@@ -59,7 +52,7 @@ const icons = {
     <!-- Gateway -->
     <div class={`flex flex-1 flex-col items-center gap-2 rounded-xl border p-4 text-center ${inner}`}>
       <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={icons.gateway} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <IconAnimado name="gateway" class="h-5 w-5" />
       </span>
       <p class={`text-sm font-semibold ${title}`}>Gateway</p>
       <p class={`text-xs leading-snug ${muted}`}>Reúne y reenvía el dato</p>
@@ -70,7 +63,7 @@ const icons = {
     <!-- Plataforma -->
     <div class={`flex flex-1 flex-col items-center gap-2 rounded-xl border p-4 text-center ${inner}`}>
       <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={icons.tablero} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <IconAnimado name="plataforma" class="h-5 w-5" />
       </span>
       <p class={`text-sm font-semibold ${title}`}>Plataforma</p>
       <p class={`text-xs leading-snug ${muted}`}>Tableros, alertas y predicción</p>

@@ -1,0 +1,137 @@
+---
+// Íconos animados (SVG + CSS) para el diagrama IoT/LoRa.
+// name: 'presion' | 'temperatura' | 'vibracion' | 'gateway' | 'plataforma'.
+// Heredan el color con currentColor; respetan prefers-reduced-motion.
+interface Props {
+  name: 'presion' | 'temperatura' | 'vibracion' | 'gateway' | 'plataforma';
+  class?: string;
+}
+const { name, class: className = 'h-5 w-5' } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  {name === 'presion' && (
+    <>
+      <path d="M4 17a8 8 0 1 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      <line class="ani-needle" x1="12" y1="17" x2="12" y2="9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      <circle cx="12" cy="17" r="1.5" fill="currentColor" />
+    </>
+  )}
+
+  {name === 'temperatura' && (
+    <>
+      <path d="M14 14.5V5a2 2 0 0 0-4 0v9.5a4 4 0 1 0 4 0Z" stroke="currentColor" stroke-width="1.8" />
+      <line class="ani-mercury" x1="12" y1="18" x2="12" y2="9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+      <circle class="ani-bulb" cx="12" cy="18" r="2.3" fill="currentColor" />
+    </>
+  )}
+
+  {name === 'vibracion' && (
+    <g class="ani-vibra">
+      <path d="M9 5h6v14H9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M6 8v8M3 10v4M18 8v8M21 10v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+    </g>
+  )}
+
+  {name === 'gateway' && (
+    <>
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+      <g class="ani-wave w1">
+        <path d="M9 9a4 4 0 0 0 0 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M15 9a4 4 0 0 1 0 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </g>
+      <g class="ani-wave w2">
+        <path d="M6.5 6.5a8 8 0 0 0 0 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M17.5 6.5a8 8 0 0 1 0 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </g>
+    </>
+  )}
+
+  {name === 'plataforma' && (
+    <>
+      <path d="M3 5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z" stroke="currentColor" stroke-width="1.8" />
+      <path d="M9 20h6M12 16v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line class="bar b1" x1="8" y1="12.5" x2="8" y2="9.5" />
+        <line class="bar b2" x1="12" y1="12.5" x2="12" y2="7.5" />
+        <line class="bar b3" x1="16" y1="12.5" x2="16" y2="10.5" />
+      </g>
+    </>
+  )}
+</svg>
+
+<style>
+  /* Presión: la aguja oscila como si subiera y bajara la presión. */
+  .ani-needle {
+    transform-box: view-box;
+    transform-origin: 12px 17px;
+    animation: needle 2.4s ease-in-out infinite;
+  }
+  @keyframes needle {
+    0%, 100% { transform: rotate(-42deg); }
+    50% { transform: rotate(42deg); }
+  }
+
+  /* Temperatura: el mercurio sube/baja y al máximo se torna naranja tenue. */
+  .ani-mercury {
+    transform-box: view-box;
+    transform-origin: 12px 18px;
+    animation: mercury 3s ease-in-out infinite;
+  }
+  @keyframes mercury {
+    0%, 100% { transform: scaleY(0.3); stroke: currentColor; }
+    45% { stroke: currentColor; }
+    50% { transform: scaleY(1); stroke: #ef8b4a; }
+    55% { stroke: currentColor; }
+  }
+  .ani-bulb { animation: bulb 3s ease-in-out infinite; }
+  @keyframes bulb {
+    0%, 42%, 100% { fill: currentColor; }
+    50% { fill: #ef8b4a; }
+    58% { fill: currentColor; }
+  }
+
+  /* Vibración: micro-temblor horizontal. */
+  .ani-vibra {
+    transform-box: view-box;
+    transform-origin: 12px 12px;
+    animation: vibra 0.18s linear infinite;
+  }
+  @keyframes vibra {
+    0%, 100% { transform: translateX(-0.5px); }
+    50% { transform: translateX(0.5px); }
+  }
+
+  /* Gateway: las ondas se expanden y contraen desde el centro. */
+  .ani-wave {
+    transform-box: view-box;
+    transform-origin: 12px 12px;
+  }
+  .w1 { animation: wave 1.9s ease-in-out infinite; }
+  .w2 { animation: wave 1.9s ease-in-out infinite 0.3s; }
+  @keyframes wave {
+    0%, 100% { transform: scale(0.78); opacity: 0.45; }
+    50% { transform: scale(1.12); opacity: 1; }
+  }
+
+  /* Plataforma: las barras del gráfico suben y bajan (datos en vivo). */
+  .bar { transform-box: view-box; }
+  .b1 { transform-origin: 8px 12.5px; animation: barMove 1.5s ease-in-out infinite; }
+  .b2 { transform-origin: 12px 12.5px; animation: barMove 1.5s ease-in-out infinite 0.2s; }
+  .b3 { transform-origin: 16px 12.5px; animation: barMove 1.5s ease-in-out infinite 0.4s; }
+  @keyframes barMove {
+    0%, 100% { transform: scaleY(0.45); }
+    50% { transform: scaleY(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ani-needle,
+    .ani-mercury,
+    .ani-bulb,
+    .ani-vibra,
+    .ani-wave,
+    .bar {
+      animation: none;
+    }
+  }
+</style>
