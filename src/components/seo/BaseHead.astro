@@ -9,11 +9,17 @@ interface Props {
 const { title, description, image = '/og/og-default.jpg' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
+
+// Privacidad: por defecto el sitio NO se indexa (modo preview privado). Para
+// abrirlo a buscadores el día del lanzamiento, define la variable de entorno
+// PUBLIC_ALLOW_INDEX=true (en Vercel: Settings → Environment Variables).
+const allowIndex = import.meta.env.PUBLIC_ALLOW_INDEX === 'true';
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+{!allowIndex && <meta name="robots" content="noindex, nofollow" />}
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Tipografía: Inter (fallback del stack del sistema Apple). Pesos 400/500/600. -->

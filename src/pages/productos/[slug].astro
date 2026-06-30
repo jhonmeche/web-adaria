@@ -133,6 +133,84 @@ const jsonLd = {
     </div>
   </Section>
 
+  <!-- GALERÍA DEL SOFTWARE -->
+  {d.galeria && d.galeria.length > 0 && (
+    <Section theme="light" id="galeria">
+      <div class="mx-auto max-w-3xl text-center">
+        <Eyebrow on="light">El producto</Eyebrow>
+        <h2 data-reveal class="text-balance text-h1 font-semibold text-on-light">
+          {d.galeriaTitulo ?? 'El software en operación'}
+        </h2>
+        {d.galeriaIntro && (
+          <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">{d.galeriaIntro}</p>
+        )}
+      </div>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2">
+        {d.galeria.map((img, i) => (
+          <figure
+            data-reveal
+            class={`card group flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-surface shadow-sm ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-brand/30 hover:shadow-lg ${i === 0 ? 'md:col-span-2' : ''}`}
+            style={`--reveal-delay:${i * 80}ms`}
+          >
+            {img.src && !img.pending ? (
+              <div class="overflow-hidden bg-ink/5">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  class="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              </div>
+            ) : (
+              <!-- Mockup: marcador de posición con forma de interfaz -->
+              <div class="mock relative flex aspect-video w-full flex-col overflow-hidden bg-light" role="img" aria-label={`Mockup pendiente: ${img.alt}`}>
+                <!-- Barra de ventana -->
+                <div class="flex items-center gap-1.5 border-b border-ink/10 bg-white px-4 py-3">
+                  <span class="h-2.5 w-2.5 rounded-full bg-ink/15"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-ink/15"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-ink/15"></span>
+                  <span class="ml-3 h-3 w-32 rounded-full bg-ink/10 sm:w-48"></span>
+                  <span class="ml-auto h-5 w-5 rounded bg-ink/10"></span>
+                </div>
+                <!-- Cuerpo: sidebar + KPIs + gráfico -->
+                <div class="flex min-h-0 flex-1 gap-3 p-3 sm:gap-4 sm:p-4">
+                  <div class="hidden w-1/5 shrink-0 flex-col gap-2 sm:flex">
+                    <span class="h-7 rounded-lg bg-brand/20"></span>
+                    <span class="h-5 rounded-lg bg-ink/10"></span>
+                    <span class="h-5 rounded-lg bg-ink/10"></span>
+                    <span class="h-5 rounded-lg bg-ink/10"></span>
+                    <span class="h-5 rounded-lg bg-ink/10"></span>
+                  </div>
+                  <div class="flex min-h-0 flex-1 flex-col gap-3">
+                    <div class="grid grid-cols-3 gap-3">
+                      <span class="h-12 rounded-xl bg-white ring-1 ring-ink/10 sm:h-14"></span>
+                      <span class="h-12 rounded-xl bg-white ring-1 ring-ink/10 sm:h-14"></span>
+                      <span class="h-12 rounded-xl bg-white ring-1 ring-ink/10 sm:h-14"></span>
+                    </div>
+                    <div class="flex min-h-0 flex-1 items-end gap-1.5 rounded-xl bg-white p-3 ring-1 ring-ink/10 sm:gap-2">
+                      {[42, 68, 50, 84, 60, 92, 56].map((h) => (
+                        <span class="flex-1 rounded-t bg-brand/25" style={`height:${h}%`}></span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <!-- Etiqueta -->
+                <div class="pointer-events-none absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-white/90 px-3 py-1 text-xs font-medium text-muted backdrop-blur">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm0 12 5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/></svg>
+                  Captura próximamente
+                </div>
+              </div>
+            )}
+            {img.caption && (
+              <figcaption class="border-t border-ink/5 px-5 py-4 text-sm font-medium text-on-light">{img.caption}</figcaption>
+            )}
+          </figure>
+        ))}
+      </div>
+    </Section>
+  )}
+
   <!-- SOLUCIONES POR SECTOR -->
   {aplicaciones.length > 0 && (
     <Section theme="light" id="por-sector">
@@ -313,5 +391,28 @@ const jsonLd = {
   .js [data-reveal].card.is-visible {
     opacity: 1;
     transform: none;
+  }
+
+  /* Mockup: brillo sutil que recorre el placeholder (se detiene con reduce-motion). */
+  @media (prefers-reduced-motion: no-preference) {
+    .mock::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        110deg,
+        transparent 35%,
+        rgba(255, 255, 255, 0.5) 50%,
+        transparent 65%
+      );
+      transform: translateX(-100%);
+      animation: mock-shimmer 2.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+  }
+  @keyframes mock-shimmer {
+    to {
+      transform: translateX(100%);
+    }
   }
 </style>

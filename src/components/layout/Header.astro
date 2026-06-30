@@ -5,14 +5,7 @@
 import Logo from '../ui/Logo.astro';
 import { sectores } from '../../data/sectores.ts';
 import { productos } from '../../data/productos.ts';
-
-const servicios = [
-  'Desarrollo de software',
-  'Diseño de hardware',
-  'Visión artificial e IA',
-  'Soluciones IoT',
-  'Integración y analítica',
-];
+import { servicios } from '../../data/servicios.ts';
 ---
 
 <header
@@ -60,13 +53,13 @@ const servicios = [
         </a>
         <div class="dropdown">
           {servicios.map((s) => (
-            <a href="/#servicios" class="dropdown-item">{s}</a>
+            <a href={`/servicios/${s.slug}`} class="dropdown-item">{s.nombre}</a>
           ))}
         </div>
       </li>
 
       <li><a href="/blog" class="nav-link">Blog</a></li>
-      <li><a href="#caso" class="nav-link">Nosotros</a></li>
+      <li><a href="/nosotros" class="nav-link">Nosotros</a></li>
       <li><a href="#contacto" class="nav-link">Contacto</a></li>
     </ul>
 
@@ -92,7 +85,7 @@ const servicios = [
       <a href="#productos" class="mobile-link">Productos</a>
       <a href="/#servicios" class="mobile-link">Servicios</a>
       <a href="/blog" class="mobile-link">Blog</a>
-      <a href="#caso" class="mobile-link">Nosotros</a>
+      <a href="/nosotros" class="mobile-link">Nosotros</a>
       <a href="#contacto" class="mobile-link">Contacto</a>
     </div>
   </div>

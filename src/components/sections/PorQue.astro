@@ -6,23 +6,31 @@ import Eyebrow from '../ui/Eyebrow.astro';
 const diferenciadores = [
   {
     titulo: 'A la medida',
-    texto: 'No vendemos cajas cerradas. Diseñamos la solución alrededor de su operación y su caso de uso.',
-    icon: 'M12 20h9M3 20h2M5 20V8a2 2 0 0 1 2-2h2M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z',
+    resumen: 'Diseñada para su operación',
+    texto: 'Nada de cajas cerradas. Construimos cada solución alrededor de su proceso real y su caso de uso, no al revés.',
+    // Sliders / ajustes: personalización, hecho a medida.
+    icon: 'M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4',
   },
   {
     titulo: 'Hardware propio',
-    texto: 'Diseñamos nodos, gateways y dispositivos edge. Controlamos la cadena de punta a punta.',
-    icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 7h10v10H7V7Zm3 3h4v4h-4v-4Z',
+    resumen: 'Del sensor a la decisión',
+    texto: 'Diseñamos los nodos, gateways y dispositivos edge. Controlamos la cadena completa, sin depender de terceros.',
+    // Chip / CPU: hardware propio.
+    icon: 'M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2ZM9 9h6v6H9zM9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2',
   },
   {
     titulo: 'Dato auditable',
-    texto: 'Cada decisión queda respaldada con evidencia trazable. Transparencia ante clientes y reguladores.',
-    icon: 'M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z',
+    resumen: 'Evidencia, no promesas',
+    texto: 'Cada decisión queda respaldada con evidencia trazable: transparencia total ante clientes y reguladores.',
+    // Escudo con check: confianza, trazabilidad, auditable.
+    icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10ZM9 11.5l2 2 4-4',
   },
   {
     titulo: 'Bajo costo de entrada',
-    texto: 'Comenzamos sobre las cámaras y sensores actuales del cliente. Pilotos rápidos que escalan a soluciones de valor.',
-    icon: 'M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
+    resumen: 'Arranque pequeño, escale grande',
+    texto: 'Empezamos sobre sus cámaras y sensores actuales. Pilotos rápidos y de bajo riesgo que escalan a soluciones de mayor valor.',
+    // Tendencia al alza: entrada baja que escala.
+    icon: 'M22 7l-8.5 8.5-5-5L2 17M16 7h6v6',
   },
 ];
 ---
@@ -40,16 +48,42 @@ const diferenciadores = [
   </div>
 
   <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-    {diferenciadores.map((d) => (
-      <div data-reveal class="rounded-2xl border border-white/10 bg-ink-card p-7">
-        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400">
+    {diferenciadores.map((d, i) => (
+      <article
+        data-reveal
+        class="card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-card p-7 ring-1 ring-white/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10"
+        style={`--reveal-delay:${i * 90}ms`}
+      >
+        <!-- Barra de acento superior que aparece al hover -->
+        <span class="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+
+        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d={d.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
-        <h3 class="mb-2 text-lg font-semibold text-on-dark">{d.titulo}</h3>
-        <p class="text-sm leading-relaxed text-muted-dark">{d.texto}</p>
-      </div>
+        <p class="text-xs font-semibold tracking-tight text-brand-400/80">{d.resumen}</p>
+        <h3 class="mt-1.5 text-lg font-semibold text-on-dark">{d.titulo}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted-dark">{d.texto}</p>
+      </article>
     ))}
   </div>
 </Section>
+
+<style>
+  /* Reveal escalonado + hover, mismo patrón que el resto de secciones. */
+  .js [data-reveal].card {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      translate 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .js [data-reveal].card.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>

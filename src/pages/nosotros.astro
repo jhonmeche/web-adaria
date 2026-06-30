@@ -1,0 +1,337 @@
+---
+// Página "Nosotros" (§7). Landing dedicada y profesional con el mismo lenguaje
+// visual del sitio: hero oscuro con rejilla, secciones alternadas claro/oscuro,
+// cards data-reveal. Bloques: hero, historia/origen, propósito-misión-visión,
+// valores y equipo fundador (CEO + CTO con monograma de iniciales) + CTA.
+// El contenido vive en data/equipo.ts.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Eyebrow from '../components/ui/Eyebrow.astro';
+import Button from '../components/ui/Button.astro';
+import {
+  fundadores,
+  valores,
+  mision,
+  vision,
+  proposito,
+} from '../data/equipo.ts';
+
+const title = 'Nosotros — AdariA Systems';
+const description =
+  'AdariA Systems es el aliado que lleva a las empresas del trabajo manual y a ciegas a operaciones conectadas, inteligentes y basadas en datos. Del sensor a la decisión, a la medida, bajo un mismo techo.';
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+
+// Monograma: iniciales del nombre (ignora corchetes de placeholder).
+const iniciales = (nombre: string) => {
+  const limpio = nombre.replace(/[[\]]/g, '').trim();
+  const partes = limpio.split(/\s+/).filter(Boolean);
+  if (partes.length === 0) return '–';
+  if (partes.length === 1) return partes[0].slice(0, 2).toUpperCase();
+  return (partes[0][0] + partes[partes.length - 1][0]).toUpperCase();
+};
+
+// Pilares de identidad (propósito / misión / visión) para el grid.
+const pilares = [
+  {
+    titulo: 'Propósito',
+    texto: proposito,
+    icon: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z',
+  },
+  {
+    titulo: 'Misión',
+    texto: mision,
+    icon: 'M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-5.07-2.83 2.83M9.76 14.24l-2.83 2.83m0-10.14 2.83 2.83m4.48 4.48 2.83 2.83',
+  },
+  {
+    titulo: 'Visión',
+    texto: vision,
+    icon: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Zm10 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Nosotros — AdariA Systems',
+  url: canonical,
+  about: {
+    '@type': 'Organization',
+    name: 'AdariA Systems',
+    description,
+    foundingLocation: 'Colombia',
+    founder: fundadores
+      .filter((f) => !f.nombre.includes('['))
+      .map((f) => ({ '@type': 'Person', name: f.nombre, jobTitle: f.rol })),
+  },
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- HERO -->
+  <section class="relative isolate overflow-hidden bg-ink text-on-dark">
+    <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-6 pb-20 pt-36 lg:px-8 lg:pt-40">
+      <!-- Breadcrumb -->
+      <nav class="mb-8 flex items-center gap-2 text-sm text-muted-dark" aria-label="Ruta">
+        <a href="/" class="transition-colors hover:text-on-dark">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span class="text-on-dark" aria-current="page">Nosotros</span>
+      </nav>
+
+      <div class="max-w-3xl">
+        <Eyebrow on="dark">Nosotros</Eyebrow>
+        <h1 class="text-display font-semibold text-on-dark">
+          Del sensor a la decisión, bajo un mismo techo.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted-dark">
+          AdariA Systems es una compañía de tecnología colombiana que actúa como
+          habilitador de la Industria 4.0: llevamos a las empresas de operaciones
+          manuales y a ciegas hacia operaciones conectadas, inteligentes y basadas
+          en datos en tiempo real. Diseñamos el hardware, capturamos el dato con
+          visión artificial e IoT, lo integramos y lo devolvemos convertido en
+          decisiones. Un solo aliado, a la medida, con dato auditable.
+        </p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button href="/#contacto" variant="primary" on="dark">Hablemos de tu proyecto</Button>
+          <Button href="/#servicios" variant="secondary" on="dark">Conoce qué hacemos</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORIA / ORIGEN -->
+  <Section theme="light" id="historia">
+    <div class="grid items-start gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+      <div>
+        <Eyebrow on="light">Por qué nacimos</Eyebrow>
+        <h2 data-reveal class="text-balance text-h1 font-semibold text-on-light">
+          Vimos empresas operando a ciegas. Decidimos cambiarlo.
+        </h2>
+
+        <!-- Entradilla destacada -->
+        <p data-reveal class="mt-6 max-w-xl text-pretty text-xl leading-relaxed text-on-light">
+          En la industria, cada falla, cada parada no planeada y cada proceso manual
+          cuesta dinero —y muchas veces seguridad—.
+        </p>
+
+        <!-- Cuerpo justificado con guionado -->
+        <div class="mt-5 max-w-xl space-y-5 text-justify text-lg leading-relaxed text-muted hyphens-auto">
+          <p data-reveal>
+            La tecnología para evitarlo existe, pero llega fragmentada: un proveedor
+            para el hardware, otro para el software, otro para los datos. Nadie
+            responde por el todo.
+          </p>
+          <p data-reveal>
+            AdariA Systems nace para cerrar esa brecha. Reunimos bajo un mismo techo
+            la cadena completa —diseño de hardware, visión artificial, IoT,
+            integración y analítica— para que cada empresa tenga un solo aliado que
+            la lleve del sensor a la decisión, con tecnología hecha a su medida.
+          </p>
+          <p data-reveal>
+            Lo respaldamos con casos reales, como Smart PBA operando en plantas de
+            beneficio animal con trazabilidad y evidencia auditable. No vendemos
+            promesas: construimos soluciones que funcionan en operación.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tarjeta de diferenciador / ADN -->
+      <aside data-reveal class="card relative overflow-hidden rounded-3xl border border-ink/10 bg-surface p-8 shadow-sm ring-1 ring-ink/5 sm:p-10">
+        <span class="absolute inset-x-0 top-0 h-1 bg-brand" aria-hidden="true"></span>
+        <p class="text-sm font-semibold text-brand">Nuestro ADN</p>
+        <p class="mt-3 text-xl font-semibold leading-snug text-on-light">
+          Pocas empresas en Colombia diseñan el hardware, capturan el dato y lo
+          convierten en decisiones bajo un mismo techo. Nosotros sí.
+        </p>
+        <ul class="mt-7 grid gap-4 border-t border-ink/5 pt-7">
+          {[
+            'Del sensor a la decisión, sin intermediarios',
+            'Tecnología propia y a la medida',
+            'Dato auditable y trazable',
+            'Bajo costo de entrada, escala a tu ritmo',
+          ].map((punto) => (
+            <li class="flex items-start gap-3 text-sm font-medium text-on-light">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {punto}
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </Section>
+
+  <!-- PROPÓSITO · MISIÓN · VISIÓN -->
+  <Section theme="dark" id="proposito" grid={true}>
+    <div class="mx-auto max-w-3xl text-center">
+      <Eyebrow on="dark">Lo que nos mueve</Eyebrow>
+      <h2 data-reveal class="text-balance text-h1 font-semibold text-on-dark">
+        Un propósito claro, una visión a 2030.
+      </h2>
+    </div>
+
+    <div class="mt-16 grid gap-6 lg:grid-cols-3">
+      {pilares.map((p, i) => (
+        <article
+          data-reveal
+          class="card flex flex-col rounded-2xl border border-white/10 bg-ink-card p-8 ring-1 ring-white/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10"
+          style={`--reveal-delay:${i * 90}ms`}
+        >
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d={p.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <h3 class="mt-5 text-xl font-semibold text-on-dark">{p.titulo}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-dark">{p.texto}</p>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <!-- VALORES -->
+  <Section theme="light" id="valores">
+    <div class="mx-auto max-w-3xl text-center">
+      <Eyebrow on="light">Nuestros valores</Eyebrow>
+      <h2 data-reveal class="text-balance text-h1 font-semibold text-on-light">
+        Cómo trabajamos, todos los días.
+      </h2>
+    </div>
+
+    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {valores.map((v, i) => (
+        <div
+          data-reveal
+          class="card group flex flex-col rounded-2xl border border-ink/10 bg-surface p-7 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/40 hover:shadow-lg"
+          style={`--reveal-delay:${i * 70}ms`}
+        >
+          <span
+            aria-hidden="true"
+            class="inline-block origin-top-left text-6xl font-bold leading-none tracking-tight text-ink/10 transition-all duration-300 group-hover:scale-110 group-hover:text-brand"
+          >{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="mt-4 text-lg font-semibold text-on-light">{v.titulo}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">{v.texto}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- EQUIPO FUNDADOR -->
+  <Section theme="dark" id="equipo" grid={true}>
+    <div class="mx-auto max-w-3xl text-center">
+      <Eyebrow on="dark">Equipo fundador</Eyebrow>
+      <h2 data-reveal class="text-balance text-h1 font-semibold text-on-dark">
+        Dos perfiles complementarios, una misma visión.
+      </h2>
+      <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
+        Negocio e ingeniería de la mano: la estrategia comercial y la profundidad
+        técnica que hacen falta para llevar tecnología real a la operación.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-16 grid max-w-4xl gap-8 sm:grid-cols-2">
+      {fundadores.map((f, i) => (
+        <article
+          data-reveal
+          class="card group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-ink-card ring-1 ring-white/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-2xl hover:shadow-brand/10"
+          style={`--reveal-delay:${i * 90}ms`}
+        >
+          <!-- Foto grande tipo retrato -->
+          <div class="relative aspect-square w-full overflow-hidden bg-linear-to-br from-ink-card to-ink">
+            {f.foto ? (
+              <img
+                src={f.foto}
+                alt={`Foto de ${f.nombre}, ${f.rol} de AdariA Systems`}
+                width="800"
+                height="800"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            ) : (
+              <span
+                class="flex h-full w-full items-center justify-center bg-linear-to-br from-brand to-brand-600 text-7xl font-semibold text-white"
+                aria-hidden="true"
+              >
+                {iniciales(f.nombre)}
+              </span>
+            )}
+            <!-- Degradado inferior para asentar el nombre sobre la foto -->
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-ink-card via-ink-card/70 to-transparent" aria-hidden="true"></div>
+            <div class="absolute inset-x-0 bottom-0 p-6">
+              <h3 class="text-2xl font-semibold text-on-dark">{f.nombre}</h3>
+              <p class="mt-0.5 text-sm font-medium text-brand-400">{f.rol}</p>
+            </div>
+          </div>
+
+          <!-- Datos -->
+          <div class="flex flex-1 flex-col p-7">
+            <p class="text-sm leading-relaxed text-muted-dark">{f.bio}</p>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              {f.foco.map((t) => (
+                <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-on-dark/75">{t}</li>
+              ))}
+            </ul>
+            {f.linkedin && (
+              <a
+                href={f.linkedin}
+                class="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold text-brand-400 transition-all hover:gap-2.5"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+                LinkedIn
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <!-- CTA FINAL -->
+  <section class="relative isolate overflow-hidden bg-ink py-24 text-on-dark">
+    <div class="tech-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-3xl px-6 text-center lg:px-8">
+      <h2 class="text-balance text-h1 font-semibold text-on-dark">
+        Construyamos la operación que tu empresa merece.
+      </h2>
+      <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-dark">
+        Cuéntanos tu reto y diseñamos —con hardware, software y datos— la solución
+        a la medida que de verdad necesitas.
+      </p>
+      <div class="mt-9 flex justify-center">
+        <Button href="/#contacto" variant="primary" on="dark">Hablemos de tu proyecto</Button>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</BaseLayout>
+
+<style>
+  .js [data-reveal].card {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      translate 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .js [data-reveal].card.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  /* Reveal también para los párrafos/títulos sueltos de esta página. */
+  .js [data-reveal]:not(.card) {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js [data-reveal]:not(.card).is-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>

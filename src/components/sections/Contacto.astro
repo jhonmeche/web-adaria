@@ -1,92 +1,129 @@
 ---
-// §9.8 — CTA final + formulario B2B (§10). Fondo oscuro.
+// §9.8 — CTA final + formulario B2B (§10). Fondo oscuro con rejilla técnica,
+// mismo lenguaje visual que el resto de secciones: cabecera centrada con
+// Eyebrow, tarjetas de valor con ícono (reveal escalonado + hover) y formulario.
 // El sitio es estático: el envío real necesita un backend (Formspree / Netlify
 // Forms). Por ahora el formulario valida en cliente y muestra confirmación.
 // Para activarlo: define el endpoint en `action` y quita el preventDefault.
 import Eyebrow from '../ui/Eyebrow.astro';
 import { sectores } from '../../data/sectores.ts';
+
+// Razones para agendar — tarjetas de valor (mismo patrón de cards del sitio).
+const valor = [
+  {
+    titulo: 'Piloto de bajo costo',
+    texto: 'Empezamos sobre sus cámaras y sensores actuales. Bajo riesgo, sin grandes inversiones de entrada.',
+    icon: 'M14.5 4h-5L8 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-4l-1.5-2ZM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z',
+  },
+  {
+    titulo: 'A la medida de su sector',
+    texto: 'Propuesta y modelos entrenados para su industria y su caso de uso concreto.',
+    icon: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10ZM12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z',
+  },
+  {
+    titulo: 'Un solo aliado',
+    texto: 'Del sensor a la decisión: hardware, datos e integración bajo un mismo techo.',
+    icon: 'M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5',
+  },
+];
 ---
 
-<section id="contacto" class="relative overflow-hidden bg-ink text-on-dark">
+<section id="contacto" class="relative isolate overflow-hidden bg-ink text-on-dark">
+  <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
   <div
     class="pointer-events-none absolute -bottom-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-brand/15 blur-[130px]"
     aria-hidden="true"
   ></div>
 
-  <div class="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-2 lg:px-8">
-    <div>
+  <div class="relative mx-auto w-full max-w-6xl px-6 py-20 sm:py-28 lg:px-8">
+    <!-- Cabecera centrada (mismo patrón de sección) -->
+    <div class="mx-auto max-w-3xl text-center">
       <Eyebrow on="dark">Hablemos de su proyecto</Eyebrow>
-      <h2 data-reveal class="text-h1 font-semibold text-on-dark">
+      <h2 data-reveal class="text-balance text-h1 font-semibold text-on-dark">
         Agende una demostración y empecemos por su caso de uso.
       </h2>
-      <p data-reveal class="mt-5 max-w-md text-lg leading-relaxed text-muted-dark">
-        Cuéntenos su operación y su reto. Le mostramos cómo llevar su proceso a
-        una operación más segura, eficiente y auditable —comenzando con un bajo costo de entrada.
+      <p data-reveal class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-dark">
+        Cuéntenos su operación y su reto. Le mostramos cómo llevar su proceso a una
+        operación más segura, eficiente y auditable —comenzando con un bajo costo de
+        entrada.
       </p>
-
-      <ul data-reveal class="mt-10 space-y-4">
-        {[
-          'Diagnóstico inicial sin costo',
-          'Piloto sobre sus cámaras o sensores actuales',
-          'Propuesta a la medida de su industria',
-        ].map((t) => (
-          <li class="flex items-center gap-3 text-sm text-on-dark/90">
-            <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand/20 text-brand-400">
-              <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            {t}
-          </li>
-        ))}
-      </ul>
     </div>
 
-    <div data-reveal class="rounded-2xl border border-white/10 bg-ink-card p-6 shadow-2xl shadow-black/40 sm:p-8">
-      <form id="contact-form" class="space-y-4" novalidate>
-        <div class="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label for="nombre" class="form-label">Nombre*</label>
-            <input id="nombre" name="nombre" type="text" required class="form-input" autocomplete="name" />
-          </div>
-          <div>
-            <label for="empresa" class="form-label">Empresa*</label>
-            <input id="empresa" name="empresa" type="text" required class="form-input" autocomplete="organization" />
-          </div>
-        </div>
-        <div class="grid gap-4 sm:grid-cols-2">
-          <div>
-            <label for="cargo" class="form-label">Cargo</label>
-            <input id="cargo" name="cargo" type="text" class="form-input" autocomplete="organization-title" />
-          </div>
-          <div>
-            <label for="sector" class="form-label">Sector</label>
-            <select id="sector" name="sector" class="form-input">
-              <option value="">Selecciona…</option>
-              {sectores.map((s) => (
-                <option value={s.slug}>{s.nombre}</option>
-              ))}
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <label for="email" class="form-label">Correo corporativo*</label>
-          <input id="email" name="email" type="email" required class="form-input" autocomplete="email" />
-        </div>
-        <div>
-          <label for="mensaje" class="form-label">¿Qué reto quieres resolver?</label>
-          <textarea id="mensaje" name="mensaje" rows="3" class="form-input resize-none"></textarea>
-        </div>
+    <div class="mt-16 grid gap-8 lg:grid-cols-2 lg:items-start">
+      <!-- Tarjetas de valor -->
+      <div class="grid gap-5">
+        {valor.map((v, i) => (
+          <article
+            data-reveal
+            class="card group flex items-start gap-4 rounded-2xl border border-white/10 bg-ink-card p-6 ring-1 ring-white/5 hover:[translate:0_-4px] hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10"
+            style={`--reveal-delay:${i * 90}ms`}
+          >
+            <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d={v.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <div>
+              <h3 class="text-base font-semibold text-on-dark">{v.titulo}</h3>
+              <p class="mt-1.5 text-sm leading-relaxed text-muted-dark">{v.texto}</p>
+            </div>
+          </article>
+        ))}
+      </div>
 
-        <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition-all hover:-translate-y-0.5 hover:bg-brand-600">
-          Habla con un experto
-          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+      <!-- Formulario -->
+      <div
+        data-reveal
+        class="card rounded-2xl border border-white/10 bg-ink-card p-6 shadow-2xl shadow-black/40 ring-1 ring-white/5 sm:p-8"
+        style="--reveal-delay:120ms"
+      >
+        <form id="contact-form" class="space-y-4" novalidate>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="nombre" class="form-label">Nombre*</label>
+              <input id="nombre" name="nombre" type="text" required class="form-input" autocomplete="name" />
+            </div>
+            <div>
+              <label for="empresa" class="form-label">Empresa*</label>
+              <input id="empresa" name="empresa" type="text" required class="form-input" autocomplete="organization" />
+            </div>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="cargo" class="form-label">Cargo</label>
+              <input id="cargo" name="cargo" type="text" class="form-input" autocomplete="organization-title" />
+            </div>
+            <div>
+              <label for="sector" class="form-label">Sector</label>
+              <select id="sector" name="sector" class="form-input">
+                <option value="">Selecciona…</option>
+                {sectores.map((s) => (
+                  <option value={s.slug}>{s.nombre}</option>
+                ))}
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="email" class="form-label">Correo corporativo*</label>
+            <input id="email" name="email" type="email" required class="form-input" autocomplete="email" />
+          </div>
+          <div>
+            <label for="mensaje" class="form-label">¿Qué reto quiere resolver?</label>
+            <textarea id="mensaje" name="mensaje" rows="3" class="form-input resize-none"></textarea>
+          </div>
 
-        <p id="form-status" class="hidden rounded-lg bg-ok/15 px-4 py-3 text-sm text-on-dark" role="status"></p>
-        <p class="text-center text-xs text-muted-dark">
-          Al enviar acepta que le contactemos sobre su solicitud.
-        </p>
-      </form>
+          <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition-all hover:-translate-y-0.5 hover:bg-brand-600">
+            Habla con un experto
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <p id="form-status" class="hidden rounded-lg bg-ok/15 px-4 py-3 text-sm text-on-dark" role="status"></p>
+          <p class="text-center text-xs text-muted-dark">
+            Al enviar acepta que le contactemos sobre su solicitud.
+          </p>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -101,6 +138,22 @@ import { sectores } from '../../data/sectores.ts';
   }
   .form-input:user-invalid {
     @apply border-crit;
+  }
+
+  /* Reveal escalonado + hover, mismo patrón que el resto de secciones. */
+  .js [data-reveal].card {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      translate 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .js [data-reveal].card.is-visible {
+    opacity: 1;
+    transform: none;
   }
 </style>
 

@@ -16,6 +16,20 @@ export interface Beneficio {
   titulo: string;
   texto: string;
 }
+/** Captura de pantalla del software para la galería de la landing. */
+export interface Captura {
+  /** Ruta de la imagen en /public (ej. '/productos/smart-pba/dashboard.webp'). */
+  src: string;
+  /** Texto alternativo accesible (qué muestra la captura). */
+  alt: string;
+  /** Pie de imagen opcional. */
+  caption?: string;
+  /**
+   * Mientras sea true (o no exista el archivo), se muestra un MOCKUP en vez de
+   * la imagen. Pon la imagen en `src` y quita esta bandera para activarla.
+   */
+  pending?: boolean;
+}
 /** Cómo aterriza el producto en un sector concreto (landing del producto). */
 export interface AplicacionSector {
   /** Slug del sector (resuelve nombre y color desde sectores.ts). */
@@ -32,6 +46,11 @@ export interface ProductoDetalle {
   capacidadesTitulo: string;
   capacidadesIntro?: string;
   capacidades: Capacidad[];
+  /** Título de la galería de capturas (si hay imágenes del software). */
+  galeriaTitulo?: string;
+  galeriaIntro?: string;
+  /** Capturas del software en operación (se muestran solo si hay imágenes). */
+  galeria?: Captura[];
   comoFunciona: PasoComo[];
   beneficios: Beneficio[];
   /** Casos de uso por sector. Si existe, reemplaza las píldoras "Donde más aplica". */
@@ -116,6 +135,19 @@ export const productos: Producto[] = [
             'Datos confiables para decidir',
           ],
         },
+      ],
+      galeriaTitulo: 'El software en operación',
+      galeriaIntro:
+        'Una mirada a Smart PBA por dentro: trazabilidad, evidencia fotográfica y reportes auditables de toda la operación.',
+      // Sube las capturas a public/productos/smart-pba/ (recomendado .webp,
+      // ~1600 px de ancho). Cuando el archivo esté en su sitio, quita
+      // `pending: true` de esa entrada para mostrar la imagen real (hasta
+      // entonces se ve un mockup de la interfaz).
+      galeria: [
+        { src: '/productos/smart-pba/captura-1.webp', alt: 'Panel principal de Smart PBA con los indicadores de la operación', caption: 'Panel de operación en tiempo real', pending: true },
+        { src: '/productos/smart-pba/captura-2.webp', alt: 'Trazabilidad del lote en Smart PBA, del ingreso al despacho', caption: 'Trazabilidad del lote, punta a punta', pending: true },
+        { src: '/productos/smart-pba/captura-3.webp', alt: 'Evidencia fotográfica y conteo por visión artificial en Smart PBA', caption: 'Evidencia fotográfica y conteo por visión artificial', pending: true },
+        { src: '/productos/smart-pba/captura-4.webp', alt: 'Reportes e informes auditables de Smart PBA', caption: 'Reportes e informes auditables', pending: true },
       ],
       comoFunciona: [
         { titulo: 'Ingreso', texto: 'Se registra el lote y el pesaje en pie, con conteo por visión artificial.' },
@@ -328,7 +360,7 @@ export const productos: Producto[] = [
         { titulo: 'Anticipamos', texto: 'Alertas y predicción para mantener antes de la falla.' },
       ],
       beneficios: [
-        { titulo: 'Cero paradas sorpresa', texto: 'Del mantenimiento reactivo al predictivo.' },
+        { titulo: 'Paradas no planeadas al mínimo', texto: 'Del mantenimiento reactivo al predictivo.' },
         { titulo: 'Sitios remotos', texto: 'LoRa: largo alcance y años de batería sin cableado.' },
         { titulo: 'Hardware propio', texto: 'Adaptado a tu operación, no una solución genérica.' },
         { titulo: 'Seguridad', texto: 'Alertas tempranas de gas y temperatura.' },
