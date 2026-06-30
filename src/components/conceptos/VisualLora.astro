@@ -12,12 +12,19 @@ const title = dark ? 'text-on-dark' : 'text-on-light';
 const muted = dark ? 'text-muted-dark' : 'text-muted';
 const conector = dark ? 'text-brand-400' : 'text-brand';
 
-const nodos = ['Presión', 'Temperatura', 'Vibración'];
+const nodos = [
+  // Manómetro (gauge): arco + aguja + cubo central.
+  { t: 'Presión', icon: 'M4 18a8 8 0 1 1 16 0 M12 18l4.5-3 M10.75 18a1.25 1.25 0 1 0 2.5 0 1.25 1.25 0 1 0-2.5 0Z' },
+  // Termómetro con bulbo.
+  { t: 'Temperatura', icon: 'M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0Z M12 9v4.5' },
+  // Vibración: barra central con líneas de movimiento simétricas.
+  { t: 'Vibración', icon: 'M9 5h6v14H9zM6 8v8M3 10v4M18 8v8M21 10v4' },
+];
 const icons = {
-  nodo: 'M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Zm-7 9a7 7 0 0 0 14 0M12 18v3',
-  gateway: 'M6 8a6 6 0 0 1 12 0M9 11a3 3 0 0 1 6 0M4 5a9 9 0 0 1 16 0M12 14v7m-3 0h6',
-  nube: 'M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 17.5 18H7Z',
-  tablero: 'M3 3v18h18M7 14l3-3 3 3 5-6',
+  // Antena de transmisión: ondas radiando desde un punto central (simétrico).
+  gateway: 'M12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z M9 9a4 4 0 0 0 0 6 M15 9a4 4 0 0 1 0 6 M6.5 6.5a8 8 0 0 0 0 11 M17.5 6.5a8 8 0 0 1 0 11',
+  // Monitor/dashboard con barras.
+  tablero: 'M3 5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z M9 20h6 M12 17v3 M7 12v-2 M11 12V8 M15 12v-4',
 };
 ---
 
@@ -32,9 +39,9 @@ const icons = {
         {nodos.map((n) => (
           <div class="flex items-center gap-2.5">
             <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand/15 text-brand-400">
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={icons.nodo} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={n.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
-            <span class={`text-sm ${title}`}>{n}</span>
+            <span class={`text-sm ${title}`}>{n.t}</span>
           </div>
         ))}
       </div>
