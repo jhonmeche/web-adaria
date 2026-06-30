@@ -46,14 +46,18 @@ const etapas = [
 
   <ol class="mt-16 grid gap-y-12 md:grid-cols-4 md:gap-x-4 md:gap-y-0">
     {etapas.map((e, i) => (
-      <li class="relative flex flex-col rounded-2xl border border-ink/10 bg-surface p-6 shadow-sm ring-1 ring-ink/5 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-lg">
+      <li
+        data-reveal
+        class="card relative flex flex-col rounded-2xl border border-ink/10 bg-surface p-6 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/40 hover:shadow-lg"
+        style={`--reveal-delay:${i * 90}ms`}
+      >
         <div class="flex items-center justify-between">
           <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d={e.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </span>
-          <span class="text-sm font-bold text-brand">{String(i + 1).padStart(2, '0')}</span>
+          <span data-count={String(i + 1)} data-pad="2" class="text-sm font-bold text-brand">{String(i + 1).padStart(2, '0')}</span>
         </div>
         <h3 class="mt-4 text-lg font-semibold text-on-light">{e.t}</h3>
         <p class="mt-2 text-sm leading-relaxed text-muted">{e.d}</p>
@@ -79,3 +83,25 @@ const etapas = [
     ))}
   </ol>
 </Section>
+
+<style>
+  /* Entrada escalonada (igual que las cards del resto del sitio): el reveal usa
+     `transform`; el hover usa `translate` (independiente) para no pisarse. */
+  .js [data-reveal].card {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      translate 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .js [data-reveal].card.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .card {
+    transition: translate 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+</style>
