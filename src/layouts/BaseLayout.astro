@@ -57,6 +57,46 @@ const { title, description, image } = Astro.props;
         );
         els.forEach((el) => io.observe(el));
       }
+
+      // Count-up: anima números con [data-count] al entrar en pantalla.
+      // Atributos opcionales: data-pad (relleno de ceros), data-prefix,
+      // data-suffix, data-decimals. Respeta prefers-reduced-motion.
+      const nums = document.querySelectorAll('[data-count]');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const fmtNum = (el, v) => {
+        const dec = parseInt(el.dataset.decimals || '0', 10);
+        const pad = parseInt(el.dataset.pad || '0', 10);
+        let s = dec > 0 ? v.toFixed(dec) : Math.round(v).toString();
+        if (pad) s = s.padStart(pad, '0');
+        el.textContent = (el.dataset.prefix || '') + s + (el.dataset.suffix || '');
+      };
+      const runCount = (el) => {
+        const target = parseFloat(el.dataset.count || '0');
+        if (reduceMotion) return fmtNum(el, target);
+        const dur = 1100;
+        const t0 = performance.now();
+        const tick = (now) => {
+          const p = Math.min(1, (now - t0) / dur);
+          fmtNum(el, target * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      if (nums.length && 'IntersectionObserver' in window) {
+        nums.forEach((el) => fmtNum(el, 0)); // estado inicial (con JS)
+        const ioNum = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                runCount(e.target);
+                ioNum.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.4 },
+        );
+        nums.forEach((el) => ioNum.observe(el));
+      }
     </script>
   </body>
 </html>
