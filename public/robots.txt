@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adariasystems.com/sitemap-index.xml

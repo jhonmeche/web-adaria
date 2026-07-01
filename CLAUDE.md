@@ -99,7 +99,7 @@ evidencia fotográfica que da transparencia al cliente y soporta los informes.
 - **Clave:** es el producto más maduro y el principal caso de éxito / prueba de credibilidad.
 
 ### 3.2 AdariA Vision
-Suite de visión artificial sobre cámaras (integra CCTV/IP existente vía RTSP, sin
+Suite de visión artificial sobre cámaras (integra CCTV/IP existente, sin
 necesidad de hardware nuevo en muchos casos). Modelos entrenados a la medida. Organizada
 en líneas:
 - **Seguridad (HSE):** detección de EPP, zonas restringidas/red-zones, fuego y humo,

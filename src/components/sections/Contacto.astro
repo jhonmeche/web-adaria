@@ -4,11 +4,18 @@
 // blanca), mismo lenguaje visual que el resto de secciones: cabecera centrada
 // con Eyebrow, tarjetas de valor con ícono (reveal escalonado + hover) y
 // formulario.
-// El sitio es estático: el envío real necesita un backend (Formspree / Netlify
-// Forms). Por ahora el formulario valida en cliente y muestra confirmación.
-// Para activarlo: define el endpoint en `action` y quita el preventDefault.
+// El sitio es estático: el envío real necesita un backend. Ya está cableado
+// para Formspree (https://formspree.io) vía fetch + FormData — ver el bloque
+// FORM_ENDPOINT más abajo y en el <script> al final del archivo.
+//
+// ⚠️ CONFIGURACIÓN: crea un formulario gratis en https://formspree.io, copia
+// su endpoint (https://formspree.io/f/XXXXXXX) y pégalo en FORM_ENDPOINT.
+// Mientras quede vacío, el formulario sigue en modo simulado (valida y
+// muestra un mensaje de éxito falso) para no romper la demo del sitio.
 import Eyebrow from '../ui/Eyebrow.astro';
 import { sectores } from '../../data/sectores.ts';
+
+const FORM_ENDPOINT = '';
 
 // Razones para agendar — tarjetas de valor (mismo patrón de cards del sitio).
 const valor = [
@@ -159,22 +166,52 @@ const valor = [
   }
 </style>
 
-<script>
-  // Validación + confirmación en cliente. TODO: conectar backend (Formspree /
-  // Netlify Forms) — definir `action`/`method` en el <form> y enviar fetch.
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+<script define:vars={{ FORM_ENDPOINT }} is:inline>
+  // Si FORM_ENDPOINT está configurado (ver el frontmatter de este componente),
+  // el envío va real vía fetch a Formspree. Si no, sigue en modo simulado
+  // (valida y muestra un mensaje de éxito falso) para no romper la demo.
+  const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
-  form?.addEventListener('submit', (e) => {
+  const submitBtn = form?.querySelector('button[type="submit"]');
+
+  const setStatus = (message, tone) => {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove('hidden', 'bg-ok/15', 'bg-crit/15');
+    status.classList.add(tone === 'error' ? 'bg-crit/15' : 'bg-ok/15');
+  };
+
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    if (status) {
-      status.textContent =
-        '¡Gracias! Hemos recibido su solicitud. Le contactaremos muy pronto.';
-      status.classList.remove('hidden');
+
+    if (!FORM_ENDPOINT) {
+      console.info('[Contacto] FORM_ENDPOINT no configurado — envío simulado. Ver src/components/sections/Contacto.astro');
+      setStatus('¡Gracias! Hemos recibido su solicitud. Le contactaremos muy pronto.', 'ok');
+      form.reset();
+      return;
     }
-    form.reset();
+
+    submitBtn?.setAttribute('disabled', 'true');
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        setStatus('¡Gracias! Hemos recibido su solicitud. Le contactaremos muy pronto.', 'ok');
+        form.reset();
+      } else {
+        setStatus('No pudimos enviar el formulario. Intenta de nuevo o escríbenos por WhatsApp.', 'error');
+      }
+    } catch {
+      setStatus('No pudimos enviar el formulario. Intenta de nuevo o escríbenos por WhatsApp.', 'error');
+    } finally {
+      submitBtn?.removeAttribute('disabled');
+    }
   });
 </script>

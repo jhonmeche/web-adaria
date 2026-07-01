@@ -20,21 +20,21 @@ import { servicios } from '../../data/servicios.ts';
     <ul class="hidden items-center gap-1 lg:flex">
       <!-- Soluciones -->
       <li class="group relative">
-        <a href="#sectores" class="nav-link" aria-haspopup="true">
+        <a href="/#sectores" class="nav-link" aria-haspopup="true">
           Soluciones
           <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <div class="dropdown">
           <p class="dropdown-title">Por sector</p>
           {sectores.map((s) => (
-            <a href="#sectores" class="dropdown-item">{s.nombre}</a>
+            <a href="/#sectores" class="dropdown-item">{s.nombre}</a>
           ))}
         </div>
       </li>
 
       <!-- Productos -->
       <li class="group relative">
-        <a href="#productos" class="nav-link" aria-haspopup="true">
+        <a href="/#productos" class="nav-link" aria-haspopup="true">
           Productos
           <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -60,7 +60,7 @@ import { servicios } from '../../data/servicios.ts';
 
       <li><a href="/blog" class="nav-link">Blog</a></li>
       <li><a href="/nosotros" class="nav-link">Nosotros</a></li>
-      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      <li><a href="/#contacto" class="nav-link">Contacto</a></li>
     </ul>
 
     <!-- Botón menú móvil -->
@@ -81,12 +81,12 @@ import { servicios } from '../../data/servicios.ts';
     class="hidden border-t border-white/10 bg-ink/95 backdrop-blur lg:hidden"
   >
     <div class="space-y-1 px-6 py-4">
-      <a href="#sectores" class="mobile-link">Soluciones</a>
-      <a href="#productos" class="mobile-link">Productos</a>
+      <a href="/#sectores" class="mobile-link">Soluciones</a>
+      <a href="/#productos" class="mobile-link">Productos</a>
       <a href="/#servicios" class="mobile-link">Servicios</a>
       <a href="/blog" class="mobile-link">Blog</a>
       <a href="/nosotros" class="mobile-link">Nosotros</a>
-      <a href="#contacto" class="mobile-link">Contacto</a>
+      <a href="/#contacto" class="mobile-link">Contacto</a>
     </div>
   </div>
 </header>

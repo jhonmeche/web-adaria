@@ -1,6 +1,6 @@
 ---
 title: "Visión artificial sobre tus cámaras actuales: seguridad sin hardware nuevo"
-description: "Cómo AdariA Vision se integra con el CCTV existente vía RTSP para detectar EPP, zonas restringidas, fuego y fatiga, con bajo costo de entrada."
+description: "Cómo AdariA Vision se integra con el CCTV existente para detectar EPP, zonas restringidas, fuego y fatiga, con bajo costo de entrada."
 pubDate: 2026-06-12
 author: "Equipo AdariA"
 category: "Casos de éxito"
@@ -16,7 +16,7 @@ CCTV existente en un sistema que **previene** en tiempo real.
 
 ## Usa la infraestructura que ya tienes
 
-AdariA Vision se integra con cámaras IP/CCTV a través de **RTSP**, sin necesidad de
+AdariA Vision se integra directamente con tus cámaras IP/CCTV, sin necesidad de
 hardware nuevo en muchos casos. Eso baja drásticamente el costo de entrada: se empieza
 con un piloto sobre un caso de uso y se escala desde ahí.
 

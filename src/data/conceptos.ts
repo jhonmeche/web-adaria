@@ -82,9 +82,9 @@ export const grupos: GrupoConceptos[] = [
           'El "cerebro" de la IA, ajustado con ejemplos de tu operación. No es genérico: aprende tus EPP, tus productos y tu contexto, por eso acierta más y se equivoca menos.',
       },
       {
-        termino: 'CCTV/IP y RTSP',
+        termino: 'CCTV/IP',
         definicion:
-          'CCTV/IP son tus cámaras de seguridad actuales; RTSP es el "idioma" estándar para conectarse a ellas. Por eso podemos usar las cámaras que ya tienes, sin comprar hardware nuevo.',
+          'Tus cámaras de seguridad actuales. Podemos conectarnos directamente a ellas, por eso usamos las cámaras que ya tienes, sin comprar hardware nuevo.',
       },
       {
         termino: 'OCR',
@@ -217,7 +217,7 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'Protocolos de comunicación',
         definicion:
-          'El "idioma" estándar con que equipos y sistemas se entienden: MQTT, Modbus, OPC-UA, RTSP. Son los que permiten integrarlo todo.',
+          'El "idioma" estándar con que equipos y sistemas se entienden: MQTT, Modbus, OPC-UA. Son los que permiten integrarlo todo.',
       },
       {
         termino: 'Microcontrolador (MCU)',

@@ -213,13 +213,13 @@ export const servicios: Servicio[] = [
     categoria: 'Visión artificial e IA',
     tagline: 'Modelos propios entrenados para tu contexto.',
     resumen: 'Modelos propios entrenados para tu contexto: más precisión y menos falsos positivos.',
-    tags: ['Modelos propios', 'Deep learning', 'RTSP / CCTV', 'Edge AI'],
+    tags: ['Modelos propios', 'Deep learning', 'CCTV/IP', 'Edge AI'],
     icon: 'M3 8V6a3 3 0 0 1 3-3h2M16 3h2a3 3 0 0 1 3 3v2M21 16v2a3 3 0 0 1-3 3h-2M8 21H6a3 3 0 0 1-3-3v-2M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z',
     detalle: {
       intro:
-        'Entrenamos modelos de visión artificial e inteligencia artificial para tu operación específica. Corren sobre tus cámaras actuales (CCTV/IP vía RTSP), detectan lo que importa con precisión y menos falsos positivos, y disparan alertas en tiempo real. Es la base de AdariA Vision.',
+        'Entrenamos modelos de visión artificial e inteligencia artificial para tu operación específica. Corren sobre tus cámaras actuales (CCTV/IP), detectan lo que importa con precisión y menos falsos positivos, y disparan alertas en tiempo real. Es la base de AdariA Vision.',
       puntos: [
-        'Sobre tus cámaras actuales (RTSP/CCTV)',
+        'Sobre tus cámaras actuales (CCTV/IP)',
         'Modelos entrenados a tu contexto',
         'Alertas en tiempo real',
       ],
@@ -271,10 +271,10 @@ export const servicios: Servicio[] = [
       proceso: [
         { titulo: 'Caso de uso', texto: 'Definimos qué detectar y la métrica de éxito: precisión y falsos positivos.' },
         { titulo: 'Datos y entrenamiento', texto: 'Recolectamos y etiquetamos imágenes de tu contexto y entrenamos el modelo.' },
-        { titulo: 'Integración', texto: 'Conectamos a tus cámaras vía RTSP y al canal de alertas que uses.' },
+        { titulo: 'Integración', texto: 'Conectamos a tus cámaras y al canal de alertas que uses.' },
         { titulo: 'Mejora continua', texto: 'El modelo aprende de nuevos casos y sube su precisión con el tiempo.' },
       ],
-      entregables: ['Deep learning', 'Modelos propios', 'RTSP / CCTV', 'Edge AI', 'Detección y conteo', 'OCR / LPR'],
+      entregables: ['Deep learning', 'Modelos propios', 'CCTV/IP', 'Edge AI', 'Detección y conteo', 'OCR / LPR'],
       beneficios: [
         { titulo: 'Usa tus cámaras', texto: 'Bajo costo de entrada: aprovechamos el CCTV que ya tienes.' },
         { titulo: 'Precisión a tu medida', texto: 'Entrenado en tu contexto: menos falsos positivos.' },

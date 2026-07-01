@@ -179,7 +179,7 @@ export const productos: Producto[] = [
     icon: 'M3 8V6a3 3 0 0 1 3-3h2M16 3h2a3 3 0 0 1 3 3v2M21 16v2a3 3 0 0 1-3 3h-2M8 21H6a3 3 0 0 1-3-3v-2M12 7.5V10M12 14v2.5M7.5 12H10M14 12h2.5',
     detalle: {
       intro:
-        'AdariA Vision convierte tus cámaras en un sistema que ve, entiende y actúa. Modelos de visión artificial entrenados a la medida que se integran sobre el CCTV/IP existente (vía RTSP), o sobre cámaras industriales y de alta velocidad para aplicaciones más exigentes. Un mismo motor para seguridad, calidad, logística e infraestructura.',
+        'AdariA Vision convierte tus cámaras en un sistema que ve, entiende y actúa. Modelos de visión artificial entrenados a la medida que se integran sobre el CCTV/IP existente, o sobre cámaras industriales y de alta velocidad para aplicaciones más exigentes. Un mismo motor para seguridad, calidad, logística e infraestructura.',
       capacidadesTitulo: 'Una suite, cuatro líneas',
       capacidadesIntro:
         'Empieza por un caso de uso y escala a más líneas y más sitios cuando la operación lo pida.',
@@ -228,7 +228,7 @@ export const productos: Producto[] = [
         },
       ],
       comoFunciona: [
-        { titulo: 'Integramos', texto: 'Conectamos tus cámaras CCTV/IP vía RTSP, sin hardware nuevo en muchos casos.' },
+        { titulo: 'Integramos', texto: 'Conectamos tus cámaras CCTV/IP, sin hardware nuevo en muchos casos.' },
         { titulo: 'Entrenamos', texto: 'Modelos a la medida de tu contexto y casos de uso, no detectores genéricos.' },
         { titulo: 'Procesamos', texto: 'Análisis en el borde o servidor: convertimos la imagen en eventos.' },
         { titulo: 'Alertamos', texto: 'Dashboards, alertas en tiempo real e informes auditables.' },

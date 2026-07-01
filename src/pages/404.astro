@@ -1,0 +1,29 @@
+---
+// Página 404 personalizada — mismo lenguaje visual del sitio (fondo oscuro,
+// rejilla técnica) en vez del 404 genérico de Astro.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+
+const title = 'Página no encontrada — AdariA Systems';
+const description = 'La página que buscas no existe o fue movida.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="relative isolate flex min-h-[80svh] items-center overflow-hidden bg-ink text-on-dark">
+    <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-3xl px-6 py-28 text-center lg:px-8">
+      <p class="text-sm font-semibold tracking-wide text-brand-400">Error 404</p>
+      <h1 class="mt-4 text-balance text-display font-semibold text-on-dark">
+        No encontramos esta página.
+      </h1>
+      <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-dark">
+        El enlace puede estar roto o la página fue movida. Vuelve al inicio o
+        cuéntanos tu proyecto directamente.
+      </p>
+      <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+        <Button href="/" variant="primary" on="dark">Volver al inicio</Button>
+        <Button href="/#contacto" variant="secondary" on="dark">Hablemos de tu proyecto</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
