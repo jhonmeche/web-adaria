@@ -16,6 +16,7 @@
   /* Núcleo de marca */
   --color-ink: #1a1a1a;        /* fondo oscuro: gris carbón neutro (estilo Elementary) */
   --color-ink-card: #242424;   /* cards sobre fondo oscuro */
+  --color-ink-card-soft: #3a3f47; /* cards oscuras "isla" sobre secciones blancas (más claras, más contraste) */
   --color-light: #f4f6f9;      /* fondo claro (alterna con el oscuro) */
   --color-surface: #ffffff;    /* cards sobre fondo claro */
 
@@ -115,6 +116,16 @@ h1, h2, h3, h4 {
     opacity: 1;
     transform: none;
   }
+}
+
+/* Utilidad: botón secundario que se rellena con el azul de marca al hover
+   (en vez de solo resaltar borde/texto). Se define fuera de @layer utilities
+   para que gane siempre sobre el hover gris por defecto del componente Button,
+   sin depender del orden de generación de las utilidades de Tailwind. */
+.btn-fill-brand-hover:hover {
+  background-color: var(--color-brand);
+  border-color: var(--color-brand);
+  color: #fff;
 }
 
 /* Utilidad: rejilla técnica sutil de fondo (hero / secciones oscuras) */

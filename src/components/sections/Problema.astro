@@ -1,5 +1,6 @@
 ---
-// §9.2 — El problema: el costo de operar a ciegas. Fondo claro.
+// §9.2 — El problema: el costo de operar a ciegas. Fondo blanco (alterna
+// oscuro→blanco→oscuro desde el Hero).
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
 
@@ -31,7 +32,7 @@ const icons: Record<string, string> = {
 };
 ---
 
-<Section theme="light" id="problema" aria-labelledby="problema-title">
+<Section theme="white" id="problema" aria-labelledby="problema-title">
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
     <Eyebrow on="light">El costo de operar a ciegas</Eyebrow>
     <h2 id="problema-title" data-reveal class="text-balance text-h1 font-semibold text-on-light">
@@ -47,7 +48,7 @@ const icons: Record<string, string> = {
     {dolores.map((d, i) => (
       <div
         data-reveal
-        class="card group flex flex-col rounded-2xl border border-ink/10 bg-surface p-8 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-ink/25 hover:shadow-lg"
+        class="card group flex flex-col rounded-2xl border border-ink/10 bg-light p-8 ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-ink/25 hover:shadow-lg"
         style={`--reveal-delay:${i * 90}ms`}
       >
         <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">

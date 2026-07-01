@@ -1,9 +1,11 @@
 ---
 // §4 / §7 — Servicios (capacidades núcleo). Cierra el ancla #servicios que la
-// nav enlazaba sin destino. Fondo OSCURO con rejilla técnica: presenta a AdariA
-// como un equipo de ingeniería integral (las 6 capacidades) y su metodología de
-// trabajo. Reutiliza el patrón visual del sitio (cards data-reveal, íconos de
-// trazo, números grandes en hover).
+// nav enlazaba sin destino. Presenta a AdariA como un equipo de ingeniería
+// integral (las 6 capacidades, fondo BLANCO) y luego su metodología de trabajo
+// (fondo OSCURO), para seguir la alternancia oscuro→blanco desde el Hero:
+// Stack (oscuro) → Servicios/capacidades (blanco) → Servicios/método (oscuro)
+// → Sectores (blanco). Reutiliza el patrón visual del sitio (cards data-reveal,
+// íconos de trazo, números grandes en hover).
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
 import Button from '../ui/Button.astro';
@@ -24,13 +26,13 @@ const metodologia = [
 ];
 ---
 
-<Section theme="dark" id="servicios" grid={true} aria-labelledby="servicios-title">
+<Section theme="white" id="servicios" aria-labelledby="servicios-title">
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-    <Eyebrow on="dark">Servicios</Eyebrow>
-    <h2 id="servicios-title" data-reveal class="text-balance text-h1 font-semibold text-on-dark">
+    <Eyebrow on="light">Servicios</Eyebrow>
+    <h2 id="servicios-title" data-reveal class="text-balance text-h1 font-semibold text-on-light">
       Un equipo de ingeniería integral,<br class="hidden sm:block" /> bajo un mismo techo.
     </h2>
-    <p data-reveal class="mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-dark">
+    <p data-reveal class="mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted">
       Diseñamos el hardware, capturamos el dato, entrenamos los modelos, lo
       integramos y lo devolvemos convertido en decisiones. Seis capacidades que
       cubren la cadena completa —del sensor a la decisión— con desarrollo a la medida.
@@ -42,24 +44,24 @@ const metodologia = [
     {servicios.map((c, i) => (
       <article
         data-reveal
-        class="card group relative flex flex-col rounded-2xl border border-white/10 bg-ink-card p-8 ring-1 ring-white/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10"
+        class="card group relative flex flex-col rounded-2xl border border-ink/10 bg-light p-8 ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-lg"
         style={`--reveal-delay:${i * 70}ms`}
       >
-        <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors group-hover:bg-brand group-hover:text-white">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d={c.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </span>
-        <h3 class="mt-5 text-xl font-semibold text-on-dark">{c.nombre}</h3>
-        <p class="mt-2 text-sm leading-relaxed text-muted-dark">{c.resumen}</p>
-        <ul class="mt-5 flex flex-wrap gap-2 border-t border-white/5 pt-5">
+        <h3 class="mt-5 text-xl font-semibold text-on-light">{c.nombre}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">{c.resumen}</p>
+        <ul class="mt-5 flex flex-wrap gap-2 border-t border-ink/10 pt-5">
           {c.tags.map((t) => (
-            <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-on-dark/75">{t}</li>
+            <li class="rounded-full border border-ink/10 bg-surface px-3 py-1 text-xs font-medium text-on-light/75">{t}</li>
           ))}
         </ul>
         <a
           href={`/servicios/${c.slug}`}
-          class="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-brand-400 transition-all group-hover:gap-2.5"
+          class="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-brand transition-all group-hover:gap-2.5"
         >
           Saber más
           <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -67,40 +69,40 @@ const metodologia = [
       </article>
     ))}
   </div>
+</Section>
 
+<Section theme="dark" id="metodologia" grid={true} aria-labelledby="metodologia-title">
   <!-- Metodología: cómo trabaja el equipo (gráfico de proceso) -->
-  <div class="mt-24">
-    <div class="mx-auto max-w-3xl text-center">
-      <Eyebrow on="dark">Cómo trabajamos</Eyebrow>
-      <h3 data-reveal class="text-balance text-h2 font-semibold text-on-dark">
-        Un método de equipo profesional, no improvisación.
-      </h3>
-      <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
-        Empezamos pequeño y de bajo riesgo, validamos con datos y escalamos. Land
-        &amp; expand: del piloto a la operación gestionada.
-      </p>
-    </div>
+  <div class="mx-auto max-w-3xl text-center">
+    <Eyebrow on="dark">Cómo trabajamos</Eyebrow>
+    <h3 id="metodologia-title" data-reveal class="text-balance text-h2 font-semibold text-on-dark">
+      Un método de equipo profesional, no improvisación.
+    </h3>
+    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
+      Empezamos pequeño y de bajo riesgo, validamos con datos y escalamos. Land
+      &amp; expand: del piloto a la operación gestionada.
+    </p>
+  </div>
 
-    <div class="mt-14">
-      <ol class="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-        {metodologia.map((p, i) => (
-          <li
-            data-reveal
-            class="card group relative flex flex-col rounded-2xl border border-white/10 bg-ink-card p-6 ring-1 ring-white/5 hover:[translate:0_-4px] hover:border-brand/40"
-            style={`--reveal-delay:${i * 80}ms`}
-          >
-            <span
-              aria-hidden="true"
-              data-count={String(i + 1)}
-              data-pad="2"
-              class="inline-block origin-top-left text-6xl font-bold leading-none tracking-tight text-white/10 transition-all duration-300 group-hover:scale-110 group-hover:text-brand-400"
-            >{String(i + 1).padStart(2, '0')}</span>
-            <h4 class="mt-4 text-base font-semibold text-on-dark">{p.titulo}</h4>
-            <p class="mt-1.5 text-sm leading-relaxed text-muted-dark">{p.texto}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
+  <div class="mt-14">
+    <ol class="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+      {metodologia.map((p, i) => (
+        <li
+          data-reveal
+          class="card group relative flex flex-col rounded-2xl border border-white/10 bg-ink-card p-6 ring-1 ring-white/5 hover:[translate:0_-4px] hover:border-brand/40"
+          style={`--reveal-delay:${i * 80}ms`}
+        >
+          <span
+            aria-hidden="true"
+            data-count={String(i + 1)}
+            data-pad="2"
+            class="inline-block origin-top-left text-6xl font-bold leading-none tracking-tight text-white/10 transition-all duration-300 group-hover:scale-110 group-hover:text-brand-400"
+          >{String(i + 1).padStart(2, '0')}</span>
+          <h4 class="mt-4 text-base font-semibold text-on-dark">{p.titulo}</h4>
+          <p class="mt-1.5 text-sm leading-relaxed text-muted-dark">{p.texto}</p>
+        </li>
+      ))}
+    </ol>
   </div>
 
   <!-- CTA -->

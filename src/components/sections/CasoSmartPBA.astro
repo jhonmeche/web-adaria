@@ -1,5 +1,6 @@
 ---
-// §9.6 — Caso destacado: Smart PBA. Prueba de credibilidad. Fondo claro.
+// §9.6 — Caso destacado: Smart PBA. Prueba de credibilidad. Fondo OSCURO
+// (alterna oscuro→blanco desde el Hero).
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
 
@@ -12,14 +13,14 @@ const metricas = [
 ];
 ---
 
-<Section theme="light" id="caso">
+<Section theme="dark" id="caso">
   <div class="grid items-center gap-12 lg:grid-cols-2">
     <div>
-      <Eyebrow on="light">Caso destacado · Smart PBA</Eyebrow>
-      <h2 data-reveal class="text-h2 font-semibold text-on-light">
+      <Eyebrow on="dark">Caso destacado · Smart PBA</Eyebrow>
+      <h2 data-reveal class="text-h2 font-semibold text-on-dark">
         Trazabilidad real en plantas de beneficio animal.
       </h2>
-      <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">
+      <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
         Smart PBA es nuestro producto más maduro y nuestra mejor prueba: un ERP
         que gestiona la operación cárnica completa, con conteo por visión
         artificial y evidencia fotográfica que da transparencia total al cliente.
@@ -27,27 +28,27 @@ const metricas = [
 
       <dl data-reveal class="mt-10 space-y-6">
         {metricas.map((m) => (
-          <div class="flex items-baseline gap-4 border-l-2 border-brand pl-4">
-            <dt class="text-2xl font-semibold text-brand">
+          <div class="flex items-baseline gap-4 border-l-2 border-brand-400 pl-4">
+            <dt class="text-2xl font-semibold text-brand-400">
               {m.count != null ? (
                 <span data-count={String(m.count)} data-suffix={m.suffix}>{m.valor}</span>
               ) : (
                 m.valor
               )}
             </dt>
-            <dd class="text-sm text-muted">{m.label}</dd>
+            <dd class="text-sm text-muted-dark">{m.label}</dd>
           </div>
         ))}
       </dl>
 
-      <a href="#contacto" data-reveal class="mt-10 inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:gap-2.5">
+      <a href="#contacto" data-reveal class="mt-10 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400 hover:gap-2.5">
         Ver cómo Smart PBA puede ayudarte
         <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
 
     <!-- Placeholder visual: reemplazar por foto de Smart PBA en operación -->
-    <div data-reveal class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-ink/5 bg-ink shadow-xl">
+    <div data-reveal class="relative aspect-4/3 overflow-hidden rounded-2xl border border-white/10 bg-ink-card shadow-xl">
       <div class="tech-grid absolute inset-0 opacity-50" aria-hidden="true"></div>
       <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
         <svg class="h-12 w-12 text-brand-400" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2v11Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="1.5"/></svg>

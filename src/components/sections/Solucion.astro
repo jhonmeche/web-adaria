@@ -1,8 +1,9 @@
 ---
 // §9.3 — La solución en pasos: Captar → Procesar → Decidir.
-// Fondo CLARO con una leve tinta azul (banda de "proceso"), para diferenciarla
-// de la sección Industria 4.0 (oscura, que va justo antes) y de Stack (clara
-// plana, que va justo después). Se presenta como un diagrama de proceso.
+// Fondo BLANCO con una leve tinta azul (banda de "proceso"), para diferenciarla
+// de la sección Industria 4.0 (oscura, justo antes) y de Stack (oscura, justo
+// después) — alterna oscuro→blanco→oscuro desde el Hero. Se presenta como un
+// diagrama de proceso.
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
 
@@ -32,10 +33,10 @@ const pasos = [
 ---
 
 <Section
-  theme="light"
+  theme="white"
   id="solucion"
   aria-labelledby="solucion-title"
-  style="background-image: linear-gradient(180deg, #e9effb 0%, #f4f6f9 60%);"
+  style="background-image: linear-gradient(180deg, #e9effb 0%, #ffffff 60%);"
 >
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
     <Eyebrow on="light">Del sensor a la decisión</Eyebrow>
@@ -60,7 +61,7 @@ const pasos = [
       {pasos.map((p, i) => (
         <li
           data-reveal
-          class="step group relative rounded-2xl border border-ink/10 bg-surface p-8 shadow-lg shadow-ink/5 ring-1 ring-ink/5 hover:-translate-y-1 hover:border-brand/40 hover:shadow-2xl hover:shadow-brand/15"
+          class="step group relative rounded-2xl border border-ink/10 bg-light p-8 ring-1 ring-ink/5 hover:-translate-y-1 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10"
           style={`--reveal-delay:${i * 90}ms`}
         >
           <div class="mb-6 flex items-center justify-between">

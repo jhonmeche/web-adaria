@@ -1,5 +1,6 @@
 ---
-// §9.7 — Por qué AdariA: diferenciadores. Fondo oscuro.
+// §9.7 — Por qué AdariA: diferenciadores. Fondo BLANCO (alterna oscuro→
+// blanco desde el Hero).
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
 
@@ -35,13 +36,13 @@ const diferenciadores = [
 ];
 ---
 
-<Section theme="dark" id="por-que" grid={true}>
+<Section theme="white" id="por-que">
   <div class="mx-auto max-w-3xl text-center">
-    <Eyebrow on="dark">Por qué AdariA</Eyebrow>
-    <h2 data-reveal class="text-h1 font-semibold text-on-dark">
+    <Eyebrow on="light">Por qué AdariA</Eyebrow>
+    <h2 data-reveal class="text-h1 font-semibold text-on-light">
       Pocas empresas en Colombia hacen todo esto bajo un mismo techo.
     </h2>
-    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
+    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">
       Del sensor a la decisión, a la medida, con dato auditable. Ese es nuestro
       diferencial.
     </p>
@@ -51,20 +52,20 @@ const diferenciadores = [
     {diferenciadores.map((d, i) => (
       <article
         data-reveal
-        class="card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-card p-7 ring-1 ring-white/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10"
+        class="card group relative flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-light p-7 ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-lg"
         style={`--reveal-delay:${i * 90}ms`}
       >
         <!-- Barra de acento superior que aparece al hover -->
         <span class="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
 
-        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d={d.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
-        <p class="text-xs font-semibold tracking-tight text-brand-400/80">{d.resumen}</p>
-        <h3 class="mt-1.5 text-lg font-semibold text-on-dark">{d.titulo}</h3>
-        <p class="mt-2 text-sm leading-relaxed text-muted-dark">{d.texto}</p>
+        <p class="text-xs font-semibold tracking-tight text-brand/80">{d.resumen}</p>
+        <h3 class="mt-1.5 text-lg font-semibold text-on-light">{d.titulo}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">{d.texto}</p>
       </article>
     ))}
   </div>

@@ -1,5 +1,8 @@
 ---
-// §9.5 — Sectores: tarjetas por industria. Fondo oscuro.
+// §9.5 — Sectores: tarjetas por industria. Fondo BLANCO (alterna oscuro→
+// blanco desde el Hero); las tarjetas se mantienen oscuras a propósito para
+// que destaquen sobre el fondo claro (mismo recurso que el placeholder de
+// Smart PBA).
 // En la HOME solo manda el azul de marca (Opción C); el color sectorial se
 // reserva para cada landing. Las imágenes son placeholders marcados para
 // reemplazar por fotos reales de operación.
@@ -8,13 +11,13 @@ import Eyebrow from '../ui/Eyebrow.astro';
 import { sectores } from '../../data/sectores.ts';
 ---
 
-<Section theme="dark" id="sectores">
+<Section theme="white" id="sectores">
   <div class="mx-auto max-w-3xl text-center">
-    <Eyebrow on="dark">Soluciones por sector</Eyebrow>
-    <h2 data-reveal class="text-h1 font-semibold text-on-dark">
+    <Eyebrow on="light">Soluciones por sector</Eyebrow>
+    <h2 data-reveal class="text-h1 font-semibold text-on-light">
       Ingeniería de extremo a extremo<br class="hidden sm:block" /> para su industria.
     </h2>
-    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
+    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">
       Diseñamos hardware electrónico propio —nodos, gateways y dispositivos
       edge—, sensorizamos con IoT y conectividad LoRa/LoRaWAN y entrenamos
       modelos de visión artificial. Procesamos en el borde,
@@ -28,11 +31,11 @@ import { sectores } from '../../data/sectores.ts';
       <a
         href="#sectores"
         data-reveal
-        class="sector-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-card hover:[translate:0_-6px] hover:border-brand/40"
+        class="sector-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-card-soft hover:[translate:0_-6px] hover:border-brand/40"
         style={`--reveal-delay:${i * 90}ms`}
       >
         <!-- Media de la tarjeta: video (fondo en bucle) · imagen · o placeholder -->
-        <div class="relative aspect-3/2 overflow-hidden bg-linear-to-br from-ink-card to-ink">
+        <div class="relative aspect-3/2 overflow-hidden bg-linear-to-br from-ink-card-soft to-ink-card">
           {s.video ? (
             <video
               class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -87,7 +90,7 @@ import { sectores } from '../../data/sectores.ts';
     <a
       href="#contacto"
       data-reveal
-      class="sector-card group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-white/20 bg-ink-card/40 p-8 text-center hover:[translate:0_-6px] hover:border-brand/50"
+      class="sector-card group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-white/20 bg-ink-card-soft/70 p-8 text-center hover:[translate:0_-6px] hover:border-brand/50"
       style={`--reveal-delay:${sectores.length * 90}ms`}
     >
       <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors group-hover:bg-brand group-hover:text-white">
