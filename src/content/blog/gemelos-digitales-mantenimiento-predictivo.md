@@ -5,8 +5,8 @@ pubDate: 2026-07-09
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Gemelo digital", "Mantenimiento predictivo", "IA", "AdariA Sense"]
-cover: ""
-coverAlt: ""
+cover: "/blog/gemelos-digitales-mantenimiento-predictivo.jpg"
+coverAlt: "Banco industrial con sensor de vibracion y pantalla de gemelo digital para mantenimiento predictivo"
 draft: false
 ---
 

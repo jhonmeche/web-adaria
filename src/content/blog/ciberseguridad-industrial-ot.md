@@ -5,8 +5,8 @@ pubDate: 2026-07-03
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Ciberseguridad", "IoT", "OT", "Dato auditable"]
-cover: ""
-coverAlt: ""
+cover: "/blog/ciberseguridad-industrial-ot.jpg"
+coverAlt: "Equipo OT industrial con sensores conectados y tablero de seguridad en una sala de control"
 draft: false
 ---
 

@@ -5,8 +5,8 @@ pubDate: 2026-07-11
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Visión artificial", "YOLO", "Edge AI", "AdariA Vision"]
-cover: ""
-coverAlt: ""
+cover: "/blog/yolo26-deteccion-tiempo-real.jpg"
+coverAlt: "Camara industrial detectando objetos sobre una banda transportadora en tiempo real"
 draft: false
 ---
 

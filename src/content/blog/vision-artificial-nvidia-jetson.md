@@ -6,7 +6,7 @@ author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Visión artificial", "NVIDIA Jetson", "Edge AI", "AdariA Vision"]
 cover: "/blog/vision-artificial-nvidia-jetson.jpg"
-coverAlt: "Ícono de chip/procesador representando la inteligencia artificial en el borde"
+coverAlt: "Camara industrial y computador de borde analizando piezas en una linea de inspeccion"
 draft: false
 ---
 

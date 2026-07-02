@@ -6,7 +6,7 @@ author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Mantenimiento predictivo", "IoT", "AdariA Sense", "ROI"]
 cover: "/blog/mantenimiento-predictivo-roi.jpg"
-coverAlt: "Ícono de pulso/monitoreo representando el mantenimiento predictivo"
+coverAlt: "Sensor de vibracion y tablet de monitoreo junto a un motor industrial"
 draft: false
 ---
 

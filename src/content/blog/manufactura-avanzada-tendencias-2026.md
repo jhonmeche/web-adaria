@@ -5,8 +5,8 @@ pubDate: 2026-07-13
 author: "Equipo AdariA"
 category: "Industria"
 tags: ["Manufactura", "Industria 4.0", "Metrología"]
-cover: ""
-coverAlt: ""
+cover: "/blog/manufactura-avanzada-tendencias-2026.jpg"
+coverAlt: "Estacion de inspeccion de calidad en una celda de manufactura avanzada"
 draft: false
 ---
 

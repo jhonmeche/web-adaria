@@ -5,8 +5,8 @@ pubDate: 2026-07-04
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Energía solar", "IoT", "AdariA Sense"]
-cover: ""
-coverAlt: ""
+cover: "/blog/energia-solar-monitoreo-iot.jpg"
+coverAlt: "Sensor IoT instalado junto a paneles solares en una planta remota"
 draft: false
 ---
 

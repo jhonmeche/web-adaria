@@ -5,8 +5,8 @@ pubDate: 2026-07-02
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Visión artificial", "Robótica", "Automatización"]
-cover: ""
-coverAlt: ""
+cover: "/blog/robots-humanoides-lineas-produccion.jpg"
+coverAlt: "Robot humanoide operando en una estacion de ensamblaje dentro de una fabrica real"
 draft: false
 ---
 

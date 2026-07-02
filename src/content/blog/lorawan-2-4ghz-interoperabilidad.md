@@ -5,8 +5,8 @@ pubDate: 2026-07-10
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["LoRa", "LoRaWAN", "IoT", "AdariA Sense"]
-cover: ""
-coverAlt: ""
+cover: "/blog/lorawan-2-4ghz-interoperabilidad.jpg"
+coverAlt: "Modulos IoT y antenas LoRaWAN sobre un banco de laboratorio industrial"
 draft: false
 ---
 

@@ -6,7 +6,7 @@ author: "Equipo AdariA"
 category: "Industria"
 tags: ["Industria 4.0", "Colombia", "Transformación digital"]
 cover: "/blog/industria-4-0-colombia.jpg"
-coverAlt: "Ícono de cuatro pilares conectados representando la Industria 4.0"
+coverAlt: "Linea de manufactura moderna con sensores y tablero operativo en una planta colombiana"
 draft: false
 ---
 

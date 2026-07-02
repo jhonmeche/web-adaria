@@ -6,7 +6,7 @@ author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["LoRa", "LoRaWAN", "IoT", "AdariA Sense"]
 cover: "/blog/lorawan-conectividad-remota.jpg"
-coverAlt: "Ícono de señal de largo alcance representando la conectividad LoRaWAN"
+coverAlt: "Nodo LoRa instalado en tuberia industrial de un sitio remoto con antena de largo alcance"
 draft: false
 ---
 

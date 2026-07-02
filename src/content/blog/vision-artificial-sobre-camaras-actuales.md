@@ -5,8 +5,8 @@ pubDate: 2026-06-12
 author: "Equipo AdariA"
 category: "Casos de éxito"
 tags: ["Visión artificial", "HSE", "Seguridad", "AdariA Vision"]
-cover: ""
-coverAlt: ""
+cover: "/blog/vision-artificial-sobre-camaras-actuales.jpg"
+coverAlt: "Camara CCTV y monitor de seguridad industrial con deteccion visual de elementos de proteccion"
 draft: false
 ---
 

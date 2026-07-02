@@ -5,8 +5,8 @@ pubDate: 2026-06-20
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["IoT", "LoRa", "Mantenimiento predictivo", "AdariA Sense"]
-cover: ""
-coverAlt: ""
+cover: "/blog/monitoreo-lora-sitios-remotos.jpg"
+coverAlt: "Nodo IoT LoRa conectado a sensores de presion y temperatura en una operacion remota"
 draft: false
 ---
 

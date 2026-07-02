@@ -5,8 +5,8 @@ pubDate: 2026-07-06
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Drones", "Minería", "Agroindustria", "AdariA Vision"]
-cover: ""
-coverAlt: ""
+cover: "/blog/drones-inspeccion-mineria-agro.jpg"
+coverAlt: "Dron comercial inspeccionando infraestructura en un sitio industrial y agricola remoto"
 draft: false
 ---
 
