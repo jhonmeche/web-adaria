@@ -35,23 +35,40 @@ const capas = [
     </p>
   </div>
 
-  <ol class="mt-16 grid gap-4 lg:grid-cols-4">
-    {capas.map((c, i) => (
-      <li
-        data-reveal
-        class="card relative rounded-2xl border border-white/10 bg-ink-card/95 p-6 ring-1 ring-white/5"
-        style={`--reveal-delay:${i * 80}ms`}
-      >
-        <span class="text-xs font-semibold text-brand-400">Capa {String(i + 1).padStart(2, '0')}</span>
-        <h3 class="mt-3 text-xl font-semibold text-on-dark">{c.titulo}</h3>
-        <p class="mt-2 text-sm leading-relaxed text-muted-dark">{c.texto}</p>
-        {i < capas.length - 1 && (
-          <span class="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border border-brand-400/30 bg-ink text-brand-400 lg:flex" aria-hidden="true">
-            <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-          </span>
-        )}
-      </li>
-    ))}
-  </ol>
+  <!-- El acento sube de gris neutro (dato crudo, "Campo") a azul de marca
+       ("Decisión"): la misma señal se refina capa a capa. Un pulso recorre la
+       línea de fondo para reforzarlo con movimiento. -->
+  <div class="relative mt-16">
+    <div
+      aria-hidden="true"
+      class="absolute inset-x-[8%] top-1/2 hidden h-px -translate-y-1/2 overflow-hidden bg-white/8 lg:block"
+    >
+      <span class="flow-dot absolute inset-y-0 left-0 w-16 bg-linear-to-r from-transparent via-brand-400 to-transparent"></span>
+    </div>
+
+    <ol class="grid gap-4 lg:grid-cols-4">
+      {capas.map((c, i) => {
+        const pct = (i / (capas.length - 1)) * 100;
+        const acento = `color-mix(in srgb, var(--color-brand-400) ${pct}%, #7b8794)`;
+        return (
+          <li
+            data-reveal
+            class="card relative overflow-hidden rounded-2xl border border-white/10 bg-ink-card/95 p-6 ring-1 ring-white/5"
+            style={`--reveal-delay:${i * 80}ms`}
+          >
+            <span class="absolute inset-x-0 top-0 h-1" style={`background:${acento}`} aria-hidden="true"></span>
+            <span class="text-xs font-semibold" style={`color:${acento}`}>Capa {String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-3 text-xl font-semibold text-on-dark">{c.titulo}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted-dark">{c.texto}</p>
+            {i < capas.length - 1 && (
+              <span class="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border border-brand-400/30 bg-ink lg:flex" style={`color:${acento}`} aria-hidden="true">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  </div>
 </Section>
 

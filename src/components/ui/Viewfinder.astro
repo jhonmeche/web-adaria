@@ -1,0 +1,35 @@
+---
+// Retícula de esquinas (viewfinder) — motivo de marca derivado del ícono del
+// logo (mira/visor). Enmarca imágenes clave como si un sistema de visión
+// artificial estuviera reconociendo el sujeto: evidencia fotográfica, tarjetas
+// de sector, hero. Úsalo con moderación (un solo motivo, pocos lugares).
+interface Props {
+  /** Sobre qué fondo se dibuja (ajusta el color del trazo). */
+  on?: 'dark' | 'light';
+  size?: 'sm' | 'md' | 'lg';
+  /** Si es true, siempre visible (ej. foto de evidencia). Si no, aparece con
+   *  el hover del contenedor `group` más cercano (ej. tarjeta de sector). */
+  active?: boolean;
+  /** Pulso sutil de opacidad en las esquinas (para active=true). */
+  live?: boolean;
+  class?: string;
+}
+const { on = 'dark', size = 'md', active = false, live = false, class: className = '' } = Astro.props;
+
+const color = on === 'dark' ? 'border-brand-400' : 'border-brand';
+const leg = { sm: 'h-4 w-4', md: 'h-6 w-6', lg: 'h-9 w-9' }[size];
+const inset = { sm: 'inset-2', md: 'inset-3.5', lg: 'inset-5' }[size];
+const visibility = active
+  ? 'opacity-100 scale-100'
+  : 'opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100';
+---
+
+<span
+  class={`pointer-events-none absolute ${inset} z-10 transition-all duration-500 ease-out ${visibility} ${live ? 'vf-live' : ''} ${className}`}
+  aria-hidden="true"
+>
+  <i class={`vf-corner absolute left-0 top-0 ${leg} border-l-2 border-t-2 ${color}`}></i>
+  <i class={`vf-corner absolute right-0 top-0 ${leg} border-r-2 border-t-2 ${color}`}></i>
+  <i class={`vf-corner absolute bottom-0 left-0 ${leg} border-b-2 border-l-2 ${color}`}></i>
+  <i class={`vf-corner absolute bottom-0 right-0 ${leg} border-b-2 border-r-2 ${color}`}></i>
+</span>

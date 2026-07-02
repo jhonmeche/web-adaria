@@ -3,6 +3,7 @@
 // todo el ancho (full-bleed) y el TÍTULO va ENCIMA, con degradado + sombra para
 // legibilidad. Título e imagen rotan sincronizados.
 import Button from '../ui/Button.astro';
+import Viewfinder from '../ui/Viewfinder.astro';
 
 // ── SOLUCIONES DEL CARRUSEL ────────────────────────────────────────────────
 // Imágenes en  public/hero/  (slide-1.png ... slide-5.png). Si una falta, se
@@ -154,6 +155,10 @@ const slides = [
       <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </a>
+
+  <!-- Retícula de visión: enmarca la escena, como si AdariA Vision estuviera
+       reconociendo la operación. Solo desktop (deja aire a los controles en móvil). -->
+  <Viewfinder on="dark" size="lg" active live class="hidden lg:block" />
 </section>
 
 <style>

@@ -49,6 +49,13 @@ const pilares = [
 ---
 
 <Section theme="dark" id="industria-40" grid={true} aria-labelledby="industria-40-title">
+  <!-- Bus de señal: una línea horizontal con un pulso que la recorre, como el
+       dato viajando por una red de sensores conectados (motivo de "Industria
+       4.0" = operación conectada). Puramente decorativo. -->
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-px overflow-hidden bg-linear-to-r from-transparent via-white/12 to-transparent" aria-hidden="true">
+    <span class="flow-dot absolute inset-y-0 left-0 w-24 bg-linear-to-r from-transparent via-brand-400 to-transparent"></span>
+  </div>
+
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
     <Eyebrow on="dark">Industria 4.0</Eyebrow>
     <h2 id="industria-40-title" data-reveal class="text-balance text-h1 font-semibold text-on-dark">

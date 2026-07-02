@@ -51,11 +51,15 @@ const pasos = [
   </div>
 
   <div class="relative mt-16">
-    {/* Línea-cadena que conecta los tres pasos (visible en los espacios entre cards) */}
+    {/* Línea-cadena que conecta los tres pasos: el dato viaja de Captar a
+       Decidir, con un pulso que recorre la línea en bucle (visible en los
+       espacios entre cards). */}
     <div
       aria-hidden="true"
-      class="absolute inset-x-[14%] top-1/2 hidden h-px -translate-y-1/2 bg-linear-to-r from-transparent via-brand/40 to-transparent md:block"
-    ></div>
+      class="absolute inset-x-[14%] top-1/2 hidden h-px -translate-y-1/2 overflow-hidden bg-linear-to-r from-transparent via-brand/25 to-transparent md:block"
+    >
+      <span class="flow-dot absolute inset-y-0 left-0 w-16 bg-linear-to-r from-transparent via-brand to-transparent"></span>
+    </div>
 
     <ol class="grid gap-6 md:grid-cols-3">
       {pasos.map((p, i) => (

@@ -294,15 +294,13 @@ const jsonLd = {
       {d.beneficios.map((b, i) => (
         <div
           data-reveal
-          class="card group flex flex-col rounded-2xl border border-ink/10 bg-surface p-7 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/40 hover:shadow-lg"
+          class="card group relative flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-surface p-7 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/40 hover:shadow-lg"
           style={`--reveal-delay:${i * 80}ms`}
         >
-          <span
-            aria-hidden="true"
-            data-count={String(i + 1)}
-            data-pad="2"
-            class="inline-block origin-top-left text-6xl font-bold leading-none tracking-tight text-ink/10 transition-all duration-300 group-hover:scale-110 group-hover:text-brand"
-          >{String(i + 1).padStart(2, '0')}</span>
+          <span class="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+          <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </span>
           <h3 class="mt-4 text-base font-semibold text-on-light">{b.titulo}</h3>
           <p class="mt-2 text-sm leading-relaxed text-muted">{b.texto}</p>
         </div>

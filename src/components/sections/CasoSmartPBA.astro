@@ -3,6 +3,7 @@
 // (alterna oscuro→blanco desde el Hero).
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
+import Viewfinder from '../ui/Viewfinder.astro';
 
 const metricas = [
   { valor: 'Trazabilidad', label: 'del ingreso al despacho dentro del flujo operativo' },
@@ -48,6 +49,9 @@ const metricas = [
         <svg class="h-12 w-12 text-brand-400" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2v11Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="1.5"/></svg>
         <p class="text-sm text-muted-dark">Foto de Smart PBA en planta</p>
       </div>
+      <!-- Retícula de visión: la evidencia fotográfica queda "encuadrada",
+           igual que el modelo de conteo de Smart PBA enmarca cada lote. -->
+      <Viewfinder on="dark" size="md" active live />
     </div>
   </div>
 </Section>

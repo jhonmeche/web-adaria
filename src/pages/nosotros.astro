@@ -30,6 +30,17 @@ const iniciales = (nombre: string) => {
   return (partes[0][0] + partes[partes.length - 1][0]).toUpperCase();
 };
 
+// Íconos por valor (no es una secuencia: cada uno es un rasgo independiente,
+// por eso no lleva numeración — solo un ícono que lo represente).
+const iconosValores = [
+  'M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z', // Rigor técnico
+  'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Zm10 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z', // Transparencia y trazabilidad
+  'M9 18h6M10 22h4M12 2a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 2Z', // Innovación aplicada
+  'M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4', // Soluciones a la medida
+  'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10ZM12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z', // Orientación a resultados
+  'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10ZM9 11.5l2 2 4-4', // Integridad
+];
+
 // Pilares de identidad (propósito / misión / visión) para el grid.
 const pilares = [
   {
@@ -204,11 +215,12 @@ const jsonLd = {
           class="card group flex flex-col rounded-2xl border border-ink/10 bg-surface p-7 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/40 hover:shadow-lg"
           style={`--reveal-delay:${i * 70}ms`}
         >
-          <span
-            aria-hidden="true"
-            class="inline-block origin-top-left text-6xl font-bold leading-none tracking-tight text-ink/10 transition-all duration-300 group-hover:scale-110 group-hover:text-brand"
-          >{String(i + 1).padStart(2, '0')}</span>
-          <h3 class="mt-4 text-lg font-semibold text-on-light">{v.titulo}</h3>
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d={iconosValores[i]} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <h3 class="mt-5 text-lg font-semibold text-on-light">{v.titulo}</h3>
           <p class="mt-2 text-sm leading-relaxed text-muted">{v.texto}</p>
         </div>
       ))}

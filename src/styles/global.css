@@ -197,11 +197,76 @@ p {
   background-size: 72px 72px, 72px 72px, auto;
 }
 
+/* ── Motivo de marca: retículo de visión ──────────────────────────────────
+   El ícono del logo es un visor/mira (viewfinder). Lo reutilizamos como
+   "marca de detección" sobre imágenes clave (evidencia fotográfica, tarjetas
+   de sector, hero): cuatro esquinas en L que enmarcan el contenido, como una
+   cámara de visión artificial reconociendo el sujeto. Un solo motivo, usado
+   con moderación (componente Viewfinder.astro). */
+@keyframes vf-pulse-corner {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .vf-live .vf-corner {
+    animation: vf-pulse-corner 2.8s ease-in-out infinite;
+  }
+}
+
+/* ── Flujo de datos: línea que conecta pasos (Captar → Procesar → Decidir,
+   pilares de Industria 4.0, capas de arquitectura). Un pulso recorre la
+   línea en bucle lento, de izquierda a derecha, para sugerir "el dato viaja
+   del sensor a la decisión" sin depender de JS. */
+@keyframes flow-pulse {
+  0% { offset-distance: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes flow-slide {
+  0% { transform: translateX(-6%); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateX(106%); opacity: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flow-dot {
+    animation: flow-slide 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
+
+/* Zoom lento y continuo para imágenes protagonistas (hero). Sutil: de 1 a
+   1.06 en 14s, se reinicia solo si la imagen se re-marca como activa. */
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.07); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rot-img.is-active img {
+    animation: ken-burns 7s ease-out forwards;
+  }
+}
+
 .bg-ink,
 .bg-ink-card,
 .bg-ink-card-soft {
   background-image:
     linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 18rem);
+}
+
+/* Grano sutil sobre los fondos oscuros grandes (secciones, no cada tarjeta):
+   rompe la planitud del azul-negro sin leerse como "textura" a propósito. */
+.bg-ink {
+  position: relative;
+}
+.bg-ink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 190px 190px;
 }
 
 .card,
