@@ -1,0 +1,43 @@
+---
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+
+const practicas = [
+  'Definicion de variables, frecuencia de captura y fuente responsable.',
+  'Registro de eventos con hora, origen y contexto operativo cuando aplica.',
+  'Separacion entre evidencia capturada, dato procesado e indicador final.',
+  'Revision de falsos positivos, condiciones de borde y mantenimiento del modelo.',
+  'Entregables comprensibles para operacion, gerencia y equipos tecnicos.',
+];
+---
+
+<Section theme="white" id="calidad-dato" aria-labelledby="calidad-dato-title">
+  <div class="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+    <div>
+      <Eyebrow on="light">Calidad del dato</Eyebrow>
+      <h2 id="calidad-dato-title" data-reveal class="text-balance text-h1 font-semibold text-on-light">
+        La informacion debe poder revisarse, no solo visualizarse.
+      </h2>
+      <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">
+        En proyectos industriales, un tablero solo es util si el dato que lo
+        alimenta es consistente y verificable. Por eso la solucion contempla
+        captura, procesamiento, evidencia y trazabilidad desde el diseno.
+      </p>
+    </div>
+
+    <div data-reveal class="card rounded-2xl border border-ink/10 bg-light p-7 ring-1 ring-ink/5">
+      <p class="text-sm font-semibold text-brand">Criterios que se revisan en el proyecto</p>
+      <ul class="mt-6 grid gap-4">
+        {practicas.map((p) => (
+          <li class="flex items-start gap-3 text-sm leading-relaxed text-on-light/85">
+            <svg class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            {p}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</Section>
+

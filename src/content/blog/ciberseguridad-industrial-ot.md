@@ -47,4 +47,4 @@ audita los dispositivos que ya están conectados?, ¿las contraseñas por defect
 cambiaron?, ¿hay visibilidad de qué equipo se está comunicando con qué otro? La
 Industria 4.0 no se detiene por esto, pero tampoco debería avanzar ignorándolo.
 
-¿Tu operación está sumando sensores más rápido de lo que los está asegurando? [Habla con un experto](/#contacto).
+¿Su operación está sumando sensores más rápido de lo que los está asegurando? [Hable con un experto](/#contacto).

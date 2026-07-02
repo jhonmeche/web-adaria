@@ -36,7 +36,7 @@ entrada más barata no es un brazo robótico: son las cámaras y sensores que la
 **ya tiene**.
 
 > No hace falta ser Brasil o México para dar el salto. Hace falta empezar por el dato
-> que ya existe en tu operación y hoy nadie está aprovechando.
+> que ya existe en su operación y hoy nadie está aprovechando.
 
 ## Cómo empezar sin ser una multinacional
 
@@ -45,4 +45,4 @@ uso concreto —CCTV existente, un sensor crítico, un proceso manual—, medibl
 semanas, que escala solo cuando demuestra resultado. Así se construye la Industria 4.0
 en una pyme colombiana: no de un salto, sino de pilotos que sí funcionan.
 
-¿Tu operación todavía mide a mano lo que ya podría medir solo? [Habla con un experto](/#contacto).
+¿Su operación todavía mide a mano lo que ya podría medir solo? [Hable con un experto](/#contacto).

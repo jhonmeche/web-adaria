@@ -2,18 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import Problema from '../components/sections/Problema.astro';
+import DiagnosticoOperativo from '../components/sections/DiagnosticoOperativo.astro';
 import Industria40 from '../components/sections/Industria40.astro';
 import Solucion from '../components/sections/Solucion.astro';
+import ArquitecturaImplementacion from '../components/sections/ArquitecturaImplementacion.astro';
 import Stack from '../components/sections/Stack.astro';
 import Servicios from '../components/sections/Servicios.astro';
 import Sectores from '../components/sections/Sectores.astro';
 import CasoSmartPBA from '../components/sections/CasoSmartPBA.astro';
+import CalidadDato from '../components/sections/CalidadDato.astro';
 import PorQue from '../components/sections/PorQue.astro';
 import Noticias from '../components/sections/Noticias.astro';
 import PartnerTecnologico from '../components/sections/PartnerTecnologico.astro';
 import Contacto from '../components/sections/Contacto.astro';
 
-const title = 'AdariA Systems — Soluciones tecnológicas a la medida de tu industria';
+const title = 'AdariA Systems — Soluciones tecnológicas a la medida de su industria';
 const description =
   'Habilitamos los pilares de la Industria 4.0: visión artificial, IoT/LoRa y hardware propio bajo un mismo techo. Del sensor a la decisión, a la medida, con dato auditable. Agenda una demo.';
 ---
@@ -21,12 +24,15 @@ const description =
 <BaseLayout title={title} description={description}>
   <Hero />
   <Problema />
+  <DiagnosticoOperativo />
   <Industria40 />
   <Solucion />
+  <ArquitecturaImplementacion />
   <Stack />
   <Servicios />
   <Sectores />
   <CasoSmartPBA />
+  <CalidadDato />
   <PorQue />
   <Noticias />
   <PartnerTecnologico />

@@ -128,7 +128,7 @@ export const productos: Producto[] = [
         },
         {
           titulo: 'Integración y datos',
-          descripcion: 'Conectado a tu operación.',
+          descripcion: 'Conectado a su operación.',
           items: [
             'Integración con básculas y PLCs',
             'KPIs y reportes operativos',
@@ -172,14 +172,14 @@ export const productos: Producto[] = [
     descripcion:
       'Modelos entrenados a la medida sobre la red CCTV/IP existente, o con cámaras industriales y de alta velocidad para aplicaciones más exigentes. Cubre seguridad, calidad, logística e infraestructura.',
     puntos: [
-      'Aprovecha las cámaras actuales (bajo costo de entrada)',
+      'Aprovecha las cámaras actuales (alcance inicial acotado)',
       'EPP, zonas restringidas, fuego y humo',
       'Conteo, grading, OCR, LPR y más',
     ],
     icon: 'M3 8V6a3 3 0 0 1 3-3h2M16 3h2a3 3 0 0 1 3 3v2M21 16v2a3 3 0 0 1-3 3h-2M8 21H6a3 3 0 0 1-3-3v-2M12 7.5V10M12 14v2.5M7.5 12H10M14 12h2.5',
     detalle: {
       intro:
-        'AdariA Vision convierte tus cámaras en un sistema que ve, entiende y actúa. Modelos de visión artificial entrenados a la medida que se integran sobre el CCTV/IP existente, o sobre cámaras industriales y de alta velocidad para aplicaciones más exigentes. Un mismo motor para seguridad, calidad, logística e infraestructura.',
+        'AdariA Vision convierte sus cámaras en un sistema que ve, entiende y actúa. Modelos de visión artificial entrenados a la medida que se integran sobre el CCTV/IP existente, o sobre cámaras industriales y de alta velocidad para aplicaciones más exigentes. Un mismo motor para seguridad, calidad, logística e infraestructura.',
       capacidadesTitulo: 'Una suite, cuatro líneas',
       capacidadesIntro:
         'Empieza por un caso de uso y escala a más líneas y más sitios cuando la operación lo pida.',
@@ -228,15 +228,15 @@ export const productos: Producto[] = [
         },
       ],
       comoFunciona: [
-        { titulo: 'Integramos', texto: 'Conectamos tus cámaras CCTV/IP, sin hardware nuevo en muchos casos.' },
-        { titulo: 'Entrenamos', texto: 'Modelos a la medida de tu contexto y casos de uso, no detectores genéricos.' },
+        { titulo: 'Integramos', texto: 'Conectamos sus cámaras CCTV/IP, sin hardware nuevo en muchos casos.' },
+        { titulo: 'Entrenamos', texto: 'Modelos a la medida de su contexto y casos de uso, no detectores genéricos.' },
         { titulo: 'Procesamos', texto: 'Análisis en el borde o servidor: convertimos la imagen en eventos.' },
         { titulo: 'Alertamos', texto: 'Dashboards, alertas en tiempo real e informes auditables.' },
       ],
       beneficios: [
-        { titulo: 'Bajo costo de entrada', texto: 'Aprovecha la infraestructura de cámaras que ya tienes.' },
-        { titulo: 'A la medida', texto: 'Modelos entrenados para tu operación: más precisión, menos falsos positivos.' },
-        { titulo: 'Escalable', texto: 'Un caso de uso hoy; más líneas y sitios cuando lo necesites.' },
+        { titulo: 'Entrada acotada', texto: 'Aprovecha la infraestructura de cámaras que ya tiene.' },
+        { titulo: 'A la medida', texto: 'Modelos entrenados para su operación, con criterios de precision y control de falsos positivos.' },
+        { titulo: 'Escalable', texto: 'Un caso de uso inicial; más líneas y sitios cuando el proyecto lo requiera.' },
         { titulo: 'Dato auditable', texto: 'Evidencia visual que respalda cada evento y decisión.' },
       ],
       aplicaciones: [
@@ -309,7 +309,7 @@ export const productos: Producto[] = [
     icon: 'M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 9.5a15 15 0 0 1 20 0M12 20h.01',
     detalle: {
       intro:
-        'AdariA Sense monitorea tus equipos e infraestructura en tiempo real y anticipa las fallas. Sensores IoT, conectividad LoRa/LoRaWAN, dispositivos edge y analítica, con hardware diseñado por AdariA. Ideal para sitios remotos: largo alcance, bajo consumo y sensores a batería que duran años.',
+        'AdariA Sense monitorea sus equipos e infraestructura en tiempo real y permite anticipar fallas probables. Sensores IoT, conectividad LoRa/LoRaWAN, dispositivos edge y analítica, con hardware diseñado por AdariA. Ideal para sitios remotos: largo alcance, bajo consumo y sensores de larga autonomia.',
       capacidadesTitulo: 'Del sensor a la predicción',
       capacidadesIntro:
         'Medimos las variables críticas, las llevamos hasta donde estén y las convertimos en alertas y predicción.',
@@ -356,13 +356,13 @@ export const productos: Producto[] = [
       comoFunciona: [
         { titulo: 'Sensorizamos', texto: 'Nodos IoT miden las variables críticas del equipo.' },
         { titulo: 'Conectamos', texto: 'LoRa/LoRaWAN lleva el dato incluso sin cobertura tradicional.' },
-        { titulo: 'Procesamos', texto: 'Edge y analítica detectan patrones y anomalías, integrados con tu SCADA, PLC o ERP.' },
+        { titulo: 'Procesamos', texto: 'Edge y analítica detectan patrones y anomalías, integrados con su SCADA, PLC o ERP.' },
         { titulo: 'Anticipamos', texto: 'Alertas y predicción para mantener antes de la falla.' },
       ],
       beneficios: [
         { titulo: 'Paradas no planeadas al mínimo', texto: 'Del mantenimiento reactivo al predictivo.' },
-        { titulo: 'Sitios remotos', texto: 'LoRa: largo alcance y años de batería sin cableado.' },
-        { titulo: 'Hardware propio', texto: 'Adaptado a tu operación, no una solución genérica.' },
+        { titulo: 'Sitios remotos', texto: 'LoRa: largo alcance y larga autonomia de bateria sin cableado.' },
+        { titulo: 'Hardware propio', texto: 'Adaptado a su operación, no una solución genérica.' },
         { titulo: 'Seguridad', texto: 'Alertas tempranas de gas y temperatura.' },
       ],
       aplicaciones: [

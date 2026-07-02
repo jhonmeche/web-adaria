@@ -1,0 +1,57 @@
+---
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+
+const capas = [
+  {
+    titulo: 'Campo',
+    texto: 'Camaras, sensores, equipos industriales y fuentes de datos existentes.',
+  },
+  {
+    titulo: 'Borde',
+    texto: 'Dispositivos edge, gateways e inferencia local cuando el caso lo requiere.',
+  },
+  {
+    titulo: 'Plataforma',
+    texto: 'Integracion con ERP, SCADA, bases de datos, tableros y servicios internos.',
+  },
+  {
+    titulo: 'Decision',
+    texto: 'Alertas, indicadores, evidencia y reportes para responsables de la operacion.',
+  },
+];
+---
+
+<Section theme="dark" id="arquitectura" grid={true} aria-labelledby="arquitectura-title">
+  <div class="mx-auto max-w-3xl text-center">
+    <Eyebrow on="dark">Arquitectura de implementacion</Eyebrow>
+    <h2 id="arquitectura-title" data-reveal class="text-balance text-h1 font-semibold text-on-dark">
+      Del activo fisico a una decision operativa documentada.
+    </h2>
+    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
+      Las soluciones de AdariA combinan hardware, software e integracion. La
+      arquitectura se define segun latencia, conectividad, criticidad del proceso
+      y sistemas existentes en la empresa.
+    </p>
+  </div>
+
+  <ol class="mt-16 grid gap-4 lg:grid-cols-4">
+    {capas.map((c, i) => (
+      <li
+        data-reveal
+        class="card relative rounded-2xl border border-white/10 bg-ink-card/95 p-6 ring-1 ring-white/5"
+        style={`--reveal-delay:${i * 80}ms`}
+      >
+        <span class="text-xs font-semibold text-brand-400">Capa {String(i + 1).padStart(2, '0')}</span>
+        <h3 class="mt-3 text-xl font-semibold text-on-dark">{c.titulo}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted-dark">{c.texto}</p>
+        {i < capas.length - 1 && (
+          <span class="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border border-brand-400/30 bg-ink text-brand-400 lg:flex" aria-hidden="true">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </span>
+        )}
+      </li>
+    ))}
+  </ol>
+</Section>
+

@@ -37,4 +37,4 @@ anticipa la falla y programa la intervención **antes** de la parada.
 El resultado para el cliente es concreto: menos paradas no planeadas, menos fallas
 costosas y una operación más segura y trazable.
 
-¿Tienes equipos críticos en sitios remotos? [Habla con un experto](/#contacto).
+¿Existen equipos críticos en sitios remotos? [Hable con un experto](/#contacto).

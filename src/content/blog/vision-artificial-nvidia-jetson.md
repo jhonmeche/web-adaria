@@ -32,7 +32,7 @@ segundos**. Hoy, el 70% de las organizaciones con despliegues maduros de calidad
 automatizaron la inspección visual con este tipo de hardware.
 
 > La pregunta ya no es si la IA puede ver mejor que un inspector humano. La pregunta
-> es cuánto le está costando a tu planta seguir sin ella.
+> es cuánto le está costando a su planta seguir sin ella.
 
 ## Por qué el borde importa más que la nube
 
@@ -43,4 +43,4 @@ lugar donde ocurre —trazable y auditable, no una caja negra en un servidor ext
 Para plantas en zonas con conectividad limitada, esa diferencia no es un detalle
 técnico: es la diferencia entre que el sistema funcione o no.
 
-¿Ya tienes cámaras en tu operación y quieres saber qué detectarían? [Habla con un experto](/#contacto).
+¿Ya cuenta con cámaras en su operación y desea saber qué podrían detectar? [Hable con un experto](/#contacto).

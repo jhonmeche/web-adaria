@@ -79,12 +79,12 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'Modelo entrenado a la medida',
         definicion:
-          'El "cerebro" de la IA, ajustado con ejemplos de tu operación. No es genérico: aprende tus EPP, tus productos y tu contexto, por eso acierta más y se equivoca menos.',
+          'El "cerebro" de la IA, ajustado con ejemplos de su operación. No es genérico: aprende sus EPP, sus productos y su contexto, por eso acierta más y se equivoca menos.',
       },
       {
         termino: 'CCTV/IP',
         definicion:
-          'Tus cámaras de seguridad actuales. Podemos conectarnos directamente a ellas, por eso usamos las cámaras que ya tienes, sin comprar hardware nuevo.',
+          'sus cámaras de seguridad actuales. Podemos conectarnos directamente a ellas, por eso usamos las cámaras que ya tiene, sin comprar hardware nuevo.',
       },
       {
         termino: 'OCR',
@@ -127,7 +127,7 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'LoRa / LoRaWAN',
         definicion:
-          'Tecnología de comunicación inalámbrica de largo alcance y bajísimo consumo. Ideal para sitios remotos: cubre kilómetros y los sensores duran años con una sola batería.',
+          'Tecnología de comunicación inalámbrica de largo alcance y bajo consumo. Ideal para sitios remotos: puede cubrir grandes distancias y habilitar sensores de larga autonomia.',
         enAdaria: 'Es la conectividad de AdariA Sense.',
       },
       {
@@ -156,7 +156,7 @@ export const grupos: GrupoConceptos[] = [
   {
     id: 'datos-decision',
     titulo: 'Datos y decisión',
-    intro: 'Lo que convierte la información en algo accionable para tu equipo.',
+    intro: 'Lo que convierte la información en algo accionable para su equipo.',
     icon: 'M3 3v18h18M7 14l3-3 3 3 5-6',
     conceptos: [
       {

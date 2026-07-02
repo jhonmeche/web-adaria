@@ -45,4 +45,4 @@ Redes que antes debían elegir entre "todo largo alcance" o "todo alta velocidad
 pueden combinar ambas según el sensor y el sitio: sub-GHz para el pozo remoto, 2.4 GHz
 para el área con más densidad de sensores y necesidad de más datos por segundo.
 
-¿Tu red de sensores necesita más velocidad en algunas zonas sin perder alcance en otras? [Habla con un experto](/#contacto).
+¿Su red de sensores necesita más velocidad en algunas zonas sin perder alcance en otras? [Hable con un experto](/#contacto).

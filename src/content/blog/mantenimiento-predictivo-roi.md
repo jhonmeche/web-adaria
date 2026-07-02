@@ -46,4 +46,4 @@ El mantenimiento predictivo llegó a un punto de madurez donde ya no son pilotos
 aislados: son sistemas conectados que se usan todos los días en la operación. La
 pregunta ya no es si conviene, sino cuánto está costando cada mes de retraso.
 
-¿Tienes equipos críticos que hoy solo revisas cuando fallan? [Habla con un experto](/#contacto).
+¿Existen equipos críticos que hoy solo se revisan cuando fallan? [Hable con un experto](/#contacto).

@@ -46,4 +46,4 @@ mantenimiento predictivo con sensores fijos: lo complementa donde caminar o cabl
 es viable. La combinación —sensores fijos + inspección aérea periódica— cubre tanto lo
 continuo como lo disperso.
 
-¿Tienes activos o extensiones difíciles de inspeccionar a pie? [Habla con un experto](/#contacto).
+¿Existen activos o extensiones difíciles de inspeccionar a pie? [Hable con un experto](/#contacto).

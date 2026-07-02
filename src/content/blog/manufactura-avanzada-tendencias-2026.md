@@ -30,7 +30,7 @@ cuando ya se gastó el material en una pieza defectuosa.
 
 ## Qué significa "digitalización integral" en la práctica
 
-> Medir al final del proceso te dice qué salió mal. Medir durante el proceso te
+> Medir al final del proceso indica qué salió mal. Medir durante el proceso te
 > permite corregirlo antes de que termine de salir mal.
 
 Sensores inteligentes, plataformas de análisis y sistemas conectados les dan a las
@@ -45,4 +45,4 @@ El 95% no es solo la gran industria: incluye fabricantes medianos que empezaron 
 un caso de uso acotado —una línea, un punto de inspección— y escalaron desde ahí. La
 manufactura inteligente no exige una transformación total de una vez; exige empezar.
 
-¿Tu planta todavía mide el defecto al final, en vez de durante el proceso? [Habla con un experto](/#contacto).
+¿Su planta todavía mide el defecto al final, en vez de durante el proceso? [Hable con un experto](/#contacto).

@@ -29,8 +29,8 @@ desde Nano hasta Extra Large según el hardware disponible.
 
 ## Por qué "más rápido en CPU modesto" es la noticia real
 
-> La pregunta ya no es si tu operación puede pagar una GPU de última generación. Es
-> si tu proceso justifica *cualquier* modelo de visión artificial, porque el hardware
+> La pregunta ya no es si su operación puede pagar una GPU de última generación. Es
+> si su proceso justifica *cualquier* modelo de visión artificial, porque el hardware
 > dejó de ser la barrera.
 
 Modelos como YOLO26 están pensados para computación de borde, robótica e IoT con
@@ -46,4 +46,4 @@ arquitecturas, ajustando el tamaño del modelo al hardware disponible en el siti
 desde una cámara con un pequeño procesador de borde hasta un servidor local—, sin
 sacrificar la precisión que el caso de uso necesita.
 
-¿Quieres saber qué tan rápido y preciso sería un modelo entrenado para tu cámara actual? [Habla con un experto](/#contacto).
+¿Desea saber qué tan rápido y preciso sería un modelo entrenado para su cámara actual? [Hable con un experto](/#contacto).

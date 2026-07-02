@@ -36,4 +36,4 @@ Smart PBA funcionando en plantas reales es nuestra mejor carta de presentación:
 que AdariA entrega la cadena completa —software, visión artificial e integración— bajo
 un mismo techo, con resultados medibles.
 
-¿Operas una planta de beneficio o frigorífico? [Habla con un experto](/#contacto).
+¿Opera una planta de beneficio o frigorífico? [Hable con un experto](/#contacto).

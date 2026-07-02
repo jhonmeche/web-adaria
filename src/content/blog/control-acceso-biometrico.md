@@ -43,4 +43,4 @@ debe conciliar a mano después—, con la misma exigencia de dato auditable que 
 al resto de nuestras soluciones: cada acceso queda registrado, trazable y disponible
 para auditoría, sin ambigüedad sobre qué pasó y cuándo.
 
-¿Tu control de acceso sigue dependiendo de tarjetas y planillas? [Habla con un experto](/#contacto).
+¿Su control de acceso sigue dependiendo de tarjetas y planillas? [Hable con un experto](/#contacto).

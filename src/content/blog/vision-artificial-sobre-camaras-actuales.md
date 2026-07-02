@@ -1,6 +1,6 @@
 ---
-title: "Visión artificial sobre tus cámaras actuales: seguridad sin hardware nuevo"
-description: "Cómo AdariA Vision se integra con el CCTV existente para detectar EPP, zonas restringidas, fuego y fatiga, con bajo costo de entrada."
+title: "Visión artificial sobre sus cámaras actuales: seguridad sin hardware nuevo"
+description: "Cómo AdariA Vision se integra con el CCTV existente para detectar EPP, zonas restringidas, fuego y fatiga, con alcance inicial acotado."
 pubDate: 2026-06-12
 author: "Equipo AdariA"
 category: "Casos de éxito"
@@ -14,9 +14,9 @@ Muchas empresas industriales ya tienen decenas de cámaras instaladas, pero las 
 solo para **mirar hacia atrás** cuando algo ya pasó. **AdariA Vision** convierte ese
 CCTV existente en un sistema que **previene** en tiempo real.
 
-## Usa la infraestructura que ya tienes
+## Usa la infraestructura que ya tiene
 
-AdariA Vision se integra directamente con tus cámaras IP/CCTV, sin necesidad de
+AdariA Vision se integra directamente con sus cámaras IP/CCTV, sin necesidad de
 hardware nuevo en muchos casos. Eso baja drásticamente el costo de entrada: se empieza
 con un piloto sobre un caso de uso y se escala desde ahí.
 
@@ -36,4 +36,4 @@ con un piloto sobre un caso de uso y se escala desde ahí.
 No son detectores genéricos: AdariA entrena los modelos para el contexto y los EPP
 específicos de cada operación, lo que sube la precisión y baja los falsos positivos.
 
-¿Quieres ver qué detectaríamos en tus cámaras? [Habla con un experto](/#contacto).
+¿Desea ver qué detectaríamos en sus cámaras? [Hable con un experto](/#contacto).

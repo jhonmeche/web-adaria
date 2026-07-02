@@ -16,9 +16,9 @@ const bg =
   theme === 'dark' ? 'bg-ink text-on-dark' : theme === 'white' ? 'bg-surface text-on-light' : 'bg-light text-on-light';
 ---
 
-<section id={id} class={`relative ${bg} ${className}`} {...rest}>
-  {grid && <div class="tech-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>}
-  <div class="relative mx-auto w-full max-w-6xl px-6 py-20 sm:py-28 lg:px-8">
+<section id={id} class={`relative overflow-hidden ${bg} ${className}`} {...rest}>
+  {grid && <div class="tech-grid pointer-events-none absolute inset-0 opacity-45" aria-hidden="true"></div>}
+  <div class="relative mx-auto w-full max-w-7xl px-6 py-18 sm:py-24 lg:px-8">
     <slot />
   </div>
 </section>

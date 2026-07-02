@@ -6,7 +6,7 @@
 // formulario.
 // El sitio es estático: el envío real necesita un backend. Ya está cableado
 // para Formspree (https://formspree.io) vía fetch + FormData — ver el bloque
-// FORM_ENDPOINT más abajo y en el <script> al final del archivo.
+// FORM_ENDPOINT más abajo y en el bloque de script al final del archivo.
 //
 // ⚠️ CONFIGURACIÓN: crea un formulario gratis en https://formspree.io, copia
 // su endpoint (https://formspree.io/f/XXXXXXX) y pégalo en FORM_ENDPOINT.
@@ -21,7 +21,7 @@ const FORM_ENDPOINT = '';
 const valor = [
   {
     titulo: 'Piloto de bajo costo',
-    texto: 'Empezamos sobre sus cámaras y sensores actuales. Bajo riesgo, sin grandes inversiones de entrada.',
+    texto: 'Empezamos sobre sus cámaras y sensores actuales. Bajo riesgo, sin reemplazos innecesarios de entrada.',
     icon: 'M14.5 4h-5L8 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-4l-1.5-2ZM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z',
   },
   {
@@ -39,10 +39,6 @@ const valor = [
 
 <section id="contacto" class="relative isolate overflow-hidden bg-ink text-on-dark">
   <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
-  <div
-    class="pointer-events-none absolute -bottom-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-brand/15 blur-[130px]"
-    aria-hidden="true"
-  ></div>
 
   <div class="relative mx-auto w-full max-w-6xl px-6 py-20 sm:py-28 lg:px-8">
     <!-- Cabecera centrada (mismo patrón de sección) -->
@@ -64,10 +60,10 @@ const valor = [
         {valor.map((v, i) => (
           <article
             data-reveal
-            class="card group flex items-start gap-4 rounded-2xl border border-white/10 bg-ink-card p-6 ring-1 ring-white/5 hover:[translate:0_-4px] hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10"
+            class="card group flex items-start gap-4 rounded-2xl border border-white/10 bg-ink-card/95 p-6 ring-1 ring-white/5 hover:[translate:0_-4px] hover:border-white/20"
             style={`--reveal-delay:${i * 90}ms`}
           >
-            <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+            <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-brand/10 text-brand-400 transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d={v.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -83,7 +79,7 @@ const valor = [
       <!-- Formulario -->
       <div
         data-reveal
-        class="card rounded-2xl border border-white/10 bg-ink-card p-6 shadow-2xl shadow-black/40 ring-1 ring-white/5 sm:p-8"
+        class="card rounded-2xl border border-white/10 bg-ink-card/95 p-6 shadow-2xl ring-1 ring-white/5 sm:p-8"
         style="--reveal-delay:120ms"
       >
         <form id="contact-form" class="space-y-4" novalidate>
@@ -122,8 +118,8 @@ const valor = [
             <textarea id="mensaje" name="mensaje" rows="3" class="form-input resize-none"></textarea>
           </div>
 
-          <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition-all hover:-translate-y-0.5 hover:bg-brand-600">
-            Habla con un experto
+          <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm shadow-brand/15 transition-all hover:bg-brand-600 hover:shadow-md hover:shadow-brand/20">
+            Hable con un experto
             <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
 
@@ -143,7 +139,7 @@ const valor = [
     @apply mb-1.5 block text-sm font-medium text-on-dark/90;
   }
   .form-input {
-    @apply w-full rounded-lg border border-white/10 bg-ink/60 px-3.5 py-2.5 text-sm text-on-dark placeholder-muted-dark transition-colors focus:border-brand focus:bg-ink/80 focus:outline-none;
+    @apply w-full rounded-md border border-white/10 bg-ink/60 px-3.5 py-2.5 text-sm text-on-dark placeholder-muted-dark transition-colors focus:border-brand-400 focus:bg-ink/80 focus:outline-none;
   }
   .form-input:user-invalid {
     @apply border-crit;

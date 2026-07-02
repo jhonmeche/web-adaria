@@ -42,10 +42,10 @@ fotográfica automática que respalda cada lote. No es una adaptación a la norm
 2026: es la misma arquitectura de dato auditable con la que se diseñó desde el
 principio.
 
-## Qué revisar si tu planta aún no está lista
+## Qué revisar si su planta aún no está lista
 
 Si hoy reconstruir el historial de un lote significa buscar carpetas o llamar a
 varias personas, ese es exactamente el punto de partida para digitalizar. La
 regulación ya no da margen para resolverlo después de la próxima alerta sanitaria.
 
-¿Tu planta podría mostrar el historial completo de un lote en 4 horas? [Habla con un experto](/#contacto).
+¿Su planta podría mostrar el historial completo de un lote en 4 horas? [Hable con un experto](/#contacto).

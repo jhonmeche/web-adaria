@@ -46,4 +46,4 @@ convertir esos datos en alertas tempranas— es la misma arquitectura que ya apl
 en mantenimiento predictivo industrial: del sensor a la decisión, sin depender de que
 alguien maneje horas hasta el sitio para descubrir que algo falló hace tres semanas.
 
-¿Tienes activos solares sin monitoreo remoto? [Habla con un experto](/#contacto).
+¿Existen activos solares sin monitoreo remoto? [Hable con un experto](/#contacto).

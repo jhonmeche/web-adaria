@@ -46,4 +46,4 @@ No hace falta partir de cero con una réplica de toda la planta: el mismo enfoqu
 piloto acotado aplica aquí —empezar con el equipo más crítico, el que más cuesta
 parar, y expandir desde ahí.
 
-¿Tienes un equipo cuya falla te cuesta más que el resto? [Habla con un experto](/#contacto).
+¿Existe un equipo cuya falla representa un costo crítico para la operación? [Hable con un experto](/#contacto).

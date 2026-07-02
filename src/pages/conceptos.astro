@@ -20,8 +20,7 @@ const totalConceptos = grupos.reduce((acc, g) => acc + g.conceptos.length, 0);
 <BaseLayout title={title} description={description}>
   <!-- HERO + índice -->
   <section class="relative isolate overflow-hidden bg-ink text-on-dark">
-    <!-- Fondo en capas: glow de marca + rejilla técnica + degradado inferior -->
-    <div class="pointer-events-none absolute left-1/2 top-0 -z-10 h-[36rem] w-[72rem] max-w-none -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/15 blur-[120px]" aria-hidden="true"></div>
+    <!-- Fondo en capas: rejilla técnica + degradado inferior -->
     <div class="tech-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(110%_80%_at_50%_0%,black,transparent)]" aria-hidden="true"></div>
     <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-ink to-transparent" aria-hidden="true"></div>
 
@@ -130,11 +129,11 @@ const totalConceptos = grupos.reduce((acc, g) => acc + g.conceptos.length, 0);
     <div class="mx-auto max-w-3xl px-6 text-center">
       <h2 class="text-h2 font-semibold text-on-light">¿Aún con dudas? Hablemos sin tecnicismos.</h2>
       <p class="mx-auto mt-4 max-w-xl text-muted">
-        Te explicamos cómo cualquiera de estos conceptos se aplica —en concreto— a
-        tu operación. Sin compromiso.
+        Explicamos cómo cualquiera de estos conceptos se aplica —en concreto— a
+        su operación. Sin compromiso.
       </p>
       <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-        <Button href="/#contacto" variant="primary" on="light">Habla con un experto</Button>
+        <Button href="/#contacto" variant="primary" on="light">Hable con un experto</Button>
         <Button href="/#productos" variant="secondary" on="light">Ver los productos</Button>
       </div>
     </div>

@@ -10,33 +10,33 @@ import Button from '../ui/Button.astro';
 const slides = [
   {
     titulo: 'Visión artificial que optimiza la producción.',
-    img: '/hero/slide-1.png',
-    alt: 'Sistema de visión artificial inspeccionando una línea de producción',
+    img: '/hero/adaria-vision-inspeccion.png',
+    alt: 'Camara industrial inspeccionando productos en una linea de produccion',
   },
   {
     titulo: 'Hardware a la medida, integrado a la solución de software.',
-    img: '/hero/slide-4.webp',
-    alt: 'Diseño de hardware electrónico a la medida integrado con la plataforma de software',
+    img: '/hero/adaria-hardware-iot.png',
+    alt: 'Banco de laboratorio con prototipos electronicos, nodos IoT y equipos de medicion',
   },
   {
     titulo: 'Mantenimiento predictivo que se anticipa a las fallas.',
-    img: '/hero/slide-3.png',
-    alt: 'Plataforma centralizada de monitoreo en tiempo real y mantenimiento predictivo de equipos industriales',
+    img: '/hero/adaria-mantenimiento-predictivo.png',
+    alt: 'Motor industrial con sensores instalados para monitoreo y mantenimiento predictivo',
   },
   // Pendiente: falta la imagen real de "Trazabilidad y datos auditables"
   // (antes apuntaba a /hero/slide-4.png, que no existe → 404). Se retira del
   // carrusel hasta subir el archivo; súmala de nuevo en public/hero/ y aquí.
   {
     titulo: 'Seguridad laboral y EPP verificados con visión artificial.',
-    img: '/hero/slide-2.png',
-    alt: 'Detección automática de EPP y seguridad laboral con visión artificial',
+    img: '/hero/adaria-seguridad-epp.png',
+    alt: 'Trabajadores ingresando a una planta industrial con camara de seguridad y elementos de proteccion personal',
   },
 ];
 ---
 
 <section
   data-rotator
-  class="relative isolate flex min-h-[90svh] items-center overflow-hidden bg-ink text-on-dark"
+  class="relative isolate flex min-h-[88svh] items-center overflow-hidden bg-ink text-on-dark"
   aria-roledescription="carrusel"
   aria-label="Soluciones de AdariA Systems"
 >
@@ -62,29 +62,29 @@ const slides = [
   </div>
 
   <!-- Degradado de legibilidad (desktop): oscuro a la izquierda, se aclara a la derecha -->
-  <div class="absolute inset-0 -z-10 hidden bg-linear-to-r from-ink from-0% via-ink/60 via-45% to-ink/10 to-90% md:block" aria-hidden="true"></div>
+  <div class="absolute inset-0 -z-10 hidden bg-linear-to-r from-ink from-0% via-ink/68 via-48% to-ink/18 to-92% md:block" aria-hidden="true"></div>
   <!-- Refuerzo inferior (desktop): asienta CTA, features e indicador de scroll -->
   <div class="absolute inset-x-0 bottom-0 -z-10 hidden h-1/3 bg-linear-to-t from-ink/70 to-transparent md:block" aria-hidden="true"></div>
   <!-- En móvil, velo vertical (la imagen va detrás del texto centrado) -->
-  <div class="absolute inset-0 -z-10 bg-linear-to-t from-ink via-ink/70 to-ink/40 md:hidden" aria-hidden="true"></div>
+  <div class="absolute inset-0 -z-10 bg-linear-to-t from-ink via-ink/75 to-ink/45 md:hidden" aria-hidden="true"></div>
 
   <!-- Contenido encima de la imagen -->
-  <div class="relative mx-auto w-full max-w-6xl px-6 py-28 lg:px-8">
-    <div class="max-w-2xl">
+  <div class="relative mx-auto box-border w-full max-w-[100vw] px-6 py-24 lg:max-w-7xl lg:px-8">
+    <div class="max-w-2xl min-w-0">
       <!-- Eyebrow: ancla estable mientras el titular rota -->
-      <p class="mb-6 inline-flex items-center gap-2.5 rounded-full border border-brand-400/40 bg-brand/15 px-4 py-2 text-base font-semibold tracking-tight text-white shadow-lg shadow-brand/20 backdrop-blur-sm sm:text-lg">
-        <span class="h-2 w-2 rounded-full bg-brand-400 shadow-[0_0_10px_2px] shadow-brand-400/70"></span>
+      <p class="mb-6 inline-flex max-w-[calc(100vw-3rem)] items-center gap-2.5 rounded-md border border-white/15 bg-white/[0.055] px-3.5 py-2 text-sm font-semibold text-white shadow-sm backdrop-blur-md sm:text-base">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
         Soluciones tecnológicas a la medida
       </p>
 
-      <h1 class="rot-stage grid text-balance text-display font-semibold [text-shadow:0_2px_24px_rgba(0,0,0,0.4)]">
+      <h1 class="rot-stage grid max-w-[calc(100vw-3rem)] text-balance text-display font-semibold [text-shadow:0_2px_22px_rgba(0,0,0,0.36)] sm:max-w-3xl max-sm:text-[2.75rem] max-sm:leading-[1.08]">
         {slides.map((s, i) => (
           <span class:list={['rot-slide', { 'is-active': i === 0 }]} aria-hidden={i !== 0}>{s.titulo}</span>
         ))}
       </h1>
 
       <!-- Puntos indicadores -->
-      <div class="rot-dots mt-7 flex gap-2.5" role="tablist" aria-label="Soluciones de AdariA Systems">
+      <div class="rot-dots mt-7 flex gap-2" role="tablist" aria-label="Soluciones de AdariA Systems">
         {slides.map((s, i) => (
           <button
             type="button"
@@ -97,15 +97,15 @@ const slides = [
         ))}
       </div>
 
-      <p data-reveal class="mt-8 max-w-xl text-balance text-lg leading-relaxed text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.45)] sm:text-xl">
+      <p data-reveal class="mt-8 max-w-[calc(100vw-3rem)] text-balance text-base leading-relaxed text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.42)] sm:max-w-xl sm:text-lg">
         Llevamos la Industria 4.0 a la operación real. Integramos visión
         artificial, IoT e infraestructura propia para convertir cada dato en una
         decisión —y cada decisión, en operaciones más seguras, eficientes y
         auditables.
       </p>
 
-      <div data-reveal class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button href="#contacto" variant="primary" on="dark">Habla con un experto</Button>
+      <div data-reveal class="mt-9 flex max-w-[calc(100vw-3rem)] flex-col gap-3 sm:flex-row sm:items-center">
+        <Button href="#contacto" variant="primary" on="dark">Hable con un experto</Button>
         <Button href="#solucion" variant="secondary" on="dark">Cómo funciona</Button>
       </div>
 
@@ -113,22 +113,21 @@ const slides = [
       <a
         href="/conceptos"
         data-reveal
-        class="group mt-6 inline-flex items-center gap-3 rounded-full border border-brand-400/40 bg-brand/10 py-2 pl-2 pr-4 backdrop-blur-sm transition-all hover:border-brand-400/70 hover:bg-brand/20"
+        class="group mt-6 inline-flex max-w-[calc(100vw-3rem)] items-center gap-3 rounded-md border border-brand-400/35 bg-white/[0.045] py-2 pl-2 pr-4 backdrop-blur-sm transition-all hover:border-brand-400/60 hover:bg-white/[0.075]"
       >
-        <span class="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-white">
+        <span class="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-brand text-white">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          <span class="absolute inset-0 rounded-full ring-2 ring-brand-400/60 motion-safe:animate-ping"></span>
         </span>
-        <span class="text-sm">
+        <span class="min-w-0 text-sm leading-snug">
           <span class="font-semibold text-on-dark">¿Nuevo en estos términos?</span>
           <span class="text-muted-dark"> Conoce los conceptos</span>
         </span>
         <svg class="h-4 w-4 text-brand-400 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
 
-      <ul data-reveal class="mt-12 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-dark">
+      <ul data-reveal class="mt-12 flex max-w-[calc(100vw-3rem)] flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-sm text-muted-dark sm:max-w-2xl">
         {[
           ['Visión', 'artificial'],
           ['IoT', 'LoRa/LoRaWAN'],
@@ -177,8 +176,8 @@ const slides = [
 
   /* Puntos */
   .rot-dot {
-    height: 0.5rem;
-    width: 1.25rem;
+    height: 0.375rem;
+    width: 1.125rem;
     border-radius: 9999px;
     background: rgba(255, 255, 255, 0.25);
     transition: background 0.3s ease, width 0.3s ease;
@@ -186,7 +185,7 @@ const slides = [
   }
   .rot-dot:hover { background: rgba(255, 255, 255, 0.45); }
   .rot-dot:focus-visible { outline: 2px solid var(--color-brand-400); outline-offset: 3px; }
-  .rot-dot.is-active { width: 2.25rem; background: var(--color-brand-400); }
+  .rot-dot.is-active { width: 2rem; background: var(--color-brand-400); }
 
   /* Indicador de scroll: rebote sutil */
   @media (prefers-reduced-motion: no-preference) {

@@ -1,5 +1,5 @@
 ---
-title: "LoRaWAN sigue creciendo: qué significa para tu operación remota"
+title: "LoRaWAN sigue creciendo: qué significa para su operación remota"
 description: "125 millones de dispositivos desplegados y un salto hacia la conectividad satelital: la tecnología detrás de AdariA Sense sigue madurando, y cada vez cubre más sitios sin cobertura."
 pubDate: 2026-07-01
 author: "Equipo AdariA"
@@ -44,4 +44,4 @@ gateways), sensores a batería que duran años y una arquitectura que ya está l
 sumar conectividad satelital donde el terreno lo exija, sin rediseñar la red desde
 cero.
 
-¿Tienes activos críticos fuera de cobertura? [Habla con un experto](/#contacto).
+¿Existen activos críticos fuera de cobertura? [Hable con un experto](/#contacto).

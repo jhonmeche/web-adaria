@@ -37,11 +37,11 @@ de tecnología que ya corre sobre cámaras fijas, sin necesidad de hardware nuev
 > El robot humanoide es la noticia vistosa. La noticia real es que la inspección
 > visual automatizada con IA ya es confiable a escala de producción, con o sin robot.
 
-## Dónde aplica esto hoy, en tu operación
+## Dónde aplica esto hoy, en su operación
 
 En AdariA entrenamos modelos de visión artificial a la medida para inspección de
-calidad, conteo y verificación, corriendo sobre las cámaras que ya tienes. La misma
+calidad, conteo y verificación, corriendo sobre las cámaras que ya tiene. La misma
 precisión que impulsa a un robot humanoide en una planta en Guangdong puede correr
-hoy sobre tu línea, sin esperar a que la robótica humanoide sea accesible en Colombia.
+hoy sobre su línea, sin esperar a que la robótica humanoide sea accesible en Colombia.
 
-¿Quieres saber qué tan preciso sería un modelo entrenado para tu proceso? [Habla con un experto](/#contacto).
+¿Desea saber qué tan preciso sería un modelo entrenado para su proceso? [Hable con un experto](/#contacto).

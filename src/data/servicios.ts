@@ -57,19 +57,19 @@ export const servicios: Servicio[] = [
     slug: 'desarrollo-de-software',
     nombre: 'Desarrollo de software',
     categoria: 'Software a la medida',
-    tagline: 'Web, móvil, plataformas y ERP a la medida de tu operación.',
-    resumen: 'Web, móvil, plataformas y ERP a la medida que se ajustan a tu operación, no al revés.',
+    tagline: 'Web, móvil, plataformas y ERP a la medida de su operación.',
+    resumen: 'Web, móvil, plataformas y ERP a la medida que se ajustan a su operación, no al revés.',
     tags: ['Web & móvil', 'Plataformas SaaS', 'ERP', 'APIs'],
     icon: 'm8 8-4 4 4 4m8-8 4 4-4 4M14 5l-4 14',
     detalle: {
       intro:
-        'Construimos el software que tu operación necesita —no el que cabe en una licencia genérica—. Plataformas web, apps móviles, portales y ERP diseñados alrededor de tu proceso real, integrados con tus equipos y datos, y listos para escalar.',
+        'Construimos el software que su operación necesita —no el que cabe en una licencia genérica—. Plataformas web, apps móviles, portales y ERP diseñados alrededor de su proceso real, integrados con sus equipos y datos, y listos para escalar.',
       puntos: [
-        'A la medida de tu proceso, no al revés',
-        'Integrado con tus equipos y datos',
+        'A la medida de su proceso, no al revés',
+        'Integrado con sus equipos y datos',
         'Arquitectura lista para escalar',
       ],
-      queHacemosTitulo: 'Software que se adapta a tu operación',
+      queHacemosTitulo: 'Software que se adapta a su operación',
       queHacemosIntro:
         'Del portal interno al ERP que corre la planta: diseñamos, construimos y mantenemos el sistema completo.',
       capacidades: [
@@ -95,7 +95,7 @@ export const servicios: Servicio[] = [
         },
         {
           titulo: 'ERP y sistemas de gestión',
-          descripcion: 'El núcleo de tu operación',
+          descripcion: 'El núcleo de su operación',
           items: [
             'Trazabilidad punta a punta',
             'Inventario, producción y despacho',
@@ -115,17 +115,17 @@ export const servicios: Servicio[] = [
         },
       ],
       proceso: [
-        { titulo: 'Levantamiento', texto: 'Mapeamos tu proceso real y definimos el alcance del primer entregable.' },
+        { titulo: 'Levantamiento', texto: 'Mapeamos su proceso real y definimos el alcance del primer entregable.' },
         { titulo: 'Diseño', texto: 'Arquitectura, modelo de datos y prototipo navegable antes de programar.' },
         { titulo: 'Desarrollo iterativo', texto: 'Entregas cortas y verificables: ves avances cada sprint, no al final.' },
         { titulo: 'Despliegue y soporte', texto: 'Puesta en producción, capacitación y mejora continua del sistema.' },
       ],
       entregables: ['React / Astro', 'Node.js', 'TypeScript', 'PostgreSQL', 'React Native', 'APIs REST', 'Cloud / on-premise'],
       beneficios: [
-        { titulo: 'Hecho a tu medida', texto: 'El sistema se ajusta a tu operación, no tu operación al sistema.' },
-        { titulo: 'Un dato confiable', texto: 'Una sola fuente de verdad, integrada con tus equipos.' },
+        { titulo: 'Hecho a su medida', texto: 'El sistema se ajusta a su operación, no su operación al sistema.' },
+        { titulo: 'Un dato confiable', texto: 'Una sola fuente de verdad, integrada con sus equipos.' },
         { titulo: 'Listo para crecer', texto: 'Arquitectura que escala de un piloto a toda la operación.' },
-        { titulo: 'Soporte cercano', texto: 'Un equipo que conoce tu sistema y responde, no un ticket más.' },
+        { titulo: 'Soporte cercano', texto: 'Un equipo que conoce su sistema y responde, no un ticket más.' },
       ],
       sectores: ['industria-carnica', 'logistica-bodegas', 'manufactura'],
     },
@@ -140,15 +140,15 @@ export const servicios: Servicio[] = [
     icon: 'M7 7h10v10H7zM10 10h4v4h-4zM9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2',
     detalle: {
       intro:
-        'Diseñamos el hardware desde el esquemático hasta el dispositivo en campo. Tarjetas electrónicas, nodos de sensores, gateways LoRa y dispositivos edge pensados para tu entorno —remoto, industrial o de bajo consumo— y fabricados a la medida del problema.',
+        'Diseñamos el hardware desde el esquemático hasta el dispositivo en campo. Tarjetas electrónicas, nodos de sensores, gateways LoRa y dispositivos edge pensados para su entorno —remoto, industrial o de bajo consumo— y fabricados a la medida del problema.',
       puntos: [
         'Del esquemático al dispositivo en campo',
         'Pensado para entornos industriales y remotos',
-        'Bajo consumo: años de batería',
+        'Bajo consumo y larga autonomia',
       ],
-      queHacemosTitulo: 'Electrónica diseñada para tu entorno',
+      queHacemosTitulo: 'Electrónica diseñada para su entorno',
       queHacemosIntro:
-        'No adaptamos un módulo genérico: diseñamos la tarjeta que tu aplicación necesita.',
+        'No adaptamos un módulo genérico: diseñamos la tarjeta que su aplicación necesita.',
       capacidades: [
         {
           titulo: 'Diseño de PCB',
@@ -194,15 +194,15 @@ export const servicios: Servicio[] = [
       proceso: [
         { titulo: 'Requerimientos', texto: 'Variables a medir, entorno, energía y conectividad disponibles.' },
         { titulo: 'Diseño y prototipo', texto: 'Esquemático, PCB y primer prototipo funcional para validar en banco.' },
-        { titulo: 'Validación en campo', texto: 'Probamos el dispositivo en tu sitio real, en condiciones reales.' },
-        { titulo: 'Producción', texto: 'Afinamos para fabricación y desplegamos la cantidad que necesites.' },
+        { titulo: 'Validación en campo', texto: 'Probamos el dispositivo en su sitio real, en condiciones reales.' },
+        { titulo: 'Producción', texto: 'Afinamos para fabricación y desplegamos la cantidad requerida.' },
       ],
       entregables: ['Diseño de PCB', 'Firmware embebido', 'LoRa / LoRaWAN', 'Edge computing', 'Sensórica industrial', 'Bajo consumo'],
       beneficios: [
-        { titulo: 'A la medida', texto: 'El hardware exacto para tu variable y tu entorno.' },
+        { titulo: 'A la medida', texto: 'El hardware exacto para su variable y su entorno.' },
         { titulo: 'Sin cobertura, sin problema', texto: 'LoRa lleva el dato donde no llega la red tradicional.' },
-        { titulo: 'Autonomía real', texto: 'Sensores a batería que duran años, no semanas.' },
-        { titulo: 'Propiedad del diseño', texto: 'El hardware es tuyo: sin candados de proveedor.' },
+        { titulo: 'Autonomía real', texto: 'Sensores de bajo consumo con larga autonomia, segun el caso de uso.' },
+        { titulo: 'Propiedad del diseño', texto: 'El hardware queda documentado y sin candados de proveedor.' },
       ],
       sectores: ['hidrocarburos-mineria-energia', 'manufactura', 'agroindustria'],
     },
@@ -211,21 +211,21 @@ export const servicios: Servicio[] = [
     slug: 'vision-artificial-ia',
     nombre: 'Visión artificial e IA',
     categoria: 'Visión artificial e IA',
-    tagline: 'Modelos propios entrenados para tu contexto.',
-    resumen: 'Modelos propios entrenados para tu contexto: más precisión y menos falsos positivos.',
+    tagline: 'Modelos propios entrenados para su contexto.',
+    resumen: 'Modelos propios entrenados para su contexto, con criterios de precision y control de falsos positivos.',
     tags: ['Modelos propios', 'Deep learning', 'CCTV/IP', 'Edge AI'],
     icon: 'M3 8V6a3 3 0 0 1 3-3h2M16 3h2a3 3 0 0 1 3 3v2M21 16v2a3 3 0 0 1-3 3h-2M8 21H6a3 3 0 0 1-3-3v-2M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z',
     detalle: {
       intro:
-        'Entrenamos modelos de visión artificial e inteligencia artificial para tu operación específica. Corren sobre tus cámaras actuales (CCTV/IP), detectan lo que importa con precisión y menos falsos positivos, y disparan alertas en tiempo real. Es la base de AdariA Vision.',
+        'Entrenamos modelos de visión artificial e inteligencia artificial para su operación específica. Corren sobre sus cámaras actuales (CCTV/IP), detectan eventos relevantes con criterios de precision, control de falsos positivos y alertas en tiempo real. Es la base de AdariA Vision.',
       puntos: [
-        'Sobre tus cámaras actuales (CCTV/IP)',
-        'Modelos entrenados a tu contexto',
+        'Sobre sus cámaras actuales (CCTV/IP)',
+        'Modelos entrenados a su contexto',
         'Alertas en tiempo real',
       ],
       queHacemosTitulo: 'IA entrenada para lo que necesitas ver',
       queHacemosIntro:
-        'Seguridad, calidad, logística e infraestructura: un modelo para cada caso de uso, sobre la cámara que ya tienes.',
+        'Seguridad, calidad, logística e infraestructura: un modelo para cada caso de uso, sobre la cámara que ya tiene.',
       capacidades: [
         {
           titulo: 'Seguridad (HSE)',
@@ -270,14 +270,14 @@ export const servicios: Servicio[] = [
       ],
       proceso: [
         { titulo: 'Caso de uso', texto: 'Definimos qué detectar y la métrica de éxito: precisión y falsos positivos.' },
-        { titulo: 'Datos y entrenamiento', texto: 'Recolectamos y etiquetamos imágenes de tu contexto y entrenamos el modelo.' },
-        { titulo: 'Integración', texto: 'Conectamos a tus cámaras y al canal de alertas que uses.' },
+        { titulo: 'Datos y entrenamiento', texto: 'Recolectamos y etiquetamos imágenes de su contexto y entrenamos el modelo.' },
+        { titulo: 'Integración', texto: 'Conectamos a sus cámaras y al canal de alertas que uses.' },
         { titulo: 'Mejora continua', texto: 'El modelo aprende de nuevos casos y sube su precisión con el tiempo.' },
       ],
       entregables: ['Deep learning', 'Modelos propios', 'CCTV/IP', 'Edge AI', 'Detección y conteo', 'OCR / LPR'],
       beneficios: [
-        { titulo: 'Usa tus cámaras', texto: 'Bajo costo de entrada: aprovechamos el CCTV que ya tienes.' },
-        { titulo: 'Precisión a tu medida', texto: 'Entrenado en tu contexto: menos falsos positivos.' },
+        { titulo: 'Usa sus cámaras', texto: 'Entrada acotada: aprovechamos el CCTV que ya tiene.' },
+        { titulo: 'Precisión a su medida', texto: 'Entrenado en su contexto: menos falsos positivos.' },
         { titulo: 'Vigilancia 24/7', texto: 'El modelo no se cansa ni se distrae: observa todo, siempre.' },
         { titulo: 'Reacción inmediata', texto: 'Alertas en el momento, no en el reporte del día siguiente.' },
       ],
@@ -294,24 +294,24 @@ export const servicios: Servicio[] = [
     icon: 'M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 9.5a15 15 0 0 1 20 0M12 20h.01',
     detalle: {
       intro:
-        'Conectamos tu operación física al mundo digital. Instalamos sensores, los enlazamos con LoRa/LoRaWAN —ideal para sitios remotos y de largo alcance— y llevamos la telemetría en tiempo real a tus tableros. Es la base de AdariA Sense.',
+        'Conectamos su operación física al mundo digital. Instalamos sensores, los enlazamos con LoRa/LoRaWAN —ideal para sitios remotos y de largo alcance— y llevamos la telemetría en tiempo real a sus tableros. Es la base de AdariA Sense.',
       puntos: [
         'Largo alcance en sitios remotos',
-        'Sensores a batería que duran años',
+        'Sensores de bajo consumo con larga autonomia',
         'Telemetría en tiempo real',
       ],
-      queHacemosTitulo: 'Del sensor en campo al dato en tu tablero',
+      queHacemosTitulo: 'Del sensor en campo al dato en su tablero',
       queHacemosIntro:
         'Sensorizamos, conectamos y transmitimos —incluso donde no hay cobertura celular.',
       capacidades: [
         {
           titulo: 'Sensorización',
-          descripcion: 'Medimos tu operación',
+          descripcion: 'Medimos su operación',
           items: [
             'Presión, temperatura y vibración',
             'Gas, nivel y caudal',
             'Energía y consumo',
-            'Variables a la medida de tu proceso',
+            'Variables a la medida de su proceso',
           ],
         },
         {
@@ -346,7 +346,7 @@ export const servicios: Servicio[] = [
         },
       ],
       proceso: [
-        { titulo: 'Diagnóstico', texto: 'Qué medir, dónde y con qué frecuencia para tu objetivo.' },
+        { titulo: 'Diagnóstico', texto: 'Qué medir, dónde y con qué frecuencia para su objetivo.' },
         { titulo: 'Sensorización', texto: 'Instalamos sensores y nodos en los puntos críticos.' },
         { titulo: 'Conectividad', texto: 'Desplegamos la red LoRa que lleva el dato fuera del sitio.' },
         { titulo: 'Visualización', texto: 'Telemetría y alertas en tableros listos para decidir.' },
@@ -355,7 +355,7 @@ export const servicios: Servicio[] = [
       beneficios: [
         { titulo: 'Llega a todas partes', texto: 'LoRa cubre sitios remotos donde no hay red celular.' },
         { titulo: 'Años de autonomía', texto: 'Sensores a batería de bajo consumo, sin cableado.' },
-        { titulo: 'Visibilidad total', texto: 'Sabes qué pasa en tu operación en todo momento.' },
+        { titulo: 'Visibilidad total', texto: 'La operación puede consultar su estado en tiempo real.' },
         { titulo: 'Base predictiva', texto: 'El dato histórico habilita el mantenimiento predictivo.' },
       ],
       sectores: ['hidrocarburos-mineria-energia', 'manufactura', 'agroindustria'],
@@ -371,15 +371,15 @@ export const servicios: Servicio[] = [
     icon: 'M9 17H7A5 5 0 0 1 7 7h2M15 7h2a5 5 0 0 1 0 10h-2M8 12h8',
     detalle: {
       intro:
-        'Tu operación ya tiene equipos, software y datos —pero aislados—. Los integramos en un solo flujo confiable: ERP, básculas, PLC, cámaras y SCADA hablando entre sí, con un dato único y auditable que elimina la digitación manual y los silos.',
+        'su operación ya tiene equipos, software y datos —pero aislados—. Los integramos en un solo flujo confiable: ERP, básculas, PLC, cámaras y SCADA hablando entre sí, con un dato único y auditable que elimina la digitación manual y los silos.',
       puntos: [
         'Un solo flujo de datos confiable',
         'Sin digitación manual ni silos',
         'Dato único y auditable',
       ],
-      queHacemosTitulo: 'Todo tu ecosistema, hablando el mismo idioma',
+      queHacemosTitulo: 'Todo su ecosistema, hablando el mismo idioma',
       queHacemosIntro:
-        'Conectamos lo que ya tienes —sin reemplazarlo— para que el dato fluya sin intervención manual.',
+        'Conectamos lo que ya tiene —sin reemplazarlo— para que el dato fluya sin intervención manual.',
       capacidades: [
         {
           titulo: 'Integración industrial',
@@ -432,7 +432,7 @@ export const servicios: Servicio[] = [
       beneficios: [
         { titulo: 'Sin re-digitación', texto: 'El dato viaja solo: menos errores y menos trabajo manual.' },
         { titulo: 'Una sola verdad', texto: 'Todos los sistemas con el mismo dato, sin contradicciones.' },
-        { titulo: 'Aprovecha lo que tienes', texto: 'Integramos tu inversión actual, no la reemplazamos.' },
+        { titulo: 'Aprovecha lo existente', texto: 'Integramos su inversión actual, no la reemplazamos.' },
         { titulo: 'Dato auditable', texto: 'Trazabilidad de punta a punta para auditar con confianza.' },
       ],
       sectores: ['industria-carnica', 'manufactura', 'logistica-bodegas'],
@@ -448,7 +448,7 @@ export const servicios: Servicio[] = [
     icon: 'M3 3v18h18M7 14l3-3 3 3 5-6',
     detalle: {
       intro:
-        'Capturar el dato es la mitad del camino; lo que importa es decidir mejor. Convertimos tus datos —de sensores, cámaras, ERP y operación— en dashboards claros, KPIs accionables, reportes automáticos y modelos de predicción que anticipan lo que viene.',
+        'Capturar el dato es la mitad del camino; lo que importa es decidir mejor. Convertimos sus datos —de sensores, cámaras, ERP y operación— en dashboards claros, KPIs accionables, reportes automáticos y modelos de predicción que anticipan lo que viene.',
       puntos: [
         'Del dato crudo a la decisión',
         'KPIs y dashboards en tiempo real',
@@ -460,7 +460,7 @@ export const servicios: Servicio[] = [
       capacidades: [
         {
           titulo: 'Dashboards y visualización',
-          descripcion: 'Tu operación de un vistazo',
+          descripcion: 'su operación de un vistazo',
           items: [
             'Tableros en tiempo real',
             'KPIs por área y rol',
@@ -500,7 +500,7 @@ export const servicios: Servicio[] = [
         },
       ],
       proceso: [
-        { titulo: 'Preguntas clave', texto: 'Definimos qué decisiones quieres tomar con los datos.' },
+        { titulo: 'Preguntas clave', texto: 'Definimos qué decisiones deben soportarse con los datos.' },
         { titulo: 'Centralización', texto: 'Reunimos y ordenamos las fuentes en un solo lugar.' },
         { titulo: 'Visualización', texto: 'Construimos los dashboards y KPIs que importan.' },
         { titulo: 'Predicción', texto: 'Sumamos modelos que anticipan fallas, demanda y anomalías.' },
@@ -508,8 +508,8 @@ export const servicios: Servicio[] = [
       entregables: ['Dashboards', 'KPIs', 'Reportes', 'Mantenimiento predictivo', 'Big data', 'Modelos de IA'],
       beneficios: [
         { titulo: 'Decides con evidencia', texto: 'Datos claros en vez de intuición o planillas dispersas.' },
-        { titulo: 'Ves a tiempo', texto: 'KPIs en vivo: reaccionas antes de que el problema crezca.' },
-        { titulo: 'Anticipas', texto: 'La predicción te avisa de la falla antes de que ocurra.' },
+        { titulo: 'Visibilidad temprana', texto: 'KPIs en vivo para reaccionar antes de que el problema crezca.' },
+        { titulo: 'Anticipación', texto: 'La predicción permite alertar sobre fallas probables antes de la parada.' },
         { titulo: 'Menos trabajo manual', texto: 'Reportes automáticos en vez de armar Excel cada semana.' },
       ],
       sectores: ['hidrocarburos-mineria-energia', 'manufactura', 'logistica-bodegas', 'agroindustria'],

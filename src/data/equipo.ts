@@ -61,7 +61,7 @@ export const valores: Valor[] = [
   { titulo: 'Rigor técnico', texto: 'Ingeniería seria y bien hecha: nada de soluciones a medias.' },
   { titulo: 'Transparencia y trazabilidad', texto: 'Cada dato es auditable, del sensor a la decisión.' },
   { titulo: 'Innovación aplicada', texto: 'Tecnología de punta puesta a resolver problemas reales.' },
-  { titulo: 'Soluciones a la medida', texto: 'Construimos para tu operación, no al revés.' },
-  { titulo: 'Orientación a resultados', texto: 'Medimos el éxito por el impacto en tu operación y tu ROI.' },
+  { titulo: 'Soluciones a la medida', texto: 'Construimos para su operación, no al revés.' },
+  { titulo: 'Orientación a resultados', texto: 'Medimos el éxito por el impacto en su operación y el impacto operativo.' },
   { titulo: 'Integridad', texto: 'Cumplimos lo que prometemos, con honestidad técnica.' },
 ];

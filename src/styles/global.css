@@ -14,22 +14,22 @@
 */
 @theme {
   /* Núcleo de marca */
-  --color-ink: #1a1a1a;        /* fondo oscuro: gris carbón neutro (estilo Elementary) */
-  --color-ink-card: #242424;   /* cards sobre fondo oscuro */
-  --color-ink-card-soft: #3a3f47; /* cards oscuras "isla" sobre secciones blancas (más claras, más contraste) */
-  --color-light: #f4f6f9;      /* fondo claro (alterna con el oscuro) */
+  --color-ink: #101418;        /* gris oscuro anterior: carbon tecnico */
+  --color-ink-card: #171c22;   /* paneles sobre fondo oscuro */
+  --color-ink-card-soft: #202833; /* paneles oscuros sobre secciones claras */
+  --color-light: #f5f7fa;      /* fondo claro sobrio */
   --color-surface: #ffffff;    /* cards sobre fondo claro */
 
   /* Texto */
-  --color-muted: #5b6470;      /* descripciones, subtítulos (sobre claro) */
-  --color-on-dark: #f5f7fa;    /* texto principal en secciones oscuras */
-  --color-on-light: #0c1116;   /* texto principal en secciones claras */
-  --color-muted-dark: #9aa6b4; /* texto secundario sobre fondo oscuro */
+  --color-muted: #5f6b78;      /* descripciones, subtítulos (sobre claro) */
+  --color-on-dark: #f7f9fb;    /* texto principal en secciones oscuras */
+  --color-on-light: #111820;   /* texto principal en secciones claras */
+  --color-muted-dark: #a6b1bd; /* texto secundario sobre fondo oscuro */
 
   /* Acento de marca (azul) — CTAs, métricas, íconos, enlaces, bordes */
   --color-brand: #2563d9;
   --color-brand-600: #1f54bb;  /* hover */
-  --color-brand-400: #5b8af0;  /* acento sobre fondo oscuro (mayor contraste) */
+  --color-brand-400: #79a1ff;  /* acento sobre fondo oscuro */
   --color-brand-ink: #0e7490;  /* enlaces como texto sobre fondo claro (AA) */
 
   /* Cian del logo — uso muy puntual (detalle/glow), nunca como texto */
@@ -49,24 +49,24 @@
 
   /* Tipografía — stack Apple / SF Pro con Inter de fallback (una sola familia
      en todo el sitio). `--font-display` es alias de `--font-sans`. */
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter",
-    "Helvetica Neue", Arial, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-sans);
 
   /* Escala fluida de titulares (clamp, estilo Apple): grande en desktop,
      escalado en móvil. Cada token lleva su line-height emparejado. */
-  --text-display: clamp(2.5rem, 1.6rem + 4.5vw, 4rem); /* hero h1 */
+  --text-display: clamp(2.5rem, 1.6rem + 4.2vw, 4.15rem); /* hero h1 */
   --text-display--line-height: 1.1;
-  --text-display--letter-spacing: -0.02em;
-  --text-h1: clamp(2rem, 1.4rem + 3vw, 3rem); /* títulos de sección */
+  --text-display--letter-spacing: 0;
+  --text-h1: clamp(2rem, 1.35rem + 2.4vw, 3.1rem); /* títulos de sección */
   --text-h1--line-height: 1.15;
-  --text-h1--letter-spacing: -0.02em;
+  --text-h1--letter-spacing: 0;
   --text-h2: clamp(1.75rem, 1.4rem + 1.8vw, 2.25rem); /* subtítulos grandes */
   --text-h2--line-height: 1.2;
-  --text-h2--letter-spacing: -0.02em;
+  --text-h2--letter-spacing: 0;
 
   /* Radios y sombras */
-  --radius-card: 16px;
+  --radius-card: 10px;
   --radius-pill: 9999px;
 }
 
@@ -75,23 +75,41 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-sans);
   font-weight: 400;
   line-height: 1.6; /* cuerpo de texto */
-  background-color: var(--color-light);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(37, 99, 217, 0.055), transparent 34rem),
+    linear-gradient(180deg, #f8fafc 0%, var(--color-light) 48rem);
   color: var(--color-on-light);
+  overflow-x: hidden;
 }
 
 /* Titulares: peso 600, tracking ajustado, interlineado compacto (1.1–1.2). */
 h1, h2, h3, h4 {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   line-height: 1.15;
   text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brand) 24%, transparent);
+  color: var(--color-on-light);
+}
+
+.tracking-tight,
+.-tracking-tight {
+  letter-spacing: 0 !important;
 }
 
 /* Foco visible accesible */
@@ -108,14 +126,56 @@ h1, h2, h3, h4 {
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] {
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(14px);
+    transition: opacity 0.58s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.58s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .js [data-reveal].is-visible {
     opacity: 1;
     transform: none;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Ajustes corporativos sobre utilidades frecuentes del sitio. Mantienen el
+   marcado actual, pero reducen el aspecto "demo" de tarjetas y paneles. */
+.rounded-2xl,
+.rounded-3xl {
+  border-radius: var(--radius-card) !important;
+}
+
+.shadow-lg,
+.shadow-xl,
+.shadow-2xl {
+  box-shadow:
+    0 1px 2px rgba(16, 20, 24, 0.06),
+    0 18px 44px rgba(16, 20, 24, 0.08) !important;
+}
+
+.card,
+.pilar,
+.step,
+.sector-card {
+  will-change: transform;
+}
+
+.card:hover,
+.pilar:hover,
+.step:hover,
+.sector-card:hover {
+  box-shadow:
+    0 1px 2px rgba(16, 20, 24, 0.06),
+    0 20px 48px rgba(16, 20, 24, 0.10) !important;
 }
 
 /* Utilidad: botón secundario que se rellena con el azul de marca al hover
@@ -131,9 +191,26 @@ h1, h2, h3, h4 {
 /* Utilidad: rejilla técnica sutil de fondo (hero / secciones oscuras) */
 .tech-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.038) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    radial-gradient(circle at 22% 18%, rgba(0, 180, 216, 0.085), transparent 24rem);
+  background-size: 72px 72px, 72px 72px, auto;
+}
+
+.bg-ink,
+.bg-ink-card,
+.bg-ink-card-soft {
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 18rem);
+}
+
+.card,
+.pilar,
+.step,
+.sector-card,
+article[class*="border"],
+figure[class*="border"] {
+  backdrop-filter: saturate(1.05);
 }
 
 /* ── Contenido del blog (Markdown renderizado) ───────────────────────────

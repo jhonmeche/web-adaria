@@ -31,11 +31,11 @@ import { sectores } from '../../data/sectores.ts';
       <a
         href="#sectores"
         data-reveal
-        class="sector-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-ink-card-soft hover:[translate:0_-6px] hover:border-brand/40"
+        class="sector-card group relative flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-surface shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/35"
         style={`--reveal-delay:${i * 90}ms`}
       >
         <!-- Media de la tarjeta: video (fondo en bucle) · imagen · o placeholder -->
-        <div class="relative aspect-3/2 overflow-hidden bg-linear-to-br from-ink-card-soft to-ink-card">
+        <div class="relative aspect-3/2 overflow-hidden bg-linear-to-br from-light to-surface">
           {s.video ? (
             <video
               class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -60,9 +60,9 @@ import { sectores } from '../../data/sectores.ts';
             />
           ) : (
             <>
-              <div class="tech-grid absolute inset-0 opacity-40" aria-hidden="true"></div>
+              <div class="tech-grid absolute inset-0 opacity-25" aria-hidden="true"></div>
               <div class="absolute inset-0 flex items-center justify-center">
-                <svg class="h-10 w-10 text-white/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg class="h-10 w-10 text-ink/18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d={s.icon} />
                 </svg>
               </div>
@@ -78,9 +78,9 @@ import { sectores } from '../../data/sectores.ts';
           )}
         </div>
         <div class="flex flex-1 flex-col p-6">
-          <h3 class="text-lg font-semibold text-on-dark">{s.nombre}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-muted-dark">{s.gancho}</p>
-          <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400 transition-all group-hover:gap-2.5">
+          <h3 class="text-lg font-semibold text-on-light">{s.nombre}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">{s.gancho}</p>
+          <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition-all group-hover:gap-2.5">
             Ver solución
             <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -92,17 +92,17 @@ import { sectores } from '../../data/sectores.ts';
     <a
       href="#contacto"
       data-reveal
-      class="sector-card group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-white/20 bg-ink-card-soft/70 p-8 text-center hover:[translate:0_-6px] hover:border-brand/50"
+      class="sector-card group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-ink/20 bg-surface p-8 text-center shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/45"
       style={`--reveal-delay:${sectores.length * 90}ms`}
     >
       <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors group-hover:bg-brand group-hover:text-white">
         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
-      <h3 class="mt-5 text-lg font-semibold text-on-dark">¿Tu industria no está aquí?</h3>
-      <p class="mt-2 text-sm leading-relaxed text-muted-dark">
-        Diseñamos soluciones a la medida para cualquier operación. Cuéntanos tu reto.
+      <h3 class="mt-5 text-lg font-semibold text-on-light">¿Su industria no está aquí?</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muted">
+        Diseñamos soluciones a la medida para diferentes tipos de operación. Cuéntenos su reto.
       </p>
-      <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400 transition-all group-hover:gap-2.5">
+      <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition-all group-hover:gap-2.5">
         Hablemos
         <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>

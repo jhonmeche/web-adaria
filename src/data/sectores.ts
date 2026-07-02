@@ -33,7 +33,7 @@ export const sectores: Sector[] = [
     nombre: 'Hidrocarburos, Minería y Energía',
     color: '#f08c1d',
     gancho: 'Operaciones más seguras y auditables en entornos críticos.',
-    dolor: 'Cada falla o accidente cuesta millones y hay presión regulatoria (SST, ambiental).',
+    dolor: 'Cada falla o accidente puede generar sobrecostos significativos y hay presión regulatoria (SST, ambiental).',
     resuelveCon: 'Vision Seguridad + AdariA Sense (IoT/LoRa) + drones + mantenimiento predictivo',
     prioritario: true,
     imagen: '/sectores/hidrocarburos.jpg',
