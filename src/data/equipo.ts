@@ -30,20 +30,18 @@ export const fundadores: Fundador[] = [
   {
     nombre: 'Jhon Meche',
     rol: 'CEO y cofundador',
-    bio: 'Lidera la estrategia, la relación con clientes y la visión de negocio de AdariA. Conecta el dolor real de cada operación industrial con la solución tecnológica que de verdad la resuelve.',
-    foco: ['Estrategia', 'Comercial B2B', 'Producto', 'Alianzas'],
-    linkedin: '#',
+    bio: 'Dirige la estrategia comercial y el crecimiento de AdariA Systems. Traduce los retos operativos de cada cliente en oportunidades de producto, alianzas y proyectos viables, manteniendo el foco en impacto, adopción y retorno.',
+    foco: ['Estrategia corporativa', 'Desarrollo de negocio', 'Relación con clientes', 'Producto'],
+    linkedin: 'https://www.linkedin.com/in/jhon-meche-540802115',
     foto: '/equipo/jhon-meche.webp',
   },
   {
     nombre: 'Edinson Guzmán',
     rol: 'CTO y cofundador',
-    bio: 'Lidera la ingeniería y la arquitectura técnica de AdariA: del diseño de hardware y los modelos de visión artificial a las plataformas de datos. Garantiza el rigor técnico y el dato auditable, del sensor a la decisión.',
-    foco: ['Ingeniería', 'Hardware & IoT', 'Visión artificial / IA', 'Arquitectura'],
-    linkedin: '#',
-    // Sube la imagen a public/equipo/ y descomenta:
-    // foto: '/equipo/edinson-guzman.jpg',
-    foto: '',
+    bio: 'Dirige la arquitectura tecnológica y el desarrollo de las soluciones de AdariA Systems. Integra hardware, IoT, visión artificial y plataformas de datos para convertir operaciones complejas en sistemas confiables, trazables y escalables.',
+    foco: ['Arquitectura técnica', 'Hardware & IoT', 'IA aplicada', 'Plataformas de datos'],
+    linkedin: 'https://www.linkedin.com/in/edinson-guzman',
+    foto: '/equipo/edinson-guzman.webp',
   },
 ];
 

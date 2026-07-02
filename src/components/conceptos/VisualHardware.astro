@@ -1,0 +1,165 @@
+---
+// Diagrama: hardware a la medida. Muestra PCB, firmware y sensores como un
+// circuito vivo que convierte una senal fisica en dato listo para integrar.
+interface Props {
+  dark?: boolean;
+}
+const { dark = false } = Astro.props;
+
+const box = dark ? 'border-white/10 bg-ink-card' : 'border-ink/10 bg-surface';
+const panel = dark ? 'border-white/10 bg-ink/40' : 'border-ink/10 bg-light';
+const title = dark ? 'text-on-dark' : 'text-on-light';
+const muted = dark ? 'text-muted-dark' : 'text-muted';
+const chip = dark ? 'border-white/10 bg-white/5 text-on-dark/85' : 'border-ink/10 bg-ink/5 text-on-light/80';
+
+const entregables = ['PCB', 'Firmware', 'Sensores', 'Gateway'];
+---
+
+<div class={`hardware-visual mt-10 rounded-2xl border p-6 sm:p-8 ${box}`} data-reveal>
+  <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <p class={`text-sm font-semibold ${title}`}>Del componente al dispositivo en campo</p>
+      <p class={`mt-1 text-xs ${muted}`}>Diseño electrónico propio, firmware y conectividad listos para producción.</p>
+    </div>
+    <div class="flex flex-wrap gap-1.5">
+      {entregables.map((e) => (
+        <span class={`rounded-full border px-2.5 py-0.5 text-xs ${chip}`}>{e}</span>
+      ))}
+    </div>
+  </div>
+
+  <div class={`grid gap-4 rounded-xl border p-4 lg:grid-cols-[1.15fr_0.85fr] ${panel}`}>
+    <svg class="hardware-board min-h-64 w-full" viewBox="0 0 640 330" fill="none" aria-hidden="true">
+      <rect class="board-bg" x="38" y="34" width="392" height="260" rx="22" />
+      <rect class="chip-main" x="178" y="110" width="112" height="92" rx="12" />
+      <rect class="chip-small c1" x="78" y="72" width="74" height="46" rx="9" />
+      <rect class="chip-small c2" x="78" y="208" width="74" height="46" rx="9" />
+      <rect class="chip-small c3" x="324" y="76" width="70" height="44" rx="9" />
+      <rect class="chip-small c4" x="326" y="216" width="70" height="44" rx="9" />
+
+      <path class="trace t1" d="M152 95H178M290 133h82M290 178h92M152 232h26" />
+      <path class="trace t2" d="M214 110V84h110M234 202v52H152" />
+      <path class="trace t3" d="M394 98h54c28 0 44 18 44 44v19" />
+      <path class="trace t4" d="M394 238h54c34 0 58-22 58-54v-23" />
+      <path class="trace t5" d="M106 118v42c0 24 20 42 44 42h28" />
+
+      <circle class="pad p1" cx="152" cy="95" r="5" />
+      <circle class="pad p2" cx="372" cy="133" r="5" />
+      <circle class="pad p3" cx="382" cy="178" r="5" />
+      <circle class="pad p4" cx="324" cy="84" r="5" />
+      <circle class="pad p5" cx="152" cy="254" r="5" />
+      <circle class="pad p6" cx="506" cy="161" r="6" />
+
+      <circle class="signal s1" cx="152" cy="95" r="5" />
+      <circle class="signal s2" cx="214" cy="84" r="5" />
+      <circle class="signal s3" cx="394" cy="238" r="5" />
+
+      <g class="sensor-node">
+        <rect x="500" y="102" width="98" height="118" rx="18" />
+        <circle cx="549" cy="160" r="24" />
+        <path d="M534 160h30M549 145v30" />
+      </g>
+    </svg>
+
+    <div class="grid content-center gap-3">
+      {[
+        ['Medir', 'El sensor convierte una variable fisica en señal.'],
+        ['Procesar', 'El microcontrolador filtra, valida y decide.'],
+        ['Enviar', 'El gateway lleva el dato a la plataforma.'],
+      ].map(([t, d], i) => (
+        <div class={`hardware-step rounded-xl border p-4 ${box}`} style={`--step-delay:${i * 140}ms`}>
+          <p class={`text-sm font-semibold ${title}`}>{t}</p>
+          <p class={`mt-1 text-xs leading-relaxed ${muted}`}>{d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .hardware-board .board-bg {
+    fill: rgba(37, 99, 217, 0.10);
+    stroke: rgba(121, 161, 255, 0.38);
+    stroke-width: 2;
+  }
+  .chip-main {
+    fill: rgba(16, 20, 24, 0.78);
+    stroke: rgba(121, 161, 255, 0.5);
+    stroke-width: 2;
+  }
+  .chip-small {
+    fill: rgba(255, 255, 255, 0.08);
+    stroke: rgba(121, 161, 255, 0.28);
+    stroke-width: 1.5;
+  }
+  .trace {
+    stroke: rgba(121, 161, 255, 0.44);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1 10;
+  }
+  .pad,
+  .signal {
+    fill: var(--color-brand-400);
+  }
+  .signal {
+    filter: drop-shadow(0 0 10px rgba(121, 161, 255, 0.9));
+  }
+  .sensor-node rect {
+    fill: rgba(255, 255, 255, 0.07);
+    stroke: rgba(121, 161, 255, 0.36);
+    stroke-width: 2;
+  }
+  .sensor-node circle,
+  .sensor-node path {
+    stroke: var(--color-brand-400);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .hardware-step {
+    opacity: 0.94;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .hardware-step:hover {
+    transform: translateX(4px);
+    border-color: color-mix(in srgb, var(--color-brand) 45%, transparent);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hardware-board .trace {
+      animation: trace-live 2.8s linear infinite;
+    }
+    .signal {
+      transform-box: view-box;
+      animation: signal-pulse 2.4s ease-in-out infinite;
+    }
+    .s2 { animation-delay: 0.35s; }
+    .s3 { animation-delay: 0.7s; }
+    .sensor-node {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: sensor-breathe 3.2s ease-in-out infinite;
+    }
+    .js .hardware-visual.is-visible .hardware-step,
+    .js .hardware-visual .is-visible .hardware-step {
+      animation: step-in 0.58s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: var(--step-delay, 0ms);
+    }
+  }
+  @keyframes trace-live {
+    to { stroke-dashoffset: -88; }
+  }
+  @keyframes signal-pulse {
+    0%, 100% { opacity: 0.35; transform: scale(0.72); }
+    50% { opacity: 1; transform: scale(1.35); }
+  }
+  @keyframes sensor-breathe {
+    0%, 100% { opacity: 0.78; transform: scale(0.985); }
+    50% { opacity: 1; transform: scale(1.018); }
+  }
+  @keyframes step-in {
+    from { opacity: 0; transform: translateX(14px); }
+    to { opacity: 1; transform: none; }
+  }
+</style>

@@ -28,11 +28,11 @@ const capas = [
     </p>
   </div>
 
-  <div class="space-y-2.5">
-    {capas.map((c) => (
-      <div class={`flex flex-col gap-2 rounded-xl border px-4 py-3 sm:flex-row sm:items-center ${row}`}>
+  <div class="industry-stack space-y-2.5">
+    {capas.map((c, i) => (
+      <div class={`industry-layer flex flex-col gap-2 rounded-xl border px-4 py-3 sm:flex-row sm:items-center ${row}`} style={`--layer-delay:${i * 110}ms`}>
         <div class="flex items-center gap-3 sm:w-44 sm:shrink-0">
-          <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-brand text-xs font-bold text-white">{c.n}</span>
+          <span class="layer-number flex h-7 w-7 items-center justify-center rounded-lg bg-brand text-xs font-bold text-white">{c.n}</span>
           <span class={`text-sm font-semibold ${title}`}>{c.t}</span>
         </div>
         <div class="flex flex-wrap gap-1.5">
@@ -44,3 +44,53 @@ const capas = [
     ))}
   </div>
 </div>
+
+<style>
+  .industry-layer {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .industry-layer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(121, 161, 255, 0.18), transparent);
+    transform: translateX(-110%);
+  }
+  .industry-layer:hover {
+    transform: translateX(4px);
+    border-color: color-mix(in srgb, var(--color-brand) 42%, transparent);
+  }
+  .layer-number {
+    box-shadow: 0 0 0 0 rgba(37, 99, 217, 0.35);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal].is-visible .industry-layer {
+      animation: layer-in 0.62s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: var(--layer-delay, 0ms);
+    }
+    .js [data-reveal].is-visible .industry-layer::after {
+      animation: layer-scan 2.8s ease-in-out infinite;
+      animation-delay: calc(var(--layer-delay, 0ms) + 0.45s);
+    }
+    .layer-number {
+      animation: layer-pulse 2.6s ease-in-out infinite;
+    }
+  }
+  @keyframes layer-in {
+    from { opacity: 0; transform: translateY(16px) scale(0.985); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes layer-scan {
+    0%, 52% { transform: translateX(-110%); opacity: 0; }
+    64% { opacity: 1; }
+    100% { transform: translateX(110%); opacity: 0; }
+  }
+  @keyframes layer-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 217, 0.32); }
+    50% { box-shadow: 0 0 0 7px rgba(37, 99, 217, 0); }
+  }
+</style>

@@ -7,62 +7,365 @@ interface Props {
 const { dark = false } = Astro.props;
 
 const box = dark ? 'border-white/10 bg-ink-card' : 'border-ink/10 bg-surface';
-const tile = dark ? 'border-white/10 bg-ink/40' : 'border-ink/10 bg-light';
+const tile = dark ? 'border-white/10 bg-ink/45' : 'border-ink/10 bg-light';
 const title = dark ? 'text-on-dark' : 'text-on-light';
 const muted = dark ? 'text-muted-dark' : 'text-muted';
 
 const kpis = [
-  { label: 'Disponibilidad', valor: '98,6%' },
-  { label: 'Equipos OK', valor: '24/26' },
-  { label: 'Alertas hoy', valor: '3' },
+  { label: 'Disponibilidad', valor: '98,6%', delta: '+1,2%', tone: 'ok' },
+  { label: 'Equipos OK', valor: '24/26', delta: '92%', tone: 'brand' },
+  { label: 'Alertas hoy', valor: '3', delta: '1 crítica', tone: 'warn' },
 ];
-// Alturas relativas de las barras (maqueta).
-const barras = [40, 62, 48, 75, 58, 84, 70];
+const barras = [
+  { h: 40, label: 'L', tone: 'normal' },
+  { h: 62, label: 'M', tone: 'normal' },
+  { h: 48, label: 'M', tone: 'normal' },
+  { h: 75, label: 'J', tone: 'warn' },
+  { h: 58, label: 'V', tone: 'normal' },
+  { h: 84, label: 'S', tone: 'crit' },
+  { h: 70, label: 'D', tone: 'warn' },
+];
+const eventos = [
+  { t: 'Temperatura normal', d: 'Rango estable', tone: 'ok', icon: 'M4 10.5 8 14l8-8.5' },
+  { t: 'Vibración en aumento', d: 'Tendencia 7 días', tone: 'warn', icon: 'M12 9v4m0 4h.01M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z' },
+  { t: 'Motor B-14 observado', d: 'Revisar en turno', tone: 'brand', icon: 'M12 6v6l4 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' },
+];
 ---
 
-<div class={`mt-10 rounded-2xl border p-6 sm:p-8 ${box}`} data-reveal>
-  <div class="mb-5 flex items-center justify-between">
-    <p class={`text-sm font-semibold ${title}`}>Así se ve un tablero (ejemplo)</p>
-    <span class="inline-flex items-center gap-1.5 rounded-full bg-ok/15 px-2.5 py-0.5 text-xs font-medium text-ok">
+<div class={`data-dashboard mt-10 overflow-hidden rounded-2xl border ${box}`} data-reveal>
+  <div class="dashboard-top flex flex-col gap-4 border-b border-current/10 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+    <div>
+      <p class={`text-sm font-semibold ${title}`}>Así se ve un tablero operativo</p>
+      <p class={`mt-1 text-xs ${muted}`}>KPIs, tendencia, predicción y alertas en una sola lectura.</p>
+    </div>
+    <span class="live-pill inline-flex w-fit items-center gap-1.5 rounded-full bg-ok/15 px-2.5 py-0.5 text-xs font-medium text-ok">
       <span class="h-1.5 w-1.5 rounded-full bg-ok"></span> En vivo
     </span>
   </div>
 
-  <!-- KPIs -->
-  <div class="grid grid-cols-3 gap-3">
-    {kpis.map((k) => (
-      <div class={`rounded-xl border p-3 text-center ${tile}`}>
-        <p class={`text-xl font-semibold ${title}`}>{k.valor}</p>
-        <p class={`mt-0.5 text-[11px] leading-tight ${muted}`}>{k.label}</p>
-      </div>
-    ))}
-  </div>
-
-  <!-- Gráfica de barras (maqueta) + alerta -->
-  <div class="mt-3 grid gap-3 sm:grid-cols-[1.6fr_1fr]">
-    <div class={`rounded-xl border p-4 ${tile}`}>
-      <p class={`mb-3 text-xs font-medium ${muted}`}>Vibración · últimos 7 días</p>
-      <div class="flex h-24 items-end gap-2">
-        {barras.map((h, i) => (
-          <div
-            class="flex-1 rounded-t bg-brand/80"
-            style={`height:${h}%`}
-            data-bar
-            data-h={`${h}`}
-          ></div>
-        ))}
-      </div>
+  <div class="p-5 sm:p-6">
+    <div class="grid gap-3 sm:grid-cols-3">
+      {kpis.map((k, i) => (
+        <div class={`kpi-tile relative overflow-hidden rounded-xl border px-4 py-3 ${tile}`} style={`--kpi-delay:${i * 110}ms`} data-tone={k.tone}>
+          <span class="kpi-rail" aria-hidden="true"></span>
+          <p class={`text-[11px] font-medium uppercase ${muted}`}>{k.label}</p>
+          <div class="mt-1 flex items-end justify-between gap-3">
+            <p class={`text-2xl font-semibold leading-none ${title}`}>{k.valor}</p>
+            <span class="kpi-delta rounded-full px-2 py-0.5 text-[11px] font-semibold">{k.delta}</span>
+          </div>
+        </div>
+      ))}
     </div>
 
-    <div class={`flex flex-col justify-center gap-2 rounded-xl border p-4 ${tile}`}>
-      <div class="flex items-center gap-2 rounded-lg bg-ok/15 px-3 py-2 text-xs font-medium text-ok">
-        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Temperatura normal
+    <div class="mt-4 grid gap-4 lg:grid-cols-[1.52fr_0.88fr]">
+      <div class={`chart-panel relative overflow-hidden rounded-xl border p-4 ${tile}`}>
+        <div class="mb-3 flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p class={`text-xs font-semibold ${title}`}>Vibración · últimos 7 días</p>
+            <p class={`mt-0.5 text-[11px] ${muted}`}>mm/s · umbral preventivo marcado</p>
+          </div>
+          <div class={`flex items-center gap-3 text-[11px] ${muted}`}>
+            <span class="inline-flex items-center gap-1.5"><span class="legend-dot bg-brand"></span>Real</span>
+            <span class="inline-flex items-center gap-1.5"><span class="legend-dot bg-warn"></span>Riesgo</span>
+          </div>
+        </div>
+
+        <div class="chart-canvas relative h-64 overflow-hidden rounded-lg border border-current/10 p-4">
+          <div class="threshold-line" aria-hidden="true">
+            <span>umbral</span>
+          </div>
+          <div class="chart-grid" aria-hidden="true"></div>
+          <div class="scan-cursor" aria-hidden="true"></div>
+          <div class="relative z-10 flex h-[10.75rem] items-end gap-2 sm:gap-3">
+            {barras.map((b, i) => (
+              <div class="bar-slot flex h-full flex-1 flex-col items-center justify-end gap-2">
+                <div
+                  class="dashboard-bar w-full max-w-14 rounded-t"
+                  data-tone={b.tone}
+                  style={`height:${b.h}%; --bar-delay:${i * 75}ms`}
+                  aria-hidden="true"
+                ></div>
+                <span class={`text-[10px] font-medium ${muted}`}>{b.label}</span>
+              </div>
+            ))}
+          </div>
+          <svg class="trend-svg pointer-events-none absolute inset-x-4 bottom-9 z-20 h-24" viewBox="0 0 520 108" preserveAspectRatio="none" fill="none" aria-hidden="true">
+            <path class="trend-area" d="M0 92C58 82 82 38 135 44C190 50 196 98 260 82C334 64 330 16 398 25C452 32 480 58 520 43V108H0Z" />
+            <path class="trend-line" d="M0 92C58 82 82 38 135 44C190 50 196 98 260 82C334 64 330 16 398 25C452 32 480 58 520 43" />
+            <path class="forecast-line" d="M398 25C452 32 480 58 520 43" />
+            <circle class="trend-point" cx="398" cy="25" r="4.5" />
+            <circle class="trend-point p2" cx="520" cy="43" r="4.5" />
+          </svg>
+        </div>
       </div>
-      <div class="flex items-center gap-2 rounded-lg bg-warn/15 px-3 py-2 text-xs font-medium text-warn">
-        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Vibración en aumento
-      </div>
+
+      <aside class={`status-panel rounded-xl border p-4 ${tile}`}>
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <p class={`text-xs font-semibold ${title}`}>Estado del sistema</p>
+            <p class={`mt-0.5 text-[11px] ${muted}`}>Lectura consolidada</p>
+          </div>
+          <svg class="health-ring h-16 w-16" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-opacity="0.13" stroke-width="8" />
+            <circle class="ring-value" cx="32" cy="32" r="24" stroke="currentColor" stroke-width="8" stroke-linecap="round" pathLength="100" />
+            <text x="32" y="35" text-anchor="middle" class="ring-text">92</text>
+          </svg>
+        </div>
+
+        <div class="mt-4 space-y-2.5">
+          {eventos.map((e, i) => (
+            <div class="event-row flex items-start gap-3 rounded-lg border border-current/10 px-3 py-2.5" data-tone={e.tone} style={`--event-delay:${i * 120}ms`}>
+              <span class="event-icon mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d={e.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="min-w-0">
+                <span class={`block text-xs font-semibold ${title}`}>{e.t}</span>
+                <span class={`block text-[11px] ${muted}`}>{e.d}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      </aside>
     </div>
   </div>
 </div>
+
+<style>
+  .data-dashboard {
+    box-shadow:
+      0 1px 2px rgba(16, 20, 24, 0.05),
+      0 22px 52px rgba(16, 20, 24, 0.08);
+  }
+  .dashboard-top {
+    background:
+      radial-gradient(circle at 18% 0%, rgba(37, 99, 217, 0.10), transparent 18rem),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent);
+  }
+  .live-pill span {
+    box-shadow: 0 0 0 0 rgba(46, 163, 107, 0.42);
+  }
+  .kpi-tile {
+    min-height: 5.25rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  }
+  .kpi-tile:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--color-brand) 42%, transparent);
+  }
+  .kpi-rail {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 3px;
+    background: var(--color-brand);
+  }
+  .kpi-tile[data-tone="ok"] .kpi-rail,
+  .kpi-tile[data-tone="ok"] .kpi-delta {
+    background: color-mix(in srgb, var(--color-ok) 16%, transparent);
+    color: var(--color-ok);
+  }
+  .kpi-tile[data-tone="ok"] .kpi-rail {
+    background: var(--color-ok);
+  }
+  .kpi-tile[data-tone="warn"] .kpi-rail,
+  .kpi-tile[data-tone="warn"] .kpi-delta {
+    background: color-mix(in srgb, var(--color-warn) 17%, transparent);
+    color: var(--color-warn);
+  }
+  .kpi-tile[data-tone="warn"] .kpi-rail {
+    background: var(--color-warn);
+  }
+  .kpi-tile[data-tone="brand"] .kpi-delta {
+    background: color-mix(in srgb, var(--color-brand) 13%, transparent);
+    color: var(--color-brand);
+  }
+  .legend-dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .chart-canvas {
+    background:
+      radial-gradient(circle at 80% 12%, rgba(37, 99, 217, 0.13), transparent 16rem),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent);
+  }
+  .chart-grid {
+    position: absolute;
+    inset: 1rem;
+    background-image:
+      linear-gradient(to right, currentColor 1px, transparent 1px),
+      linear-gradient(to bottom, currentColor 1px, transparent 1px);
+    background-size: 14.285% 100%, 100% 25%;
+    opacity: 0.08;
+  }
+  .threshold-line {
+    position: absolute;
+    z-index: 3;
+    inset-inline: 1rem;
+    top: 31%;
+    border-top: 1px dashed color-mix(in srgb, var(--color-warn) 72%, transparent);
+  }
+  .threshold-line span {
+    position: absolute;
+    right: 0;
+    top: -1.2rem;
+    color: var(--color-warn);
+    font-size: 0.625rem;
+    font-weight: 600;
+  }
+  .scan-cursor {
+    position: absolute;
+    z-index: 2;
+    inset-block: 1rem 2.15rem;
+    left: 1rem;
+    width: 2px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, transparent, var(--color-brand-400), transparent);
+    opacity: 0;
+    box-shadow: 0 0 20px rgba(121, 161, 255, 0.48);
+  }
+  .bar-slot {
+    min-width: 0;
+  }
+  .dashboard-bar {
+    min-height: 8px;
+    transform-origin: bottom;
+    background: linear-gradient(180deg, var(--color-brand-400), var(--color-brand));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  }
+  .dashboard-bar[data-tone="warn"] {
+    background: linear-gradient(180deg, #ffd166, var(--color-warn));
+  }
+  .dashboard-bar[data-tone="crit"] {
+    background: linear-gradient(180deg, #ff9b8d, var(--color-crit));
+  }
+  .trend-area {
+    fill: rgba(37, 99, 217, 0.13);
+  }
+  .trend-line {
+    stroke: var(--color-brand-400);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 720;
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 10px rgba(121, 161, 255, 0.45));
+  }
+  .forecast-line {
+    stroke: var(--color-warn);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 8 9;
+    opacity: 0.88;
+  }
+  .trend-point {
+    fill: var(--color-brand-400);
+    filter: drop-shadow(0 0 8px rgba(121, 161, 255, 0.9));
+  }
+  .trend-point.p2 {
+    fill: var(--color-warn);
+  }
+  .js [data-reveal] .trend-line {
+    stroke-dashoffset: 720;
+  }
+  .health-ring {
+    color: var(--color-ok);
+  }
+  .ring-value {
+    stroke-dasharray: 92 100;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    filter: drop-shadow(0 0 7px rgba(46, 163, 107, 0.36));
+  }
+  .ring-text {
+    fill: currentColor;
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+  .event-row {
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  }
+  .event-row:hover {
+    transform: translateX(3px);
+  }
+  .event-row[data-tone="ok"] {
+    background: color-mix(in srgb, var(--color-ok) 9%, transparent);
+  }
+  .event-row[data-tone="warn"] {
+    background: color-mix(in srgb, var(--color-warn) 10%, transparent);
+  }
+  .event-row[data-tone="brand"] {
+    background: color-mix(in srgb, var(--color-brand) 9%, transparent);
+  }
+  .event-icon {
+    background: color-mix(in srgb, var(--color-brand) 13%, transparent);
+    color: var(--color-brand);
+  }
+  .event-row[data-tone="ok"] .event-icon {
+    background: color-mix(in srgb, var(--color-ok) 15%, transparent);
+    color: var(--color-ok);
+  }
+  .event-row[data-tone="warn"] .event-icon {
+    background: color-mix(in srgb, var(--color-warn) 16%, transparent);
+    color: var(--color-warn);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .live-pill span {
+      animation: live-dot 1.8s ease-out infinite;
+    }
+    .js [data-reveal].is-visible .kpi-tile {
+      animation: kpi-in 0.54s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: var(--kpi-delay, 0ms);
+    }
+    .js [data-reveal].is-visible .dashboard-bar {
+      animation: bar-grow 0.72s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: var(--bar-delay, 0ms);
+    }
+    .js [data-reveal].is-visible .trend-line {
+      animation: trend-draw 1.35s ease-out 0.35s both;
+    }
+    .js [data-reveal].is-visible .scan-cursor {
+      animation: scan-cursor 3.4s ease-in-out infinite 0.7s;
+    }
+    .js [data-reveal].is-visible .event-row {
+      animation: event-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: var(--event-delay, 0ms);
+    }
+    .js [data-reveal].is-visible .ring-value {
+      animation: ring-in 1s ease-out both;
+    }
+  }
+  @keyframes live-dot {
+    0% { box-shadow: 0 0 0 0 rgba(46, 163, 107, 0.45); }
+    75%, 100% { box-shadow: 0 0 0 8px rgba(46, 163, 107, 0); }
+  }
+  @keyframes kpi-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes bar-grow {
+    from { transform: scaleY(0.08); opacity: 0.4; }
+    to { transform: scaleY(1); opacity: 1; }
+  }
+  @keyframes trend-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes scan-cursor {
+    0% { left: 1rem; opacity: 0; }
+    12% { opacity: 1; }
+    82% { opacity: 1; }
+    100% { left: calc(100% - 1rem); opacity: 0; }
+  }
+  @keyframes event-in {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes ring-in {
+    from { stroke-dasharray: 0 100; }
+    to { stroke-dasharray: 92 100; }
+  }
+</style>

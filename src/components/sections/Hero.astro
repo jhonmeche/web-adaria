@@ -6,8 +6,8 @@ import Button from '../ui/Button.astro';
 import Viewfinder from '../ui/Viewfinder.astro';
 
 // ── SOLUCIONES DEL CARRUSEL ────────────────────────────────────────────────
-// Imágenes en  public/hero/  (slide-1.png ... slide-5.png). Si una falta, se
-// oculta sola y el título igual rota. Titulares cortos y paralelos (impacto).
+// Imágenes en public/hero/. Si una falta, se oculta sola y el título igual
+// rota. Titulares cortos y paralelos (impacto).
 const slides = [
   {
     titulo: 'Visión artificial que optimiza la producción.',
@@ -18,6 +18,21 @@ const slides = [
     titulo: 'Hardware a la medida, integrado a la solución de software.',
     img: '/hero/adaria-hardware-iot.png',
     alt: 'Banco de laboratorio con prototipos electronicos, nodos IoT y equipos de medicion',
+  },
+  {
+    titulo: 'Software a la medida para operar sin silos.',
+    img: '/hero/adaria-software-industrial.png',
+    alt: 'Interfaz de software industrial con paneles de codigo, integraciones y analitica operativa',
+  },
+  {
+    titulo: 'Apps móviles para cualquier tipo de aplicación.',
+    img: '/hero/adaria-apps-moviles.png',
+    alt: 'Equipo disenando aplicaciones moviles para diferentes tipos de negocio en telefonos y tablet',
+  },
+  {
+    titulo: 'Machine learning y análisis de datos para anticipar decisiones.',
+    img: '/hero/adaria-ml-analitica-datos.png',
+    alt: 'Dashboard de analitica con curvas predictivas, nodos de aprendizaje automatico y metricas operativas',
   },
   {
     titulo: 'Mantenimiento predictivo que se anticipa a las fallas.',
@@ -99,10 +114,9 @@ const slides = [
       </div>
 
       <p data-reveal class="mt-8 max-w-[calc(100vw-3rem)] text-balance text-base leading-relaxed text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.42)] sm:max-w-xl sm:text-lg">
-        Llevamos la Industria 4.0 a la operación real. Integramos visión
-        artificial, IoT e infraestructura propia para convertir cada dato en una
-        decisión —y cada decisión, en operaciones más seguras, eficientes y
-        auditables.
+        Llevamos la Industria 4.0 a la operación real. Integramos software a
+        la medida, apps móviles, visión artificial, IoT y modelos de machine
+        learning para convertir cada dato en una decisión auditable.
       </p>
 
       <div data-reveal class="mt-9 flex max-w-[calc(100vw-3rem)] flex-col gap-3 sm:flex-row sm:items-center">
@@ -131,6 +145,9 @@ const slides = [
       <ul data-reveal class="mt-12 flex max-w-[calc(100vw-3rem)] flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-sm text-muted-dark sm:max-w-2xl">
         {[
           ['Visión', 'artificial'],
+          ['Software', 'a medida'],
+          ['Apps', 'móviles'],
+          ['Machine learning', 'y analítica'],
           ['IoT', 'LoRa/LoRaWAN'],
           ['Hardware', 'propio'],
           ['Dato', 'auditable'],

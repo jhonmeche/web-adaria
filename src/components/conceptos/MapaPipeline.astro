@@ -44,15 +44,18 @@ const etapas = [
     </p>
   </div>
 
-  <ol class="mt-16 grid gap-y-12 md:grid-cols-4 md:gap-x-4 md:gap-y-0">
+  <ol class="pipeline-map relative mt-16 grid gap-y-12 md:grid-cols-4 md:gap-x-4 md:gap-y-0">
+    <span class="pipeline-rail hidden md:block" aria-hidden="true">
+      <span class="pipeline-pulse"></span>
+    </span>
     {etapas.map((e, i) => (
       <li
         data-reveal
-        class="card relative flex flex-col rounded-2xl border border-ink/10 bg-surface p-6 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/40 hover:shadow-lg"
+        class="card pipeline-card relative flex flex-col rounded-2xl border border-ink/10 bg-surface p-6 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/40 hover:shadow-lg"
         style={`--reveal-delay:${i * 90}ms`}
       >
         <div class="flex items-center justify-between">
-          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
+          <span class="pipeline-icon inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d={e.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -70,11 +73,11 @@ const etapas = [
         {i < etapas.length - 1 && (
           <>
             {/* Conector horizontal (desktop) */}
-            <span class="absolute -right-4 top-9 z-10 hidden h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 md:flex">
+            <span class="pipeline-arrow absolute -right-4 top-9 z-10 hidden h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 md:flex">
               <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
             {/* Conector vertical (móvil) */}
-            <span class="absolute -bottom-9 left-1/2 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 md:hidden">
+            <span class="pipeline-arrow absolute -bottom-9 left-1/2 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 md:hidden">
               <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12m0 0-5-5m5 5 5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </>
@@ -103,5 +106,71 @@ const etapas = [
   }
   .card {
     transition: translate 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pipeline-rail {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 2.2rem;
+    height: 2px;
+    background:
+      linear-gradient(90deg, transparent, rgba(37, 99, 217, 0.24), rgba(37, 99, 217, 0.24), transparent);
+    z-index: 0;
+  }
+  .pipeline-pulse {
+    position: absolute;
+    inset-block: -3px;
+    left: -4rem;
+    width: 76px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, var(--color-brand), var(--color-brand-400), transparent);
+    box-shadow: 0 0 26px rgba(37, 99, 217, 0.42);
+  }
+  .pipeline-card {
+    z-index: 1;
+  }
+  .pipeline-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, rgba(37, 99, 217, 0.2), transparent 36%, rgba(0, 180, 216, 0.16)) border-box;
+    mask:
+      linear-gradient(#000 0 0) padding-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .pipeline-card:hover::after {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .pipeline-pulse {
+      animation: pipeline-run 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .pipeline-icon {
+      animation: icon-breathe 3s ease-in-out infinite;
+    }
+    .pipeline-arrow svg {
+      animation: arrow-nudge 1.6s ease-in-out infinite;
+    }
+  }
+  @keyframes pipeline-run {
+    0% { left: -4rem; opacity: 0; }
+    8% { opacity: 1; }
+    92% { opacity: 1; }
+    100% { left: calc(100% - 1rem); opacity: 0; }
+  }
+  @keyframes icon-breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.055); }
+  }
+  @keyframes arrow-nudge {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(2px); }
   }
 </style>

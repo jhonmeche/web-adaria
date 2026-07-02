@@ -26,12 +26,12 @@ const nodos = [
 
   <div class="flex flex-col items-stretch gap-3 lg:flex-row lg:items-center">
     <!-- Nodos con sensores -->
-    <div class={`rounded-xl border p-4 ${inner}`}>
+    <div class={`lora-panel rounded-xl border p-4 ${inner}`}>
       <p class={`mb-3 text-xs font-semibold ${muted}`}>Nodos con sensores</p>
       <div class="space-y-2">
-        {nodos.map((n) => (
-          <div class="flex items-center gap-2.5">
-            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand/15 text-brand-400">
+        {nodos.map((n, i) => (
+          <div class="sensor-row flex items-center gap-2.5" style={`--node-delay:${i * 170}ms`}>
+            <span class="sensor-icon inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand/15 text-brand-400">
               <IconAnimado name={n.tipo} class="h-4 w-4" />
             </span>
             <span class={`text-sm ${title}`}>{n.t}</span>
@@ -51,8 +51,8 @@ const nodos = [
     </div>
 
     <!-- Gateway -->
-    <div class={`flex flex-1 flex-col items-center gap-2 rounded-xl border p-4 text-center ${inner}`}>
-      <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
+    <div class={`lora-panel flex flex-1 flex-col items-center gap-2 rounded-xl border p-4 text-center ${inner}`}>
+      <span class="gateway-icon inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
         <IconAnimado name="gateway" class="h-5 w-5" />
       </span>
       <p class={`text-sm font-semibold ${title}`}>Gateway</p>
@@ -65,8 +65,8 @@ const nodos = [
     </svg>
 
     <!-- Plataforma -->
-    <div class={`flex flex-1 flex-col items-center gap-2 rounded-xl border p-4 text-center ${inner}`}>
-      <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
+    <div class={`lora-panel flex flex-1 flex-col items-center gap-2 rounded-xl border p-4 text-center ${inner}`}>
+      <span class="gateway-icon inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
         <IconAnimado name="plataforma" class="h-5 w-5" />
       </span>
       <p class={`text-sm font-semibold ${title}`}>Plataforma</p>
@@ -97,9 +97,55 @@ const nodos = [
     82% { opacity: 1; }
     100% { transform: translateX(12px); opacity: 0; }
   }
+  .lora-panel {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .lora-panel:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--color-brand) 42%, transparent);
+  }
+  .sensor-icon,
+  .gateway-icon {
+    position: relative;
+  }
+  .sensor-icon::after,
+  .gateway-icon::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: inherit;
+    border: 1px solid rgba(121, 161, 255, 0.38);
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .sensor-row {
+      animation: sensor-row-in 0.56s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: var(--node-delay, 0ms);
+    }
+    .sensor-icon::after,
+    .gateway-icon::after {
+      animation: radio-ring 2.2s ease-out infinite;
+    }
+    .gateway-icon::after {
+      animation-delay: 0.4s;
+    }
+  }
+  @keyframes sensor-row-in {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes radio-ring {
+    0% { opacity: 0; transform: scale(0.82); }
+    22% { opacity: 0.9; }
+    100% { opacity: 0; transform: scale(1.42); }
+  }
   @media (prefers-reduced-motion: reduce) {
     .lora-pkt,
-    .flow-pkt {
+    .flow-pkt,
+    .sensor-icon::after,
+    .gateway-icon::after {
       animation: none;
       opacity: 0;
     }
