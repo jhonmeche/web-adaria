@@ -22,3 +22,8 @@ Thumbs.db
 
 # Claude Code (configuración local personal)
 .claude/settings.local.json
+
+# Agent skills instaladas vía `npx skills add` (externas, no viajan en git;
+# se reinstalan con `npx skills add` en cada equipo).
+.agents/skills/
+.claude/skills/
