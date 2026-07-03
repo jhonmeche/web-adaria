@@ -1,0 +1,343 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import Eyebrow from '../../components/ui/Eyebrow.astro';
+import Button from '../../components/ui/Button.astro';
+import { sectores } from '../../data/sectores.ts';
+import { productos } from '../../data/productos.ts';
+import { servicios } from '../../data/servicios.ts';
+
+export function getStaticPaths() {
+  return sectores.map((s) => ({ params: { slug: s.slug }, props: { sector: s } }));
+}
+
+const { sector } = Astro.props;
+const d = sector.detalle;
+
+const productosRelacionados = productos
+  .filter((p) => {
+    const sectoresDirectos = p.detalle?.sectores ?? [];
+    const aplicaciones = p.detalle?.aplicaciones?.map((a) => a.sector) ?? [];
+    return sectoresDirectos.includes(sector.slug) || aplicaciones.includes(sector.slug);
+  })
+  .slice(0, 4);
+
+const serviciosRelacionados = servicios
+  .filter((s) => (s.detalle.sectores ?? []).includes(sector.slug))
+  .slice(0, 6);
+
+const otrosSectores = sectores.filter((s) => s.slug !== sector.slug);
+
+const title = `${sector.nombre} — Soluciones tecnológicas por sector | AdariA Systems`;
+const description = d.intro;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: `Soluciones para ${sector.nombre}`,
+      serviceType: sector.nombre,
+      description,
+      provider: { '@type': 'Organization', name: 'AdariA Systems' },
+      url: canonical,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: new URL('/', Astro.site).toString() },
+        { '@type': 'ListItem', position: 2, name: 'Soluciones por sector', item: new URL('/#sectores', Astro.site).toString() },
+        { '@type': 'ListItem', position: 3, name: sector.nombre, item: canonical },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- HERO -->
+  <section class="relative isolate overflow-hidden bg-ink text-on-dark" style={`--sector:${sector.color}`}>
+    <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-6 pb-20 pt-36 lg:px-8 lg:pt-40">
+      <nav class="mb-8 flex items-center gap-2 text-sm text-muted-dark" aria-label="Ruta">
+        <a href="/" class="transition-colors hover:text-on-dark">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#sectores" class="transition-colors hover:text-on-dark">Soluciones por sector</a>
+        <span aria-hidden="true">/</span>
+        <span class="text-on-dark" aria-current="page">{sector.nombre}</span>
+      </nav>
+
+      <div class="grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr]">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold uppercase text-on-dark/80">
+            <span class="h-2.5 w-2.5 rounded-full" style="background:var(--sector)" aria-hidden="true"></span>
+            Solución sectorial
+          </span>
+          <h1 class="mt-6 text-display font-semibold text-on-dark">{d.heroTitulo}</h1>
+          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted-dark">{d.intro}</p>
+          <p class="mt-5 max-w-2xl text-sm leading-relaxed text-on-dark/72">{d.contexto}</p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button href="/#contacto" variant="primary" on="dark">Hable con un experto</Button>
+            <Button href="/#sectores" variant="secondary" on="dark">Ver otros sectores</Button>
+          </div>
+        </div>
+
+        <figure class="sector-hero group relative overflow-hidden rounded-2xl border border-white/10 bg-ink-card ring-1 ring-white/5">
+          <span class="absolute inset-x-0 top-0 z-10 h-1.5" style="background:var(--sector)" aria-hidden="true"></span>
+          {sector.imagen && (
+            <img
+              src={sector.imagen}
+              alt={`Solución AdariA para ${sector.nombre}`}
+              class="aspect-4/3 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="eager"
+              decoding="async"
+            />
+          )}
+          <figcaption class="border-t border-white/10 bg-ink-card p-6">
+            <p class="text-xs font-semibold uppercase text-brand-400">Capacidades principales</p>
+            <p class="mt-2 text-base font-semibold text-on-dark">{sector.resuelveCon}</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETOS -->
+  <Section theme="light" id="retos" style={`--sector:${sector.color}`}>
+    <div class="mx-auto max-w-3xl text-center">
+      <Eyebrow on="light">Reto operativo</Eyebrow>
+      <h2 data-reveal class="text-balance text-h1 font-semibold text-on-light">{d.retosTitulo}</h2>
+      <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">{d.retosIntro}</p>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-3">
+      {d.retos.map((reto, i) => (
+        <article
+          data-reveal
+          class="card group relative flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-surface p-7 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/35 hover:shadow-lg"
+          style={`--reveal-delay:${i * 80}ms`}
+        >
+          <span class="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" style="background:var(--sector)" aria-hidden="true"></span>
+          <span class="text-sm font-semibold text-brand">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="mt-4 text-lg font-semibold text-on-light">{reto.titulo}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted">{reto.texto}</p>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <!-- SOLUCION -->
+  <Section theme="dark" id="solucion" grid={true} style={`--sector:${sector.color}`}>
+    <div class="mx-auto max-w-3xl text-center">
+      <Eyebrow on="dark">Solución AdariA</Eyebrow>
+      <h2 data-reveal class="text-balance text-h1 font-semibold text-on-dark">{d.solucionTitulo}</h2>
+      <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">{d.solucionIntro}</p>
+    </div>
+
+    <div class="mt-16 grid gap-6 lg:grid-cols-3">
+      {d.soluciones.map((solucion, i) => (
+        <article
+          data-reveal
+          class="card flex flex-col rounded-2xl border border-white/10 bg-ink-card p-7 ring-1 ring-white/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10"
+          style={`--reveal-delay:${i * 90}ms`}
+        >
+          <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.045] text-sm font-semibold text-on-dark">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <h3 class="mt-5 text-xl font-semibold text-on-dark">{solucion.titulo}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-dark">{solucion.texto}</p>
+          <ul class="mt-5 grid gap-2.5 border-t border-white/10 pt-5">
+            {solucion.items.map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-on-dark/84">
+                <svg class="mt-0.5 h-4 w-4 shrink-0" style="color:var(--sector)" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <!-- ARQUITECTURA -->
+  <Section theme="light" id="arquitectura" style={`--sector:${sector.color}`}>
+    <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div>
+        <Eyebrow on="light">Arquitectura de implementación</Eyebrow>
+        <h2 data-reveal class="text-balance text-h1 font-semibold text-on-light">{d.arquitecturaTitulo}</h2>
+        <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">{d.arquitecturaIntro}</p>
+
+        <div data-reveal class="mt-8 border-t border-ink/10 pt-7">
+          <p class="text-sm font-semibold text-on-light">Entregables típicos</p>
+          <ul class="mt-4 flex flex-wrap gap-2.5">
+            {d.entregables.map((entregable) => (
+              <li class="rounded-full border border-ink/10 bg-ink/[0.035] px-4 py-1.5 text-sm font-medium text-on-light/80">{entregable}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <ol class="grid gap-4">
+        {d.arquitectura.map((paso, i) => (
+          <li
+            data-reveal
+            class="card grid gap-4 rounded-2xl border border-ink/10 bg-surface p-6 shadow-sm ring-1 ring-ink/5 sm:grid-cols-[auto_1fr] hover:[translate:0_-4px] hover:border-brand/35"
+            style={`--reveal-delay:${i * 80}ms`}
+          >
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl text-sm font-semibold text-white" style="background:var(--sector)">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div>
+              <h3 class="text-lg font-semibold text-on-light">{paso.titulo}</h3>
+              <p class="mt-1 text-sm leading-relaxed text-muted">{paso.texto}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </Section>
+
+  <!-- RESULTADOS -->
+  <Section theme="white" id="resultados" style={`--sector:${sector.color}`}>
+    <div class="mx-auto max-w-3xl text-center">
+      <Eyebrow on="light">Impacto esperado</Eyebrow>
+      <h2 data-reveal class="text-balance text-h1 font-semibold text-on-light">{d.resultadosTitulo}</h2>
+    </div>
+
+    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {d.resultados.map((resultado, i) => (
+        <article
+          data-reveal
+          class="card group flex flex-col rounded-2xl border border-ink/10 bg-surface p-7 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/35 hover:shadow-lg"
+          style={`--reveal-delay:${i * 80}ms`}
+        >
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3 class="mt-4 text-base font-semibold text-on-light">{resultado.titulo}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">{resultado.texto}</p>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  {(productosRelacionados.length > 0 || serviciosRelacionados.length > 0) && (
+    <Section theme="dark" id="stack-relacionado" grid={true}>
+      <div class="mx-auto max-w-3xl text-center">
+        <Eyebrow on="dark">Stack aplicable</Eyebrow>
+        <h2 data-reveal class="text-balance text-h1 font-semibold text-on-dark">
+          Capacidades que se combinan para {sector.nombre}.
+        </h2>
+        <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
+          La solución se arma con productos y servicios de AdariA según el caso de uso, infraestructura disponible y prioridad operativa.
+        </p>
+      </div>
+
+      {productosRelacionados.length > 0 && (
+        <div class="mt-14">
+          <p class="text-sm font-semibold text-brand-400">Productos relacionados</p>
+          <div class="mt-5 grid gap-5 md:grid-cols-2">
+            {productosRelacionados.map((p) => (
+              <a href={`/productos/${p.slug}`} class="group flex items-start gap-4 rounded-2xl border border-white/10 bg-ink-card p-6 ring-1 ring-white/5 transition-all hover:-translate-y-1 hover:border-brand/40">
+                <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors group-hover:bg-brand group-hover:text-white">
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={p.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </span>
+                <div>
+                  <p class="text-xs font-medium text-brand-400">{p.categoria}</p>
+                  <h3 class="text-lg font-semibold text-on-dark">{p.nombre}</h3>
+                  <p class="mt-1 text-sm leading-relaxed text-muted-dark">{p.tagline}</p>
+                  <span class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400 transition-all group-hover:gap-2.5">
+                    Ver producto
+                    <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {serviciosRelacionados.length > 0 && (
+        <div class="mt-10">
+          <p class="text-sm font-semibold text-brand-400">Servicios relacionados</p>
+          <div class="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {serviciosRelacionados.map((s) => (
+              <a href={`/servicios/${s.slug}`} class="group flex items-start gap-4 rounded-2xl border border-white/10 bg-ink-card p-6 ring-1 ring-white/5 transition-all hover:-translate-y-1 hover:border-brand/40">
+                <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand/15 text-brand-400 transition-colors group-hover:bg-brand group-hover:text-white">
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={s.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </span>
+                <div>
+                  <p class="text-xs font-medium text-brand-400">{s.categoria}</p>
+                  <h3 class="text-lg font-semibold text-on-dark">{s.nombre}</h3>
+                  <span class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400 transition-all group-hover:gap-2.5">
+                    Saber más
+                    <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </Section>
+  )}
+
+  <!-- OTROS SECTORES + CTA -->
+  <section class="relative isolate overflow-hidden bg-light py-24 text-on-light">
+    <div class="relative mx-auto max-w-6xl px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <Eyebrow on="light">Siguiente paso</Eyebrow>
+          <h2 class="text-balance text-h1 font-semibold text-on-light">{d.cta}</h2>
+          <p class="mt-5 text-lg leading-relaxed text-muted">
+            Revisamos el proceso, identificamos el punto de mayor impacto y proponemos un piloto acotado con métricas claras.
+          </p>
+          <div class="mt-8">
+            <Button href="/#contacto" variant="primary" on="light">Solicitar diagnóstico</Button>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-muted">Otros sectores</p>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            {otrosSectores.map((otro) => (
+              <a href={`/sectores/${otro.slug}`} class="group flex items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-surface px-5 py-4 shadow-sm ring-1 ring-ink/5 transition-all hover:-translate-y-1 hover:border-brand/35">
+                <span>
+                  <span class="block text-sm font-semibold text-on-light">{otro.nombre}</span>
+                  <span class="mt-0.5 block text-xs text-muted">{otro.gancho}</span>
+                </span>
+                <svg class="h-4 w-4 shrink-0 text-brand transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</BaseLayout>
+
+<style>
+  .sector-hero {
+    box-shadow:
+      0 1px 2px rgba(16, 20, 24, 0.08),
+      0 24px 70px rgba(0, 0, 0, 0.28);
+  }
+
+  .js [data-reveal].card {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      translate 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .js [data-reveal].card.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>

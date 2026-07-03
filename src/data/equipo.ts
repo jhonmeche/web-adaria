@@ -43,6 +43,13 @@ export const fundadores: Fundador[] = [
     linkedin: 'https://www.linkedin.com/in/edinson-guzman',
     foto: '/equipo/edinson-guzman.webp',
   },
+  {
+    nombre: 'Rafael Pulifo',
+    rol: 'Director de operaciones técnicas',
+    bio: 'Lidera la ejecución operativa de los proyectos, coordinando instalación, soporte y puesta en marcha en campo. Su trabajo conecta la ingeniería con la realidad diaria del cliente, asegurando implementaciones ordenadas, continuidad operativa y respuestas oportunas cuando la operación lo exige.',
+    foco: ['Operaciones en campo', 'Puesta en marcha', 'Soporte técnico', 'Continuidad operativa'],
+    foto: '/equipo/rafael-pulifo.webp',
+  },
 ];
 
 // §1 del brief — constantes de identidad.

@@ -1,7 +1,5 @@
 ---
-// Header con navegación §7. En esta primera entrega (solo home) los ítems de
-// los menús enlazan a las secciones de la home; cuando existan las landings
-// dedicadas, basta cambiar los href a /soluciones/[slug], /productos/... etc.
+// Header con navegación principal y landings dedicadas por sector, producto y servicio.
 import Logo from '../ui/Logo.astro';
 import { sectores } from '../../data/sectores.ts';
 import { productos } from '../../data/productos.ts';
@@ -33,7 +31,7 @@ import { servicios } from '../../data/servicios.ts';
         <div class="dropdown">
           <p class="dropdown-title">Por sector</p>
           {sectores.map((s) => (
-            <a href="/#sectores" class="dropdown-item">{s.nombre}</a>
+            <a href={`/sectores/${s.slug}`} class="dropdown-item">{s.nombre}</a>
           ))}
         </div>
       </li>

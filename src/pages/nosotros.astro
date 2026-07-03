@@ -2,7 +2,7 @@
 // Página "Nosotros" (§7). Landing dedicada y profesional con el mismo lenguaje
 // visual del sitio: hero oscuro con rejilla, secciones alternadas claro/oscuro,
 // cards data-reveal. Bloques: hero, historia/origen, propósito-misión-visión,
-// valores y equipo fundador (CEO + CTO con monograma de iniciales) + CTA.
+// valores y equipo directivo (CEO + CTO + operaciones) + CTA.
 // El contenido vive en data/equipo.ts.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/ui/Section.astro';
@@ -71,7 +71,7 @@ const jsonLd = {
     description,
     foundingLocation: 'Colombia',
     founder: fundadores
-      .filter((f) => !f.nombre.includes('['))
+      .filter((f) => !f.nombre.includes('[') && f.rol.toLowerCase().includes('cofundador'))
       .map((f) => ({ '@type': 'Person', name: f.nombre, jobTitle: f.rol })),
   },
 };
@@ -227,20 +227,21 @@ const jsonLd = {
     </div>
   </Section>
 
-  <!-- EQUIPO FUNDADOR -->
+  <!-- EQUIPO DIRECTIVO -->
   <Section theme="dark" id="equipo" grid={true}>
     <div class="mx-auto max-w-3xl text-center">
-      <Eyebrow on="dark">Equipo fundador</Eyebrow>
+      <Eyebrow on="dark">Equipo directivo</Eyebrow>
       <h2 data-reveal class="text-balance text-h1 font-semibold text-on-dark">
-        Dos perfiles complementarios, una misma visión.
+        Tres perfiles complementarios, una misma visión.
       </h2>
       <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
-        Negocio e ingeniería de la mano: la estrategia comercial y la profundidad
-        técnica que hacen falta para llevar tecnología real a la operación.
+        Negocio, ingeniería y operación trabajando de la mano: la estrategia,
+        la profundidad técnica y la ejecución en campo que hacen falta para llevar
+        tecnología real a la operación.
       </p>
     </div>
 
-    <div class="mx-auto mt-16 grid max-w-4xl gap-8 sm:grid-cols-2">
+    <div class="mx-auto mt-16 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {fundadores.map((f, i) => (
         <article
           data-reveal

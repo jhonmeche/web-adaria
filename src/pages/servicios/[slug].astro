@@ -81,7 +81,7 @@ const jsonLd = {
           <p class="mt-4 text-balance text-h2 font-semibold text-on-dark">{servicio.tagline}</p>
           <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted-dark">{d.intro}</p>
           <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button href="/#contacto" variant="primary" on="dark">Hablemos de su proyecto</Button>
+            <Button href="/#contacto" variant="primary" on="dark">Hable con un experto</Button>
             <Button href="/#servicios" variant="secondary" on="dark">Ver todos los servicios</Button>
           </div>
         </div>
@@ -212,7 +212,7 @@ const jsonLd = {
         <p class="text-sm font-medium text-muted">Donde más aplica</p>
         <div class="mt-4 flex flex-wrap justify-center gap-2.5">
           {relacionados.map((s) => (
-            <a href="/#sectores" class="rounded-full border border-ink/15 bg-ink/5 px-4 py-1.5 text-sm font-medium text-on-light transition-colors hover:border-brand/40 hover:text-brand">
+            <a href={`/sectores/${s!.slug}`} class="rounded-full border border-ink/15 bg-ink/5 px-4 py-1.5 text-sm font-medium text-on-light transition-colors hover:border-brand/40 hover:text-brand">
               {s!.nombre}
             </a>
           ))}
@@ -266,7 +266,7 @@ const jsonLd = {
           software y datos— que de verdad necesita.
         </p>
         <div class="mt-7 flex justify-center">
-          <Button href="/#contacto" variant="primary" on="dark">Hablemos de su proyecto</Button>
+          <Button href="/#contacto" variant="primary" on="dark">Hable con un experto</Button>
         </div>
       </div>
     </div>

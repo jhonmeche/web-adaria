@@ -312,7 +312,7 @@ const jsonLd = {
         <p class="text-sm font-medium text-muted">Donde más aplica</p>
         <div class="mt-4 flex flex-wrap justify-center gap-2.5">
           {relacionados.map((s) => (
-            <a href="/#sectores" class="rounded-full border border-ink/15 bg-ink/5 px-4 py-1.5 text-sm font-medium text-on-light transition-colors hover:border-brand/40 hover:text-brand">
+            <a href={`/sectores/${s!.slug}`} class="rounded-full border border-ink/15 bg-ink/5 px-4 py-1.5 text-sm font-medium text-on-light transition-colors hover:border-brand/40 hover:text-brand">
               {s!.nombre}
             </a>
           ))}
@@ -331,7 +331,7 @@ const jsonLd = {
           {producto.nombre} es parte del stack integral de AdariA.
         </h2>
         <p class="mt-5 text-lg leading-relaxed text-muted-dark">
-          Del sensor a la decisión: combínalo con el resto del stack para cubrir
+          Del sensor a la decisión: combínelo con el resto del stack para cubrir
           toda la cadena —a la medida y con dato auditable— bajo un mismo techo.
         </p>
       </div>

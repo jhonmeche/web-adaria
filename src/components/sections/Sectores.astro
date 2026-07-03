@@ -29,7 +29,7 @@ import { sectores } from '../../data/sectores.ts';
   <div class="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
     {sectores.map((s, i) => (
       <a
-        href="#sectores"
+        href={`/sectores/${s.slug}`}
         data-reveal
         class="sector-card group relative flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-surface shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/35"
         style={`--reveal-delay:${i * 90}ms`}
@@ -103,7 +103,7 @@ import { sectores } from '../../data/sectores.ts';
         Diseñamos soluciones a la medida para diferentes tipos de operación. Cuéntenos su reto.
       </p>
       <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition-all group-hover:gap-2.5">
-        Hablemos
+        Hable con un experto
         <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
