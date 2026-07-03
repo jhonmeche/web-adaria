@@ -1,14 +1,24 @@
 ---
 // Etiqueta pequeña sobre los titulares de sección. El acento azul solo aquí
 // como detalle (nunca en texto de párrafo).
+// Identidad "spec técnico": tipografía monoespaciada + un índice numérico
+// opcional que forma la columna vertebral documentada del home (01 —, 02 —…),
+// reforzando el ADN de marca (dato auditable, del sensor a la decisión).
 interface Props {
   on?: 'dark' | 'light';
+  /** Índice de sección: número (se rellena a 2 dígitos) o texto ya formateado. */
+  index?: string | number;
   class?: string;
 }
-const { on = 'light', class: className = '' } = Astro.props;
+const { on = 'light', index, class: className = '' } = Astro.props;
 const color = on === 'dark' ? 'text-brand-400' : 'text-brand';
+const label =
+  typeof index === 'number' ? String(index).padStart(2, '0') : index;
 ---
-<p class={`mb-4 inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.16em] ${color} ${className}`}>
-  <span class="h-px w-10 bg-current opacity-55"></span>
+<p class={`mb-4 inline-flex items-center gap-2.5 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.14em] ${color} ${className}`}>
+  {label != null && (
+    <span class="nums-tabular tabular-nums opacity-65">{label}</span>
+  )}
+  <span class="h-px w-8 bg-current opacity-55"></span>
   <slot />
 </p>

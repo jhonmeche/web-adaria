@@ -34,7 +34,7 @@ const icons: Record<string, string> = {
 
 <Section theme="white" id="problema" aria-labelledby="problema-title">
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-    <Eyebrow on="light">El costo de operar a ciegas</Eyebrow>
+    <Eyebrow on="light" index={1}>El costo de operar a ciegas</Eyebrow>
     <h2 id="problema-title" data-reveal class="text-balance text-h1 font-semibold text-on-light">
       Lo que no se mide, se paga caro.
     </h2>
@@ -48,13 +48,18 @@ const icons: Record<string, string> = {
     {dolores.map((d, i) => (
       <div
         data-reveal
-        class="card group flex flex-col rounded-2xl border border-ink/10 bg-light p-8 ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-ink/25 hover:shadow-lg"
+        class="card group relative flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-light p-8 pl-9 ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-brand/30 hover:shadow-lg"
         style={`--reveal-delay:${i * 90}ms`}
       >
-        <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d={icons[d.icon]} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+        <!-- Marca lateral de "hallazgo": el acento se enciende al inspeccionar -->
+        <span class="absolute inset-y-0 left-0 w-1 bg-brand/20 transition-colors duration-300 group-hover:bg-brand" aria-hidden="true"></span>
+        <div class="mb-6 flex items-center justify-between gap-4">
+          <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand ring-1 ring-inset ring-brand/15 transition-colors group-hover:bg-brand group-hover:text-white group-hover:ring-brand">
+            <svg class="h-5.5 w-5.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d={icons[d.icon]} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="nums-tabular font-mono text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-on-light/35">Riesgo {String(i + 1).padStart(2, '0')}</span>
         </div>
         <h3 class="mb-2 text-lg font-semibold text-on-light">{d.titulo}</h3>
         <p class="text-sm leading-relaxed text-muted">{d.texto}</p>

@@ -53,6 +53,13 @@
     "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-sans);
 
+  /* Monoespaciada de sistema (cero costo de red) — identidad "instrumento /
+     spec técnico": metadatos, índices de sección, lecturas numéricas y
+     etiquetas. Refuerza el ADN de marca (dato auditable, del sensor a la
+     decisión). Nunca para texto de párrafo. */
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Menlo",
+    "Consolas", "Liberation Mono", monospace;
+
   /* Escala fluida de titulares (clamp, estilo Apple): grande en desktop,
      escalado en móvil. Cada token lleva su line-height emparejado. */
   --text-display: clamp(2.5rem, 1.6rem + 4.2vw, 4.15rem); /* hero h1 */
@@ -100,6 +107,14 @@ h1, h2, h3, h4 {
 
 p {
   text-wrap: pretty;
+}
+
+/* Lecturas numéricas estables (contadores animados, métricas, índices): cifras
+   de igual ancho para que no "salten" al animar y se lean como un instrumento. */
+[data-count],
+.nums-tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }
 
 ::selection {

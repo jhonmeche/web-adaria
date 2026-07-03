@@ -1,14 +1,15 @@
 ---
 // §9.4 — El stack integral de AdariA: 3 productos + servicios. Fondo oscuro
-// (alterna con Solución -clara- antes y Servicios -blanco- después).
+// (alterna con Sectores -clara- antes y Calidad del dato -clara- después).
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
+import Viewfinder from '../ui/Viewfinder.astro';
 import { productos } from '../../data/productos.ts';
 ---
 
 <Section theme="dark" id="productos" grid={true} aria-labelledby="productos-title">
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-    <Eyebrow on="dark">El stack integral</Eyebrow>
+    <Eyebrow on="dark" index={8}>El stack integral</Eyebrow>
     <h2 id="productos-title" data-reveal class="text-balance text-h1 font-semibold text-on-dark">
       Tres productos.<br class="hidden sm:block" /> Un solo aliado tecnológico.
     </h2>
@@ -30,6 +31,7 @@ import { productos } from '../../data/productos.ts';
         ]}
         style={`--reveal-delay:${i * 90}ms`}
       >
+        <Viewfinder on="dark" size="sm" />
         <div class="mb-5">
           <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/30">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">

@@ -3,8 +3,8 @@
 // nav enlazaba sin destino. Presenta a AdariA como un equipo de ingeniería
 // integral (las capacidades, fondo BLANCO) y luego su metodología de trabajo
 // (fondo OSCURO), para seguir la alternancia oscuro→blanco desde el Hero:
-// Stack (oscuro) → Servicios/capacidades (blanco) → Servicios/método (oscuro)
-// → Sectores (blanco). Reutiliza el patrón visual del sitio (cards data-reveal,
+// Arquitectura (oscuro) → Servicios/capacidades (blanco) → Servicios/método
+// (oscuro) → Sectores (blanco). Reutiliza el patrón visual del sitio (cards data-reveal,
 // íconos de trazo, números grandes en hover).
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
@@ -28,7 +28,7 @@ const metodologia = [
 
 <Section theme="white" id="servicios" aria-labelledby="servicios-title">
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-    <Eyebrow on="light">Servicios</Eyebrow>
+    <Eyebrow on="light" index={6}>Servicios</Eyebrow>
     <h2 id="servicios-title" data-reveal class="text-balance text-h1 font-semibold text-on-light">
       Un equipo de ingeniería integral,<br class="hidden sm:block" /> bajo un mismo techo.
     </h2>
@@ -47,6 +47,7 @@ const metodologia = [
         class="card group relative flex flex-col rounded-2xl border border-ink/10 bg-light p-8 ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-brand/40 hover:shadow-lg"
         style={`--reveal-delay:${i * 70}ms`}
       >
+        <span class="nums-tabular pointer-events-none absolute right-6 top-6 font-mono text-xs font-semibold text-on-light/20 transition-colors group-hover:text-brand/60" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
         <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d={c.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -105,7 +106,7 @@ const metodologia = [
         >
           <span
             aria-hidden="true"
-            class="absolute left-0 top-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-brand-400 bg-ink text-xs font-bold text-brand-400 lg:relative lg:mx-auto lg:mb-4"
+            class="nums-tabular absolute left-0 top-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-brand-400 bg-ink font-mono text-xs font-bold text-brand-400 lg:relative lg:mx-auto lg:mb-4"
           >{i + 1}</span>
           <h4 class="text-base font-semibold text-on-dark">{p.titulo}</h4>
           <p class="mt-1.5 text-sm leading-relaxed text-muted-dark lg:mx-auto lg:max-w-[16rem]">{p.texto}</p>
