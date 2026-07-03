@@ -14,6 +14,7 @@ import { servicios } from '../../data/servicios.ts';
 // Las capacidades núcleo del brief (§4) viven en data/servicios.ts y
 // alimentan también su landing dedicada (/servicios/[slug]). Aquí solo
 // presentamos la card con su ícono de trazo, tags y enlace a "Saber más".
+const serviciosHome = servicios.filter((s) => s.slug !== 'ciudades-inteligentes');
 
 // Metodología — el "gráfico profesional" de proceso: cómo trabaja el equipo,
 // de la conversación inicial al soporte continuo.
@@ -41,7 +42,7 @@ const metodologia = [
 
   <!-- Capacidades -->
   <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {servicios.map((c, i) => (
+    {serviciosHome.map((c, i) => (
       <article
         data-reveal
         class="card service-card group relative flex flex-col overflow-hidden rounded-2xl border border-ink/10 bg-light p-8 ring-1 ring-ink/5 hover:border-brand/40 hover:shadow-lg"
