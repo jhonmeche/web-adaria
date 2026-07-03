@@ -1,0 +1,216 @@
+---
+// Ilustración del hero de /conceptos: "lo complejo se vuelve simple".
+// Izquierda: ruido técnico disperso (siglas, hex, jerga) con líneas
+// entrecortadas convergiendo. Centro: nodo AdariA — reutiliza el motivo de
+// marca (esquinas en L del logo/Viewfinder) como un "visor" que resuelve el
+// ruido, con el punto cian del logo como único acento (nunca como texto).
+// Derecha: 5 tarjetas limpias, una por cada grupo real del glosario — el
+// gráfico funciona como índice visual de lo que sigue en la página.
+// Puro SVG + CSS (sin librerías); fallback estático bajo prefers-reduced-motion.
+
+const fragmentos = [
+  { t: 'LoRaWAN', x: 36, y: 90 },
+  { t: 'MQTT', x: 150, y: 58 },
+  { t: '0x4F2A', x: 54, y: 166 },
+  { t: 'SCADA', x: 172, y: 144 },
+  { t: 'PLC', x: 26, y: 250 },
+  { t: '{ edge }', x: 150, y: 236 },
+  { t: 'API_v2', x: 48, y: 334 },
+  { t: 'GPIO', x: 164, y: 354 },
+  { t: 'IoT #42', x: 34, y: 422 },
+  { t: 'CNN·YOLO', x: 158, y: 444 },
+];
+
+// Un cable por fragmento (generado, no a mano) — evita que un término quede
+// sin línea de convergencia hacia el nodo, como pasaba antes con 4 de los 10.
+const nodoEntradaX = 286;
+const nodoEntradaY = 260;
+const lineaHaciaNodo = (f: { x: number; y: number }) => {
+  const sx = f.x - 6;
+  const sy = f.y - 5;
+  const c1x = sx + (nodoEntradaX - sx) * 0.45;
+  const c2x = sx + (nodoEntradaX - sx) * 0.78;
+  return `M${sx},${sy} C ${c1x},${sy} ${c2x},${nodoEntradaY} ${nodoEntradaX},${nodoEntradaY}`;
+};
+
+const tarjetas = [
+  { label: 'Industria 4.0', y: 66 },
+  { label: 'Visión artificial', y: 168 },
+  { label: 'Conectividad', y: 260 },
+  { label: 'Datos claros', y: 352 },
+  { label: 'Hardware', y: 454 },
+];
+---
+
+<div class="concept-translate pointer-events-none absolute right-0 top-16 hidden h-[32rem] w-[42rem] lg:block" aria-hidden="true">
+  <svg viewBox="0 0 680 520" class="h-full w-full">
+    <!-- Ruido técnico: fragmentos dispersos + líneas entrecortadas convergiendo -->
+    <g class="noise-zone">
+      {fragmentos.map((f, i) => (
+        <path class={`chaos-line cl-${i % 3}`} d={lineaHaciaNodo(f)} style={`--cl-delay:${i * 0.4}s`} />
+      ))}
+      {fragmentos.map((f, i) => (
+        <text
+          class="noise-frag"
+          x={f.x}
+          y={f.y}
+          style={`--frag-delay:${i * 0.55}s`}
+        >{f.t}</text>
+      ))}
+    </g>
+
+    <!-- Nodo AdariA: el "visor" que resuelve el ruido en algo simple -->
+    <g class="translate-node">
+      <circle class="node-glow" cx="340" cy="260" r="44" />
+      <path class="node-corner" d="M292,234 V216 H308" />
+      <path class="node-corner" d="M372,216 H388 V234" />
+      <path class="node-corner" d="M292,286 V304 H308" />
+      <path class="node-corner" d="M388,286 V304 H372" />
+      <rect class="node-frame" x="300" y="224" width="80" height="72" rx="10" />
+      <g class="node-core" transform="translate(318,238) scale(1.83)">
+        <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 7h10v10H7V7Zm3 3h4v4h-4v-4Z" />
+        <circle class="node-core-dot" cx="12" cy="12" r="1.5" />
+      </g>
+    </g>
+
+    <!-- Salida limpia: 5 tarjetas, una por grupo real del glosario -->
+    <g class="clear-zone">
+      {tarjetas.map((c, i) => (
+        <>
+          <path class="clear-line" d={`M388,260 C 412,${c.y} 416,${c.y} 440,${c.y}`} />
+          <circle class="clear-pad" cx="440" cy={c.y} r="3" />
+          <g class="clear-card" style={`--card-delay:${i * 0.4}s`}>
+            <rect x="450" y={c.y - 22} width="188" height="44" rx="10" />
+            <text class="card-label" x="466" y={c.y + 5}>{c.label}</text>
+          </g>
+        </>
+      ))}
+    </g>
+  </svg>
+</div>
+
+<style>
+  .concept-translate svg {
+    filter: drop-shadow(0 24px 55px rgba(0, 180, 216, 0.1));
+    overflow: visible;
+  }
+
+  /* Ruido técnico (izquierda) */
+  .noise-frag {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    fill: var(--color-muted-dark);
+    opacity: 0.42;
+  }
+  .chaos-line {
+    fill: none;
+    stroke: var(--color-brand-400);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-dasharray: 5 9;
+    opacity: 0.32;
+  }
+
+  /* Nodo central: motivo de marca (esquinas del Viewfinder) */
+  .node-glow {
+    fill: color-mix(in srgb, var(--color-brand-400) 55%, transparent);
+    filter: blur(18px);
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0.45;
+  }
+  .node-frame {
+    fill: rgba(255, 255, 255, 0.04);
+    stroke: rgba(121, 161, 255, 0.22);
+    stroke-width: 1.5;
+  }
+  .node-corner {
+    fill: none;
+    stroke: var(--color-brand-400);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.85;
+  }
+  .node-core {
+    fill: none;
+    stroke: var(--color-brand-400);
+    stroke-width: 1.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.92;
+  }
+  .node-core-dot {
+    fill: var(--color-logo-cyan);
+    stroke: none;
+    filter: drop-shadow(0 0 4px rgba(0, 180, 216, 0.9));
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  /* Salida limpia (derecha) */
+  .clear-line {
+    fill: none;
+    stroke: rgba(121, 161, 255, 0.3);
+    stroke-width: 1.5;
+  }
+  .clear-pad {
+    fill: var(--color-brand-400);
+  }
+  .clear-card rect {
+    fill: rgba(255, 255, 255, 0.045);
+    stroke: rgba(121, 161, 255, 0.24);
+    stroke-width: 1.4;
+  }
+  .card-label {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    fill: var(--color-on-dark);
+    opacity: 0.92;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .noise-frag {
+      animation: frag-breathe 6s ease-in-out infinite;
+      animation-delay: var(--frag-delay, 0s);
+    }
+    .chaos-line {
+      animation: chaos-dash 5s linear infinite;
+      animation-delay: var(--cl-delay, 0s);
+    }
+    .cl-1 { animation-direction: reverse; }
+    .node-glow {
+      animation: node-breathe 3.8s ease-in-out infinite;
+    }
+    .node-corner {
+      animation: vf-pulse-corner 2.8s ease-in-out infinite;
+    }
+    .node-core-dot {
+      animation: dot-pulse 2.2s ease-in-out infinite;
+    }
+    .clear-card {
+      animation: card-float 7s ease-in-out infinite;
+      animation-delay: var(--card-delay, 0s);
+    }
+  }
+
+  @keyframes frag-breathe {
+    0%, 100% { opacity: 0.28; transform: translateY(0); }
+    50% { opacity: 0.6; transform: translateY(-2px); }
+  }
+  @keyframes chaos-dash {
+    to { stroke-dashoffset: -56; }
+  }
+  @keyframes node-breathe {
+    0%, 100% { opacity: 0.38; transform: scale(0.94); }
+    50% { opacity: 0.62; transform: scale(1.05); }
+  }
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 0.75; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.25); }
+  }
+  @keyframes card-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+</style>

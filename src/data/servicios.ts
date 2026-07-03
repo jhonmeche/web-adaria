@@ -223,7 +223,7 @@ export const servicios: Servicio[] = [
         'Modelos entrenados a su contexto',
         'Alertas en tiempo real',
       ],
-      queHacemosTitulo: 'IA entrenada para lo que necesitas ver',
+      queHacemosTitulo: 'IA entrenada para lo que necesita ver',
       queHacemosIntro:
         'Seguridad, calidad, logística e infraestructura: un modelo para cada caso de uso, sobre la cámara que ya tiene.',
       capacidades: [

@@ -182,7 +182,7 @@ export const productos: Producto[] = [
         'AdariA Vision convierte sus cámaras en un sistema que ve, entiende y actúa. Modelos de visión artificial entrenados a la medida que se integran sobre el CCTV/IP existente, o sobre cámaras industriales y de alta velocidad para aplicaciones más exigentes. Un mismo motor para seguridad, calidad, logística e infraestructura.',
       capacidadesTitulo: 'Una suite, cuatro líneas',
       capacidadesIntro:
-        'Empieza por un caso de uso y escala a más líneas y más sitios cuando la operación lo pida.',
+        'Empiece por un caso de uso y escale a más líneas y más sitios cuando la operación lo pida.',
       capacidades: [
         {
           titulo: 'Seguridad (HSE)',

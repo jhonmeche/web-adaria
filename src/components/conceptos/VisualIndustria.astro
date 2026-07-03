@@ -1,5 +1,11 @@
 ---
 // Diagrama: las 4 capas de la Industria 4.0, del mundo físico a la decisión.
+// Cada capa suma: qué es (resumen en simple), ejemplos concretos y qué
+// producto de AdariA la habilita — para que el concepto quede conectado a la
+// oferta real, no abstracto. Los números viven en su propio riel vertical
+// (no dentro de las tarjetas), siempre visible junto a ellas, con partículas
+// que suben en bucle lento y un pulso de llegada en cada nodo — así el "el
+// dato sube" es un elemento gráfico permanente, no solo texto en la cabecera.
 interface Props {
   dark?: boolean;
 }
@@ -10,12 +16,43 @@ const row = dark ? 'border-white/10 bg-ink/40' : 'border-ink/10 bg-light';
 const title = dark ? 'text-on-dark' : 'text-on-light';
 const muted = dark ? 'text-muted-dark' : 'text-muted';
 const chip = dark ? 'border-white/10 bg-white/5 text-on-dark/80' : 'border-ink/10 bg-ink/5 text-on-light/75';
+const chipBrand = dark
+  ? 'border-brand-400/30 bg-brand-400/10 text-brand-400'
+  : 'border-brand/25 bg-brand/8 text-brand-ink';
+const chipProduct = dark
+  ? 'border-brand-400/50 bg-brand-400/15 text-brand-400'
+  : 'border-brand/40 bg-brand/12 text-brand-ink';
+const railColor = dark ? 'var(--color-brand-400)' : 'var(--color-brand)';
 
 const capas = [
-  { n: 4, t: 'Decisión', items: ['Dashboards', 'Alertas', 'Predicción'] },
-  { n: 3, t: 'Datos', items: ['Edge', 'Analítica', 'Big data'] },
-  { n: 2, t: 'Conectividad', items: ['IoT', 'LoRa/LoRaWAN', 'Gateways'] },
-  { n: 1, t: 'Mundo físico', items: ['Máquinas', 'Sensores', 'EPP'] },
+  {
+    n: 4,
+    t: 'Decisión',
+    resumen: 'Tableros, alertas y predicciones listos para actuar.',
+    items: ['Dashboards', 'Alertas', 'Predicción'],
+    habilita: 'Analítica',
+  },
+  {
+    n: 3,
+    t: 'Datos',
+    resumen: 'El dato se limpia, procesa y organiza para poder analizarlo.',
+    items: ['Edge', 'Analítica', 'Big data'],
+    habilita: 'Analítica',
+  },
+  {
+    n: 2,
+    t: 'Conectividad',
+    resumen: 'Sensores y equipos conectados que envían el dato en tiempo real.',
+    items: ['IoT', 'LoRa/LoRaWAN', 'Gateways'],
+    habilita: 'AdariA Sense',
+  },
+  {
+    n: 1,
+    t: 'Mundo físico',
+    resumen: 'Las máquinas, sensores y personas de la operación, tal cual son.',
+    items: ['Máquinas', 'Sensores', 'EPP'],
+    habilita: 'AdariA Vision',
+  },
 ];
 ---
 
@@ -24,28 +61,121 @@ const capas = [
     <p class={`text-sm font-semibold ${title}`}>Las 4 capas de la Industria 4.0</p>
     <p class={`inline-flex items-center gap-1.5 text-xs ${muted}`}>
       <svg class="h-3.5 w-3.5 text-brand" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 16V4m0 0-5 5m5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      del mundo físico a la decisión
+      el dato sube: del mundo físico a la decisión
     </p>
   </div>
 
-  <div class="industry-stack space-y-2.5">
-    {capas.map((c, i) => (
-      <div class={`industry-layer flex flex-col gap-2 rounded-xl border px-4 py-3 sm:flex-row sm:items-center ${row}`} style={`--layer-delay:${i * 110}ms`}>
-        <div class="flex items-center gap-3 sm:w-44 sm:shrink-0">
-          <span class="layer-number flex h-7 w-7 items-center justify-center rounded-lg bg-brand text-xs font-bold text-white">{c.n}</span>
-          <span class={`text-sm font-semibold ${title}`}>{c.t}</span>
+  <div class="industry-stack relative flex flex-col gap-4" style={`--rail-color:${railColor}`}>
+    <!-- Riel de datos: siempre visible junto a los nodos (no detrás de las
+         tarjetas), con partículas que suben y un halo fijo en la llegada. -->
+    <div class="data-rail" aria-hidden="true">
+      <span class="rail-track"></span>
+      <span class="rail-particle rail-particle-a"></span>
+      <span class="rail-particle rail-particle-b"></span>
+    </div>
+
+    {capas.map((c, i) => {
+      const esProducto = c.habilita.startsWith('AdariA');
+      return (
+        <div
+          class="industry-row grid grid-cols-[3rem_1fr] items-start gap-3"
+          style={`--layer-delay:${i * 110}ms; --pulse-delay:${(capas.length - 1 - i) * 0.85}s`}
+        >
+          <div class="flex justify-center">
+            <span class="layer-node relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white shadow-lg shadow-brand/30">
+              <span class="layer-pulse" aria-hidden="true"></span>
+              {c.n}
+            </span>
+          </div>
+
+          <div class={`industry-layer rounded-xl border px-4 py-3.5 ${row}`}>
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-start">
+              <div class="sm:w-44 sm:shrink-0">
+                <p class={`text-sm font-semibold ${title}`}>{c.t}</p>
+                <p class={`mt-0.5 text-xs leading-snug ${muted}`}>{c.resumen}</p>
+              </div>
+              <div class="flex flex-1 flex-wrap items-center gap-1.5 sm:pt-0.5">
+                {c.items.map((it) => (
+                  <span class={`rounded-full border px-2.5 py-0.5 text-xs ${chip}`}>{it}</span>
+                ))}
+                <span class={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium ${esProducto ? chipProduct : chipBrand}`}>
+                  {esProducto && (
+                    <svg class="h-2.5 w-2.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M11.3 1.7 4.6 11.4a.6.6 0 0 0 .5 1h4l-.9 5.9a.6.6 0 0 0 1.1.4l6.7-9.7a.6.6 0 0 0-.5-1h-4l.9-5.9a.6.6 0 0 0-1.1-.4Z" />
+                    </svg>
+                  )}
+                  {c.habilita}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex flex-wrap gap-1.5">
-          {c.items.map((it) => (
-            <span class={`rounded-full border px-2.5 py-0.5 text-xs ${chip}`}>{it}</span>
-          ))}
-        </div>
-      </div>
-    ))}
+      );
+    })}
   </div>
 </div>
 
 <style>
+  .data-rail {
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 1.5rem;
+    width: 1px;
+    z-index: 0;
+    pointer-events: none;
+  }
+  /* Halo fijo en la llegada (arriba = "Decisión"): visible sin necesidad de
+     animación, marca el punto de destino del flujo. */
+  .data-rail::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 22px;
+    height: 22px;
+    transform: translateX(-50%);
+    border-radius: 9999px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--rail-color) 60%, transparent), transparent 72%);
+  }
+  .rail-track {
+    position: absolute;
+    inset: 0;
+    left: 50%;
+    width: 2.5px;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--rail-color) 18%, transparent),
+      color-mix(in srgb, var(--rail-color) 80%, transparent)
+    );
+    box-shadow: 0 0 10px color-mix(in srgb, var(--rail-color) 35%, transparent);
+  }
+  .rail-particle {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    border-radius: 9999px;
+    background: var(--rail-color);
+    box-shadow: 0 0 10px 2px color-mix(in srgb, var(--rail-color) 75%, transparent);
+    opacity: 0;
+  }
+
+  .layer-node {
+    transition: transform 0.3s ease;
+  }
+  .layer-pulse {
+    position: absolute;
+    inset: -5px;
+    border-radius: 9999px;
+    border: 1.5px solid var(--rail-color);
+    opacity: 0;
+  }
+
   .industry-layer {
     position: relative;
     overflow: hidden;
@@ -59,38 +189,60 @@ const capas = [
     background: linear-gradient(90deg, transparent, rgba(121, 161, 255, 0.18), transparent);
     transform: translateX(-110%);
   }
-  .industry-layer:hover {
+  .industry-row:hover .industry-layer {
     transform: translateX(4px);
     border-color: color-mix(in srgb, var(--color-brand) 42%, transparent);
   }
-  .layer-number {
-    box-shadow: 0 0 0 0 rgba(37, 99, 217, 0.35);
+  .industry-row:hover .layer-node {
+    transform: scale(1.08);
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .js [data-reveal].is-visible .industry-layer {
-      animation: layer-in 0.62s cubic-bezier(0.16, 1, 0.3, 1) both;
+    .js [data-reveal].is-visible .industry-row {
+      animation: row-in 0.62s cubic-bezier(0.16, 1, 0.3, 1) both;
       animation-delay: var(--layer-delay, 0ms);
     }
     .js [data-reveal].is-visible .industry-layer::after {
-      animation: layer-scan 2.8s ease-in-out infinite;
-      animation-delay: calc(var(--layer-delay, 0ms) + 0.45s);
+      animation: layer-scan 3.2s ease-in-out infinite;
+      animation-delay: calc(var(--layer-delay, 0ms) + 0.5s);
     }
-    .layer-number {
-      animation: layer-pulse 2.6s ease-in-out infinite;
+    .js [data-reveal].is-visible .rail-track {
+      animation: rail-breathe 6s ease-in-out infinite;
+    }
+    .js [data-reveal].is-visible .rail-particle-a {
+      animation: rail-rise 3.6s ease-in-out infinite;
+    }
+    .js [data-reveal].is-visible .rail-particle-b {
+      animation: rail-rise 3.6s ease-in-out infinite;
+      animation-delay: 1.8s;
+    }
+    .js [data-reveal].is-visible .layer-pulse {
+      animation: pulse-ring 3.6s ease-in-out infinite;
+      animation-delay: var(--pulse-delay, 0s);
     }
   }
-  @keyframes layer-in {
+  @keyframes row-in {
     from { opacity: 0; transform: translateY(16px) scale(0.985); }
     to { opacity: 1; transform: none; }
   }
   @keyframes layer-scan {
-    0%, 52% { transform: translateX(-110%); opacity: 0; }
-    64% { opacity: 1; }
+    0%, 55% { transform: translateX(-110%); opacity: 0; }
+    68% { opacity: 1; }
     100% { transform: translateX(110%); opacity: 0; }
   }
-  @keyframes layer-pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 217, 0.32); }
-    50% { box-shadow: 0 0 0 7px rgba(37, 99, 217, 0); }
+  @keyframes rail-breathe {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+  @keyframes rail-rise {
+    0% { top: 100%; opacity: 0; }
+    10% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: -2%; opacity: 0; }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.75); opacity: 0; }
+    28% { opacity: 0.5; }
+    100% { transform: scale(1.4); opacity: 0; }
   }
 </style>

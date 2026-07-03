@@ -30,7 +30,7 @@ cuando ya se gastó el material en una pieza defectuosa.
 
 ## Qué significa "digitalización integral" en la práctica
 
-> Medir al final del proceso indica qué salió mal. Medir durante el proceso te
+> Medir al final del proceso indica qué salió mal. Medir durante el proceso
 > permite corregirlo antes de que termine de salir mal.
 
 Sensores inteligentes, plataformas de análisis y sistemas conectados les dan a las

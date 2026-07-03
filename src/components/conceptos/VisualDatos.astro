@@ -17,13 +17,19 @@ const kpis = [
   { label: 'Alertas hoy', valor: '3', delta: '1 crítica', tone: 'warn' },
 ];
 const barras = [
-  { h: 40, label: 'L', tone: 'normal' },
-  { h: 62, label: 'M', tone: 'normal' },
-  { h: 48, label: 'M', tone: 'normal' },
-  { h: 75, label: 'J', tone: 'warn' },
-  { h: 58, label: 'V', tone: 'normal' },
-  { h: 84, label: 'S', tone: 'crit' },
-  { h: 70, label: 'D', tone: 'warn' },
+  { h: 42, label: 'L', tone: 'normal' },
+  { h: 58, label: 'M', tone: 'normal' },
+  { h: 50, label: 'X', tone: 'normal' },
+  { h: 74, label: 'J', tone: 'warn' },
+  { h: 60, label: 'V', tone: 'normal' },
+  { h: 88, label: 'S', tone: 'crit' },
+  { h: 72, label: 'D', tone: 'warn' },
+];
+const pronostico = { h: 66, label: 'Prev.' };
+const tonos = [
+  { t: 'Normal', color: 'var(--color-brand-400)' },
+  { t: 'Atención', color: 'var(--color-warn)' },
+  { t: 'Crítico', color: 'var(--color-crit)' },
 ];
 const eventos = [
   { t: 'Temperatura normal', d: 'Rango estable', tone: 'ok', icon: 'M4 10.5 8 14l8-8.5' },
@@ -64,23 +70,29 @@ const eventos = [
             <p class={`text-xs font-semibold ${title}`}>Vibración · últimos 7 días</p>
             <p class={`mt-0.5 text-[11px] ${muted}`}>mm/s · umbral preventivo marcado</p>
           </div>
-          <div class={`flex items-center gap-3 text-[11px] ${muted}`}>
-            <span class="inline-flex items-center gap-1.5"><span class="legend-dot bg-brand"></span>Real</span>
-            <span class="inline-flex items-center gap-1.5"><span class="legend-dot bg-warn"></span>Riesgo</span>
+          <div class={`flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] ${muted}`}>
+            {tonos.map((tn) => (
+              <span class="inline-flex items-center gap-1.5">
+                <span class="legend-dot" style={`background:${tn.color}`}></span>{tn.t}
+              </span>
+            ))}
+            <span class="inline-flex items-center gap-1.5">
+              <span class="legend-dot legend-dot-forecast"></span>Previsto
+            </span>
           </div>
         </div>
 
         <div class="chart-canvas relative h-64 overflow-hidden rounded-lg border border-current/10 p-4">
-          <div class="threshold-line" aria-hidden="true">
-            <span>umbral</span>
-          </div>
           <div class="chart-grid" aria-hidden="true"></div>
+          <div class="threshold-line" aria-hidden="true">
+            <span class="threshold-tag">Umbral preventivo</span>
+          </div>
           <div class="scan-cursor" aria-hidden="true"></div>
-          <div class="relative z-10 flex h-[10.75rem] items-end gap-2 sm:gap-3">
+          <div class="relative z-10 flex h-[10.75rem] items-end gap-2 sm:gap-2.5">
             {barras.map((b, i) => (
               <div class="bar-slot flex h-full flex-1 flex-col items-center justify-end gap-2">
                 <div
-                  class="dashboard-bar w-full max-w-14 rounded-t"
+                  class="dashboard-bar w-full max-w-12 rounded-t"
                   data-tone={b.tone}
                   style={`height:${b.h}%; --bar-delay:${i * 75}ms`}
                   aria-hidden="true"
@@ -88,14 +100,17 @@ const eventos = [
                 <span class={`text-[10px] font-medium ${muted}`}>{b.label}</span>
               </div>
             ))}
+            <div class="bar-slot flex h-full flex-1 flex-col items-center justify-end gap-2">
+              <div
+                class="forecast-bar w-full max-w-12 rounded-t"
+                style={`height:${pronostico.h}%; --bar-delay:${barras.length * 75}ms`}
+                aria-hidden="true"
+              >
+                <span class="forecast-dot" aria-hidden="true"></span>
+              </div>
+              <span class={`text-[10px] font-medium ${muted}`}>{pronostico.label}</span>
+            </div>
           </div>
-          <svg class="trend-svg pointer-events-none absolute inset-x-4 bottom-9 z-20 h-24" viewBox="0 0 520 108" preserveAspectRatio="none" fill="none" aria-hidden="true">
-            <path class="trend-area" d="M0 92C58 82 82 38 135 44C190 50 196 98 260 82C334 64 330 16 398 25C452 32 480 58 520 43V108H0Z" />
-            <path class="trend-line" d="M0 92C58 82 82 38 135 44C190 50 196 98 260 82C334 64 330 16 398 25C452 32 480 58 520 43" />
-            <path class="forecast-line" d="M398 25C452 32 480 58 520 43" />
-            <circle class="trend-point" cx="398" cy="25" r="4.5" />
-            <circle class="trend-point p2" cx="520" cy="43" r="4.5" />
-          </svg>
         </div>
       </div>
 
@@ -187,6 +202,10 @@ const eventos = [
     border-radius: 999px;
     display: inline-block;
   }
+  .legend-dot-forecast {
+    background: transparent;
+    border: 1.5px dashed var(--color-brand-400);
+  }
   .chart-canvas {
     background:
       radial-gradient(circle at 80% 12%, rgba(37, 99, 217, 0.13), transparent 16rem),
@@ -195,26 +214,28 @@ const eventos = [
   .chart-grid {
     position: absolute;
     inset: 1rem;
-    background-image:
-      linear-gradient(to right, currentColor 1px, transparent 1px),
-      linear-gradient(to bottom, currentColor 1px, transparent 1px);
-    background-size: 14.285% 100%, 100% 25%;
+    background-image: linear-gradient(to bottom, currentColor 1px, transparent 1px);
+    background-size: 100% 25%;
     opacity: 0.08;
   }
   .threshold-line {
     position: absolute;
-    z-index: 3;
+    z-index: 15;
     inset-inline: 1rem;
     top: 31%;
     border-top: 1px dashed color-mix(in srgb, var(--color-warn) 72%, transparent);
   }
-  .threshold-line span {
+  .threshold-tag {
     position: absolute;
-    right: 0;
-    top: -1.2rem;
+    left: 0;
+    top: -0.95rem;
+    border-radius: 999px;
+    padding: 1px 7px;
     color: var(--color-warn);
+    background: color-mix(in srgb, var(--color-warn) 16%, transparent);
     font-size: 0.625rem;
     font-weight: 600;
+    white-space: nowrap;
   }
   .scan-cursor {
     position: absolute;
@@ -242,34 +263,24 @@ const eventos = [
   .dashboard-bar[data-tone="crit"] {
     background: linear-gradient(180deg, #ff9b8d, var(--color-crit));
   }
-  .trend-area {
-    fill: rgba(37, 99, 217, 0.13);
+  .forecast-bar {
+    position: relative;
+    min-height: 8px;
+    transform-origin: bottom;
+    border: 1.5px dashed color-mix(in srgb, var(--color-brand-400) 65%, transparent);
+    border-bottom: none;
+    background: color-mix(in srgb, var(--color-brand-400) 10%, transparent);
   }
-  .trend-line {
-    stroke: var(--color-brand-400);
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 720;
-    stroke-dashoffset: 0;
-    filter: drop-shadow(0 0 10px rgba(121, 161, 255, 0.45));
-  }
-  .forecast-line {
-    stroke: var(--color-warn);
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-dasharray: 8 9;
-    opacity: 0.88;
-  }
-  .trend-point {
-    fill: var(--color-brand-400);
-    filter: drop-shadow(0 0 8px rgba(121, 161, 255, 0.9));
-  }
-  .trend-point.p2 {
-    fill: var(--color-warn);
-  }
-  .js [data-reveal] .trend-line {
-    stroke-dashoffset: 720;
+  .forecast-dot {
+    position: absolute;
+    left: 50%;
+    top: -4px;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    border-radius: 999px;
+    background: var(--color-brand-400);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-brand-400) 55%, transparent);
   }
   .health-ring {
     color: var(--color-ok);
@@ -321,12 +332,13 @@ const eventos = [
       animation: kpi-in 0.54s cubic-bezier(0.16, 1, 0.3, 1) both;
       animation-delay: var(--kpi-delay, 0ms);
     }
-    .js [data-reveal].is-visible .dashboard-bar {
+    .js [data-reveal].is-visible .dashboard-bar,
+    .js [data-reveal].is-visible .forecast-bar {
       animation: bar-grow 0.72s cubic-bezier(0.16, 1, 0.3, 1) both;
       animation-delay: var(--bar-delay, 0ms);
     }
-    .js [data-reveal].is-visible .trend-line {
-      animation: trend-draw 1.35s ease-out 0.35s both;
+    .js [data-reveal].is-visible .forecast-dot {
+      animation: forecast-pulse 2.2s ease-out infinite 1s;
     }
     .js [data-reveal].is-visible .scan-cursor {
       animation: scan-cursor 3.4s ease-in-out infinite 0.7s;
@@ -351,8 +363,9 @@ const eventos = [
     from { transform: scaleY(0.08); opacity: 0.4; }
     to { transform: scaleY(1); opacity: 1; }
   }
-  @keyframes trend-draw {
-    to { stroke-dashoffset: 0; }
+  @keyframes forecast-pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-brand-400) 45%, transparent); }
+    75%, 100% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--color-brand-400) 0%, transparent); }
   }
   @keyframes scan-cursor {
     0% { left: 1rem; opacity: 0; }

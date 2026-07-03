@@ -101,7 +101,7 @@ const valor = [
             <div>
               <label for="sector" class="form-label">Sector</label>
               <select id="sector" name="sector" class="form-input">
-                <option value="">Selecciona…</option>
+                <option value="">Seleccione…</option>
                 {sectores.map((s) => (
                   <option value={s.slug}>{s.nombre}</option>
                 ))}
@@ -202,10 +202,10 @@ const valor = [
         setStatus('¡Gracias! Hemos recibido su solicitud. Le contactaremos muy pronto.', 'ok');
         form.reset();
       } else {
-        setStatus('No pudimos enviar el formulario. Intenta de nuevo o escríbenos por WhatsApp.', 'error');
+        setStatus('No pudimos enviar el formulario. Intente de nuevo o escríbanos por WhatsApp.', 'error');
       }
     } catch {
-      setStatus('No pudimos enviar el formulario. Intenta de nuevo o escríbenos por WhatsApp.', 'error');
+      setStatus('No pudimos enviar el formulario. Intente de nuevo o escríbanos por WhatsApp.', 'error');
     } finally {
       submitBtn?.removeAttribute('disabled');
     }

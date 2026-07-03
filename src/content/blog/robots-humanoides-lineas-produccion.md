@@ -27,7 +27,7 @@ Las tareas reales hoy son concretas: manejo autónomo de materiales, extracción
 contenedores, ensamblaje simple e **inspección de calidad** — esta última, el punto
 exacto donde se cruza con lo que hacemos en AdariA Vision.
 
-## Por qué esto importa incluso si no vas a comprar un robot
+## Por qué esto importa incluso si no va a comprar un robot
 
 No hace falta un robot humanoide para capturar el mismo valor que está detrás de esta
 ola: **visión artificial que inspecciona con más consistencia que un turno humano de
