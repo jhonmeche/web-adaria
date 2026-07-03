@@ -10,6 +10,7 @@ import Button from '../../components/ui/Button.astro';
 import { servicios } from '../../data/servicios.ts';
 import { sectores } from '../../data/sectores.ts';
 import VisualCiudades from '../../components/servicios/VisualCiudades.astro';
+import RiesgoUrbano from '../../components/servicios/RiesgoUrbano.astro';
 
 export function getStaticPaths() {
   return servicios.map((s) => ({ params: { slug: s.slug }, props: { servicio: s } }));
@@ -134,6 +135,9 @@ const jsonLd = {
       })}
     </div>
   </Section>
+
+  {/* Profundización en gestión del riesgo — solo Ciudades inteligentes */}
+  {servicio.slug === 'ciudades-inteligentes' && <RiesgoUrbano />}
 
   <!-- CÓMO TRABAJAMOS + STACK -->
   <Section theme="dark" id="como-trabajamos" grid={true}>

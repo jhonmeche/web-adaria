@@ -4,7 +4,6 @@ import Section from '../components/ui/Section.astro';
 import Eyebrow from '../components/ui/Eyebrow.astro';
 import Button from '../components/ui/Button.astro';
 import MapaPipeline from '../components/conceptos/MapaPipeline.astro';
-import ConceptosHeroVisual from '../components/conceptos/ConceptosHeroVisual.astro';
 import VisualIndustria from '../components/conceptos/VisualIndustria.astro';
 import VisualVision from '../components/conceptos/VisualVision.astro';
 import VisualLora from '../components/conceptos/VisualLora.astro';
@@ -24,7 +23,6 @@ const totalConceptos = grupos.reduce((acc, g) => acc + g.conceptos.length, 0);
   <section class="concept-hero relative isolate overflow-hidden bg-ink text-on-dark">
     <!-- Fondo en capas: rejilla técnica + degradado inferior -->
     <div class="tech-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(110%_80%_at_50%_0%,black,transparent)]" aria-hidden="true"></div>
-    <ConceptosHeroVisual />
     <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-ink to-transparent" aria-hidden="true"></div>
 
     <div class="relative mx-auto max-w-6xl px-6 pb-20 pt-36 lg:px-8 lg:pt-44">

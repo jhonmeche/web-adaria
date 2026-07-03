@@ -1,0 +1,203 @@
+---
+// Sección específica de /servicios/ciudades-inteligentes: profundiza en la
+// GESTIÓN DEL RIESGO urbano y cómo AdariA la implementa (visión artificial +
+// IoT/LoRa + hardware propio + analítica). Se inserta solo para este slug,
+// igual que VisualCiudades. Fondo BLANCO: la sección previa "Qué hacemos" es
+// gris (escalón suave gris→blanco) y la siguiente "Cómo trabajamos" es oscura.
+//
+// Firma: un "semáforo de escalamiento del riesgo" que hace visible la ventana
+// de anticipación. Usa los COLORES FUNCIONALES de estado (§13.1: ok/warn/crit)
+// —su uso legítimo, semáforo de riesgo—; no son colores de marca.
+import Section from '../ui/Section.astro';
+import Eyebrow from '../ui/Eyebrow.astro';
+
+// Escalamiento del riesgo. El bloque "Alerta temprana" (warn) es el foco: es
+// donde AdariA avisa, ganando la ventana de anticipación antes de la emergencia.
+const estados = [
+  {
+    nombre: 'Normal',
+    tono: 'ok',
+    desc: 'Las variables se mantienen en parámetros. El sistema solo observa, sin ruido para la operación.',
+  },
+  {
+    nombre: 'Alerta temprana',
+    tono: 'warn',
+    hito: true,
+    desc: 'La señal cruza el umbral. AdariA dispara la alerta aquí: esta es la ventana de anticipación para actuar.',
+  },
+  {
+    nombre: 'Emergencia',
+    tono: 'crit',
+    desc: 'El evento ya ocurre. Sin monitoreo, es el primer momento en que la ciudad se entera.',
+  },
+];
+
+// Cada riesgo mapeado a la tecnología concreta que lo detecta y a la acción que
+// dispara. Responde directamente a "cómo lo implementamos con visión y LoRa".
+const riesgos = [
+  {
+    titulo: 'Crecientes y quebradas',
+    metodo: 'IoT · LoRaWAN',
+    detecta:
+      'Sensores de nivel en cauces y pluviómetros transmiten por LoRa, incluso donde no hay cobertura celular.',
+    dispara:
+      'Cuando el nivel cruza el umbral, la alerta llega a la comunidad y a los organismos de socorro con horas de anticipación.',
+    icon: 'M2 6c1.5 0 1.5 1.5 3 1.5S6.5 6 8 6s1.5 1.5 3 1.5S12.5 6 14 6s1.5 1.5 3 1.5S18.5 6 20 6M2 12c1.5 0 1.5 1.5 3 1.5S6.5 12 8 12s1.5 1.5 3 1.5 1.5-1.5 3-1.5 1.5 1.5 3 1.5 1.5-1.5 3-1.5M2 18c1.5 0 1.5 1.5 3 1.5S6.5 18 8 18s1.5 1.5 3 1.5 1.5-1.5 3-1.5 1.5 1.5 3 1.5 1.5-1.5 3-1.5',
+  },
+  {
+    titulo: 'Deslizamientos en laderas',
+    metodo: 'IoT · LoRa + Visión',
+    detecta:
+      'Inclinómetros y sensores de humedad del suelo por LoRa, más visión artificial que vigila taludes y zonas de ladera.',
+    dispara:
+      'Un movimiento del terreno o la saturación del suelo activan vigilancia reforzada y evacuación preventiva.',
+    icon: 'M3 20h18L14 8l-3.5 6-2-3L3 20Z',
+  },
+  {
+    titulo: 'Incendios y humo',
+    metodo: 'Visión artificial',
+    detecta:
+      'Modelos de visión sobre las cámaras urbanas detectan humo y focos de calor; los sensores de aire confirman.',
+    dispara:
+      'Aviso inmediato a bomberos con la ubicación exacta, antes de que el fuego se propague.',
+    icon: 'M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5Z',
+  },
+  {
+    titulo: 'Seguridad y aglomeraciones',
+    metodo: 'Video-analítica',
+    detecta:
+      'Analítica de video sobre el CCTV municipal existente reconoce aglomeraciones y comportamientos anómalos.',
+    dispara:
+      'La central de monitoreo recibe la alerta en tiempo real para coordinar una respuesta rápida.',
+    icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm11 10v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+  },
+];
+
+// Clases literales por tono (Tailwind necesita verlas completas para generarlas).
+const tono: Record<string, { text: string; dot: string; border: string; bg: string; ring: string }> = {
+  ok: { text: 'text-ok', dot: 'bg-ok', border: 'border-ok/25', bg: 'bg-ok/8', ring: '' },
+  warn: { text: 'text-warn', dot: 'bg-warn', border: 'border-warn/45', bg: 'bg-warn/10', ring: 'ring-2 ring-warn/35' },
+  crit: { text: 'text-crit', dot: 'bg-crit', border: 'border-crit/25', bg: 'bg-crit/8', ring: '' },
+};
+---
+
+<Section theme="white" id="gestion-riesgo" aria-labelledby="riesgo-title">
+  <div class="mx-auto max-w-3xl text-center">
+    <Eyebrow on="light">Gestión del riesgo</Eyebrow>
+    <h2 id="riesgo-title" data-reveal class="text-balance text-h1 font-semibold text-on-light">
+      De la señal a la alerta temprana.
+    </h2>
+    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted">
+      En una ciudad, enterarse tarde cuesta vidas e infraestructura. Llevamos la
+      misma cadena que construimos para la industria —visión artificial, sensores
+      IoT/LoRa, hardware propio y analítica— a convertir la infraestructura urbana
+      en un sistema de alerta temprana: detecta la señal, cruza el umbral y avisa
+      <strong class="font-semibold text-on-light">antes</strong> de la emergencia.
+    </p>
+  </div>
+
+  <!-- FIRMA: semáforo de escalamiento del riesgo -->
+  <div
+    data-reveal
+    class="mx-auto mt-14 max-w-4xl rounded-3xl border border-ink/10 bg-light p-6 ring-1 ring-ink/5 sm:p-9"
+  >
+    <div class="grid gap-4 sm:grid-cols-3">
+      {estados.map((e) => {
+        const t = tono[e.tono];
+        return (
+          <div class={`relative flex flex-col rounded-2xl border ${t.border} ${t.bg} ${t.ring} p-5`}>
+            <div class="flex items-center gap-2.5">
+              <span class={`relative flex h-2.5 w-2.5 shrink-0 rounded-full ${t.dot}`}>
+                {e.hito && <span class={`risk-pulse absolute inset-0 rounded-full ${t.dot}`}></span>}
+              </span>
+              <span class={`font-mono text-xs font-semibold uppercase tracking-[0.12em] ${t.text}`}>{e.nombre}</span>
+            </div>
+            <p class="mt-2.5 text-sm leading-relaxed text-on-light/80">{e.desc}</p>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Barra de escalamiento: verde → ámbar → rojo -->
+    <div class="mt-6 h-1.5 rounded-full bg-linear-to-r from-ok via-warn to-crit" aria-hidden="true"></div>
+
+    <p class="mt-6 text-center text-sm leading-relaxed text-muted">
+      Sin monitoreo, la ciudad reacciona en la emergencia. Con AdariA, la señal se
+      detecta y la alerta se dispara antes —esa anticipación es lo que permite
+      proteger a la gente y a la infraestructura.
+    </p>
+  </div>
+
+  <!-- CÓMO LO IMPLEMENTAMOS: riesgo → tecnología → acción -->
+  <div class="mt-16">
+    <p data-reveal class="text-center font-mono text-xs font-semibold uppercase tracking-[0.14em] text-brand">
+      Cómo lo implementamos
+    </p>
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      {riesgos.map((r, i) => (
+        <article
+          data-reveal
+          class="card group flex flex-col rounded-2xl border border-ink/10 bg-surface p-7 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-4px] hover:border-brand/30 hover:shadow-lg"
+          style={`--reveal-delay:${i * 80}ms`}
+        >
+          <div class="flex items-center justify-between gap-4">
+            <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
+              <svg class="h-5.5 w-5.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d={r.icon} stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="rounded-full border border-brand/20 bg-brand/5 px-3 py-1 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-brand">
+              {r.metodo}
+            </span>
+          </div>
+          <h3 class="mt-5 text-lg font-semibold text-on-light">{r.titulo}</h3>
+
+          <dl class="mt-4 space-y-3 border-t border-ink/5 pt-4">
+            <div class="flex gap-3">
+              <dt class="w-20 shrink-0 font-mono text-[0.7rem] font-semibold uppercase tracking-wide text-muted">Detecta</dt>
+              <dd class="text-sm leading-relaxed text-on-light/85">{r.detecta}</dd>
+            </div>
+            <div class="flex gap-3">
+              <dt class="w-20 shrink-0 font-mono text-[0.7rem] font-semibold uppercase tracking-wide text-warn">Dispara</dt>
+              <dd class="text-sm leading-relaxed text-on-light/85">{r.dispara}</dd>
+            </div>
+          </dl>
+        </article>
+      ))}
+    </div>
+
+    <p data-reveal class="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-muted">
+      Todo corre sobre <strong class="font-semibold text-on-light">hardware propio de bajo consumo</strong>:
+      nodos que operan por años a batería y con inferencia en el borde, para que la
+      alerta no dependa de la nube ni de la red celular.
+    </p>
+  </div>
+</Section>
+
+<style>
+  /* Pulso "en vivo" del punto de alerta temprana (respeta reduce-motion). */
+  @media (prefers-reduced-motion: no-preference) {
+    .risk-pulse {
+      animation: risk-ping 1.9s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+  }
+  @keyframes risk-ping {
+    0% { transform: scale(1); opacity: 0.6; }
+    75%, 100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  .js [data-reveal].card {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      translate 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+  .js [data-reveal].card.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>

@@ -26,19 +26,19 @@ const textSize = size === 'lg' ? 'text-2xl' : 'text-xl';
     aria-hidden="true"
   >
     <g stroke={strokeColor} stroke-linecap="square" stroke-linejoin="miter">
-      {/* esquinas externas (más delgadas) */}
-      <g stroke-width="3">
+      {/* esquinas externas (líneas delgadas) */}
+      <g stroke-width="2">
         <path d="M24 14 H14 V24" />
         <path d="M40 14 H50 V24" />
         <path d="M24 50 H14 V40" />
         <path d="M40 50 H50 V40" />
       </g>
-      {/* mira central */}
-      <g stroke-width="3">
-        <path d="M21 32 H27" />
-        <path d="M37 32 H43" />
-        <path d="M32 21 V27" />
-        <path d="M32 37 V43" />
+      {/* mira central (delgada y separada del círculo) */}
+      <g stroke-width="2">
+        <path d="M21 32 H25.5" />
+        <path d="M38.5 32 H43" />
+        <path d="M32 21 V25.5" />
+        <path d="M32 38.5 V43" />
       </g>
     </g>
     <circle cx="32" cy="32" r="3.6" fill="#00B4D8" />
