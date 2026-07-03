@@ -136,6 +136,18 @@ mantenimientos antes de que ocurran las paradas.
 5. Integración de sistemas y tecnología (ERP, básculas, PLCs, cámaras, SCADA).
 6. Analítica de datos y soporte a la decisión (dashboards, KPIs, reportes, predicción).
 
+**7. Ciudades inteligentes (Smart Cities)** — servicio añadido en sesión 3 (ver §14).
+No es una capacidad horizontal nueva como las 6 anteriores: es la aplicación de esas
+mismas capacidades (Vision, Sense/IoT-LoRa, hardware, integración, analítica) al cliente
+municipal/gobierno — movilidad y tráfico, seguridad ciudadana, alumbrado público,
+calidad del aire, gestión de residuos y agua. Se modeló como un 7º ítem en
+`/servicios` (mismo shape de dato que los otros 6, en `data/servicios.ts`,
+slug `ciudades-inteligentes`) porque el usuario lo pidió explícitamente como
+"servicio". Nota para futuras sesiones: si el negocio empieza a vender esto como
+vertical propia con clientes reales (una alcaldía, p. ej.), podría tener más sentido
+moverlo a §5 como sector (`data/sectores.ts`, landing `/soluciones/[slug]`) en vez de
+vivir en `/servicios` — decisión abierta, no tomada unilateralmente.
+
 ---
 
 ## 5. Sectores (ejes comerciales — la web se organiza por aquí)
@@ -182,7 +194,9 @@ SERVICIOS (capacidades) ──┬── Desarrollo de software
                           ├── Diseño de hardware
                           ├── Visión artificial e IA
                           ├── Soluciones IoT
-                          └── Integración y analítica
+                          ├── Integración de sistemas
+                          ├── Analítica y decisión
+                          └── Ciudades inteligentes (Smart Cities)
 NOSOTROS
 CONTACTO
 ```
@@ -445,11 +459,38 @@ Para estados de monitoreo. No compiten con el azul de marca.
 - **Bug de mensaje corregido**: `Problema.astro` decía "industria pesada" (prohibido por §1
   como mensaje general) → reemplazado por "En la industria".
 
+### Hecho (sesión 3 — diagramas de Conceptos, hero de Conceptos y servicio Ciudades inteligentes)
+- **Rediseño de 3 diagramas de `/conceptos`** (`components/conceptos/Visual*.astro`):
+  `VisualIndustria` pasa de flechas sueltas entre tarjetas a un riel de timeline
+  siempre visible con partículas ascendentes y chips de producto propio diferenciados;
+  `VisualHardware` reemplaza el dibujo de PCB (poco legible) por una cadena
+  Medir → Procesar → Enviar; `VisualDatos` corrige etiquetas de días duplicadas, el
+  umbral que quedaba oculto tras las barras, y cambia la línea de tendencia
+  desconectada por una barra de pronóstico coherente con los datos reales.
+- **Nuevo hero de `/conceptos`** (`components/conceptos/ConceptosHeroVisual.astro`):
+  reemplaza el motivo orbital genérico por una ilustración "ruido técnico → nodo
+  AdariA (motivo Viewfinder + icono de core) → 5 tarjetas limpias", una tarjeta por
+  cada grupo real del glosario — funciona como índice visual de la página, no solo
+  decoración.
+- **Nuevo servicio "Ciudades inteligentes" (Smart Cities)** — ver nota de arquitectura
+  en §4. Entrada completa en `data/servicios.ts` (slug `ciudades-inteligentes`,
+  mismo shape que los otros 6: capacidades, proceso, entregables, beneficios) +
+  diagrama propio `components/servicios/VisualCiudades.astro` (mapa urbano donde la
+  calle es el cable: 5 sensores —movilidad, aire, seguridad, alumbrado, agua—
+  enrutan por las calles del propio mapa hasta un panel central con conteo en vivo
+  vía el mecanismo `data-count` ya existente). Se propaga solo mediante el array
+  (`Servicios.astro` en home, dropdown de `Header.astro`, `/servicios/[slug]`,
+  sitemap) — cero cambios estructurales en esas plantillas. Se corrigió el copy
+  hardcodeado "seis capacidades" (ya no es cierto con 7 servicios).
+- `npm run build` OK (32 páginas). Verificado con dev server.
+
 ### Estructura de carpetas
 ```
 src/
 ├── components/{layout,ui,seo,sections}/   # Header, Footer, Logo, Button, secciones home
-├── data/{sectores,productos}.ts            # contenido tipado que alimenta la home
+├── components/conceptos/                   # diagramas Visual* de /conceptos
+├── components/servicios/                   # diagramas propios de landings de servicio
+├── data/{sectores,productos,servicios}.ts  # contenido tipado que alimenta home + landings
 ├── layouts/BaseLayout.astro
 ├── pages/index.astro                       # HOME
 └── styles/global.css                       # tokens de paleta (Opción C) + base

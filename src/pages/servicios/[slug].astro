@@ -9,6 +9,7 @@ import Eyebrow from '../../components/ui/Eyebrow.astro';
 import Button from '../../components/ui/Button.astro';
 import { servicios } from '../../data/servicios.ts';
 import { sectores } from '../../data/sectores.ts';
+import VisualCiudades from '../../components/servicios/VisualCiudades.astro';
 
 export function getStaticPaths() {
   return servicios.map((s) => ({ params: { slug: s.slug }, props: { servicio: s } }));
@@ -94,6 +95,8 @@ const jsonLd = {
           ))}
         </ul>
       </div>
+
+      {servicio.slug === 'ciudades-inteligentes' && <VisualCiudades />}
     </div>
   </section>
 
@@ -108,15 +111,17 @@ const jsonLd = {
     </div>
 
     <div class="mt-16 grid gap-6 md:grid-cols-2">
-      {d.capacidades.map((c, i) => (
+      {d.capacidades.map((c, i) => {
+        const esUltimaImpar = d.capacidades.length % 2 === 1 && i === d.capacidades.length - 1;
+        return (
         <article
           data-reveal
-          class="card flex flex-col rounded-2xl border border-ink/10 bg-surface p-8 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-brand/30 hover:shadow-lg"
+          class={`card flex flex-col rounded-2xl border border-ink/10 bg-surface p-8 shadow-sm ring-1 ring-ink/5 hover:[translate:0_-6px] hover:border-brand/30 hover:shadow-lg ${esUltimaImpar ? 'md:col-span-2' : ''}`}
           style={`--reveal-delay:${i * 80}ms`}
         >
           <h3 class="text-xl font-semibold text-on-light">{c.titulo}</h3>
           {c.descripcion && <p class="mt-1 text-sm font-medium text-brand">{c.descripcion}</p>}
-          <ul class="mt-5 grid gap-2.5 border-t border-ink/5 pt-5">
+          <ul class={`mt-5 grid gap-2.5 border-t border-ink/5 pt-5 ${esUltimaImpar ? 'sm:grid-cols-2' : ''}`}>
             {c.items.map((it) => (
               <li class="flex items-start gap-2.5 text-sm text-on-light">
                 <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -125,7 +130,8 @@ const jsonLd = {
             ))}
           </ul>
         </article>
-      ))}
+        );
+      })}
     </div>
   </Section>
 
@@ -218,7 +224,7 @@ const jsonLd = {
       <div class="mx-auto max-w-3xl text-center">
         <Eyebrow on="dark">Un equipo integral</Eyebrow>
         <h2 class="text-balance text-h1 font-semibold text-on-dark">
-          {servicio.nombre} es una de nuestras seis capacidades.
+          {servicio.nombre} es una de nuestras capacidades.
         </h2>
         <p class="mt-5 text-lg leading-relaxed text-muted-dark">
           Del sensor a la decisión: combinamos capacidades para cubrir la cadena

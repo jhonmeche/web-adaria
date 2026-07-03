@@ -515,4 +515,90 @@ export const servicios: Servicio[] = [
       sectores: ['hidrocarburos-mineria-energia', 'manufactura', 'logistica-bodegas', 'agroindustria'],
     },
   },
+  {
+    slug: 'ciudades-inteligentes',
+    nombre: 'Ciudades inteligentes',
+    categoria: 'Smart Cities',
+    tagline: 'Movilidad, seguridad y riesgo, conectados y medidos en tiempo real.',
+    resumen: 'Sensores, cámaras y datos conectados para gestionar movilidad, seguridad, servicios públicos y riesgo urbano.',
+    tags: ['Movilidad', 'Seguridad ciudadana', 'Servicios públicos', 'Gestión de riesgo'],
+    icon: 'M4 21V10H10V21M14 21V6H20V21M2 21H22',
+    detalle: {
+      intro:
+        'Llevamos la misma cadena que ya construimos para la industria —visión artificial, sensores IoT/LoRa, hardware propio, integración y analítica— a la infraestructura urbana. Movilidad, seguridad ciudadana, servicios públicos y gestión de riesgo, medidos en tiempo real y visibles en un solo tablero para la administración.',
+      puntos: [
+        'Sobre la infraestructura que ya existe (cámaras, postes, medidores)',
+        'LoRaWAN para miles de sensores urbanos, bajo consumo',
+        'Alertas tempranas antes de la emergencia, no después',
+      ],
+      queHacemosTitulo: 'La ciudad, conectada y medida en tiempo real',
+      queHacemosIntro:
+        'Del semáforo al medidor de agua: instrumentamos la infraestructura urbana y la convertimos en decisiones para la administración.',
+      capacidades: [
+        {
+          titulo: 'Movilidad y tráfico',
+          descripcion: 'Visión artificial sobre cámaras de tráfico',
+          items: [
+            'Conteo y clasificación vehicular',
+            'Lectura de placas (LPR)',
+            'Detección de congestión e incidentes',
+            'Datos para semaforización adaptativa',
+          ],
+        },
+        {
+          titulo: 'Seguridad ciudadana',
+          descripcion: 'Video-analítica para respuesta rápida',
+          items: [
+            'Detección de aglomeraciones y comportamientos anómalos',
+            'Objetos abandonados y zonas restringidas',
+            'Integración con el CCTV municipal existente',
+            'Alertas en tiempo real a la central de monitoreo',
+          ],
+        },
+        {
+          titulo: 'Servicios públicos e infraestructura',
+          descripcion: 'Sensores urbanos de bajo consumo',
+          items: [
+            'Alumbrado público inteligente y telegestión',
+            'Calidad del aire y niveles de ruido',
+            'Nivel de contenedores y rutas de aseo',
+            'Medición inteligente de agua y detección de fugas',
+          ],
+        },
+        {
+          titulo: 'Monitoreo y gestión de riesgo',
+          descripcion: 'Alertas tempranas antes de la emergencia',
+          items: [
+            'Nivel de quebradas y ríos en tiempo real',
+            'Detección de movimientos en zonas de ladera',
+            'Alertas tempranas a la comunidad y a los organismos de socorro',
+            'Mapas de riesgo para priorizar la intervención',
+          ],
+        },
+        {
+          titulo: 'Centro de datos de la ciudad',
+          descripcion: 'Todo en un solo tablero',
+          items: [
+            'Integración de sistemas municipales dispersos',
+            'Tablero único para la administración',
+            'KPIs de movilidad, seguridad, servicios y riesgo',
+            'Mantenimiento predictivo de infraestructura crítica',
+          ],
+        },
+      ],
+      proceso: [
+        { titulo: 'Diagnóstico urbano', texto: 'Identificamos los puntos de movilidad, seguridad, servicios o riesgo con mayor impacto.' },
+        { titulo: 'Piloto acotado', texto: 'Desplegamos sensores y modelos en una zona o corredor definido, de bajo riesgo y medible.' },
+        { titulo: 'Integración', texto: 'Conectamos el piloto con las cámaras y sistemas que la ciudad ya tiene.' },
+        { titulo: 'Escalamiento', texto: 'Ampliamos cobertura y sumamos módulos según el resultado y el presupuesto.' },
+      ],
+      entregables: ['LoRaWAN', 'Visión artificial', 'LPR', 'Alumbrado inteligente', 'Medición inteligente', 'Alertas tempranas', 'Dashboards municipales'],
+      beneficios: [
+        { titulo: 'Aprovecha lo que ya existe', texto: 'Empieza sobre cámaras, postes y medidores actuales: menor inversión inicial.' },
+        { titulo: 'Cobertura sin límite de red', texto: 'LoRaWAN conecta miles de puntos urbanos con bajo consumo, incluso en zonas alejadas.' },
+        { titulo: 'Decisiones con evidencia', texto: 'La administración ve movilidad, seguridad, servicios y riesgo en un solo tablero, en tiempo real.' },
+        { titulo: 'Escala por fases', texto: 'Empieza en un corredor o barrio, mide el resultado y escala a toda la ciudad.' },
+      ],
+    },
+  },
 ];
