@@ -10,10 +10,9 @@ const { title, description, image = '/og/og-default.jpg' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
 
-// Privacidad: por defecto el sitio NO se indexa (modo preview privado). Para
-// abrirlo a buscadores el día del lanzamiento, define la variable de entorno
-// PUBLIC_ALLOW_INDEX=true (en Vercel: Settings → Environment Variables).
-const allowIndex = import.meta.env.PUBLIC_ALLOW_INDEX === 'true';
+// Producción indexable por defecto. Para previews privados, defina
+// PUBLIC_ALLOW_INDEX=false en el entorno de despliegue.
+const allowIndex = import.meta.env.PUBLIC_ALLOW_INDEX !== 'false';
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />

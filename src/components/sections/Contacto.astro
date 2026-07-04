@@ -4,18 +4,15 @@
 // blanca), mismo lenguaje visual que el resto de secciones: cabecera centrada
 // con Eyebrow, tarjetas de valor con ícono (reveal escalonado + hover) y
 // formulario.
-// El sitio es estático: el envío real necesita un backend. Ya está cableado
-// para Formspree (https://formspree.io) vía fetch + FormData — ver el bloque
-// FORM_ENDPOINT más abajo y en el bloque de script al final del archivo.
-//
-// ⚠️ CONFIGURACIÓN: crea un formulario gratis en https://formspree.io, copia
-// su endpoint (https://formspree.io/f/XXXXXXX) y pégalo en FORM_ENDPOINT.
-// Mientras quede vacío, el formulario sigue en modo simulado (valida y
-// muestra un mensaje de éxito falso) para no romper la demo del sitio.
+// El sitio es estático: si PUBLIC_FORM_ENDPOINT está configurado, el envío va
+// al endpoint indicado (Formspree u otro compatible con FormData). Si no existe
+// endpoint, el formulario abre WhatsApp con los datos diligenciados; nunca
+// muestra éxito simulado.
 import Eyebrow from '../ui/Eyebrow.astro';
 import { sectores } from '../../data/sectores.ts';
 
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+const WHATSAPP_NUMBER = '573138537266';
 
 // Razones para agendar — tarjetas de valor (mismo patrón de cards del sitio).
 const valor = [
@@ -162,10 +159,9 @@ const valor = [
   }
 </style>
 
-<script define:vars={{ FORM_ENDPOINT }} is:inline>
-  // Si FORM_ENDPOINT está configurado (ver el frontmatter de este componente),
-  // el envío va real vía fetch a Formspree. Si no, sigue en modo simulado
-  // (valida y muestra un mensaje de éxito falso) para no romper la demo.
+<script define:vars={{ FORM_ENDPOINT, WHATSAPP_NUMBER }} is:inline>
+  // Si FORM_ENDPOINT está configurado, el envío va real vía fetch. Si no, abre
+  // WhatsApp con los datos del formulario para que la solicitud sí llegue.
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
   const submitBtn = form?.querySelector('button[type="submit"]');
@@ -185,9 +181,20 @@ const valor = [
     }
 
     if (!FORM_ENDPOINT) {
-      console.info('[Contacto] FORM_ENDPOINT no configurado — envío simulado. Ver src/components/sections/Contacto.astro');
-      setStatus('¡Gracias! Hemos recibido su solicitud. Le contactaremos muy pronto.', 'ok');
-      form.reset();
+      const data = new FormData(form);
+      const lines = [
+        'Hola, quiero hablar con un experto de AdariA Systems.',
+        '',
+        `Nombre: ${data.get('nombre') || ''}`,
+        `Empresa: ${data.get('empresa') || ''}`,
+        `Cargo: ${data.get('cargo') || ''}`,
+        `Sector: ${data.get('sector') || ''}`,
+        `Correo: ${data.get('email') || ''}`,
+        `Reto: ${data.get('mensaje') || ''}`,
+      ];
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+      setStatus('Se abrió WhatsApp con su solicitud. Envíe el mensaje para completar el contacto.', 'ok');
       return;
     }
 

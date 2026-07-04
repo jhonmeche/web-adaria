@@ -163,6 +163,7 @@ const jsonLd = {
                 />
               </div>
             ) : (
+              <>
               <!-- Mockup: marcador de posición con forma de interfaz -->
               <div class="mock relative flex aspect-video w-full flex-col overflow-hidden bg-light" role="img" aria-label={`Mockup pendiente: ${img.alt}`}>
                 <!-- Barra de ventana -->
@@ -201,6 +202,7 @@ const jsonLd = {
                   Captura próximamente
                 </div>
               </div>
+              </>
             )}
             {img.caption && (
               <figcaption class="border-t border-ink/5 px-5 py-4 text-sm font-medium text-on-light">{img.caption}</figcaption>
