@@ -1,7 +1,7 @@
 # Plan 005 — Acordeón exclusivo en el menú móvil
 
-**Estado: BORRADOR** — sin aprobar. Propuesta técnica para revisión del
-Arquitecto.
+**Estado: APROBADO** — aprobado por Jhon Meche el 2026-07-10. Listo para
+IMPLEMENTAR (CLAUDE.md, "Ciclo de trabajo").
 
 Autor: Arquitecto (Claude)
 Fecha: 2026-07-10
