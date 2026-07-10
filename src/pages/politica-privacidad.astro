@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LandingHero from '../components/landing/LandingHero.astro';
+import { siteConfig } from '../config/seo';
+
+const title = 'Política de privacidad | AdariA Systems';
+const description =
+  'Política de tratamiento de datos personales de AdariA Systems, conforme a la Ley 1581 de 2012 de Colombia.';
+---
+<BaseLayout title={title} description={description} noindex={true}>
+  <LandingHero
+    breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Política de privacidad' }]}
+    useEyebrowComponent={true}
+    eyebrowLabel="Legal"
+    title="Política de privacidad"
+    intro="Tratamiento de datos personales de AdariA Systems, conforme a la Ley 1581 de 2012 de Colombia."
+    ctaPrimaryLabel="Hable con un experto"
+    ctaPrimaryHref="/#contacto"
+    gridCols="1fr"
+  />
+
+  <section class="bg-light py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <div class="rounded-2xl border border-crit/30 bg-crit/10 p-5 text-sm leading-relaxed text-on-light">
+        <strong class="block text-base font-semibold text-crit">
+          BORRADOR — PENDIENTE DE REVISIÓN LEGAL
+        </strong>
+        <p class="mt-2">
+          Este documento es un armazón estructural, no el texto definitivo.
+          No debe publicarse ni activarse su indexación en buscadores sin
+          la validación de un abogado. Mientras este aviso esté presente,
+          la página se mantiene fuera del índice de buscadores
+          (<code>noindex</code>).
+        </p>
+      </div>
+
+      <div class="prose-adaria mt-10">
+        <h2>1. Responsable del tratamiento</h2>
+        <p>
+          <strong>{siteConfig.name}</strong>, con domicilio en{' '}
+          {siteConfig.address.street}, {siteConfig.address.city},{' '}
+          {siteConfig.address.region}, Colombia, es responsable del
+          tratamiento de los datos personales que los titulares
+          suministran a través de los canales de contacto de este sitio
+          web (formulario de contacto y WhatsApp).
+        </p>
+        <p>
+          Correo de contacto para asuntos de protección de datos:{' '}
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+        </p>
+
+        <h2>2. Datos que se recolectan</h2>
+        <p>
+          A través del formulario de contacto del sitio se recolectan:
+          nombre, empresa, cargo (opcional), sector, correo electrónico y
+          el mensaje que el titular decida escribir. No se recolectan
+          datos sensibles ni datos de menores de edad de forma deliberada.
+        </p>
+
+        <h2>3. Finalidad del tratamiento</h2>
+        <p>Los datos suministrados se usan exclusivamente para:</p>
+        <ul>
+          <li>Responder solicitudes comerciales y de información sobre productos y servicios de AdariA Systems.</li>
+          <li>Contactar al titular para agendar demostraciones o reuniones comerciales.</li>
+          <li>Enviar propuestas, cotizaciones o información relacionada con la solicitud del titular.</li>
+        </ul>
+        <p>
+          AdariA Systems no vende, alquila ni comparte los datos personales
+          de los titulares con terceros para fines distintos a los aquí
+          descritos, salvo obligación legal.
+        </p>
+
+        <h2>4. Derechos del titular (Ley 1581 de 2012)</h2>
+        <p>
+          Conforme a la Ley 1581 de 2012 y sus decretos reglamentarios, todo
+          titular de datos personales tiene derecho a:
+        </p>
+        <ul>
+          <li>Conocer, actualizar y rectificar sus datos personales.</li>
+          <li>Solicitar prueba de la autorización otorgada para el tratamiento de sus datos.</li>
+          <li>Ser informado sobre el uso que se ha dado a sus datos personales.</li>
+          <li>Presentar quejas ante la Superintendencia de Industria y Comercio (SIC) por infracciones a la ley.</li>
+          <li>Revocar la autorización y/o solicitar la supresión del dato, cuando no exista un deber legal o contractual que lo impida.</li>
+          <li>Acceder de forma gratuita a sus datos personales tratados.</li>
+        </ul>
+
+        <h2>5. Procedimiento para ejercer estos derechos</h2>
+        <p>
+          El titular puede ejercer los derechos descritos en la sección
+          anterior enviando una solicitud al correo{' '}
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>,
+          indicando su nombre completo, el derecho que desea ejercer y una
+          descripción clara de su solicitud.
+        </p>
+        <p>
+          [BORRADOR — pendiente de confirmar con el abogado el plazo exacto
+          de respuesta a consultas y reclamos conforme a la Ley 1581 de
+          2012 y el Decreto 1377 de 2013.]
+        </p>
+
+        <h2>6. Vigencia</h2>
+        <p>
+          Esta política aplica desde su fecha de publicación y podrá
+          actualizarse cuando cambien las condiciones de tratamiento de
+          datos de AdariA Systems. [BORRADOR — pendiente de fecha de
+          publicación definitiva tras la revisión legal.]
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -12,13 +12,24 @@ export const siteConfig = {
   logo: '/icons/icon-512.png',
   themeColor: '#101418',
   whatsappNumber: '573138537266',
+  email: 'info@adariasystems.com',
+  address: {
+    street: 'Cra 20 # 11-94',
+    city: 'Cumaral',
+    region: 'Meta',
+    countryCode: 'CO',
+  },
+  /** URLs reales pendientes de confirmar. Mientras sean '#', no se
+   *  publican en JSON-LD (`sameAs`) — solo se usan para los íconos del
+   *  footer. Reemplazar cuando el propietario las confirme. */
+  social: {
+    linkedin: '#',
+    tiktok: '#',
+    instagram: '#',
+  },
 } as const;
 
-// Datos no publicados o no confirmados por el propietario:
-// email: [PENDIENTE_CORREO]
-// address: [PENDIENTE_DIRECCION_FISICA]
-// city: [PENDIENTE_CIUDAD]
-// companySocialProfiles: [PENDIENTE_REDES_SOCIALES]
+// Redes sociales: URLs reales pendientes de confirmar (ver siteConfig.social).
 
 export function absoluteUrl(path: string, base = siteConfig.url): string {
   return new URL(path, base).toString();

@@ -47,7 +47,7 @@ const homeJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
+      '@type': ['Organization', 'LocalBusiness'],
       '@id': `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       url: `${siteConfig.url}/`,
@@ -59,6 +59,14 @@ const homeJsonLd = {
       },
       description: siteConfig.description,
       telephone: `+${siteConfig.whatsappNumber}`,
+      email: siteConfig.email,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: siteConfig.address.street,
+        addressLocality: siteConfig.address.city,
+        addressRegion: siteConfig.address.region,
+        addressCountry: siteConfig.address.countryCode,
+      },
       areaServed: [siteConfig.country, 'Latinoamérica'],
     },
     {
