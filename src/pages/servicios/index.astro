@@ -4,12 +4,49 @@ import Section from '../../components/ui/Section.astro';
 import LandingHero from '../../components/landing/LandingHero.astro';
 import ServiciosGrid from '../../components/sections/ServiciosGrid.astro';
 import Button from '../../components/ui/Button.astro';
+import Eyebrow from '../../components/ui/Eyebrow.astro';
 import { absoluteUrl, canonicalPath } from '../../config/seo';
 
 const title = 'Servicios | AdariA Systems';
 const description =
   'Desarrollo de software, diseño de hardware, visión artificial, IoT, integración de sistemas, analítica y ciudades inteligentes: las capacidades núcleo de AdariA Systems.';
 const canonical = absoluteUrl(canonicalPath(Astro.url.pathname), Astro.site?.toString());
+
+// Diagnóstico (movido desde DiagnosticoOperativo.astro)
+const puntosDiagnostico = [
+  {
+    titulo: 'Proceso y activos existentes',
+    texto: 'Se identifican cámaras, sensores, PLC, básculas, ERP, redes y puntos de captura que ya forman parte de la operación.',
+    icon: 'M4 5h16M4 12h16M4 19h16M8 3v4m8-4v4M8 10v4m8-4v4M8 17v4m8-4v4',
+  },
+  {
+    titulo: 'Caso de uso medible',
+    texto: 'Se define qué se quiere detectar, medir o automatizar, qué datos existen y qué condición permite validar el piloto.',
+    icon: 'M3 3v18h18M7 15l3-3 3 2 5-7',
+  },
+  {
+    titulo: 'Alcance técnico realista',
+    texto: 'Se revisan restricciones de conectividad, iluminación, ambiente, seguridad industrial e integración antes de proponer una arquitectura.',
+    icon: 'M12 2 4 6v6c0 5 8 10 8 10s8-5 8-10V6l-8-4ZM9 12l2 2 4-5',
+  },
+];
+
+// Metodología (movido desde Servicios.astro)
+const metodologia = [
+  { titulo: 'Descubrimiento', texto: 'Entendemos su operación, el dolor real y el caso de uso prioritario.' },
+  { titulo: 'Diseño', texto: 'Definimos arquitectura, hardware y modelos a la medida del problema.' },
+  { titulo: 'Piloto', texto: 'Validamos en campo con un alcance acotado, medible y de bajo costo.' },
+  { titulo: 'Despliegue', texto: 'Escalamos a producción e integramos con sus sistemas existentes.' },
+  { titulo: 'Soporte', texto: 'Operación monitoreada, mejora continua y mantenimiento.' },
+];
+
+// Arquitectura (movido desde ArquitecturaImplementacion.astro)
+const capas = [
+  { titulo: 'Campo', texto: 'Cámaras, sensores, equipos industriales y fuentes de datos existentes.' },
+  { titulo: 'Borde', texto: 'Dispositivos edge, gateways e inferencia local cuando el caso lo requiere.' },
+  { titulo: 'Plataforma', texto: 'Integración con ERP, SCADA, bases de datos, tableros y servicios internos.' },
+  { titulo: 'Decisión', texto: 'Alertas, indicadores, evidencia y reportes para responsables de la operación.' },
+];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -36,16 +73,161 @@ const jsonLd = {
     <ServiciosGrid />
   </Section>
 
-  <section class="relative isolate overflow-hidden bg-ink py-24 text-on-dark">
-    <div class="tech-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
+  <Section theme="dark" id="como-trabajamos" grid={true}>
+    <div class="mx-auto max-w-3xl text-center">
+      <Eyebrow on="dark">Cómo trabajamos</Eyebrow>
+      <h2 data-reveal class="text-balance text-h1 font-semibold text-on-dark">
+        La solución parte de su operación real, no de una plantilla.
+      </h2>
+      <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
+        Antes de instalar sensores, entrenar modelos o integrar sistemas,
+        delimitamos el problema técnico y operativo. Empezamos pequeño y de
+        bajo riesgo, validamos con datos y escalamos.
+      </p>
+    </div>
+
+    <!-- Diagnóstico -->
+    <div class="mt-12 grid gap-5 sm:grid-cols-3">
+      {puntosDiagnostico.map((p, i) => (
+        <article data-reveal class="card flex items-start gap-4 rounded-2xl border border-white/10 bg-ink-card p-6 ring-1 ring-white/5" style={`--reveal-delay:${i * 80}ms`}>
+          <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-brand/15 text-brand-400">
+            <svg class="h-5.5 w-5.5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={p.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </span>
+          <div>
+            <h3 class="text-base font-semibold text-on-dark">{p.titulo}</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-muted-dark">{p.texto}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Metodología -->
+    <div class="relative mt-16">
+      <div
+        aria-hidden="true"
+        class="absolute inset-x-[6%] top-3.25 hidden h-px overflow-hidden bg-white/10 lg:block"
+      >
+        <span class="method-flow absolute inset-0"></span>
+      </div>
+
+      <ol class="grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+        {metodologia.map((p, i) => (
+          <li
+            data-reveal
+            class="hito relative pl-9 lg:pl-0 lg:text-center"
+            style={`--reveal-delay:${i * 80}ms`}
+          >
+            <span
+              aria-hidden="true"
+              class="nums-tabular absolute left-0 top-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-brand-400 bg-ink font-mono text-xs font-bold text-brand-400 lg:relative lg:mx-auto lg:mb-4"
+            >{i + 1}</span>
+            <h4 class="text-base font-semibold text-on-dark">{p.titulo}</h4>
+            <p class="mt-1.5 text-sm leading-relaxed text-muted-dark lg:mx-auto lg:max-w-[16rem]">{p.texto}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <!-- Arquitectura -->
+    <div class="relative mt-16">
+      <div
+        aria-hidden="true"
+        class="absolute inset-x-[8%] top-1/2 hidden h-px -translate-y-1/2 overflow-hidden bg-white/8 lg:block"
+      >
+        <span class="flow-dot absolute inset-y-0 left-0 w-16 bg-linear-to-r from-transparent via-brand-400 to-transparent"></span>
+      </div>
+
+      <ol class="grid gap-4 lg:grid-cols-4">
+        {capas.map((c, i) => {
+          const pct = (i / (capas.length - 1)) * 100;
+          const acento = `color-mix(in srgb, var(--color-brand-400) ${pct}%, #7b8794)`;
+          return (
+            <li
+              data-reveal
+              class="card relative overflow-hidden rounded-2xl border border-white/10 bg-ink-card/95 p-6 ring-1 ring-white/5"
+              style={`--reveal-delay:${i * 80}ms`}
+            >
+              <span class="absolute inset-x-0 top-0 h-1" style={`background:${acento}`} aria-hidden="true"></span>
+              <span class="nums-tabular font-mono text-xs font-semibold uppercase tracking-[0.12em]" style={`color:${acento}`}>Capa {String(i + 1).padStart(2, '0')}</span>
+              <h3 class="mt-3 text-xl font-semibold text-on-dark">{c.titulo}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted-dark">{c.texto}</p>
+              {i < capas.length - 1 && (
+                <span class="absolute -right-3 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border border-brand-400/30 bg-ink lg:flex" style={`color:${acento}`} aria-hidden="true">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+
+    <!-- CTA -->
+    <div data-reveal class="mt-20 rounded-3xl border border-white/10 bg-ink-card p-10 text-center ring-1 ring-white/5 sm:p-12">
+      <h3 class="text-h2 font-semibold text-on-dark">¿Existe un reto técnico por resolver?</h3>
+      <p class="mx-auto mt-3 max-w-xl text-muted-dark">
+        Cuéntenos su operación y diseñamos la solución a la medida —con hardware,
+        software y datos— que de verdad necesita.
+      </p>
+      <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+        <Button href="/#contacto" variant="primary" on="dark">Hablemos de su proyecto</Button>
+        <Button href="/productos" variant="secondary" on="dark">Ver el stack de productos</Button>
+      </div>
+    </div>
+  </Section>
+
+  <section class="relative isolate overflow-hidden bg-light py-24 text-on-light">
     <div class="relative mx-auto max-w-3xl px-6 text-center lg:px-8">
-      <h2 class="text-balance text-h1 font-semibold text-on-dark">¿Existe un reto técnico por resolver?</h2>
-      <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-dark">Cuéntenos su operación y diseñamos la solución a la medida —con hardware, software y datos— que de verdad necesita.</p>
+      <h2 class="text-balance text-h1 font-semibold text-on-light">¿Existe un reto técnico por resolver?</h2>
+      <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted">Cuéntenos su operación y diseñamos la solución a la medida —con hardware, software y datos— que de verdad necesita.</p>
       <div class="mt-9 flex justify-center">
-        <Button href="/#contacto" variant="primary" on="dark">Hable con un experto</Button>
+        <Button href="/#contacto" variant="primary" on="light">Hable con un experto</Button>
       </div>
     </div>
   </section>
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
 </BaseLayout>
+
+<style>
+  .js [data-reveal].hito {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+  }
+  .js [data-reveal].hito.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .method-flow {
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(96, 165, 250, 0.18) 43%,
+      rgba(96, 165, 250, 0.95) 50%,
+      rgba(96, 165, 250, 0.18) 57%,
+      transparent 65%,
+      transparent 100%
+    );
+    background-size: 220% 100%;
+    background-position: 100% 0;
+    animation: method-flow-scan 5.8s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
+    filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.75));
+  }
+
+  @keyframes method-flow-scan {
+    from { background-position: 100% 0; }
+    to { background-position: 0% 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .method-flow {
+      animation: none;
+      background-position: 100% 0;
+    }
+  }
+</style>

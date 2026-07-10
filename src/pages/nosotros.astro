@@ -17,6 +17,7 @@ import {
   vision,
   proposito,
 } from '../data/equipo.ts';
+import PartnerTecnologico from '../components/sections/PartnerTecnologico.astro';
 import { absoluteUrl, canonicalPath, siteConfig } from '../config/seo';
 
 const title = 'Nosotros | AdariA Systems';
@@ -155,6 +156,8 @@ const jsonLd = {
       </aside>
     </div>
   </Section>
+
+  <PartnerTecnologico />
 
   <!-- PROPÓSITO · MISIÓN · VISIÓN -->
   <Section theme="dark" id="proposito" grid={true}>

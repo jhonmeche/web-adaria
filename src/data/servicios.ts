@@ -498,6 +498,17 @@ export const servicios: Servicio[] = [
             'Soporte a la decisión',
           ],
         },
+        {
+          titulo: 'Calidad y trazabilidad del dato',
+          descripcion: 'Información que se puede auditar, no solo visualizar',
+          items: [
+            'Definición de variables, frecuencia de captura y fuente responsable',
+            'Registro de eventos con hora, origen y contexto operativo',
+            'Separación entre evidencia capturada, dato procesado e indicador final',
+            'Revisión de falsos positivos y mantenimiento del modelo',
+            'Entregables comprensibles para operación, gerencia y equipos técnicos',
+          ],
+        },
       ],
       proceso: [
         { titulo: 'Preguntas clave', texto: 'Definimos qué decisiones deben soportarse con los datos.' },

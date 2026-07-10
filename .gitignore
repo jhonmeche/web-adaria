@@ -20,8 +20,9 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Referencia temporal de comparación (plan 004 — no se commitea)
+# Referencia temporal de comparación (plan 004, 008 — no se commitea)
 .ref-antes/
+.ref-008-antes/
 
 # Claude Code (configuración local personal)
 .claude/settings.local.json

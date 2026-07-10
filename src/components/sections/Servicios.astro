@@ -8,24 +8,15 @@
 // íconos de trazo, números grandes en hover).
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
-import Button from '../ui/Button.astro';
 import ServiciosGrid from './ServiciosGrid.astro';
 import { servicios } from '../../data/servicios.ts';
 
 // Las capacidades núcleo del brief (§4) viven en data/servicios.ts y
 // alimentan también su landing dedicada (/servicios/[slug]). Aquí solo
 // presentamos la card con su ícono de trazo, tags y enlace a "Saber más".
+// La sección de metodología (antes la 2ª Section de este componente) se movió
+// a /servicios (plan 008).
 const serviciosHome = servicios.filter((s) => s.slug !== 'ciudades-inteligentes');
-
-// Metodología — el "gráfico profesional" de proceso: cómo trabaja el equipo,
-// de la conversación inicial al soporte continuo.
-const metodologia = [
-  { titulo: 'Descubrimiento', texto: 'Entendemos su operación, el dolor real y el caso de uso prioritario.' },
-  { titulo: 'Diseño', texto: 'Definimos arquitectura, hardware y modelos a la medida del problema.' },
-  { titulo: 'Piloto', texto: 'Validamos en campo con un alcance acotado, medible y de bajo costo.' },
-  { titulo: 'Despliegue', texto: 'Escalamos a producción e integramos con sus sistemas existentes.' },
-  { titulo: 'Soporte', texto: 'Operación monitoreada, mejora continua y mantenimiento.' },
-];
 ---
 
 <Section theme="white" id="servicios" aria-labelledby="servicios-title">
@@ -43,63 +34,6 @@ const metodologia = [
 
   <!-- Capacidades -->
   <ServiciosGrid items={serviciosHome} />
-</Section>
-
-<Section theme="dark" id="metodologia" grid={true} aria-labelledby="metodologia-title">
-  <!-- Metodología: cómo trabaja el equipo (gráfico de proceso) -->
-  <div class="mx-auto max-w-3xl text-center">
-    <Eyebrow on="dark">Cómo trabajamos</Eyebrow>
-    <h3 id="metodologia-title" data-reveal class="text-balance text-h2 font-semibold text-on-dark">
-      Un método de equipo profesional, no improvisación.
-    </h3>
-    <p data-reveal class="mt-5 text-lg leading-relaxed text-muted-dark">
-      Empezamos pequeño y de bajo riesgo, validamos con datos y escalamos. Land
-      &amp; expand: del piloto a la operación gestionada.
-    </p>
-  </div>
-
-  <!-- Ruta de trabajo: línea de tiempo horizontal (no otra tarjeta con número
-       ghost — ese lenguaje ya lo usa "Del sensor a la decisión"). El riel
-       conecta los cinco hitos como un recorrido; el pulso viaja de
-       Descubrimiento a Soporte. -->
-  <div class="relative mt-16">
-    <div
-      aria-hidden="true"
-      class="absolute inset-x-[6%] top-3.25 hidden h-px overflow-hidden bg-white/10 lg:block"
-    >
-      <span class="method-flow absolute inset-0"></span>
-    </div>
-
-    <ol class="grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
-      {metodologia.map((p, i) => (
-        <li
-          data-reveal
-          class="hito relative pl-9 lg:pl-0 lg:text-center"
-          style={`--reveal-delay:${i * 80}ms`}
-        >
-          <span
-            aria-hidden="true"
-            class="nums-tabular absolute left-0 top-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-brand-400 bg-ink font-mono text-xs font-bold text-brand-400 lg:relative lg:mx-auto lg:mb-4"
-          >{i + 1}</span>
-          <h4 class="text-base font-semibold text-on-dark">{p.titulo}</h4>
-          <p class="mt-1.5 text-sm leading-relaxed text-muted-dark lg:mx-auto lg:max-w-[16rem]">{p.texto}</p>
-        </li>
-      ))}
-    </ol>
-  </div>
-
-  <!-- CTA -->
-  <div data-reveal class="mt-20 rounded-3xl border border-white/10 bg-ink-card p-10 text-center ring-1 ring-white/5 sm:p-12">
-    <h3 class="text-h2 font-semibold text-on-dark">¿Existe un reto técnico por resolver?</h3>
-    <p class="mx-auto mt-3 max-w-xl text-muted-dark">
-      Cuéntenos su operación y diseñamos la solución a la medida —con hardware,
-      software y datos— que de verdad necesita.
-    </p>
-    <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-      <Button href="#contacto" variant="primary" on="dark">Hablemos de su proyecto</Button>
-      <Button href="#productos" variant="secondary" on="dark">Ver el stack de productos</Button>
-    </div>
-  </div>
 </Section>
 
 <style>
@@ -146,48 +80,4 @@ const metodologia = [
     transform: none;
   }
 
-  .js [data-reveal].hito {
-    opacity: 0;
-    transform: translateY(16px);
-    transition:
-      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
-  }
-  .js [data-reveal].hito.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  .method-flow {
-    background-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 35%,
-      rgba(96, 165, 250, 0.18) 43%,
-      rgba(96, 165, 250, 0.95) 50%,
-      rgba(96, 165, 250, 0.18) 57%,
-      transparent 65%,
-      transparent 100%
-    );
-    background-size: 220% 100%;
-    background-position: 100% 0;
-    animation: method-flow-scan 5.8s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
-    filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.75));
-  }
-
-  @keyframes method-flow-scan {
-    from {
-      background-position: 100% 0;
-    }
-    to {
-      background-position: 0% 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .method-flow {
-      animation: none;
-      background-position: 100% 0;
-    }
-  }
 </style>
