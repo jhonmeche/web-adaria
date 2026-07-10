@@ -151,6 +151,27 @@ p {
   }
 }
 
+/* Reveal de tarjetas ("card"): mismo patrón que [data-reveal] de arriba,
+   con desplazamiento algo mayor (22px) y transición de hover propia
+   (translate/box-shadow/border-color) para que la entrada y el
+   levantamiento al pasar el mouse no se pisen. Antes vivía duplicada,
+   carácter por carácter, en 9 archivos — ver docs/auditorias/03-codigo.md
+   hallazgo 2.3 y docs/planes/004-deuda-tecnica.md. */
+.js [data-reveal].card {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    translate 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.js [data-reveal].card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

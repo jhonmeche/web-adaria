@@ -1,6 +1,7 @@
 ---
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
+import CheckIcon from '../ui/CheckIcon.astro';
 
 const practicas = [
   'Definición de variables, frecuencia de captura y fuente responsable.',
@@ -30,9 +31,7 @@ const practicas = [
       <ul class="mt-6 grid gap-4">
         {practicas.map((p) => (
           <li class="flex items-start gap-3 text-sm leading-relaxed text-on-light/85">
-            <svg class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <CheckIcon class="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand" />
             {p}
           </li>
         ))}

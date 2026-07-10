@@ -4,6 +4,7 @@
 // Acepta un prop `items` opcional para filtrar qué servicios mostrar.
 import type { Servicio } from '../../data/servicios.ts';
 import { servicios } from '../../data/servicios.ts';
+import ArrowIcon from '../ui/ArrowIcon.astro';
 
 interface Props {
   /** Servicios a listar. Por defecto, TODOS (incluye Ciudades inteligentes). */
@@ -37,7 +38,7 @@ const { items = servicios } = Astro.props;
         class="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-brand transition-all group-hover:gap-2.5"
       >
         Saber más
-        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <ArrowIcon class="h-4 w-4" />
       </a>
     </article>
   ))}

@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
 import Eyebrow from '../../components/ui/Eyebrow.astro';
 import Button from '../../components/ui/Button.astro';
+import CheckIcon from '../../components/ui/CheckIcon.astro';
 import LandingHero from '../../components/landing/LandingHero.astro';
 import CrossSellCierre from '../../components/landing/CrossSellCierre.astro';
 import { servicios } from '../../data/servicios.ts';
@@ -75,7 +76,7 @@ const jsonLd = {
     <ul class="grid gap-3" slot>
       {d.puntos.map((pt) => (
         <li class="flex items-start gap-3 rounded-2xl border border-white/10 bg-ink-card p-5 ring-1 ring-white/5">
-          <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-400" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <CheckIcon class="mt-0.5 h-5 w-5 shrink-0 text-brand-400" />
           <span class="text-sm font-medium text-on-dark">{pt}</span>
         </li>
       ))}
@@ -109,7 +110,7 @@ const jsonLd = {
           <ul class={`mt-5 grid gap-2.5 border-t border-ink/5 pt-5 ${esUltimaImpar ? 'sm:grid-cols-2' : ''}`}>
             {c.items.map((it) => (
               <li class="flex items-start gap-2.5 text-sm text-on-light">
-                <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <CheckIcon class="mt-0.5 h-4 w-4 shrink-0 text-brand" />
                 {it}
               </li>
             ))}
@@ -223,20 +224,3 @@ const jsonLd = {
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
 </BaseLayout>
-
-<style>
-  .js [data-reveal].card {
-    opacity: 0;
-    transform: translateY(22px);
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-      translate 0.35s ease,
-      box-shadow 0.35s ease,
-      border-color 0.35s ease;
-  }
-  .js [data-reveal].card.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-</style>

@@ -1,5 +1,6 @@
 ---
 // Botón / CTA. El acento de marca (azul) se usa para el primario.
+import ArrowIcon from '../ui/ArrowIcon.astro';
 interface Props {
   href: string;
   variant?: 'primary' | 'secondary' | 'ghost';
@@ -31,8 +32,6 @@ const styles: Record<string, string> = {
 <a href={href} class={`${base} ${styles[variant]} ${className}`} {...rest}>
   <slot />
   {variant === 'primary' && (
-    <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
+    <ArrowIcon class="h-4 w-4" />
   )}
 </a>

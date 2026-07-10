@@ -3,6 +3,7 @@
 // todo el ancho (full-bleed) y el TÍTULO va ENCIMA, con degradado + sombra para
 // legibilidad. Título e imagen rotan sincronizados.
 import Button from '../ui/Button.astro';
+import ArrowIcon from '../ui/ArrowIcon.astro';
 import Viewfinder from '../ui/Viewfinder.astro';
 
 // ── SOLUCIONES DEL CARRUSEL ────────────────────────────────────────────────
@@ -141,7 +142,7 @@ const slides = [
           <span class="font-semibold text-on-dark">¿Nuevo en estos términos?</span>
           <span class="text-muted-dark"> Conozca los conceptos</span>
         </span>
-        <svg class="h-4 w-4 text-brand-400 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <ArrowIcon class="h-4 w-4 text-brand-400 transition-transform group-hover:translate-x-0.5" />
       </a>
 
       <ul data-reveal class="mt-12 grid max-w-[calc(100vw-3rem)] grid-cols-2 gap-x-8 gap-y-3 border-t border-white/10 pt-6 text-sm text-muted-dark sm:max-w-3xl sm:grid-cols-3">

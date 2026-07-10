@@ -68,22 +68,3 @@ const icons: Record<string, string> = {
   </div>
 </Section>
 
-<style>
-  /* Entrada escalonada por card: fade + slide-up con --reveal-delay; el hover usa
-     la propiedad individual `translate` para no pisar la animación de entrada.
-     (Mismo patrón que la sección Stack.) */
-  .js [data-reveal].card {
-    opacity: 0;
-    transform: translateY(22px);
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-      translate 0.35s ease,
-      box-shadow 0.35s ease,
-      border-color 0.35s ease;
-  }
-  .js [data-reveal].card.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-</style>

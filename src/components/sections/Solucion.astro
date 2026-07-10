@@ -6,6 +6,7 @@
 // un diagrama de proceso.
 import Section from '../ui/Section.astro';
 import Eyebrow from '../ui/Eyebrow.astro';
+import ArrowIcon from '../ui/ArrowIcon.astro';
 
 const pasos = [
   {
@@ -85,7 +86,7 @@ const pasos = [
           </ul>
           {i < pasos.length - 1 && (
             <div class="absolute -right-4 top-1/2 z-10 hidden h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 md:flex">
-              <svg class="arrow-nudge h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <ArrowIcon class="arrow-nudge h-4 w-4" strokeWidth="2.2" />
             </div>
           )}
         </li>

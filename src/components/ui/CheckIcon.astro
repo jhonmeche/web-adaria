@@ -1,0 +1,13 @@
+---
+// Ícono de trazo "check" (viewBox 0 0 20 20 por defecto). Antes repetido
+// a mano en 11 sitios — ver docs/planes/004-deuda-tecnica.md.
+interface Props {
+  class?: string;
+  viewBox?: string;
+  style?: string;
+}
+const { class: className = '', viewBox = '0 0 20 20', style } = Astro.props;
+---
+<svg class={className} viewBox={viewBox} fill="none" aria-hidden="true" style={style}>
+  <path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

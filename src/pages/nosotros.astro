@@ -8,6 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/ui/Section.astro';
 import Eyebrow from '../components/ui/Eyebrow.astro';
 import Button from '../components/ui/Button.astro';
+import CheckIcon from '../components/ui/CheckIcon.astro';
 import LandingHero from '../components/landing/LandingHero.astro';
 import {
   fundadores,
@@ -146,7 +147,7 @@ const jsonLd = {
             'Entrada acotada, escala a su ritmo',
           ].map((punto) => (
             <li class="flex items-start gap-3 text-sm font-medium text-on-light">
-              <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14l8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <CheckIcon class="mt-0.5 h-5 w-5 shrink-0 text-brand" />
               {punto}
             </li>
           ))}
@@ -307,20 +308,6 @@ const jsonLd = {
 </BaseLayout>
 
 <style>
-  .js [data-reveal].card {
-    opacity: 0;
-    transform: translateY(22px);
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-      translate 0.35s ease,
-      box-shadow 0.35s ease,
-      border-color 0.35s ease;
-  }
-  .js [data-reveal].card.is-visible {
-    opacity: 1;
-    transform: none;
-  }
   /* Reveal también para los párrafos/títulos sueltos de esta página. */
   .js [data-reveal]:not(.card) {
     opacity: 0;

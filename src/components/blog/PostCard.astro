@@ -1,6 +1,7 @@
 ---
 // Tarjeta de artículo del blog. Reutilizable en el listado /blog (fondo oscuro)
 // y en el teaser "Últimas noticias" de la home (fondo claro), según `on`.
+import ArrowIcon from '../ui/ArrowIcon.astro';
 import { formatDate, isoDate, type Post } from '../../lib/blog';
 
 interface Props {
@@ -63,7 +64,7 @@ const linkColor = dark ? 'text-brand-400' : 'text-brand';
     <p class={`mt-2 line-clamp-3 text-sm leading-relaxed ${descColor}`}>{description}</p>
     <span class={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-all group-hover:gap-2.5 ${linkColor}`}>
       Leer artículo
-      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <ArrowIcon class="h-4 w-4" />
     </span>
   </div>
 </a>

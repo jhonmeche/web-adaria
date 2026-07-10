@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/ui/Button.astro';
+import ArrowIcon from '../../components/ui/ArrowIcon.astro';
 import { getPublishedPosts, formatDate, isoDate, readingTime } from '../../lib/blog';
 import { absoluteUrl, canonicalPath, siteConfig } from '../../config/seo';
 
@@ -61,7 +62,7 @@ const articleJsonLd = {
       <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-3xl px-6 pb-14 pt-36 lg:pt-40">
         <a href="/blog/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400 transition-all hover:gap-2.5">
-          <svg class="h-4 w-4 rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <ArrowIcon class="h-4 w-4 rotate-180" />
           Volver al blog
         </a>
         <span class="mt-6 inline-block rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white">{category}</span>

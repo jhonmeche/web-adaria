@@ -26,23 +26,3 @@ import ProductosGrid from './ProductosGrid.astro';
   </p>
 </Section>
 
-<style>
-  /* Entrada escalonada por card: fade + slide-up con --reveal-delay.
-     El reveal usa `transform`; el hover usa la propiedad individual `translate`
-     (independiente), así la entrada y el levantamiento al pasar el mouse no se
-     pisan y cada uno mantiene su propio tiempo. */
-  .js [data-reveal].card {
-    opacity: 0;
-    transform: translateY(22px);
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-      translate 0.35s ease,
-      box-shadow 0.35s ease,
-      border-color 0.35s ease;
-  }
-  .js [data-reveal].card.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-</style>
