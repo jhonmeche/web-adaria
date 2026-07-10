@@ -464,13 +464,44 @@ borrador. Es una decisión explícita, no un olvido: el propio contenido de
 la página dice "no publicar sin validación de un abogado", así que no
 tiene sentido que Google la indexe y la muestre en resultados de búsqueda
 como si fuera la política vigente de la empresa. Consecuencia directa: la
-página **no aparecerá** en `sitemap-0.xml` (mismo mecanismo ya usado por
-`/404`, confirmado en `docs/revisiones/001.md` y `SEO_AUDIT.md` — 
+página **no debe aparecer** en `sitemap-0.xml`.
+
+**Corrección post-implementación (verificada durante la revisión del
+commit de este plan):** el párrafo original de esta sección asumía que
 `@astrojs/sitemap` excluye automáticamente cualquier página con
-`noindex` sin configuración adicional). **Pendiente para cuando el
-abogado apruebe el texto:** quitar el aviso de borrador, quitar
-`noindex={true}` de `politica-privacidad.astro`, y volver a correr
-`npm run build` para confirmar que la página entra al sitemap.
+`noindex`, "mismo mecanismo ya usado por `/404`". Esa suposición era
+**incorrecta**. Se probó explícitamente quitando el filtro de
+`astro.config.mjs` y reconstruyendo: `/politica-privacidad` **sí** aparece
+en `sitemap-0.xml` a pesar de tener `noindex, nofollow` en su
+`<meta name="robots">` — `@astrojs/sitemap` no interpreta ese meta tag, no
+escanea el HTML generado para decidir inclusión. La exclusión de `/404`
+que se observó en revisiones anteriores se debe a un tratamiento especial
+de Astro para la página de error (no es parte de las páginas que reciben
+ruta explícita), no a que el paquete de sitemap lea `noindex`.
+
+**Implementación real y correcta:** `astro.config.mjs` sí necesita el
+`filter` explícito:
+
+```js
+integrations: [
+  sitemap({
+    filter: (page) => !page.includes('/politica-privacidad/'),
+  }),
+],
+```
+
+Este archivo no estaba listado en el §4 original de este plan porque en
+el momento de escribirlo se asumió (de forma incorrecta) que no hacía
+falta tocarlo. Se deja registrado aquí como corrección del plan, no como
+un cambio fuera de alcance: es un requisito real del punto 5
+("crear `/politica-privacidad`... publicada con `noindex`") que el plan sí
+aprobó.
+
+**Pendiente para cuando el abogado apruebe el texto:** quitar el aviso de
+borrador, quitar `noindex={true}` de `politica-privacidad.astro`, **y
+quitar también el `filter` de `astro.config.mjs`** (los dos mecanismos
+deben retirarse juntos), y volver a correr `npm run build` para confirmar
+que la página entra al sitemap.
 
 ### `sameAs` no se agrega a `Organization`/`LocalBusiness`
 Ver §2. Las 3 URLs de redes sociales son placeholders (`#`). Publicarlas
