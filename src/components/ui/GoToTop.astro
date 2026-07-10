@@ -13,7 +13,7 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 <div
   data-gototop
-  class="fixed bottom-28 right-6 z-50 opacity-0 translate-y-2 scale-90 [transition:opacity_.3s_ease,transform_.4s_cubic-bezier(0.16,1,0.3,1)]"
+  class="fixed bottom-[calc(7rem+env(safe-area-inset-bottom))] right-6 z-50 opacity-0 translate-y-2 scale-90 [transition:opacity_.3s_ease,transform_.4s_cubic-bezier(0.16,1,0.3,1)]"
 >
   <button
     type="button"
@@ -57,6 +57,10 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
     transform: none;
     pointer-events: auto;
   }
+  :global(html.gtt-hide-for-form) [data-gototop] {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
   [data-gototop] {
     pointer-events: none;
   }
@@ -90,6 +94,15 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
+
+  // Oculta "volver arriba" mientras el usuario tiene el foco dentro del
+  // formulario de contacto, para no competir con los campos ni con el
+  // teclado virtual en móvil.
+  const contactForm = document.getElementById('contact-form');
+  contactForm?.addEventListener('focusin', () => root.classList.add('gtt-hide-for-form'));
+  contactForm?.addEventListener('focusout', (e) => {
+    if (!contactForm.contains(e.relatedTarget)) root.classList.remove('gtt-hide-for-form');
+  });
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   btn?.addEventListener('click', () => {

@@ -24,11 +24,19 @@ import { servicios } from '../../data/servicios.ts';
     <ul class="hidden items-center gap-1 lg:flex">
       <!-- Soluciones -->
       <li class="group relative">
-        <a href="/sectores" class="nav-link" aria-haspopup="true">
+        <button
+          type="button"
+          class="nav-link"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="dropdown-sectores"
+          data-dropdown-trigger
+        >
           Soluciones
-          <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <div class="dropdown">
+          <svg class="dropdown-chevron h-3.5 w-3.5 opacity-60 transition-transform" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown" id="dropdown-sectores">
+          <a href="/sectores" class="dropdown-item dropdown-item-all">Ver todos los sectores</a>
           <p class="dropdown-title">Por sector</p>
           {sectores.map((s) => (
             <a href={`/sectores/${s.slug}`} class="dropdown-item">{s.nombre}</a>
@@ -38,11 +46,19 @@ import { servicios } from '../../data/servicios.ts';
 
       <!-- Productos -->
       <li class="group relative">
-        <a href="/productos" class="nav-link" aria-haspopup="true">
+        <button
+          type="button"
+          class="nav-link"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="dropdown-productos"
+          data-dropdown-trigger
+        >
           Productos
-          <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <div class="dropdown">
+          <svg class="dropdown-chevron h-3.5 w-3.5 opacity-60 transition-transform" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown" id="dropdown-productos">
+          <a href="/productos" class="dropdown-item dropdown-item-all">Ver todos los productos</a>
           {productos.map((p) => (
             <a href={`/productos/${p.slug}`} class="dropdown-item">{p.nombre}</a>
           ))}
@@ -51,11 +67,19 @@ import { servicios } from '../../data/servicios.ts';
 
       <!-- Servicios -->
       <li class="group relative">
-        <a href="/servicios" class="nav-link" aria-haspopup="true">
+        <button
+          type="button"
+          class="nav-link"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="dropdown-servicios"
+          data-dropdown-trigger
+        >
           Servicios
-          <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <div class="dropdown">
+          <svg class="dropdown-chevron h-3.5 w-3.5 opacity-60 transition-transform" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown" id="dropdown-servicios">
+          <a href="/servicios" class="dropdown-item dropdown-item-all">Ver todos los servicios</a>
           {servicios.map((s) => (
             <a href={`/servicios/${s.slug}`} class="dropdown-item">{s.nombre}</a>
           ))}
@@ -140,14 +164,28 @@ import { servicios } from '../../data/servicios.ts';
     @apply invisible absolute left-0 top-full min-w-64 translate-y-2 rounded-md border border-white/10 bg-ink/96 p-2 opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-200;
   }
   .group:hover .dropdown,
-  .group:focus-within .dropdown {
+  .group:focus-within .dropdown,
+  .group.is-open .dropdown {
     @apply visible translate-y-1 opacity-100;
+  }
+  /* Debe ir DESPUÉS de las tres reglas de arriba: misma especificidad,
+     gana por orden de aparición. */
+  .group.dropdown-suppressed .dropdown {
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
   .dropdown-title {
     @apply px-3 pb-1.5 pt-2 text-xs font-semibold uppercase text-brand-400;
   }
   .dropdown-item {
     @apply block rounded-md px-3 py-2 text-sm text-on-dark/82 transition-colors hover:bg-white/[0.06] hover:text-on-dark;
+  }
+  .dropdown-item-all {
+    @apply font-semibold text-brand-400;
+  }
+  .group.is-open .dropdown-chevron,
+  .group:focus-within .dropdown-chevron {
+    @apply rotate-180;
   }
   .mobile-link {
     @apply block rounded-md px-2 py-2.5 text-base font-medium text-on-dark/90 transition-colors hover:bg-white/5 hover:text-on-dark;
@@ -177,18 +215,24 @@ import { servicios } from '../../data/servicios.ts';
   /* Al desplegar el menú: los ítems entran escalonados (fade + desplazamiento),
      sin cambio de color en el texto. */
   @media (prefers-reduced-motion: no-preference) {
+    .group.is-open .dropdown-item,
     .group:hover .dropdown-item,
     .group:focus-within .dropdown-item {
       animation: dropdown-item-in 0.45s ease backwards;
     }
+    .group.is-open .dropdown-item:nth-of-type(1),
     .group:hover .dropdown-item:nth-of-type(1),
     .group:focus-within .dropdown-item:nth-of-type(1) { animation-delay: 0.04s; }
+    .group.is-open .dropdown-item:nth-of-type(2),
     .group:hover .dropdown-item:nth-of-type(2),
     .group:focus-within .dropdown-item:nth-of-type(2) { animation-delay: 0.09s; }
+    .group.is-open .dropdown-item:nth-of-type(3),
     .group:hover .dropdown-item:nth-of-type(3),
     .group:focus-within .dropdown-item:nth-of-type(3) { animation-delay: 0.14s; }
+    .group.is-open .dropdown-item:nth-of-type(4),
     .group:hover .dropdown-item:nth-of-type(4),
     .group:focus-within .dropdown-item:nth-of-type(4) { animation-delay: 0.19s; }
+    .group.is-open .dropdown-item:nth-of-type(5),
     .group:hover .dropdown-item:nth-of-type(5),
     .group:focus-within .dropdown-item:nth-of-type(5) { animation-delay: 0.24s; }
   }
@@ -237,6 +281,69 @@ import { servicios } from '../../data/servicios.ts';
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
+
+  // Dropdowns de escritorio: botón como disparador de disclosure.
+  const dropdownGroups = Array.from(document.querySelectorAll('li.group'))
+    .filter((group) => group.querySelector('[data-dropdown-trigger]'));
+
+  const setExpanded = (group, expanded) => {
+    group.querySelector('[data-dropdown-trigger]')?.setAttribute('aria-expanded', String(expanded));
+  };
+
+  dropdownGroups.forEach((group) => {
+    const trigger = group.querySelector('[data-dropdown-trigger]');
+
+    trigger?.addEventListener('click', () => {
+      const isOpen = group.classList.contains('is-open');
+      dropdownGroups.forEach((g) => { g.classList.remove('is-open', 'dropdown-suppressed'); setExpanded(g, false); });
+      if (!isOpen) { group.classList.add('is-open'); setExpanded(group, true); }
+    });
+
+    group.addEventListener('mouseenter', () => {
+      group.classList.remove('dropdown-suppressed');
+      setExpanded(group, true);
+    });
+    group.addEventListener('mouseleave', () => {
+      group.classList.remove('dropdown-suppressed');
+      setExpanded(group, false);
+    });
+    group.addEventListener('focusin', () => {
+      group.classList.remove('dropdown-suppressed');
+      setExpanded(group, true);
+    });
+    group.addEventListener('focusout', (e) => {
+      if (group.contains(e.relatedTarget)) return;
+      setExpanded(group, false);
+      group.classList.remove('is-open', 'dropdown-suppressed');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    dropdownGroups.forEach((group) => {
+      if (!group.contains(e.target)) { group.classList.remove('is-open', 'dropdown-suppressed'); setExpanded(group, false); }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+
+    const openGroup = dropdownGroups.find(
+      (group) => group.querySelector('[data-dropdown-trigger]')?.getAttribute('aria-expanded') === 'true',
+    );
+    if (openGroup) {
+      openGroup.classList.remove('is-open');
+      openGroup.classList.add('dropdown-suppressed');
+      setExpanded(openGroup, false);
+      openGroup.querySelector('[data-dropdown-trigger]')?.focus();
+      return;
+    }
+
+    if (menu && !menu.classList.contains('hidden')) {
+      menu.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.focus();
+    }
+  });
 </script>
 
 <style is:global>

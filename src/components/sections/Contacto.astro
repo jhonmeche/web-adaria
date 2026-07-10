@@ -81,6 +81,10 @@ const valor = [
         style="--reveal-delay:120ms"
       >
         <form id="contact-form" class="space-y-4" novalidate>
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">No completar este campo</label>
+            <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </div>
           <div class="grid gap-4 sm:grid-cols-2">
             <div>
               <label for="nombre" class="form-label">Nombre*</label>
@@ -149,6 +153,13 @@ const valor = [
   .form-input:user-invalid {
     @apply border-crit;
   }
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 
   /* Reveal escalonado + hover, mismo patrón que el resto de secciones. */
   .js [data-reveal].card {
@@ -173,6 +184,7 @@ const valor = [
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
   const submitBtn = form?.querySelector('button[type="submit"]');
+  const honeypot = form?.querySelector('input[name="_gotcha"]');
 
   const setStatus = (message, tone) => {
     if (!status) return;
@@ -183,6 +195,15 @@ const valor = [
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Honeypot: si un bot rellenó el campo oculto, se simula éxito sin
+    // enviar nada — no se le revela al bot que fue detectado.
+    if (honeypot && honeypot.value) {
+      setStatus('¡Gracias! Hemos recibido su solicitud. Le contactaremos muy pronto.', 'ok');
+      form.reset();
+      return;
+    }
+
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
