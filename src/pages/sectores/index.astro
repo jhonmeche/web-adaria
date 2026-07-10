@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/ui/Section.astro';
+import LandingHero from '../../components/landing/LandingHero.astro';
+import SectoresGrid from '../../components/sections/SectoresGrid.astro';
+import Button from '../../components/ui/Button.astro';
+import { absoluteUrl, canonicalPath } from '../../config/seo';
+
+const title = 'Soluciones por sector | AdariA Systems';
+const description =
+  'Soluciones tecnológicas por industria: hidrocarburos, minería y energía, industria cárnica, manufactura, logística y bodegas, y agroindustria.';
+const canonical = absoluteUrl(canonicalPath(Astro.url.pathname), Astro.site?.toString());
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Soluciones por sector', item: canonical },
+  ],
+};
+---
+<BaseLayout title={title} description={description}>
+  <LandingHero
+    breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Soluciones por sector' }]}
+    useEyebrowComponent={true}
+    eyebrowLabel="Soluciones por sector"
+    title="Ingeniería de extremo a extremo para su industria."
+    intro="Diseñamos hardware electrónico propio —nodos, gateways y dispositivos edge—, sensorizamos con IoT y conectividad LoRa/LoRaWAN y entrenamos modelos de visión artificial. Procesamos en el borde, integramos con ERP, PLC, básculas y SCADA y entregamos analítica predictiva con dato trazable y auditable."
+    ctaPrimaryLabel="Hable con un experto"
+    ctaPrimaryHref="/#contacto"
+    gridCols="1fr"
+  />
+
+  <Section theme="white" id="sectores-grid">
+    <SectoresGrid />
+  </Section>
+
+  <section class="relative isolate overflow-hidden bg-ink py-24 text-on-dark">
+    <div class="tech-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-3xl px-6 text-center lg:px-8">
+      <h2 class="text-balance text-h1 font-semibold text-on-dark">¿Su industria no está aquí, o quiere profundizar?</h2>
+      <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-dark">Revisamos su operación y proponemos un piloto acotado con métricas claras.</p>
+      <div class="mt-9 flex justify-center">
+        <Button href="/#contacto" variant="primary" on="dark">Hable con un experto</Button>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</BaseLayout>

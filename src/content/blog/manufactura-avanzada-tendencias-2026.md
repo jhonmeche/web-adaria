@@ -1,25 +1,25 @@
 ---
-title: "El 95% de los fabricantes ya apuesta por manufactura inteligente"
-description: "Un informe de Rockwell Automation confirma que la manufactura inteligente dejó de ser opcional: 95% de los fabricantes globales ya la usa o la evalúa, y 96% reporta mejoras operativas reales tras adoptarla."
+title: "El 95 % de los fabricantes ya apuesta por manufactura inteligente"
+description: "Un informe de Rockwell Automation confirma que la manufactura inteligente dejó de ser opcional: el 95 % de los fabricantes globales ya la usa o la evalúa, y el 96 % reporta mejoras operativas reales tras adoptarla."
 pubDate: 2026-07-13
 author: "Equipo AdariA"
 category: "Industria"
 tags: ["Manufactura", "Industria 4.0", "Metrología"]
 cover: "/blog/manufactura-avanzada-tendencias-2026.jpg"
-coverAlt: "Estacion de inspeccion de calidad en una celda de manufactura avanzada"
+coverAlt: "Estación de inspección de calidad en una celda de manufactura avanzada"
 draft: false
 ---
 
-Cuando el 95% de un mercado ya se mueve en una dirección, dejar de moverse en esa
+Cuando el 95 % de un mercado ya se mueve en una dirección, dejar de moverse en esa
 misma dirección no es una posición neutral: es quedarse atrás mientras el resto
 avanza.
 
 ## El dato que resume el momento
 
-Un informe de [Rockwell Automation confirma que el 95% de los fabricantes a nivel
+Un informe de [Rockwell Automation confirma que el 95 % de los fabricantes a nivel
 global ya utiliza o evalúa tecnologías de manufactura inteligente](https://clusterindustrial.com.mx/manufactura-avanzada-en-mexico-2026-las-tendencias-que-estan-redefiniendo-la-industria/),
 lo que confirma que la transición dejó de ser opcional para volverse estructural. En
-la misma línea, el informe de KPMG sobre manufactura inteligente reporta que **96%**
+la misma línea, el informe de KPMG sobre manufactura inteligente reporta que el **96 %**
 de las organizaciones ya nota mejoras operativas y de eficiencia tras adoptar
 tecnologías con inteligencia artificial.
 
@@ -41,7 +41,7 @@ condición de equipo, y ambos alimentando la misma capa de decisión.
 
 ## Por qué esto también aplica a una pyme
 
-El 95% no es solo la gran industria: incluye fabricantes medianos que empezaron con
+El 95 % no es solo la gran industria: incluye fabricantes medianos que empezaron con
 un caso de uso acotado —una línea, un punto de inspección— y escalaron desde ahí. La
 manufactura inteligente no exige una transformación total de una vez; exige empezar.
 

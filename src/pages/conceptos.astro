@@ -11,7 +11,7 @@ import VisualDatos from '../components/conceptos/VisualDatos.astro';
 import VisualHardware from '../components/conceptos/VisualHardware.astro';
 import { grupos } from '../data/conceptos.ts';
 
-const title = 'Conceptos — La tecnología de AdariA, explicada en simple | AdariA Systems';
+const title = 'Conceptos de Industria 4.0 explicados | AdariA Systems';
 const description =
   'Glosario claro de Industria 4.0, visión artificial, IoT, LoRa, edge, analítica y más. Entiende en lenguaje sencillo los términos detrás de las soluciones de AdariA.';
 
@@ -137,7 +137,7 @@ const totalConceptos = grupos.reduce((acc, g) => acc + g.conceptos.length, 0);
       </p>
       <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
         <Button href="/#contacto" variant="primary" on="light">Hable con un experto</Button>
-        <Button href="/#productos" variant="secondary" on="light">Ver los productos</Button>
+        <Button href="/productos" variant="secondary" on="light">Ver los productos</Button>
       </div>
     </div>
   </section>

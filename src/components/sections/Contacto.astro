@@ -10,9 +10,10 @@
 // muestra éxito simulado.
 import Eyebrow from '../ui/Eyebrow.astro';
 import { sectores } from '../../data/sectores.ts';
+import { siteConfig } from '../../config/seo';
 
 const FORM_ENDPOINT = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
-const WHATSAPP_NUMBER = '573138537266';
+const WHATSAPP_NUMBER = siteConfig.whatsappNumber;
 
 // Razones para agendar — tarjetas de valor (mismo patrón de cards del sitio).
 const valor = [

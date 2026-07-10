@@ -508,3 +508,22 @@ src/
   `/contacto`. Hoy la nav apunta a anclas de la home. Activar color sectorial (Opción C) en
   cada landing de sector con `data/sectores.ts.color`.
 - **Comandos**: `npm run dev` (desarrollo) · `npm run build` (producción → `dist/`).
+
+## Sistema de roles multi-modelo (dos instancias de Claude Code)
+- Modelo Claude (Anthropic) -> ARQUITECTO/REVISOR: audita, decide, define
+  estructura y contenidos, planea y revisa. NO escribe codigo de produccion.
+  Entregables en docs/.
+- Modelo DeepSeek -> DESARROLLADOR: implementa TODO el codigo siguiendo los
+  planes APROBADOS de docs/planes/. No toma decisiones de diseno; si algo
+  no esta en el plan, se detiene y lo reporta.
+
+## Ciclo de trabajo
+1. AUDITAR (arquitecto) -> docs/auditorias/
+2. PLANEAR (arquitecto) -> docs/planes/NNN-mejora.md; APROBADO solo con mi visto bueno
+3. IMPLEMENTAR (desarrollador) -> paso a paso, commits pequenos, nunca git push sin permiso
+4. REVISAR (arquitecto) -> docs/revisiones/NNN.md con veredicto y hallazgos archivo:linea
+5. CORREGIR (desarrollador) -> segun el informe
+
+## Diseno de UI
+- Los disenos viven en Google Stitch (MCP "stitch"); el design system en DESIGN.md.
+- Nadie inventa colores, tipografias ni espaciados: se toman de ahi.

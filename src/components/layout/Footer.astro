@@ -20,7 +20,7 @@ const year = new Date().getFullYear();
       </div>
 
       <div>
-        <h3 class="footer-title">Soluciones</h3>
+        <a href="/sectores" class="footer-title">Soluciones</a>
         <ul class="space-y-2">
           {sectores.map((s) => (
             <li><a href={`/sectores/${s.slug}`} class="footer-link">{s.nombre}</a></li>
@@ -29,7 +29,7 @@ const year = new Date().getFullYear();
       </div>
 
       <div>
-        <h3 class="footer-title">Productos</h3>
+        <a href="/productos" class="footer-title">Productos</a>
         <ul class="space-y-2">
           {productos.map((p) => (
             <li><a href={`/productos/${p.slug}`} class="footer-link">{p.nombre}</a></li>
@@ -38,7 +38,7 @@ const year = new Date().getFullYear();
       </div>
 
       <div>
-        <h3 class="footer-title">Servicios</h3>
+        <a href="/servicios" class="footer-title">Servicios</a>
         <ul class="space-y-2">
           {servicios.map((s) => (
             <li><a href={`/servicios/${s.slug}`} class="footer-link">{s.nombre}</a></li>

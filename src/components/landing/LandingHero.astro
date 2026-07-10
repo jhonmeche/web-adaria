@@ -1,0 +1,111 @@
+---
+// Hero + breadcrumb unificado para landings de producto, servicio, sector,
+// nosotros y los hubs nuevos (/productos, /servicios, /sectores).
+// Soporta tres tipos de badge: ícono cuadrado (producto/servicio), punto de
+// color (sector), o el componente Eyebrow (nosotros/hubs). Slots: por defecto
+// (columna derecha del grid) y "extra" (contenido tras el grid).
+import Eyebrow from '../ui/Eyebrow.astro';
+import Button from '../ui/Button.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  /** Omitir en el último ítem (página actual): se renderiza sin enlace y con aria-current="page". */
+  href?: string;
+}
+
+interface Props {
+  breadcrumb: BreadcrumbItem[];
+  /** Ícono de trazo (viewBox 0 0 24 24) para el badge cuadrado de marca (producto/servicio). No combinar con `badgeDotColor` ni `useEyebrowComponent`. */
+  icon?: string;
+  /** Color sólido (hex) para un badge de punto en vez de ícono cuadrado — usado por sectores (`sector.color`). No combinar con `icon` ni `useEyebrowComponent`. */
+  badgeDotColor?: string;
+  /** true = renderiza `<Eyebrow on="dark">{eyebrowLabel}</Eyebrow>` en vez de un badge de ícono/punto. No combinar con `icon` ni `badgeDotColor`. */
+  useEyebrowComponent?: boolean;
+  /** Texto corto sobre el H1. */
+  eyebrowLabel?: string;
+  title: string;
+  /** Línea secundaria bajo el título (tagline de producto/servicio). */
+  tagline?: string;
+  intro: string;
+  /** Párrafo adicional, más pequeño, bajo `intro` (usado por sectores: campo `contexto`). */
+  introSecondary?: string;
+  ctaPrimaryLabel: string;
+  ctaPrimaryHref: string;
+  ctaSecondaryLabel?: string;
+  ctaSecondaryHref?: string;
+  /** Proporción de columnas del grid en desktop. Default: '1.2fr_1fr'. Usar '1fr' para hero de una sola columna. */
+  gridCols?: string;
+}
+
+const {
+  breadcrumb,
+  icon,
+  badgeDotColor,
+  useEyebrowComponent,
+  eyebrowLabel,
+  title,
+  tagline,
+  intro,
+  introSecondary,
+  ctaPrimaryLabel,
+  ctaPrimaryHref,
+  ctaSecondaryLabel,
+  ctaSecondaryHref,
+  gridCols = '1.2fr_1fr',
+} = Astro.props;
+
+// Mapa de valores de gridCols a clases completas y literales para que
+// Tailwind v4 las escanee y genere el CSS (no interpolar dentro del class name).
+const gridColsClass: Record<string, string> = {
+  '1.2fr_1fr': 'lg:grid-cols-[1.2fr_1fr]',
+  '1.08fr_0.92fr': 'lg:grid-cols-[1.08fr_0.92fr]',
+  '1fr': 'lg:grid-cols-[1fr]',
+};
+---
+
+<section class="relative isolate overflow-hidden bg-ink text-on-dark">
+  <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-6xl px-6 pb-20 pt-36 lg:px-8 lg:pt-40">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 flex items-center gap-2 text-sm text-muted-dark" aria-label="Ruta">
+      {breadcrumb.map((item, i) => (
+        <>
+          {i > 0 && <span aria-hidden="true">/</span>}
+          {item.href
+            ? <a href={item.href} class="transition-colors hover:text-on-dark">{item.label}</a>
+            : <span class="text-on-dark" aria-current="page">{item.label}</span>}
+        </>
+      ))}
+    </nav>
+
+    <div class={`grid items-center gap-12 ${gridColsClass[gridCols]}`}>
+      <div>
+        {useEyebrowComponent && <Eyebrow on="dark">{eyebrowLabel}</Eyebrow>}
+        {icon && (
+          <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand text-white shadow-lg shadow-brand/30">
+            <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </span>
+        )}
+        {badgeDotColor && (
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold uppercase text-on-dark/80">
+            <span class="h-2.5 w-2.5 rounded-full" style={`background:${badgeDotColor}`} aria-hidden="true"></span>
+            {eyebrowLabel}
+          </span>
+        )}
+        {icon && eyebrowLabel && <p class="mt-6 text-base font-semibold text-brand-400">{eyebrowLabel}</p>}
+        <h1 class={`${useEyebrowComponent ? '' : 'mt-2 '}text-display font-semibold text-on-dark`}>{title}</h1>
+        {tagline && <p class="mt-4 text-balance text-h2 font-semibold text-on-dark">{tagline}</p>}
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted-dark">{intro}</p>
+        {introSecondary && <p class="mt-5 max-w-2xl text-sm leading-relaxed text-on-dark/72">{introSecondary}</p>}
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button href={ctaPrimaryHref} variant="primary" on="dark">{ctaPrimaryLabel}</Button>
+          {ctaSecondaryLabel && ctaSecondaryHref && (
+            <Button href={ctaSecondaryHref} variant="secondary" on="dark">{ctaSecondaryLabel}</Button>
+          )}
+        </div>
+      </div>
+      <slot />
+    </div>
+    <slot name="extra" />
+  </div>
+</section>

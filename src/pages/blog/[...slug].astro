@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import { getPublishedPosts, formatDate, isoDate, readingTime } from '../../lib/blog';
+import { absoluteUrl, canonicalPath, siteConfig } from '../../config/seo';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -15,9 +16,45 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const { title, description, pubDate, updatedDate, author, category, cover, coverAlt, tags } = post.data;
+const canonical = absoluteUrl(canonicalPath(Astro.url.pathname), Astro.site?.toString());
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  image: cover ? absoluteUrl(cover, Astro.site?.toString()) : absoluteUrl(siteConfig.defaultImage),
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: { '@type': 'Organization', name: author },
+  publisher: {
+    '@type': 'Organization',
+    '@id': `${siteConfig.url}/#organization`,
+    name: siteConfig.name,
+    logo: {
+      '@type': 'ImageObject',
+      url: absoluteUrl(siteConfig.logo),
+      width: 512,
+      height: 512,
+    },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${canonical}#webpage` },
+  articleSection: category,
+  keywords: tags.join(', '),
+  inLanguage: siteConfig.language,
+};
 ---
 
-<BaseLayout title={`${title} — AdariA Systems`} description={description} image={cover}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={cover}
+  imageAlt={coverAlt ?? title}
+  imageWidth={cover ? 1600 : undefined}
+  imageHeight={cover ? 900 : undefined}
+  type="article"
+  publishedTime={pubDate}
+  modifiedTime={updatedDate ?? pubDate}
+>
   <!-- Cabecera del artículo (fondo oscuro) -->
   <article>
     <header class="relative isolate overflow-hidden bg-ink text-on-dark">
@@ -43,7 +80,16 @@ const { title, description, pubDate, updatedDate, author, category, cover, cover
     {cover && (
       <div class="bg-ink">
         <div class="mx-auto max-w-4xl px-6">
-          <img src={cover} alt={coverAlt ?? title} class="aspect-[2/1] w-full rounded-2xl object-cover" loading="eager" />
+          <img
+            src={cover}
+            alt={coverAlt ?? title}
+            width="1600"
+            height="900"
+            class="aspect-[2/1] w-full rounded-2xl object-cover"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
       </div>
     )}
@@ -80,4 +126,5 @@ const { title, description, pubDate, updatedDate, author, category, cover, cover
       </div>
     </section>
   </article>
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} is:inline />
 </BaseLayout>

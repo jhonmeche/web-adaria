@@ -1,24 +1,50 @@
 ---
-// <head> reutilizable: meta básicos, OpenGraph y Twitter (§10 SEO).
+import { canonicalPath, metaDescription, siteConfig } from '../../config/seo';
+
 interface Props {
   title: string;
   description: string;
-  /** Ruta de imagen OG (en /public). */
   image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: Date;
+  modifiedTime?: Date;
 }
-const { title, description, image = '/og/og-default.jpg' } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImage = new URL(image, Astro.site);
 
-// Producción indexable por defecto. Para previews privados, defina
-// PUBLIC_ALLOW_INDEX=false en el entorno de despliegue.
-const allowIndex = import.meta.env.PUBLIC_ALLOW_INDEX !== 'false';
+const {
+  title,
+  description,
+  image = siteConfig.defaultImage,
+  imageAlt = siteConfig.defaultImageAlt,
+  imageWidth = image === siteConfig.defaultImage ? 1200 : undefined,
+  imageHeight = image === siteConfig.defaultImage ? 630 : undefined,
+  type = 'website',
+  noindex = false,
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
+const site = Astro.site ?? new URL(siteConfig.url);
+const canonicalURL = new URL(canonicalPath(Astro.url.pathname), site);
+const socialImage = new URL(image, site);
+const seoDescription = metaDescription(description);
+
+// Los previews privados se pueden bloquear por entorno sin cambiar el código.
+const allowIndex = import.meta.env.PUBLIC_ALLOW_INDEX !== 'false' && !noindex;
+const robots = allowIndex
+  ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+  : 'noindex, nofollow';
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
 <meta name="generator" content={Astro.generator} />
-{!allowIndex && <meta name="robots" content="noindex, nofollow" />}
+<meta name="robots" content={robots} />
+<meta name="googlebot" content={robots} />
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Tipografia: stack Apple/San Francisco con Inter como fallback web. -->
@@ -30,20 +56,32 @@ const allowIndex = import.meta.env.PUBLIC_ALLOW_INDEX !== 'false';
 />
 
 <title>{title}</title>
-<meta name="description" content={description} />
-<meta name="theme-color" content="#101418" />
+<meta name="description" content={seoDescription} />
+<meta name="theme-color" content={siteConfig.themeColor} />
+<meta name="format-detection" content="telephone=no" />
 
 <!-- OpenGraph -->
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="AdariA Systems" />
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={siteConfig.name} />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={seoDescription} />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:locale" content="es_CO" />
+<meta property="og:locale" content={siteConfig.locale} />
 <meta property="og:image" content={socialImage} />
+<meta property="og:image:secure_url" content={socialImage} />
+<meta property="og:image:alt" content={imageAlt} />
+{imageWidth && <meta property="og:image:width" content={String(imageWidth)} />}
+{imageHeight && <meta property="og:image:height" content={String(imageHeight)} />}
+{type === 'article' && publishedTime && (
+  <meta property="article:published_time" content={publishedTime.toISOString()} />
+)}
+{type === 'article' && modifiedTime && (
+  <meta property="article:modified_time" content={modifiedTime.toISOString()} />
+)}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
+<meta name="twitter:description" content={seoDescription} />
 <meta name="twitter:image" content={socialImage} />
+<meta name="twitter:image:alt" content={imageAlt} />

@@ -1,12 +1,12 @@
 ---
 title: "YOLO26: detección de objetos más rápida, hasta en hardware modesto"
-description: "43% más rápida en CPU y lista para poses, segmentación y clasificación en un solo modelo. La última versión de YOLO hace que la visión artificial en tiempo real sea viable incluso sin GPU de gama alta."
+description: "Un 43 % más rápida en CPU y lista para poses, segmentación y clasificación en un solo modelo. YOLO hace viable la visión artificial en tiempo real incluso sin una GPU de gama alta."
 pubDate: 2026-07-11
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Visión artificial", "YOLO", "Edge AI", "AdariA Vision"]
 cover: "/blog/yolo26-deteccion-tiempo-real.jpg"
-coverAlt: "Camara industrial detectando objetos sobre una banda transportadora en tiempo real"
+coverAlt: "Cámara industrial detectando objetos sobre una banda transportadora en tiempo real"
 draft: false
 ---
 
@@ -19,9 +19,9 @@ versión de enero de 2026 vuelve a mover esa línea.
 [YOLO26](https://blog.roboflow.com/yolo26/) elimina la Supresión de Máximos No-Máximos
 (NMS) del proceso de inferencia, reduciendo la latencia, y remueve el módulo
 Distribution Focal Loss para mejorar la compatibilidad con hardware de baja potencia.
-El resultado medido: hasta **43% más rápida inferencia en CPU** frente a la versión
-anterior (YOLO11n), con un rango de 40.9 a 57.5 mAP en COCO y latencias de apenas 1.7
-a 11.8 ms sobre GPU.
+El resultado medido: una inferencia en CPU hasta un **43 % más rápida** frente a la versión
+anterior (YOLO11n), con un rango de 40,9 a 57,5 mAP en COCO y latencias de apenas 1,7
+a 11,8 ms sobre GPU.
 
 Es, además, un modelo multi-tarea: detección de objetos, segmentación, clasificación,
 estimación de poses y detección orientada, todo en la misma familia, con variantes

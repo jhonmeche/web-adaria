@@ -1,12 +1,12 @@
 ---
 title: "Gemelos digitales: el siguiente paso del mantenimiento predictivo"
-description: "Siemens logró 99.99885% de calidad replicando líneas completas como gemelos digitales. Con IA generativa sumada, el operador ya puede preguntarle a la réplica virtual de su planta qué está pasando."
+description: "Siemens logró un 99,99885 % de calidad replicando líneas completas como gemelos digitales. Con IA generativa, el operador ya puede preguntarle a la réplica virtual de su planta qué está pasando."
 pubDate: 2026-07-09
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Gemelo digital", "Mantenimiento predictivo", "IA", "AdariA Sense"]
 cover: "/blog/gemelos-digitales-mantenimiento-predictivo.jpg"
-coverAlt: "Banco industrial con sensor de vibracion y pantalla de gemelo digital para mantenimiento predictivo"
+coverAlt: "Banco industrial con sensor de vibración y pantalla de gemelo digital para mantenimiento predictivo"
 draft: false
 ---
 
@@ -20,9 +20,9 @@ Un gemelo digital es una **representación virtual dinámica** de un activo, pro
 línea de producción, sincronizada en tiempo real con los datos del entorno físico
 —sensores IoT, big data e inteligencia artificial trabajando juntos—. Siemens ya usa
 su plataforma Xcelerator para replicar líneas de producción completas en su planta de
-Amberg, Alemania, alcanzando una tasa de calidad de **99.99885%**. En manufactura, la
+Amberg, Alemania, y alcanzó una tasa de calidad del **99,99885 %**. En manufactura, la
 réplica virtual predice y corrige fallos en la línea real, reduciendo paros no
-planificados entre **30% y 40%**.
+planificados entre un **30 % y un 40 %**.
 
 La novedad de 2026 es la incorporación de [IA generativa a los gemelos
 digitales](https://www.americanindustrialmagazine.com/blogs/industria/digital-twins-en-mexico-2026-integracion-con-ia-iiot-y-mantenimiento-predictivo):

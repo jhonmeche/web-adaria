@@ -1,12 +1,12 @@
 ---
 title: "Visión artificial en el borde: por qué NVIDIA Jetson cambia las reglas"
-description: "IA que detecta defectos con 41% más precisión que un supervisor humano y corre directo en la planta, sin depender de la nube. El hardware de borde ya está listo, y AdariA Vision corre sobre él."
+description: "IA que detecta defectos con un 41 % más de precisión que un supervisor humano y se ejecuta directamente en la planta, sin depender de la nube."
 pubDate: 2026-06-30
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Visión artificial", "NVIDIA Jetson", "Edge AI", "AdariA Vision"]
 cover: "/blog/vision-artificial-nvidia-jetson.jpg"
-coverAlt: "Camara industrial y computador de borde analizando piezas en una linea de inspeccion"
+coverAlt: "Cámara industrial y computador de borde analizando piezas en una línea de inspección"
 draft: false
 ---
 
@@ -19,16 +19,16 @@ plataformas como **NVIDIA Jetson** son la razón.
 En Computex 2026, NVIDIA presentó JetPack 7.2 con soporte de IA agéntica, CUDA 13
 sobre Jetson Orin y capacidades ampliadas en Jetson Thor —el mismo tipo de hardware
 que ya corre inspección industrial y robótica en líneas de producción reales. No es
-una novedad menor: el [mercado de aceleradores de IA de borde crece a un 30.8% anual](https://naveldigital.com/en/blog/nvidia-physical-ai-jetson-cosmos-robots-vision)
+una novedad menor: el [mercado de aceleradores de IA de borde crece a un 30,8 % anual](https://naveldigital.com/en/blog/nvidia-physical-ai-jetson-cosmos-robots-vision)
 proyectado hasta 2030, porque cada vez más empresas prefieren procesar donde ocurre la
 operación, no en un centro de datos a cientos de kilómetros.
 
 ## Lo que ya es posible en planta, hoy
 
 Los números ya son concretos: sistemas de visión artificial detectan defectos —
-microfisuras, soldaduras frías, desalineaciones— con **41% más precisión** que un
+microfisuras, soldaduras frías, desalineaciones— con un **41 % más de precisión** que un
 supervisor humano, y el tiempo de inspección por pieza cae de 5 minutos a **30
-segundos**. Hoy, el 70% de las organizaciones con despliegues maduros de calidad ya
+segundos**. Hoy, el 70 % de las organizaciones con despliegues maduros de calidad ya
 automatizaron la inspección visual con este tipo de hardware.
 
 > La pregunta ya no es si la IA puede ver mejor que un inspector humano. La pregunta

@@ -1,12 +1,12 @@
 ---
-title: "Drones de inspección: 260% más estructuras revisadas por día"
-description: "El número de estructuras inspeccionadas por día pasó de 6.8 a 25 con inspección robótica por drones. En minería y agroindustria, volar es más rápido, más seguro y más barato que caminar el terreno."
+title: "Drones de inspección: 260 % más estructuras revisadas por día"
+description: "El número de estructuras inspeccionadas por día pasó de 6,8 a 25 con inspección robótica por drones. En minería y agroindustria, volar es más rápido, más seguro y más barato que caminar el terreno."
 pubDate: 2026-07-06
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Drones", "Minería", "Agroindustria", "AdariA Vision"]
 cover: "/blog/drones-inspeccion-mineria-agro.jpg"
-coverAlt: "Dron comercial inspeccionando infraestructura en un sitio industrial y agricola remoto"
+coverAlt: "Dron comercial inspeccionando infraestructura en un sitio industrial y agrícola remoto"
 draft: false
 ---
 
@@ -20,7 +20,7 @@ La [inspección robótica con drones](https://inspenet.com/en/news/voliro-introd
 ya se usa en petróleo y gas, energía, química y minería para reducir la exposición del
 personal a entornos peligrosos y mejorar la captura de datos en estructuras de difícil
 acceso. El resultado medido: el número de estructuras inspeccionadas por día pasó de
-**6.8 a 25** —un salto de productividad superior al **260%**— y una inspección
+**6,8 a 25** —un salto de productividad superior al **260 %**— y una inspección
 integral de línea que antes tomaba semanas hoy se completa en **nueve días**.
 
 En minería, drones equipados con cámaras térmicas, LiDAR y sensores inspeccionan

@@ -1,12 +1,12 @@
 ---
 title: "Robots humanoides ya trabajan turnos completos en fábricas reales"
-description: "Cuatro robots completaron un turno de 8 horas en una línea de ensamblaje real, con más de 99.9% de acierto. La robótica humanoide dejó de ser demo: ya inspecciona, mueve y ensambla en planta."
+description: "Cuatro robots completaron un turno de 8 horas en una línea de ensamblaje real, con más de un 99,9 % de acierto. La robótica humanoide dejó de ser una demostración: ya inspecciona, mueve y ensambla en planta."
 pubDate: 2026-07-02
 author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Visión artificial", "Robótica", "Automatización"]
 cover: "/blog/robots-humanoides-lineas-produccion.jpg"
-coverAlt: "Robot humanoide operando en una estacion de ensamblaje dentro de una fabrica real"
+coverAlt: "Robot humanoide operando en una estación de ensamblaje dentro de una fábrica real"
 draft: false
 ---
 
@@ -18,7 +18,7 @@ que se comparan directamente con una línea humana.
 
 En una línea de ensamblaje real, [cuatro robots humanoides completaron un turno de 8
 horas](https://www.infobae.com/tecno/2026/04/16/robots-humanoides-ya-trabajan-8-horas-seguidas-en-fabricas-asi-estan-cambiando-la-industria/)
-realizando inspección de calidad, con más de **99.9% de precisión**. Una fábrica en
+realizando inspección de calidad, con más de un **99,9 % de precisión**. Una fábrica en
 China ya entrega un robot humanoide terminado cada 30 minutos —hasta 10.000 unidades
 al año—, y Morgan Stanley duplicó su proyección de envíos para 2026 a 50.000 unidades,
 con el mercado global camino a los USD 15.000 millones en 2030.

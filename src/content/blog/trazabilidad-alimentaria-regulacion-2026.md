@@ -6,7 +6,7 @@ author: "Equipo AdariA"
 category: "Industria"
 tags: ["Trazabilidad", "Industria cárnica", "Smart PBA", "Regulación"]
 cover: "/blog/trazabilidad-alimentaria-regulacion-2026.jpg"
-coverAlt: "Escaner leyendo una etiqueta de trazabilidad en una linea de empaque alimentario"
+coverAlt: "Escáner leyendo una etiqueta de trazabilidad en una línea de empaque alimentario"
 draft: false
 ---
 

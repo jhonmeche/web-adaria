@@ -5,19 +5,92 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import WhatsAppButton from '../components/ui/WhatsAppButton.astro';
 import GoToTop from '../components/ui/GoToTop.astro';
+import { absoluteUrl, canonicalPath, siteConfig } from '../config/seo';
 
 interface Props {
   title: string;
   description: string;
   image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: Date;
+  modifiedTime?: Date;
 }
-const { title, description, image } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+  type,
+  noindex = false,
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
+const canonical = absoluteUrl(canonicalPath(Astro.url.pathname), Astro.site?.toString());
+const isHome = Astro.url.pathname === '/';
+const pageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${canonical}#webpage`,
+  url: canonical,
+  name: title,
+  description,
+  inLanguage: siteConfig.language,
+  isPartOf: { '@id': `${siteConfig.url}/#website` },
+};
+const homeJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteConfig.url}/#organization`,
+      name: siteConfig.name,
+      url: `${siteConfig.url}/`,
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl(siteConfig.logo),
+        width: 512,
+        height: 512,
+      },
+      description: siteConfig.description,
+      telephone: `+${siteConfig.whatsappNumber}`,
+      areaServed: [siteConfig.country, 'Latinoamérica'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteConfig.url}/#website`,
+      url: `${siteConfig.url}/`,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      inLanguage: siteConfig.language,
+      publisher: { '@id': `${siteConfig.url}/#organization` },
+    },
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="es-CO">
+<html lang={siteConfig.language}>
   <head>
-    <BaseHead title={title} description={description} image={image} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      imageAlt={imageAlt}
+      imageWidth={imageWidth}
+      imageHeight={imageHeight}
+      type={type}
+      noindex={noindex}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+    />
+    {!noindex && <script type="application/ld+json" set:html={JSON.stringify(pageJsonLd)} is:inline />}
+    {isHome && <script type="application/ld+json" set:html={JSON.stringify(homeJsonLd)} is:inline />}
     <!-- Marca JS habilitado ANTES del primer render: si no hay JS, el contenido
          con [data-reveal] permanece visible (mejora progresiva). -->
     <script is:inline>

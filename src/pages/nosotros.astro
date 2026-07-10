@@ -8,6 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/ui/Section.astro';
 import Eyebrow from '../components/ui/Eyebrow.astro';
 import Button from '../components/ui/Button.astro';
+import LandingHero from '../components/landing/LandingHero.astro';
 import {
   fundadores,
   valores,
@@ -15,11 +16,12 @@ import {
   vision,
   proposito,
 } from '../data/equipo.ts';
+import { absoluteUrl, canonicalPath, siteConfig } from '../config/seo';
 
-const title = 'Nosotros — AdariA Systems';
+const title = 'Nosotros | AdariA Systems';
 const description =
   'AdariA Systems es el aliado que lleva a las empresas del trabajo manual y a ciegas a operaciones conectadas, inteligentes y basadas en datos. Del sensor a la decisión, a la medida, bajo un mismo techo.';
-const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const canonical = absoluteUrl(canonicalPath(Astro.url.pathname), Astro.site?.toString());
 
 // Monograma: iniciales del nombre (ignora corchetes de placeholder).
 const iniciales = (nombre: string) => {
@@ -67,7 +69,7 @@ const jsonLd = {
   url: canonical,
   about: {
     '@type': 'Organization',
-    name: 'AdariA Systems',
+    name: siteConfig.name,
     description,
     foundingLocation: 'Colombia',
     founder: fundadores
@@ -79,36 +81,18 @@ const jsonLd = {
 
 <BaseLayout title={title} description={description}>
   <!-- HERO -->
-  <section class="relative isolate overflow-hidden bg-ink text-on-dark">
-    <div class="tech-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
-    <div class="relative mx-auto max-w-6xl px-6 pb-20 pt-36 lg:px-8 lg:pt-40">
-      <!-- Breadcrumb -->
-      <nav class="mb-8 flex items-center gap-2 text-sm text-muted-dark" aria-label="Ruta">
-        <a href="/" class="transition-colors hover:text-on-dark">Inicio</a>
-        <span aria-hidden="true">/</span>
-        <span class="text-on-dark" aria-current="page">Nosotros</span>
-      </nav>
-
-      <div class="max-w-3xl">
-        <Eyebrow on="dark">Nosotros</Eyebrow>
-        <h1 class="text-display font-semibold text-on-dark">
-          Del sensor a la decisión, bajo un mismo techo.
-        </h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted-dark">
-          AdariA Systems es una compañía de tecnología colombiana que actúa como
-          habilitador de la Industria 4.0: llevamos a las empresas de operaciones
-          manuales y a ciegas hacia operaciones conectadas, inteligentes y basadas
-          en datos en tiempo real. Diseñamos el hardware, capturamos el dato con
-          visión artificial e IoT, lo integramos y lo devolvemos convertido en
-          decisiones. Un solo aliado, a la medida, con dato auditable.
-        </p>
-        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Button href="/#contacto" variant="primary" on="dark">Hablemos de su proyecto</Button>
-          <Button href="/#servicios" variant="secondary" on="dark">Conozca qué hacemos</Button>
-        </div>
-      </div>
-    </div>
-  </section>
+  <LandingHero
+    breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Nosotros' }]}
+    useEyebrowComponent={true}
+    eyebrowLabel="Nosotros"
+    title="Del sensor a la decisión, bajo un mismo techo."
+    intro="AdariA Systems es una compañía de tecnología colombiana que actúa como habilitador de la Industria 4.0: llevamos a las empresas de operaciones manuales y a ciegas hacia operaciones conectadas, inteligentes y basadas en datos en tiempo real. Diseñamos el hardware, capturamos el dato con visión artificial e IoT, lo integramos y lo devolvemos convertido en decisiones. Un solo aliado, a la medida, con dato auditable."
+    ctaPrimaryLabel="Hablemos de su proyecto"
+    ctaPrimaryHref="/#contacto"
+    ctaSecondaryLabel="Conozca qué hacemos"
+    ctaSecondaryHref="/servicios"
+    gridCols="1fr"
+  />
 
   <!-- HISTORIA / ORIGEN -->
   <Section theme="light" id="historia">

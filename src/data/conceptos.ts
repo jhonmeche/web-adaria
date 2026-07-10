@@ -127,7 +127,7 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'LoRa / LoRaWAN',
         definicion:
-          'Tecnología de comunicación inalámbrica de largo alcance y bajo consumo. Ideal para sitios remotos: puede cubrir grandes distancias y habilitar sensores de larga autonomia.',
+          'Tecnología de comunicación inalámbrica de largo alcance y bajo consumo. Ideal para sitios remotos: puede cubrir grandes distancias y habilitar sensores de larga autonomía.',
         enAdaria: 'Es la conectividad de AdariA Sense.',
       },
       {

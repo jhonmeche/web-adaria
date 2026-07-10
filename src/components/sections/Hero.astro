@@ -11,32 +11,32 @@ import Viewfinder from '../ui/Viewfinder.astro';
 const slides = [
   {
     titulo: 'Visión artificial que optimiza la producción.',
-    img: '/hero/adaria-vision-inspeccion.png',
-    alt: 'Camara industrial inspeccionando productos en una linea de produccion',
+    img: '/hero/adaria-vision-inspeccion.webp',
+    alt: 'Cámara industrial inspeccionando productos en una línea de producción',
   },
   {
     titulo: 'Hardware a la medida, integrado a la solución de software.',
-    img: '/hero/adaria-hardware-iot.png',
-    alt: 'Banco de laboratorio con prototipos electronicos, nodos IoT y equipos de medicion',
+    img: '/hero/adaria-hardware-iot.webp',
+    alt: 'Banco de laboratorio con prototipos electrónicos, nodos IoT y equipos de medición',
   },
   {
     titulo: 'Software a la medida para operar sin silos.',
-    img: '/hero/adaria-software-industrial.png',
-    alt: 'Interfaz de software industrial con paneles de codigo, integraciones y analitica operativa',
+    img: '/hero/adaria-software-industrial.webp',
+    alt: 'Interfaz de software industrial con paneles de código, integraciones y analítica operativa',
   },
   {
     titulo: 'Apps móviles para cualquier tipo de aplicación.',
-    img: '/hero/adaria-apps-moviles.png',
-    alt: 'Equipo disenando aplicaciones moviles para diferentes tipos de negocio en telefonos y tablet',
+    img: '/hero/adaria-apps-moviles.webp',
+    alt: 'Equipo diseñando aplicaciones móviles para diferentes tipos de negocio en teléfonos y tabletas',
   },
   {
     titulo: 'Machine learning y análisis de datos para anticipar decisiones.',
-    img: '/hero/adaria-ml-analitica-datos.png',
-    alt: 'Dashboard de analitica con curvas predictivas, nodos de aprendizaje automatico y metricas operativas',
+    img: '/hero/adaria-ml-analitica-datos.webp',
+    alt: 'Tablero de analítica con curvas predictivas, nodos de aprendizaje automático y métricas operativas',
   },
   {
     titulo: 'Mantenimiento predictivo que se anticipa a las fallas.',
-    img: '/hero/adaria-mantenimiento-predictivo.png',
+    img: '/hero/adaria-mantenimiento-predictivo.webp',
     alt: 'Motor industrial con sensores instalados para monitoreo y mantenimiento predictivo',
   },
   // Pendiente: falta la imagen real de "Trazabilidad y datos auditables"
@@ -44,8 +44,8 @@ const slides = [
   // carrusel hasta subir el archivo; súmala de nuevo en public/hero/ y aquí.
   {
     titulo: 'Seguridad laboral y EPP verificados con visión artificial.',
-    img: '/hero/adaria-seguridad-epp.png',
-    alt: 'Trabajadores ingresando a una planta industrial con camara de seguridad y elementos de proteccion personal',
+    img: '/hero/adaria-seguridad-epp.webp',
+    alt: 'Trabajadores ingresando a una planta industrial con cámara de seguridad y elementos de protección personal',
   },
 ];
 ---
@@ -67,6 +67,8 @@ const slides = [
         <img
           src={s.img}
           alt={s.alt}
+          width="1672"
+          height="941"
           class="h-full w-full object-cover object-center"
           loading={i === 0 ? 'eager' : 'lazy'}
           fetchpriority={i === 0 ? 'high' : 'auto'}

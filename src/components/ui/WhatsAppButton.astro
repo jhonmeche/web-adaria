@@ -8,7 +8,9 @@
 //
 // ⚠️ CONFIGURACIÓN: reemplaza NUMERO por el número real con código de país, sin
 //    "+", espacios ni guiones. Colombia = 57 + número. Ej: 573001234567.
-const NUMERO = '573138537266'; // WhatsApp de AdariA (Colombia: 57 + 313 853 7266)
+import { siteConfig } from '../../config/seo';
+
+const NUMERO = siteConfig.whatsappNumber;
 const MENSAJE =
   'Hola, vengo del sitio web de AdariA Systems y quiero más información.';
 const href = `https://wa.me/${NUMERO}?text=${encodeURIComponent(MENSAJE)}`;

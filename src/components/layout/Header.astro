@@ -24,7 +24,7 @@ import { servicios } from '../../data/servicios.ts';
     <ul class="hidden items-center gap-1 lg:flex">
       <!-- Soluciones -->
       <li class="group relative">
-        <a href="/#sectores" class="nav-link" aria-haspopup="true">
+        <a href="/sectores" class="nav-link" aria-haspopup="true">
           Soluciones
           <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -38,7 +38,7 @@ import { servicios } from '../../data/servicios.ts';
 
       <!-- Productos -->
       <li class="group relative">
-        <a href="/#productos" class="nav-link" aria-haspopup="true">
+        <a href="/productos" class="nav-link" aria-haspopup="true">
           Productos
           <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -51,7 +51,7 @@ import { servicios } from '../../data/servicios.ts';
 
       <!-- Servicios -->
       <li class="group relative">
-        <a href="/#servicios" class="nav-link" aria-haspopup="true">
+        <a href="/servicios" class="nav-link" aria-haspopup="true">
           Servicios
           <svg class="h-3.5 w-3.5 opacity-60 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -85,9 +85,45 @@ import { servicios } from '../../data/servicios.ts';
     class="hidden border-t border-white/10 bg-ink/95 backdrop-blur lg:hidden"
   >
     <div class="space-y-1 px-6 py-4">
-      <a href="/#sectores" class="mobile-link">Soluciones</a>
-      <a href="/#productos" class="mobile-link">Productos</a>
-      <a href="/#servicios" class="mobile-link">Servicios</a>
+      <details class="mobile-accordion">
+        <summary class="mobile-link mobile-accordion-summary">
+          Soluciones
+          <svg class="mobile-accordion-chevron h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="mobile-accordion-panel">
+          <a href="/sectores" class="mobile-sublink mobile-sublink-all">Ver todos los sectores</a>
+          {sectores.map((s) => (
+            <a href={`/sectores/${s.slug}`} class="mobile-sublink">{s.nombre}</a>
+          ))}
+        </div>
+      </details>
+
+      <details class="mobile-accordion">
+        <summary class="mobile-link mobile-accordion-summary">
+          Productos
+          <svg class="mobile-accordion-chevron h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="mobile-accordion-panel">
+          <a href="/productos" class="mobile-sublink mobile-sublink-all">Ver todos los productos</a>
+          {productos.map((p) => (
+            <a href={`/productos/${p.slug}`} class="mobile-sublink">{p.nombre}</a>
+          ))}
+        </div>
+      </details>
+
+      <details class="mobile-accordion">
+        <summary class="mobile-link mobile-accordion-summary">
+          Servicios
+          <svg class="mobile-accordion-chevron h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="mobile-accordion-panel">
+          <a href="/servicios" class="mobile-sublink mobile-sublink-all">Ver todos los servicios</a>
+          {servicios.map((s) => (
+            <a href={`/servicios/${s.slug}`} class="mobile-sublink">{s.nombre}</a>
+          ))}
+        </div>
+      </details>
+
       <a href="/blog" class="mobile-link">Blog</a>
       <a href="/nosotros" class="mobile-link">Nosotros</a>
       <a href="/#contacto" class="mobile-link">Contacto</a>
@@ -115,6 +151,27 @@ import { servicios } from '../../data/servicios.ts';
   }
   .mobile-link {
     @apply block rounded-md px-2 py-2.5 text-base font-medium text-on-dark/90 transition-colors hover:bg-white/5 hover:text-on-dark;
+  }
+  .mobile-accordion-summary {
+    @apply flex cursor-pointer list-none items-center justify-between;
+  }
+  .mobile-accordion-summary::-webkit-details-marker {
+    display: none;
+  }
+  .mobile-accordion-chevron {
+    @apply text-on-dark/60 transition-transform duration-200;
+  }
+  .mobile-accordion[open] .mobile-accordion-chevron {
+    @apply rotate-180;
+  }
+  .mobile-accordion-panel {
+    @apply space-y-0.5 py-1 pl-4;
+  }
+  .mobile-sublink {
+    @apply block rounded-md px-2 py-2 text-sm text-on-dark/75 transition-colors hover:bg-white/5 hover:text-on-dark;
+  }
+  .mobile-sublink-all {
+    @apply font-semibold text-brand-400;
   }
 
   /* Al desplegar el menú: los ítems entran escalonados (fade + desplazamiento),

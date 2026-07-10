@@ -6,7 +6,7 @@ author: "Equipo AdariA"
 category: "Casos de éxito"
 tags: ["Smart PBA", "Trazabilidad", "Industria cárnica", "Visión artificial"]
 cover: "/blog/smart-pba-trazabilidad-evidencia.jpg"
-coverAlt: "Tablet, escaner y estacion de evidencia fotografica en una planta de beneficio limpia"
+coverAlt: "Tableta, escáner y estación de evidencia fotográfica en una planta de beneficio limpia"
 draft: false
 ---
 

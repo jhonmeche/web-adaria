@@ -6,7 +6,7 @@ author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["LoRa", "LoRaWAN", "IoT", "AdariA Sense"]
 cover: "/blog/lorawan-conectividad-remota.jpg"
-coverAlt: "Nodo LoRa instalado en tuberia industrial de un sitio remoto con antena de largo alcance"
+coverAlt: "Nodo LoRa instalado en tubería industrial de un sitio remoto con antena de largo alcance"
 draft: false
 ---
 
@@ -18,7 +18,7 @@ problema, y en 2026 dio dos pasos que vale la pena conocer.
 
 Según la [LoRa Alliance, la red ya superó los 125 millones de dispositivos desplegados
 globalmente](https://resources.lora-alliance.org/home/lorawan-enters-its-next-growth-phase-as-massive-iot-scales-globally),
-con un crecimiento anual del 25%. La alianza anunció además un plan a tres años para
+con un crecimiento anual del 25 %. La alianza anunció además un plan a tres años para
 hacer LoRaWAN más fácil de integrar y operar, y nuevos programas de certificación de
 interoperabilidad entre sensores, gateways y servidores de distintos fabricantes —
 menos fricción técnica para escalar una red de sensores real.

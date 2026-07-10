@@ -6,7 +6,7 @@ author: "Equipo AdariA"
 category: "Tecnología"
 tags: ["Control de acceso", "Seguridad", "Biometría"]
 cover: "/blog/control-acceso-biometrico.jpg"
-coverAlt: "Lector biometrico en la entrada de una planta industrial con un trabajador acercando la mano"
+coverAlt: "Lector biométrico en la entrada de una planta industrial con un trabajador acercando la mano"
 draft: false
 ---
 

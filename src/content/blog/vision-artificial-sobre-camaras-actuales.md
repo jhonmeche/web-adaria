@@ -6,7 +6,7 @@ author: "Equipo AdariA"
 category: "Casos de éxito"
 tags: ["Visión artificial", "HSE", "Seguridad", "AdariA Vision"]
 cover: "/blog/vision-artificial-sobre-camaras-actuales.jpg"
-coverAlt: "Camara CCTV y monitor de seguridad industrial con deteccion visual de elementos de proteccion"
+coverAlt: "Cámara CCTV y monitor de seguridad industrial con detección visual de elementos de protección"
 draft: false
 ---
 

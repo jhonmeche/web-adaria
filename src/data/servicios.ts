@@ -144,7 +144,7 @@ export const servicios: Servicio[] = [
       puntos: [
         'Del esquemático al dispositivo en campo',
         'Pensado para entornos industriales y remotos',
-        'Bajo consumo y larga autonomia',
+        'Bajo consumo y larga autonomía',
       ],
       queHacemosTitulo: 'Electrónica diseñada para su entorno',
       queHacemosIntro:
@@ -201,7 +201,7 @@ export const servicios: Servicio[] = [
       beneficios: [
         { titulo: 'A la medida', texto: 'El hardware exacto para su variable y su entorno.' },
         { titulo: 'Sin cobertura, sin problema', texto: 'LoRa lleva el dato donde no llega la red tradicional.' },
-        { titulo: 'Autonomía real', texto: 'Sensores de bajo consumo con larga autonomia, segun el caso de uso.' },
+        { titulo: 'Autonomía real', texto: 'Sensores de bajo consumo con larga autonomía, según el caso de uso.' },
         { titulo: 'Propiedad del diseño', texto: 'El hardware queda documentado y sin candados de proveedor.' },
       ],
       sectores: ['hidrocarburos-mineria-energia', 'manufactura', 'agroindustria'],
@@ -297,7 +297,7 @@ export const servicios: Servicio[] = [
         'Conectamos su operación física al mundo digital. Instalamos sensores, los enlazamos con LoRa/LoRaWAN —ideal para sitios remotos y de largo alcance— y llevamos la telemetría en tiempo real a sus tableros. Es la base de AdariA Sense.',
       puntos: [
         'Largo alcance en sitios remotos',
-        'Sensores de bajo consumo con larga autonomia',
+        'Sensores de bajo consumo con larga autonomía',
         'Telemetría en tiempo real',
       ],
       queHacemosTitulo: 'Del sensor en campo al dato en su tablero',
@@ -366,12 +366,12 @@ export const servicios: Servicio[] = [
     nombre: 'Integración de sistemas',
     categoria: 'Integración y digitalización',
     tagline: 'ERP, básculas, PLC, cámaras y SCADA en un solo flujo confiable.',
-    resumen: 'Conectamos ERP, básculas, PLCs, cámaras y SCADA en un solo flujo de datos confiable.',
+    resumen: 'Conectamos ERP, básculas, PLC, cámaras y SCADA en un solo flujo de datos confiable.',
     tags: ['ERP', 'PLC', 'SCADA', 'Básculas'],
     icon: 'M9 17H7A5 5 0 0 1 7 7h2M15 7h2a5 5 0 0 1 0 10h-2M8 12h8',
     detalle: {
       intro:
-        'su operación ya tiene equipos, software y datos —pero aislados—. Los integramos en un solo flujo confiable: ERP, básculas, PLC, cámaras y SCADA hablando entre sí, con un dato único y auditable que elimina la digitación manual y los silos.',
+        'Su operación ya tiene equipos, software y datos, pero están aislados. Los integramos en un solo flujo confiable: ERP, básculas, PLC, cámaras y SCADA comunicados entre sí, con un dato único y auditable que elimina la digitación manual y los silos.',
       puntos: [
         'Un solo flujo de datos confiable',
         'Sin digitación manual ni silos',
@@ -460,7 +460,7 @@ export const servicios: Servicio[] = [
       capacidades: [
         {
           titulo: 'Dashboards y visualización',
-          descripcion: 'su operación de un vistazo',
+          descripcion: 'Su operación de un vistazo',
           items: [
             'Tableros en tiempo real',
             'KPIs por área y rol',
@@ -547,7 +547,7 @@ export const servicios: Servicio[] = [
         },
         {
           titulo: 'Seguridad ciudadana',
-          descripcion: 'Video-analítica para respuesta rápida',
+          descripcion: 'Videoanalítica para una respuesta rápida',
           items: [
             'Detección de aglomeraciones y comportamientos anómalos',
             'Objetos abandonados y zonas restringidas',

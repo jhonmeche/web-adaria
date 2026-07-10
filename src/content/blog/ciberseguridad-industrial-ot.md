@@ -1,6 +1,6 @@
 ---
 title: "Ciberseguridad OT: la superficie de ataque que crece con cada sensor nuevo"
-description: "820.000 ataques diarios a dispositivos conectados y un aumento del 75% en ataques a equipos industriales. Sensorizar la operación sin pensar en ciberseguridad es abrir una puerta más."
+description: "820.000 ataques diarios a dispositivos conectados y un aumento del 75 % en ataques a equipos industriales. Sensorizar la operación sin pensar en ciberseguridad es abrir una puerta más."
 pubDate: 2026-07-03
 author: "Equipo AdariA"
 category: "Tecnología"
@@ -18,14 +18,14 @@ teórica.
 
 Con [25.000 millones de dispositivos IoT activos](https://pentestingteam.com/blog/seguridad-iot-en-2026-820-000-ataques-diarios/)
 en el mundo, se registran **820.000 ataques diarios** a equipos conectados en entornos
-empresariales, y la industria enfrenta un aumento del **75%** en ataques dirigidos a
+empresariales, y la industria enfrenta un aumento del **75 %** en ataques dirigidos a
 dispositivos industriales. Solo en marzo de 2026, CISA publicó avisos críticos para
 entornos ICS/OT que afectaron a Schneider Electric, Siemens, Mitsubishi Electric,
 Honeywell y Festo. La razón de fondo es simple: muchos dispositivos IoT siguen
 saliendo de fábrica con contraseñas por defecto que nadie cambia, y corren sistemas
 propios que no pueden alojar un agente de seguridad.
 
-El cambio de fondo en las organizaciones ya se nota: el **81%** planea asignar la
+El cambio de fondo en las organizaciones ya se nota: el **81 %** planea asignar la
 ciberseguridad OT directamente al CISO este año.
 
 ## Por qué el dato auditable es también una defensa

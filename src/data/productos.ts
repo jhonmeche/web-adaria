@@ -130,7 +130,7 @@ export const productos: Producto[] = [
           titulo: 'Integración y datos',
           descripcion: 'Conectado a su operación.',
           items: [
-            'Integración con básculas y PLCs',
+            'Integración con básculas y PLC',
             'KPIs y reportes operativos',
             'Datos confiables para decidir',
           ],
@@ -309,7 +309,7 @@ export const productos: Producto[] = [
     icon: 'M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 9.5a15 15 0 0 1 20 0M12 20h.01',
     detalle: {
       intro:
-        'AdariA Sense monitorea sus equipos e infraestructura en tiempo real y permite anticipar fallas probables. Sensores IoT, conectividad LoRa/LoRaWAN, dispositivos edge y analítica, con hardware diseñado por AdariA. Ideal para sitios remotos: largo alcance, bajo consumo y sensores de larga autonomia.',
+        'AdariA Sense monitorea sus equipos e infraestructura en tiempo real y permite anticipar fallas probables. Sensores IoT, conectividad LoRa/LoRaWAN, dispositivos edge y analítica, con hardware diseñado por AdariA. Ideal para sitios remotos: largo alcance, bajo consumo y sensores de larga autonomía.',
       capacidadesTitulo: 'Del sensor a la predicción',
       capacidadesIntro:
         'Medimos las variables críticas, las llevamos hasta donde estén y las convertimos en alertas y predicción.',
@@ -361,7 +361,7 @@ export const productos: Producto[] = [
       ],
       beneficios: [
         { titulo: 'Paradas no planeadas al mínimo', texto: 'Del mantenimiento reactivo al predictivo.' },
-        { titulo: 'Sitios remotos', texto: 'LoRa: largo alcance y larga autonomia de bateria sin cableado.' },
+        { titulo: 'Sitios remotos', texto: 'LoRa: largo alcance y larga autonomía de batería sin cableado.' },
         { titulo: 'Hardware propio', texto: 'Adaptado a su operación, no una solución genérica.' },
         { titulo: 'Seguridad', texto: 'Alertas tempranas de gas y temperatura.' },
       ],

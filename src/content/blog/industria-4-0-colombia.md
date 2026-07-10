@@ -1,12 +1,12 @@
 ---
 title: "Industria 4.0 en Colombia: la brecha es la oportunidad"
-description: "Solo el 0.5% de las manufactureras colombianas usa sistemas robóticos y apenas 4.4% de las grandes empresas usa IA. La brecha frente a Brasil, México y Chile no es una mala noticia: es la ventaja de quien se mueve primero."
+description: "Solo el 0,5 % de las manufactureras colombianas usa sistemas robóticos y apenas el 4,4 % de las grandes empresas usa IA. La brecha frente a Brasil, México y Chile no es una mala noticia: es la ventaja de quien se mueve primero."
 pubDate: 2026-06-24
 author: "Equipo AdariA"
 category: "Industria"
 tags: ["Industria 4.0", "Colombia", "Transformación digital"]
 cover: "/blog/industria-4-0-colombia.jpg"
-coverAlt: "Linea de manufactura moderna con sensores y tablero operativo en una planta colombiana"
+coverAlt: "Línea de manufactura moderna con sensores y tablero operativo en una planta colombiana"
 draft: false
 ---
 
@@ -17,10 +17,10 @@ la ventaja de quien se mueve primero**.
 ## El tamaño real de la brecha
 
 Un [estudio reciente sobre la adopción de la industria 4.0 en pymes colombianas](https://www.redalyc.org/journal/6078/607877254007/html/)
-es contundente: solo el **0.5%** de los establecimientos manufactureros del país ha
-adoptado sistemas robóticos y apenas el **3.0%** usa impresión 3D. Entre las empresas
-grandes el panorama mejora, pero sigue siendo bajo: 18% opera IoT, 8% tiene robots y
-solo **4.4%** usa inteligencia artificial. En Bogotá, el 85% de las empresas no
+es contundente: solo el **0,5 %** de los establecimientos manufactureros del país ha
+adoptado sistemas robóticos y apenas el **3,0 %** usa impresión 3D. Entre las empresas
+grandes, el panorama mejora, pero sigue siendo bajo: el 18 % opera IoT, el 8 % tiene robots y
+solo el **4,4 %** usa inteligencia artificial. En Bogotá, el 85 % de las empresas no
 capacita a su equipo en herramientas de Industria 4.0.
 
 Colombia queda en una posición intermedia en Latinoamérica: por delante de Bolivia y
