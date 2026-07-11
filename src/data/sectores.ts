@@ -170,7 +170,7 @@ export const sectores: Sector[] = [
           texto: 'El registro manual introduce demoras, reprocesos y riesgo de inconsistencias en momentos críticos.',
         },
       ],
-      solucionTitulo: 'Del corral al despacho, con dato confiable.',
+      solucionTitulo: 'Del corral al despacho, con datos confiables.',
       solucionIntro:
         'Combinamos Smart PBA, visión artificial, integración con básculas y tableros de control para crear una línea de trazabilidad clara y auditable.',
       soluciones: [

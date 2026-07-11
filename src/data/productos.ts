@@ -159,7 +159,7 @@ export const productos: Producto[] = [
         { titulo: 'El más maduro', texto: 'Funcionando en plantas reales; nuestro principal caso de credibilidad.' },
         { titulo: 'Transparencia real', texto: 'Los números se demuestran con imágenes, no solo se afirman.' },
         { titulo: 'Menos disputas', texto: 'Conteo objetivo por visión artificial, sin discusiones.' },
-        { titulo: 'Decisiones con dato', texto: 'KPIs y reportes confiables de toda la operación.' },
+        { titulo: 'Decisiones con datos', texto: 'KPIs y reportes confiables de toda la operación.' },
       ],
       sectores: ['industria-carnica'],
     },

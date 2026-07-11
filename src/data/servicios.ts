@@ -123,7 +123,7 @@ export const servicios: Servicio[] = [
       entregables: ['React / Astro', 'Node.js', 'TypeScript', 'PostgreSQL', 'React Native', 'APIs REST', 'Cloud / on-premise'],
       beneficios: [
         { titulo: 'Hecho a su medida', texto: 'El sistema se ajusta a su operación, no su operación al sistema.' },
-        { titulo: 'Un dato confiable', texto: 'Una sola fuente de verdad, integrada con sus equipos.' },
+        { titulo: 'Datos confiables', texto: 'Una sola fuente de verdad, integrada con sus equipos.' },
         { titulo: 'Listo para crecer', texto: 'Arquitectura que escala de un piloto a toda la operación.' },
         { titulo: 'Soporte cercano', texto: 'Un equipo que conoce su sistema y responde, no un ticket más.' },
       ],
@@ -356,7 +356,7 @@ export const servicios: Servicio[] = [
         { titulo: 'Llega a todas partes', texto: 'LoRa cubre sitios remotos donde no hay red celular.' },
         { titulo: 'Años de autonomía', texto: 'Sensores a batería de bajo consumo, sin cableado.' },
         { titulo: 'Visibilidad total', texto: 'La operación puede consultar su estado en tiempo real.' },
-        { titulo: 'Base predictiva', texto: 'El dato histórico habilita el mantenimiento predictivo.' },
+        { titulo: 'Base predictiva', texto: 'Los datos históricos habilitan el mantenimiento predictivo.' },
       ],
       sectores: ['hidrocarburos-mineria-energia', 'manufactura', 'agroindustria'],
     },
