@@ -71,9 +71,7 @@ export const sectores: Sector[] = [
     gancho: 'Operaciones más seguras y auditables en entornos críticos.',
     dolor: 'Cada falla o accidente puede generar sobrecostos significativos y existe presión regulatoria en seguridad, ambiente y continuidad.',
     resuelveCon: 'Vision Seguridad + AdariA Sense + drones + mantenimiento predictivo',
-    prioritario: true,
-    imagen: '/sectores/hidrocarburos.jpg',
-    video: '/sectores/hidrocarburos.mp4',
+    imagen: '/sectores/hidrocarburos.webp',
     icon: 'M12 2.69s-7 7.19-7 11.31a7 7 0 0 0 14 0c0-4.12-7-11.31-7-11.31Z',
     detalle: {
       heroTitulo: 'Seguridad, trazabilidad y continuidad para activos críticos.',
