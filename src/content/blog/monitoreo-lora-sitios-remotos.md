@@ -29,7 +29,7 @@ LoRa/LoRaWAN está pensado justo para este escenario:
 
 ## De la medición a la decisión
 
-AdariA diseña su propio hardware —nodos, gateways y dispositivos edge— para medir
+AdariA diseña su propio hardware (nodos, gateways y dispositivos edge) para medir
 presión, temperatura, vibración, gas, nivel y caudal. Esos datos se procesan y se
 convierten en **alertas tempranas** y **mantenimiento predictivo**: el sistema
 anticipa la falla y programa la intervención **antes** de la parada.

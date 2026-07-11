@@ -1,6 +1,6 @@
 ---
 title: "Energía solar remota: por qué monitorear cada panel ya no es opcional"
-description: "Las plantas solares suelen estar lejos de todo, con administradores aún más lejos. El monitoreo IoT en tiempo real —vía LoRa donde no hay más señal— convierte cada falla en una alerta, no en una sorpresa."
+description: "Las plantas solares suelen estar lejos de todo, con administradores aún más lejos. El monitoreo IoT en tiempo real, vía LoRa donde no hay más señal, convierte cada falla en una alerta, no en una sorpresa."
 pubDate: 2026-07-04
 author: "Equipo AdariA"
 category: "Tecnología"
@@ -20,7 +20,7 @@ Las plantas fotovoltaicas suelen ubicarse en zonas remotas, con equipos de gesti
 que están [muy alejados físicamente de la instalación](https://univergysolar.com/plantas-solares-del-futuro/),
 lo que hace del monitoreo remoto una necesidad operativa, no un lujo. Sin
 supervisión constante, un panel degradado, un inversor fallando o una conexión suelta
-pueden pasar semanas sin detectarse —perdiendo generación todos los días que nadie
+pueden pasar semanas sin detectarse, perdiendo generación todos los días que nadie
 nota el problema.
 
 La ventaja del IoT aquí es directa: **identificación inmediata de defectos**, con
@@ -34,15 +34,15 @@ que anticipan fallos antes de que se conviertan en pérdidas de producción.
 > poco a poco, durante semanas, hasta que alguien nota la caída en la factura.
 
 Muchos proyectos solares remotos dependen de redes celulares, que son costosas o
-directamente inexistentes en el sitio. Ahí es donde **LoRa/LoRaWAN** —el mismo
+directamente inexistentes en el sitio. Ahí es donde **LoRa/LoRaWAN**, el mismo
 estándar que usa [AdariA Sense](/blog/monitoreo-lora-sitios-remotos/) para sensorizar
-pozos y estaciones remotas— resuelve el problema: largo alcance, bajísimo consumo y
+pozos y estaciones remotas, resuelve el problema: largo alcance, bajísimo consumo y
 sensores a batería que no necesitan cableado nuevo.
 
 ## De paneles monitoreados a decisiones automáticas
 
-Medir voltaje, corriente, temperatura del panel y del inversor en tiempo real —y
-convertir esos datos en alertas tempranas— es la misma arquitectura que ya aplicamos
+Medir voltaje, corriente, temperatura del panel y del inversor en tiempo real, y
+convertir esos datos en alertas tempranas, es la misma arquitectura que ya aplicamos
 en mantenimiento predictivo industrial: del sensor a la decisión, sin depender de que
 alguien maneje horas hasta el sitio para descubrir que algo falló hace tres semanas.
 

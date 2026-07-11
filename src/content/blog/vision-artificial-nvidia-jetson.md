@@ -17,7 +17,7 @@ plataformas como **NVIDIA Jetson** son la razón.
 ## Qué cambió con JetPack 7.2
 
 En Computex 2026, NVIDIA presentó JetPack 7.2 con soporte de IA agéntica, CUDA 13
-sobre Jetson Orin y capacidades ampliadas en Jetson Thor —el mismo tipo de hardware
+sobre Jetson Orin y capacidades ampliadas en Jetson Thor, el mismo tipo de hardware
 que ya corre inspección industrial y robótica en líneas de producción reales. No es
 una novedad menor: el [mercado de aceleradores de IA de borde crece a un 30,8 % anual](https://naveldigital.com/en/blog/nvidia-physical-ai-jetson-cosmos-robots-vision)
 proyectado hasta 2030, porque cada vez más empresas prefieren procesar donde ocurre la
@@ -25,8 +25,8 @@ operación, no en un centro de datos a cientos de kilómetros.
 
 ## Lo que ya es posible en planta, hoy
 
-Los números ya son concretos: sistemas de visión artificial detectan defectos —
-microfisuras, soldaduras frías, desalineaciones— con un **41 % más de precisión** que un
+Los números ya son concretos: sistemas de visión artificial detectan defectos
+(microfisuras, soldaduras frías, desalineaciones) con un **41 % más de precisión** que un
 supervisor humano, y el tiempo de inspección por pieza cae de 5 minutos a **30
 segundos**. Hoy, el 70 % de las organizaciones con despliegues maduros de calidad ya
 automatizaron la inspección visual con este tipo de hardware.
@@ -39,7 +39,7 @@ automatizaron la inspección visual con este tipo de hardware.
 En **AdariA Vision** entrenamos modelos a la medida de cada operación y los corremos
 sobre hardware de borde: la decisión se toma en milisegundos, sin depender de que la
 conexión a internet del sitio esté disponible, y el dato queda registrado en el mismo
-lugar donde ocurre —trazable y auditable, no una caja negra en un servidor externo.
+lugar donde ocurre: trazable y auditable, no una caja negra en un servidor externo.
 Para plantas en zonas con conectividad limitada, esa diferencia no es un detalle
 técnico: es la diferencia entre que el sistema funcione o no.
 

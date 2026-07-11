@@ -36,8 +36,8 @@ con la generación de etiquetas.
 > horas" es una meta imposible. Cuando depende de un sistema, es simplemente una
 > consulta.
 
-**[Smart PBA](/blog/smart-pba-trazabilidad-evidencia/)** ya gestiona toda la operación
-—del ingreso del lote al despacho— con conteo por visión artificial y evidencia
+**[Smart PBA](/blog/smart-pba-trazabilidad-evidencia/)** ya gestiona toda la operación,
+del ingreso del lote al despacho, con conteo por visión artificial y evidencia
 fotográfica automática que respalda cada lote. No es una adaptación a la norma de
 2026: es la misma arquitectura de dato auditable con la que se diseñó desde el
 principio.

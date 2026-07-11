@@ -10,8 +10,8 @@ coverAlt: "Cámara industrial detectando objetos sobre una banda transportadora 
 draft: false
 ---
 
-Cada nueva versión de YOLO —la familia de modelos de detección de objetos más usada
-en visión artificial industrial— redefine qué es viable correr en tiempo real. La
+Cada nueva versión de YOLO, la familia de modelos de detección de objetos más usada
+en visión artificial industrial, redefine qué es viable correr en tiempo real. La
 versión de enero de 2026 vuelve a mover esa línea.
 
 ## Qué trae YOLO26
@@ -34,16 +34,16 @@ desde Nano hasta Extra Large según el hardware disponible.
 > dejó de ser la barrera.
 
 Modelos como YOLO26 están pensados para computación de borde, robótica e IoT con
-recursos limitados —exactamente el tipo de hardware que se instala en una planta real,
-no en un laboratorio—. Esto baja aún más el costo de entrada de proyectos de visión
+recursos limitados, exactamente el tipo de hardware que se instala en una planta real,
+no en un laboratorio. Esto baja aún más el costo de entrada de proyectos de visión
 artificial: no hace falta la GPU más cara del mercado para tener detección confiable
 en tiempo real.
 
 ## Cómo lo usamos en AdariA Vision
 
 Entrenamos modelos a la medida de cada operación sobre esta misma familia de
-arquitecturas, ajustando el tamaño del modelo al hardware disponible en el sitio —
-desde una cámara con un pequeño procesador de borde hasta un servidor local—, sin
+arquitecturas, ajustando el tamaño del modelo al hardware disponible en el sitio,
+desde una cámara con un pequeño procesador de borde hasta un servidor local, sin
 sacrificar la precisión que el caso de uso necesita.
 
 ¿Desea saber qué tan rápido y preciso sería un modelo entrenado para su cámara actual? [Hable con un experto](/#contacto).

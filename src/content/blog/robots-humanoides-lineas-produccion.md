@@ -19,12 +19,12 @@ que se comparan directamente con una línea humana.
 En una línea de ensamblaje real, [cuatro robots humanoides completaron un turno de 8
 horas](https://www.infobae.com/tecno/2026/04/16/robots-humanoides-ya-trabajan-8-horas-seguidas-en-fabricas-asi-estan-cambiando-la-industria/)
 realizando inspección de calidad, con más de un **99,9 % de precisión**. Una fábrica en
-China ya entrega un robot humanoide terminado cada 30 minutos —hasta 10.000 unidades
-al año—, y Morgan Stanley duplicó su proyección de envíos para 2026 a 50.000 unidades,
+China ya entrega un robot humanoide terminado cada 30 minutos (hasta 10.000 unidades
+al año), y Morgan Stanley duplicó su proyección de envíos para 2026 a 50.000 unidades,
 con el mercado global camino a los USD 15.000 millones en 2030.
 
 Las tareas reales hoy son concretas: manejo autónomo de materiales, extracción de
-contenedores, ensamblaje simple e **inspección de calidad** — esta última, el punto
+contenedores, ensamblaje simple e **inspección de calidad**: esta última, el punto
 exacto donde se cruza con lo que hacemos en AdariA Vision.
 
 ## Por qué esto importa incluso si no va a comprar un robot

@@ -31,8 +31,8 @@ fallas inesperadas entre un **20 % y un 50 %**.
 
 Estos resultados no dependen de tecnología exótica: dependen de medir lo correcto, a
 tiempo. [AdariA Sense](/blog/monitoreo-lora-sitios-remotos/) sensoriza presión,
-temperatura, vibración, gas, nivel y caudal con hardware propio —nodos, gateways y
-dispositivos edge— y conectividad LoRa/LoRaWAN, ideal para equipos críticos lejos de
+temperatura, vibración, gas, nivel y caudal con hardware propio (nodos, gateways y
+dispositivos edge) y conectividad LoRa/LoRaWAN, ideal para equipos críticos lejos de
 cualquier red. Esos datos se procesan y se convierten en alertas tempranas: la falla
 se anticipa y la intervención se programa **antes** de la parada.
 

@@ -25,7 +25,7 @@ tecnologías con inteligencia artificial.
 
 Uno de los cambios más importantes es dónde se mide: la **metrología avanzada** ya se
 integra desde las primeras fases de producción, conectando medición, análisis y
-automatización para detectar desviaciones en tiempo real —no al final de la línea,
+automatización para detectar desviaciones en tiempo real, no al final de la línea,
 cuando ya se gastó el material en una pieza defectuosa.
 
 ## Qué significa "digitalización integral" en la práctica
@@ -42,7 +42,7 @@ condición de equipo, y ambos alimentando la misma capa de decisión.
 ## Por qué esto también aplica a una pyme
 
 El 95 % no es solo la gran industria: incluye fabricantes medianos que empezaron con
-un caso de uso acotado —una línea, un punto de inspección— y escalaron desde ahí. La
+un caso de uso acotado (una línea, un punto de inspección) y escalaron desde ahí. La
 manufactura inteligente no exige una transformación total de una vez; exige empezar.
 
 ¿Su planta todavía mide el defecto al final, en vez de durante el proceso? [Hable con un experto](/#contacto).

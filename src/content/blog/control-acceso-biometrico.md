@@ -17,8 +17,8 @@ fallan justo cuando más importan. La biometría los reemplaza por completo.
 ## Qué cambia con la automatización
 
 El control de acceso biométrico valida cada entrada con datos únicos e irrepetibles
-—huella dactilar, reconocimiento facial o patrón venoso, según el nivel de seguridad
-que exija el sitio—. La [concesión de accesos, que antes era un trámite manual, ya es
+(huella dactilar, reconocimiento facial o patrón venoso, según el nivel de seguridad
+que exija el sitio). La [concesión de accesos, que antes era un trámite manual, ya es
 un proceso completamente automatizado](https://roomtecit.com/control-de-acceso-biometrico-para-empresas/),
 sin tarjetas que reponer ni llaves que reemplazar. Integrado con videovigilancia y
 reportes automáticos de entradas y salidas, el sistema no solo controla quién entra:
@@ -38,8 +38,8 @@ consultarlo.
 ## Cómo lo encaramos en AdariA
 
 Integramos control de acceso biométrico junto con videovigilancia y sistemas de
-asistencia como parte de un mismo proyecto —no como sistemas sueltos que alguien
-debe conciliar a mano después—, con la misma exigencia de dato auditable que aplicamos
+asistencia como parte de un mismo proyecto, no como sistemas sueltos que alguien
+debe conciliar a mano después, con la misma exigencia de dato auditable que aplicamos
 al resto de nuestras soluciones: cada acceso queda registrado, trazable y disponible
 para auditoría, sin ambigüedad sobre qué pasó y cuándo.
 

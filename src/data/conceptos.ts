@@ -39,7 +39,7 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'Procesamiento en el borde (edge)',
         definicion:
-          'Procesar los datos cerca de donde se generan —en el propio equipo o planta— en lugar de mandarlos todos a la nube. Es más rápido, funciona sin buena conexión y reduce costos.',
+          'Procesar los datos cerca de donde se generan, en el propio equipo o planta, en lugar de mandarlos todos a la nube. Es más rápido, funciona sin buena conexión y reduce costos.',
       },
       {
         termino: 'Gemelo digital',
@@ -73,7 +73,7 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'Visión artificial',
         definicion:
-          'IA aplicada a imágenes y video: que un computador "vea" y entienda lo que hay en una cámara —personas, objetos, defectos, placas— y actúe en consecuencia.',
+          'IA aplicada a imágenes y video: que un computador "vea" y entienda lo que hay en una cámara (personas, objetos, defectos, placas) y actúe en consecuencia.',
         enAdaria: 'Es la base de AdariA Vision.',
       },
       {
@@ -109,7 +109,7 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'Grading',
         definicion:
-          'Clasificar automáticamente por calidad, tamaño o tipo —por ejemplo, fruta por categoría— usando visión artificial.',
+          'Clasificar automáticamente por calidad, tamaño o tipo (por ejemplo, fruta por categoría) usando visión artificial.',
       },
     ],
   },
@@ -122,7 +122,7 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'Sensor',
         definicion:
-          'Dispositivo que mide una variable física —temperatura, presión, vibración, gas, nivel, caudal— y la convierte en un dato.',
+          'Dispositivo que mide una variable física (temperatura, presión, vibración, gas, nivel, caudal) y la convierte en un dato.',
       },
       {
         termino: 'LoRa / LoRaWAN',
@@ -177,7 +177,7 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'Alertas',
         definicion:
-          'Avisos automáticos cuando un dato cruza un límite —por ejemplo, gas alto o temperatura crítica— para reaccionar a tiempo.',
+          'Avisos automáticos cuando un dato cruza un límite (por ejemplo, gas alto o temperatura crítica) para reaccionar a tiempo.',
       },
       {
         termino: 'SCADA y PLC',
@@ -200,7 +200,7 @@ export const grupos: GrupoConceptos[] = [
       {
         termino: 'Diseño de hardware (electrónica)',
         definicion:
-          'Crear los dispositivos físicos —tarjetas, sensores, gateways— a la medida de la necesidad, en vez de depender solo de equipos genéricos.',
+          'Crear los dispositivos físicos (tarjetas, sensores, gateways) a la medida de la necesidad, en vez de depender solo de equipos genéricos.',
         enAdaria: 'AdariA diseña su propio hardware.',
       },
       {

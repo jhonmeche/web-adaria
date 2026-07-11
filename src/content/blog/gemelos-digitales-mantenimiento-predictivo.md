@@ -18,7 +18,7 @@ tocar nada en la planta real.
 
 Un gemelo digital es una **representación virtual dinámica** de un activo, proceso o
 línea de producción, sincronizada en tiempo real con los datos del entorno físico
-—sensores IoT, big data e inteligencia artificial trabajando juntos—. Siemens ya usa
+(sensores IoT, big data e inteligencia artificial trabajando juntos). Siemens ya usa
 su plataforma Xcelerator para replicar líneas de producción completas en su planta de
 Amberg, Alemania, y alcanzó una tasa de calidad del **99,99885 %**. En manufactura, la
 réplica virtual predice y corrige fallos en la línea real, reduciendo paros no
@@ -43,7 +43,7 @@ la base sin la que esa capa no tiene sentido.
 ## Para quién tiene sentido hoy
 
 No hace falta partir de cero con una réplica de toda la planta: el mismo enfoque de
-piloto acotado aplica aquí —empezar con el equipo más crítico, el que más cuesta
+piloto acotado aplica aquí: empezar con el equipo más crítico, el que más cuesta
 parar, y expandir desde ahí.
 
 ¿Existe un equipo cuya falla representa un costo crítico para la operación? [Hable con un experto](/#contacto).

@@ -30,8 +30,8 @@ Honduras, pero rezagada frente a Brasil, México y Chile.
 
 Aquí está el matiz que casi nadie menciona: **no hace falta saltar directo a la
 robótica** para dar el primer paso real hacia la Industria 4.0. El gobierno colombiano
-ya lo entendió —la estrategia *Colombia PotencIA Digital* destina 2 billones de pesos
-entre 2024 y 2026 con la IA como eje transversal— y en la práctica, la puerta de
+ya lo entendió: la estrategia *Colombia PotencIA Digital* destina 2 billones de pesos
+entre 2024 y 2026 con la IA como eje transversal, y en la práctica, la puerta de
 entrada más barata no es un brazo robótico: son las cámaras y sensores que la empresa
 **ya tiene**.
 
@@ -41,7 +41,7 @@ entrada más barata no es un brazo robótico: son las cámaras y sensores que la
 ## Cómo empezar sin ser una multinacional
 
 Ese es exactamente el modelo con el que trabajamos: un piloto acotado sobre un caso de
-uso concreto —CCTV existente, un sensor crítico, un proceso manual—, medible en
+uso concreto (CCTV existente, un sensor crítico, un proceso manual), medible en
 semanas, que escala solo cuando demuestra resultado. Así se construye la Industria 4.0
 en una pyme colombiana: no de un salto, sino de pilotos que sí funcionan.
 

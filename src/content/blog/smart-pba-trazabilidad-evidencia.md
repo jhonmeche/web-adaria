@@ -33,7 +33,7 @@ Smart PBA registra cada etapa de la operación y añade dos diferenciadores clav
 ## Por qué importa como prueba de credibilidad
 
 Smart PBA funcionando en plantas reales es nuestra mejor carta de presentación: muestra
-que AdariA entrega la cadena completa —software, visión artificial e integración— bajo
+que AdariA entrega la cadena completa (software, visión artificial e integración) bajo
 un mismo techo, con resultados medibles.
 
 ¿Opera una planta de beneficio o frigorífico? [Hable con un experto](/#contacto).

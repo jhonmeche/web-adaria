@@ -20,7 +20,7 @@ Según la [LoRa Alliance, la red ya superó los 125 millones de dispositivos des
 globalmente](https://resources.lora-alliance.org/home/lorawan-enters-its-next-growth-phase-as-massive-iot-scales-globally),
 con un crecimiento anual del 25 %. La alianza anunció además un plan a tres años para
 hacer LoRaWAN más fácil de integrar y operar, y nuevos programas de certificación de
-interoperabilidad entre sensores, gateways y servidores de distintos fabricantes —
+interoperabilidad entre sensores, gateways y servidores de distintos fabricantes:
 menos fricción técnica para escalar una red de sensores real.
 
 ## La novedad que más nos interesa: satélite
@@ -37,8 +37,8 @@ cercana.
 
 ## Qué significa para una operación en Colombia
 
-Para sectores como hidrocarburos, minería y energía —donde gran parte de los activos
-críticos están en sitios remotos—, esto refuerza el enfoque con el que diseñamos
+Para sectores como hidrocarburos, minería y energía, donde gran parte de los activos
+críticos están en sitios remotos, esto refuerza el enfoque con el que diseñamos
 [AdariA Sense](/blog/monitoreo-lora-sitios-remotos/): hardware propio (nodos y
 gateways), sensores a batería que duran años y una arquitectura que ya está lista para
 sumar conectividad satelital donde el terreno lo exija, sin rediseñar la red desde

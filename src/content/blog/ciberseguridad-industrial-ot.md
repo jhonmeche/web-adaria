@@ -34,7 +34,7 @@ ciberseguridad OT directamente al CISO este año.
 > nueva. La pregunta no es si conectar la operación, sino cómo hacerlo sin dejar la
 > puerta abierta.
 
-En AdariA diseñamos hardware propio —nodos, gateways y dispositivos edge— pensado
+En AdariA diseñamos hardware propio (nodos, gateways y dispositivos edge) pensado
 para operar de forma segura y trazable: cada dato queda registrado con evidencia
 auditable, no expuesto en un dispositivo genérico con credenciales de fábrica sin
 cambiar. Es la misma filosofía detrás de Smart PBA y AdariA Sense: el dato solo vale

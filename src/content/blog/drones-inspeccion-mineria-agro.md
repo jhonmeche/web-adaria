@@ -20,7 +20,7 @@ La [inspección robótica con drones](https://inspenet.com/en/news/voliro-introd
 ya se usa en petróleo y gas, energía, química y minería para reducir la exposición del
 personal a entornos peligrosos y mejorar la captura de datos en estructuras de difícil
 acceso. El resultado medido: el número de estructuras inspeccionadas por día pasó de
-**6,8 a 25** —un salto de productividad superior al **260 %**— y una inspección
+**6,8 a 25** (un salto de productividad superior al **260 %**) y una inspección
 integral de línea que antes tomaba semanas hoy se completa en **nueve días**.
 
 En minería, drones equipados con cámaras térmicas, LiDAR y sensores inspeccionan
@@ -35,7 +35,7 @@ aplicar insumos solo donde realmente se necesitan.
 > El valor está en convertir cada vuelo en conteo, alerta o mapa accionable.
 
 Ahí es donde entra **AdariA Vision**: los mismos modelos de visión artificial que
-entrenamos para cámaras fijas —conteo, detección de defectos, grading— se aplican
+entrenamos para cámaras fijas (conteo, detección de defectos, grading) se aplican
 igual de bien sobre el material capturado por dron, sin importar si el activo a
 inspeccionar es un tanque, una torre o un lote de cultivo.
 
@@ -43,7 +43,7 @@ inspeccionar es un tanque, una torre o un lote de cultivo.
 
 Para sectores como hidrocarburos, minería y agroindustria, el dron no reemplaza el
 mantenimiento predictivo con sensores fijos: lo complementa donde caminar o cablear no
-es viable. La combinación —sensores fijos + inspección aérea periódica— cubre tanto lo
+es viable. La combinación de sensores fijos e inspección aérea periódica cubre tanto lo
 continuo como lo disperso.
 
 ¿Existen activos o extensiones difíciles de inspeccionar a pie? [Hable con un experto](/#contacto).

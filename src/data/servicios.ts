@@ -63,7 +63,7 @@ export const servicios: Servicio[] = [
     icon: 'm8 8-4 4 4 4m8-8 4 4-4 4M14 5l-4 14',
     detalle: {
       intro:
-        'Construimos el software que su operación necesita —no el que cabe en una licencia genérica—. Plataformas web, apps móviles, portales y ERP diseñados alrededor de su proceso real, integrados con sus equipos y datos, y listos para escalar.',
+        'Construimos el software que su operación necesita, no el que cabe en una licencia genérica. Plataformas web, apps móviles, portales y ERP diseñados alrededor de su proceso real, integrados con sus equipos y datos, y listos para escalar.',
       puntos: [
         'A la medida de su proceso, no al revés',
         'Integrado con sus equipos y datos',
@@ -140,7 +140,7 @@ export const servicios: Servicio[] = [
     icon: 'M7 7h10v10H7zM10 10h4v4h-4zM9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2',
     detalle: {
       intro:
-        'Diseñamos el hardware desde el esquemático hasta el dispositivo en campo. Tarjetas electrónicas, nodos de sensores, gateways LoRa y dispositivos edge pensados para su entorno —remoto, industrial o de bajo consumo— y fabricados a la medida del problema.',
+        'Diseñamos el hardware desde el esquemático hasta el dispositivo en campo. Tarjetas electrónicas, nodos de sensores, gateways LoRa y dispositivos edge pensados para su entorno (remoto, industrial o de bajo consumo) y fabricados a la medida del problema.',
       puntos: [
         'Del esquemático al dispositivo en campo',
         'Pensado para entornos industriales y remotos',
@@ -294,7 +294,7 @@ export const servicios: Servicio[] = [
     icon: 'M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 9.5a15 15 0 0 1 20 0M12 20h.01',
     detalle: {
       intro:
-        'Conectamos su operación física al mundo digital. Instalamos sensores, los enlazamos con LoRa/LoRaWAN —ideal para sitios remotos y de largo alcance— y llevamos la telemetría en tiempo real a sus tableros. Es la base de AdariA Sense.',
+        'Conectamos su operación física al mundo digital. Instalamos sensores, los enlazamos con LoRa/LoRaWAN, ideal para sitios remotos y de largo alcance, y llevamos la telemetría en tiempo real a sus tableros. Es la base de AdariA Sense.',
       puntos: [
         'Largo alcance en sitios remotos',
         'Sensores de bajo consumo con larga autonomía',
@@ -302,7 +302,7 @@ export const servicios: Servicio[] = [
       ],
       queHacemosTitulo: 'Del sensor en campo al dato en su tablero',
       queHacemosIntro:
-        'Sensorizamos, conectamos y transmitimos —incluso donde no hay cobertura celular.',
+        'Sensorizamos, conectamos y transmitimos, incluso donde no hay cobertura celular.',
       capacidades: [
         {
           titulo: 'Sensorización',
@@ -379,7 +379,7 @@ export const servicios: Servicio[] = [
       ],
       queHacemosTitulo: 'Todo su ecosistema, hablando el mismo idioma',
       queHacemosIntro:
-        'Conectamos lo que ya tiene —sin reemplazarlo— para que el dato fluya sin intervención manual.',
+        'Conectamos lo que ya tiene, sin reemplazarlo, para que el dato fluya sin intervención manual.',
       capacidades: [
         {
           titulo: 'Integración industrial',
@@ -448,7 +448,7 @@ export const servicios: Servicio[] = [
     icon: 'M3 3v18h18M7 14l3-3 3 3 5-6',
     detalle: {
       intro:
-        'Capturar el dato es la mitad del camino; lo que importa es decidir mejor. Convertimos sus datos —de sensores, cámaras, ERP y operación— en dashboards claros, KPIs accionables, reportes automáticos y modelos de predicción que anticipan lo que viene.',
+        'Capturar el dato es la mitad del camino; lo que importa es decidir mejor. Convertimos sus datos, de sensores, cámaras, ERP y operación, en dashboards claros, KPIs accionables, reportes automáticos y modelos de predicción que anticipan lo que viene.',
       puntos: [
         'Del dato crudo a la decisión',
         'KPIs y dashboards en tiempo real',
@@ -456,7 +456,7 @@ export const servicios: Servicio[] = [
       ],
       queHacemosTitulo: 'El dato convertido en decisiones a tiempo',
       queHacemosIntro:
-        'Centralizamos, visualizamos y predecimos —para que decidas con evidencia, no con intuición.',
+        'Centralizamos, visualizamos y predecimos, para que decidas con evidencia, no con intuición.',
       capacidades: [
         {
           titulo: 'Dashboards y visualización',
@@ -536,7 +536,7 @@ export const servicios: Servicio[] = [
     icon: 'M4 21V10H10V21M14 21V6H20V21M2 21H22',
     detalle: {
       intro:
-        'Llevamos la misma cadena que ya construimos para la industria —visión artificial, sensores IoT/LoRa, hardware propio, integración y analítica— a la infraestructura urbana. Movilidad, seguridad ciudadana, servicios públicos y gestión de riesgo, medidos en tiempo real y visibles en un solo tablero para la administración.',
+        'Llevamos la misma cadena que ya construimos para la industria (visión artificial, sensores IoT/LoRa, hardware propio, integración y analítica) a la infraestructura urbana. Movilidad, seguridad ciudadana, servicios públicos y gestión de riesgo, medidos en tiempo real y visibles en un solo tablero para la administración.',
       puntos: [
         'Sobre la infraestructura que ya existe (cámaras, postes, medidores)',
         'LoRaWAN para miles de sensores urbanos, bajo consumo',

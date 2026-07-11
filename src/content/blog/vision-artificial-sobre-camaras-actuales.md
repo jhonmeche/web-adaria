@@ -22,7 +22,7 @@ con un piloto sobre un caso de uso y se escala desde ahí.
 
 ## Qué detecta en la línea de seguridad (HSE)
 
-- **EPP:** casco, chaleco, gafas, guantes — verifica que se cumplan antes de un incidente.
+- **EPP:** casco, chaleco, gafas, guantes: verifica que se cumplan antes de un incidente.
 - **Zonas restringidas / red‑zones:** alerta cuando alguien entra donde no debe.
 - **Fuego y humo:** detección temprana para reaccionar a tiempo.
 - **Fatiga de operarios y prevención de colisiones** en maniobras críticas.
