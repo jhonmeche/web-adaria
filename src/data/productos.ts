@@ -80,8 +80,8 @@ export const productos: Producto[] = [
   {
     slug: 'smart-pba',
     nombre: 'Smart PBA',
-    categoria: 'ERP industrial trazable',
-    tagline: 'ERP trazable para plantas de beneficio animal.',
+    categoria: 'Software industrial trazable',
+    tagline: 'Software trazable para plantas de beneficio animal.',
     descripcion:
       'Gestiona toda la operación cárnica, del ingreso del lote al despacho, con evidencia fotográfica y conteo por visión artificial.',
     puntos: [
@@ -93,7 +93,7 @@ export const productos: Producto[] = [
     destacado: true,
     detalle: {
       intro:
-        'Smart PBA es el ERP trazable y auditable para plantas de beneficio animal (bovino y porcino) y desposte. Gestiona la operación completa, del ingreso del lote al despacho, y suma un modelo de visión artificial propio para el conteo en el pesaje en pie y evidencia fotográfica que da transparencia al cliente.',
+        'Smart PBA es el software trazable y auditable para plantas de beneficio animal (bovino y porcino) y desposte. Gestiona la operación completa, del ingreso del lote al despacho, y suma un modelo de visión artificial propio para el conteo en el pesaje en pie y evidencia fotográfica que da transparencia al cliente.',
       capacidadesTitulo: 'Toda la operación, en un solo sistema',
       capacidadesIntro:
         'Del corral al despacho, cada etapa queda registrada, soportada y lista para auditar.',
@@ -156,7 +156,7 @@ export const productos: Producto[] = [
         { titulo: 'Despacho', texto: 'Cierre con informes auditables y datos confiables.' },
       ],
       beneficios: [
-        { titulo: 'El más maduro', texto: 'Funcionando en plantas reales; nuestro principal caso de credibilidad.' },
+        { titulo: 'Trayectoria comprobada', texto: 'Funcionando en plantas reales; nuestro principal caso de credibilidad.' },
         { titulo: 'Transparencia real', texto: 'Los números se demuestran con imágenes, no solo se afirman.' },
         { titulo: 'Menos disputas', texto: 'Conteo objetivo por visión artificial, sin discusiones.' },
         { titulo: 'Decisiones con datos', texto: 'KPIs y reportes confiables de toda la operación.' },
